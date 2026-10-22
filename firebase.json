@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "README.md", "CREDITS.md", "LICENSE", "firestore.rules", "storage.rules", "storage-cors.json"],
+    "headers": [
+      { "source": "photos/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+      { "source": "**/*.@(js|css)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }] }
+    ]
+  },
+  "firestore": { "rules": "firestore.rules" },
+  "storage": { "rules": "storage.rules" }
+}

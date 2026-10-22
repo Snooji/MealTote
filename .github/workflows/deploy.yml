@@ -1,0 +1,23 @@
+name: Deploy to Firebase Hosting
+# Runs on pushes to main once the FIREBASE_SERVICE_ACCOUNT secret is added (see README).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.SA != ''
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: env.SA != ''
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+      - name: Skip (not set up yet)
+        if: env.SA == ''
+        run: echo "Add the FIREBASE_SERVICE_ACCOUNT secret to deploy automatically."

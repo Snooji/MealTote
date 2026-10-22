@@ -1,0 +1,13 @@
+rules_version = '2';
+// Recipe photos people upload: private to their owner, images only, 5 MB max.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /users/{uid}/photos/{file} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow write: if request.auth != null && request.auth.uid == uid
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
