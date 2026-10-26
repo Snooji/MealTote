@@ -26,6 +26,14 @@
   .way p{margin:0;color:var(--muted)}
   .support-page ul{margin:0;padding-left:20px;display:grid;gap:6px}
   .support-page a:not(.btn){color:var(--accent)}
+  .goal{display:grid;gap:6px}
+  .goal .bar{height:10px;border-radius:99px;background:var(--sunk);overflow:hidden}
+  .goal .bar i{display:block;height:100%;background:var(--accent)}
+  .method{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+  .method:first-of-type{border-top:0;padding-top:0}
+  .method h4{margin:0;font-size:16px}
+  .handle{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .handle code{font-family:var(--f-mono);background:var(--sunk);border-radius:6px;padding:4px 8px;font-size:14px}
 </style>
 </head>
 <body>
@@ -41,20 +49,13 @@
 <main class="wrap support-page">
   <section>
     <div class="eyebrow">Support MealTote</div>
-    <h2>Keep it free for everyone</h2>
+    <h2 id="sHead">Keep it free for everyone</h2>
     <p class="lede">Most apps that help you plan meals and shopping lock the useful parts behind a subscription. I wanted one that does the whole job for free, so I built MealTote: the questions, the week of meals, the grocery list split across your stores, the prep guide and the cookbook PDF, with no ads and no paywall.</p>
   </section>
 
-  <section class="give">
+  <section class="give" id="give" aria-busy="true">
     <h3 class="sub" style="margin:0">Chip in</h3>
-    <p style="margin:0">If MealTote saves you a trip, a takeout order or an hour of planning, a few dollars helps cover the domain and hosting so it can stay free. Pay what you like. It's a one-time tip, not a subscription.</p>
-    <div class="amounts">
-      <a class="btn primary big" href="https://paypal.me/snooji/3" target="_blank" rel="noopener">♥ $3</a>
-      <a class="btn primary big" href="https://paypal.me/snooji/5" target="_blank" rel="noopener">♥ $5</a>
-      <a class="btn primary big" href="https://paypal.me/snooji/10" target="_blank" rel="noopener">♥ $10</a>
-      <a class="btn big" href="https://paypal.me/snooji" target="_blank" rel="noopener">Any amount</a>
-    </div>
-    <p class="note" style="margin:0">Opens PayPal. Everything in MealTote stays free whether you chip in or not.</p>
+    <p style="margin:0" id="sMsg">Loading the ways to give…</p>
   </section>
 
   <section>
@@ -80,5 +81,42 @@
   <p>Thank you for using MealTote.</p>
   <p class="note"><a href="./">Plan your week</a> · <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Feedback &amp; ideas</a></p>
 </footer>
+<script src="src/donate.js"></script>
+<script type="module">
+import { firebaseConfig } from "./src/firebase-config.js";
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = n => "$" + (Math.round(n * 100) / 100).toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0 });
+const timeout = new Promise(r => setTimeout(() => r(DONATE.normalize(DONATE.DEFAULT_DONATIONS)), 4000));
+const d = await Promise.race([DONATE.load(firebaseConfig), timeout]);
+$("#sHead").textContent = d.headline;
+const box = $("#give"), on = d.methods.filter(m => m.enabled);
+let h = `<h3 class="sub" style="margin:0">Chip in</h3><p style="margin:0">${esc(d.message)}</p>`;
+if (d.goal.enabled) {
+  const raised = d.goal.month === DONATE.monthKey() ? d.goal.raised : 0, pct = Math.min(100, Math.round(raised / d.goal.amount * 100));
+  h += `<div class="goal"><div class="handle" style="justify-content:space-between"><b>${esc(d.goal.label)}</b><span class="mono">${money(raised)} of ${money(d.goal.amount)}</span></div><div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>`;
+}
+if (!on.length) h += `<p class="note" style="margin:0">Donations are paused right now. Sharing MealTote with a friend helps just as much.</p>`;
+for (const m of on) {
+  const t = DONATE.TYPES[m.type];
+  h += `<div class="method"><h4>${esc(m.label)}</h4>`;
+  if (t.link && t.amounts) {
+    h += `<div class="amounts">${d.amounts.map(a => `<a class="btn primary big" href="${esc(t.link(m.handle, a))}" target="_blank" rel="noopener">♥ ${money(a)}</a>`).join("")}<a class="btn big" href="${esc(t.link(m.handle))}" target="_blank" rel="noopener">Any amount</a></div>`;
+  } else if (t.link) {
+    const url = t.link(m.handle);
+    if (url) h += `<div class="amounts"><a class="btn primary big" href="${esc(url)}" target="_blank" rel="noopener">♥ Give with ${esc(m.label)}</a></div>`;
+  } else {
+    h += `<div class="handle"><span>Send any amount with ${esc(m.label)} from your bank's app to</span><code>${esc(m.handle)}</code><button class="btn small" type="button" data-copy="${esc(m.handle)}">Copy</button></div>`;
+  }
+  h += `</div>`;
+}
+h += `<p class="note" style="margin:0">Everything in MealTote stays free whether you chip in or not. Thank you!</p>`;
+box.innerHTML = h; box.removeAttribute("aria-busy");
+box.addEventListener("click", async e => {
+  const b = e.target.closest("[data-copy]"); if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copied"; } catch (x) { b.textContent = "Select and copy"; }
+  setTimeout(() => b.textContent = "Copy", 2000);
+});
+</script>
 </body>
 </html>

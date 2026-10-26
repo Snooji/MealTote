@@ -119,6 +119,14 @@ tools/export-cookbook.mjs  regenerates cookbook/ and checks for duplicates
 firestore.rules         who can read and write what
 ```
 
+## The Backend (donations)
+
+`/admin` (admin.html) is where the owner manages donations: which methods show on the support page (PayPal, Cash App, Zelle, Venmo, Ko-fi, Buy Me a Coffee or any link), the handle each one pays, the order, the page text, suggested amounts and an optional monthly goal. It also keeps a log of gifts received, with totals and a CSV export.
+
+Only `starsidecollective@gmail.com` can open it. That email is checked in `firestore.rules` (the real lock) and in `src/admin.js` (which only decides what to draw). To hand the Backend to someone else, change both and run `firebase deploy`. Signed in as that account, the app's profile page also shows an **Open the Backend** button.
+
+Until settings are saved once in the Backend, the support page shows the defaults in `src/donate.js`.
+
 ## What gets stored
 
 | Where (Firestore) | What | Who can read it |
@@ -126,6 +134,8 @@ firestore.rules         who can read and write what
 | `users/{uid}` | Display name, answers, current plan, swaps, checkmarks | Only that person |
 | `users/{uid}/plans/{id}` | Weeks they saved | Only that person |
 | `users/{uid}/photos/{recipe}` | Their own recipe photos (small JPEGs, under 900 KB) | Only that person |
+| `site/donations` | Donation methods and support page text | Anyone can read; only the admin can change |
+| `donations/{id}` | Gifts logged in the Backend | Only the admin |
 
 People can delete all of it from their profile.
 

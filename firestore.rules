@@ -3,6 +3,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function isOwner(uid) { return request.auth != null && request.auth.uid == uid; }
+    // The Backend (admin.html) belongs to one Google account. Change this email to hand it to someone else.
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == "starsidecollective@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+    function shortStr(v, n) { return v is string && v.size() <= n; }
 
     match /users/{uid} {
       allow read, delete: if isOwner(uid);
@@ -23,6 +29,29 @@ service cloud.firestore {
           && request.resource.data.data.size() < 900000;
       }
     }
+    // Donation settings the support page shows: public to read, only the admin can change them.
+    match /site/donations {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['headline', 'message', 'amounts', 'methods', 'goal', 'updatedAt', 'updatedBy'])
+        && shortStr(request.resource.data.headline, 120) && shortStr(request.resource.data.message, 600)
+        && request.resource.data.amounts is list && request.resource.data.amounts.size() <= 6
+        && request.resource.data.methods is list && request.resource.data.methods.size() <= 10
+        && request.resource.data.goal is map;
+    }
+
+    // Donation log (gifts you've received, entered by hand in the Backend): only the admin can read or write it.
+    match /donations/{id} {
+      allow read, delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['at', 'method', 'amount', 'who', 'note'])
+        && request.resource.data.at is number
+        && request.resource.data.amount is number && request.resource.data.amount > 0 && request.resource.data.amount <= 100000
+        && shortStr(request.resource.data.method, 40)
+        && (!('who' in request.resource.data) || shortStr(request.resource.data.who, 80))
+        && (!('note' in request.resource.data) || shortStr(request.resource.data.note, 300));
+    }
+
     match /{document=**} { allow read, write: if false; }
   }
 }

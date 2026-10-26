@@ -3490,7 +3490,8 @@ async function openProfile(){
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Account"),
       el("div",{class:"actions"},
         el("button",{class:"btn small",onclick:async()=>{ await cloud.signOut(); toast("Signed out. Your plan stays in this browser."); boot(); }},"Sign out"),
-        el("button",{class:"btn small danger",id:"delData",onclick:delData},"Delete my account data")),
+        el("button",{class:"btn small danger",id:"delData",onclick:delData},"Delete my account data"),
+        u.email==="starsidecollective@gmail.com" ? el("a",{class:"btn small",href:"admin.html"},"Open the Backend") : null),
       el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected.")),
     supportCard()));
   async function loadPlans(){
