@@ -1,10 +1,12 @@
 # Bundle & Bite
 
-Meal plans that shop across more than one store. Answer a few questions and Bundle & Bite builds a week of breakfasts, lunches and dinners. The questions cover who's eating, each person's calories and (optionally) their own macros, favorite foods, cuisines, time, budget, and which stores you use. It then splits one grocery list across Trader Joe's, Aldi, Walmart and Costco, by cheapest price or fewest stops.
+Meal plans that shop across more than one store. Answer a few questions and Bundle & Bite builds a week of breakfasts, lunches and dinners. The questions cover who's eating, each person's calories and (optionally) their own macros, favorite foods, cuisines, time, budget, and which stores you use. It then splits one grocery list across the stores you pick, by cheapest price or fewest stops.
+
+**Stores:** 36 US grocery chains, nationwide and regional, plus their sister banners. Walmart, Target, Costco, Sam's Club, BJ's, Aldi, Lidl, Trader Joe's, Whole Foods, Amazon Fresh, Kroger (and Ralphs, Fred Meyer, King Soopers, Harris Teeter…), Safeway/Albertsons (and Vons, Jewel-Osco, Acme, Shaw's…), Publix, H-E-B, Meijer, Hy-Vee, Wegmans, ShopRite, Stop & Shop, Giant, Giant Eagle, Food Lion, Market Basket, WinCo, Sprouts, Winn-Dixie, Smart & Final and more. Pick your region to see the chains near you. Trader Joe's, Costco, Aldi and Walmart have hand-entered typical prices. The others are estimated from each chain's usual price level, so treat them as ballpark figures.
 
 - 233 recipes from 16 cuisines, with protein swaps on many of them and a build-your-own breakfast sandwich. The library is browsable as markdown in [`cookbook/`](cookbook/INDEX.md).
-- Swapping shows the calorie difference per serving, and what changes on each person's plate.
-- Calories, macros and a full nutrition panel per serving. Portions are sized to each person's daily calories, and custom macro targets are optional.
+- Swapping shows a "Similar calories" section first, then every option with its calorie change per serving (green = fewer, red = more) and what changes on each person's plate.
+- Calories, macros and a full nutrition panel per serving. Portions are sized to each person's daily calories. An optional macros step lets each person set protein, carbs and fat targets.
 - How long each dish keeps in the fridge and freezer, and how many meals it makes.
 - A meal prep guide that batches the week's chopping, sauces, marinades and grains.
 - A cookbook PDF with your plan, prep guide, cost and nutrition, every recipe and the shopping list.

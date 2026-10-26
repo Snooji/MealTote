@@ -1,11 +1,51 @@
 /* ------------------------------------------------------------------ stores & catalog */
+// The first four have hand-entered prices. The rest are priced from their typical price level (idx, vs. an average
+// supermarket = 1.00) using the assortment they most resemble; see "priced stores" below.
+// regions: where the chain mostly operates ("all" = nationwide). also: sister banners that share prices.
+const REGIONS = [["all","Anywhere in the US"],["northeast","Northeast & Mid-Atlantic"],["southeast","Southeast"],["midwest","Midwest"],["southcentral","Texas & South Central"],["mountain","Mountain West"],["west","West Coast"]];
+const STORE_KIND = {mass:"Big-box", super:"Supermarket", discount:"Discount grocer", club:"Warehouse club", specialty:"Natural & specialty"};
 const STORES = {
-  tj:      {name:"Trader Joe's", short:"TJ", css:"--tj",      pdf:[184,67,47]},
-  costco:  {name:"Costco",       short:"CO", css:"--costco",  pdf:[44,74,138]},
-  aldi:    {name:"Aldi",         short:"AL", css:"--aldi",    pdf:[217,116,26]},
-  walmart: {name:"Walmart",      short:"WM", css:"--walmart", pdf:[30,138,156]},
+  tj:      {name:"Trader Joe's", short:"TJ", css:"--tj",      pdf:[184,67,47],  kind:"specialty", regions:"all"},
+  costco:  {name:"Costco",       short:"CO", css:"--costco",  pdf:[44,74,138],  kind:"club",      regions:"all"},
+  aldi:    {name:"Aldi",         short:"AL", css:"--aldi",    pdf:[217,116,26], kind:"discount",  regions:"all"},
+  walmart: {name:"Walmart",      short:"WM", css:"--walmart", pdf:[30,138,156], kind:"mass",      regions:"all"},
+  target:      {name:"Target",               short:"TG", color:"#C8102E", kind:"mass",      idx:1.04, regions:"all"},
+  kroger:      {name:"Kroger",               short:"KR", color:"#1F4E9C", kind:"super",     idx:1.00, regions:"midwest southeast southcentral mountain west", also:"Ralphs, Fred Meyer, King Soopers, Fry's, Smith's, Dillons, QFC, Harris Teeter, Mariano's, Pick 'n Save, Food 4 Less"},
+  safeway:     {name:"Safeway / Albertsons", short:"SA", color:"#D52B1E", kind:"super",     idx:1.12, regions:"west mountain southcentral midwest northeast", also:"Vons, Jewel-Osco, Acme, Shaw's, Star Market, Randalls, Tom Thumb, Pavilions"},
+  amazonfresh: {name:"Amazon Fresh",         short:"AF", color:"#00A8E1", kind:"super",     idx:1.02, regions:"all", also:"delivery or pickup"},
+  wholefoods:  {name:"Whole Foods",          short:"WF", color:"#00674B", kind:"specialty", idx:1.32, regions:"all"},
+  sams:        {name:"Sam's Club",           short:"SC", color:"#0060A9", kind:"club",      idx:0.97, regions:"all"},
+  bjs:         {name:"BJ's Wholesale",       short:"BJ", color:"#B5121B", kind:"club",      idx:1.00, regions:"northeast southeast midwest"},
+  lidl:        {name:"Lidl",                 short:"LI", color:"#0050AA", kind:"discount",  idx:1.02, regions:"northeast southeast"},
+  savealot:    {name:"Save A Lot",           short:"SL", color:"#E4002B", kind:"discount",  idx:1.06, regions:"northeast southeast midwest southcentral"},
+  publix:      {name:"Publix",               short:"PX", color:"#3E8E2F", kind:"super",     idx:1.16, regions:"southeast"},
+  heb:         {name:"H-E-B",                short:"HE", color:"#E31837", kind:"super",     idx:0.93, regions:"southcentral", also:"Central Market, Joe V's"},
+  meijer:      {name:"Meijer",               short:"MJ", color:"#E21A2C", kind:"mass",      idx:0.98, regions:"midwest"},
+  hyvee:       {name:"Hy-Vee",               short:"HV", color:"#C8102E", kind:"super",     idx:1.05, regions:"midwest"},
+  wegmans:     {name:"Wegmans",              short:"WG", color:"#2E6B3F", kind:"super",     idx:1.04, regions:"northeast"},
+  stopshop:    {name:"Stop & Shop",          short:"SS", color:"#E2231A", kind:"super",     idx:1.10, regions:"northeast"},
+  giant:       {name:"Giant",                short:"GI", color:"#6C2C91", kind:"super",     idx:1.08, regions:"northeast", also:"Giant Food, The Giant Company, Martin's"},
+  gianteagle:  {name:"Giant Eagle",          short:"GE", color:"#E31837", kind:"super",     idx:1.06, regions:"midwest northeast", also:"Market District"},
+  shoprite:    {name:"ShopRite",             short:"SR", color:"#D6001C", kind:"super",     idx:1.02, regions:"northeast"},
+  marketbasket:{name:"Market Basket",        short:"MB", color:"#C8102E", kind:"super",     idx:0.90, regions:"northeast"},
+  hannaford:   {name:"Hannaford",            short:"HN", color:"#B0181F", kind:"super",     idx:1.06, regions:"northeast"},
+  foodlion:    {name:"Food Lion",            short:"FL", color:"#1D5BA8", kind:"super",     idx:0.99, regions:"southeast"},
+  winndixie:   {name:"Winn-Dixie",           short:"WD", color:"#D5232B", kind:"super",     idx:1.05, regions:"southeast"},
+  ingles:      {name:"Ingles",               short:"IN", color:"#00529B", kind:"super",     idx:1.03, regions:"southeast"},
+  sprouts:     {name:"Sprouts",              short:"SP", color:"#4C8C2B", kind:"specialty", idx:1.15, regions:"west mountain southcentral southeast"},
+  winco:       {name:"WinCo Foods",          short:"WC", color:"#D71920", kind:"super",     idx:0.86, regions:"west mountain southcentral"},
+  smartfinal:  {name:"Smart & Final",        short:"SF", color:"#E31837", kind:"super",     idx:0.96, regions:"west"},
+  staterbros:  {name:"Stater Bros.",         short:"ST", color:"#D2232A", kind:"super",     idx:0.98, regions:"west"},
+  raleys:      {name:"Raley's",              short:"RA", color:"#C41230", kind:"super",     idx:1.12, regions:"west"},
+  schnucks:    {name:"Schnucks",             short:"SN", color:"#DA291C", kind:"super",     idx:1.05, regions:"midwest"},
+  weis:        {name:"Weis Markets",         short:"WS", color:"#E31837", kind:"super",     idx:1.03, regions:"northeast"},
+  foodcity:    {name:"Food City",            short:"FC", color:"#D71920", kind:"super",     idx:1.02, regions:"southeast"},
+  brookshire:  {name:"Brookshire's",         short:"BR", color:"#0B4EA2", kind:"super",     idx:1.04, regions:"southcentral", also:"Super 1 Foods"},
 };
+for(const st of Object.values(STORES)){ if(st.color){ st.pdf=hexToRgb(st.color); } }
 const STORE_IDS = Object.keys(STORES);
+(function(){ const css=[]; for(const [k,st] of Object.entries(STORES)) if(st.color){ st.css="--st-"+k; css.push(`--st-${k}:${st.color}`); }
+  const tag=document.createElement("style"); tag.textContent=":root{"+css.join(";")+"}"; document.head.append(tag); })();
 const AISLES = ["Produce","Meat & Seafood","Dairy & Eggs","Bakery & Tortillas","Pantry","Sauces & Spices","International","Frozen"];
 
 // item: [display name, aisle, {store: [product, est. price, units (how many "standard packs" it covers)]}]
@@ -1569,6 +1609,28 @@ for(const pack of (window.BB_MORE||[])){
 }
 
 
+/* ------------------------------------------------------------------ priced stores
+   Chains without hand-entered prices get one estimated offer per item:
+   - supermarkets, big-box and natural stores carry everything, priced from the Walmart/Aldi/Trader Joe's shelf price
+     normalized to an average supermarket, times the chain's price level;
+   - warehouse clubs mirror Costco's bulk packs; discount grocers mirror Aldi's smaller assortment.
+   Each chain/item pair also gets a fixed ±15% nudge: no chain is cheapest on everything, so splitting a list can pay off. */
+const SRC_LEVEL = {walmart:0.9, aldi:0.8, tj:1.08};
+const sizeOf = name => { const m=String(name).match(/\(([^()]*)\)\s*$/); return m?" ("+m[1]+")":""; };
+const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
+for(const [item,def] of Object.entries(ITEMS)){
+  const o=def[2], name=cap(def[0]);
+  const src=["walmart","aldi","tj"].find(k=>o[k]);
+  for(const [k,st] of Object.entries(STORES)){
+    if(!st.idx || o[k]) continue;
+    const lvl = st.idx*(0.85+0.3*rng(k+":"+item)());
+    if(st.kind==="club"){ if(o.costco) o[k]=[name+sizeOf(o.costco[0]), +(o.costco[1]*lvl).toFixed(2), o.costco[2]]; continue; }
+    if(st.kind==="discount"){ if(o.aldi) o[k]=[name+sizeOf(o.aldi[0]), +(o.aldi[1]*lvl).toFixed(2), o.aldi[2]]; continue; }
+    if(src) o[k]=[name+sizeOf(o[src][0]), +(Math.max(0.5, o[src][1]/SRC_LEVEL[src]*lvl)).toFixed(2), o[src][2]];
+    else if(o.costco) o[k]=[name+sizeOf(o.costco[0]), +(o.costco[1]/o.costco[2]*1.25*lvl).toFixed(2), 1];
+  }
+}
+
 /* regroup earlier recipes into the finer cuisine list; finish every recipe's facts */
 const CUISINE_FIX = {"gochujang-chicken":"korean","red-curry-shrimp":"thai","bulgogi-bowls":"korean","peanut-noodles":"chinese","veggie-fried-rice":"chinese","orange-chicken":"chinese","beef-broccoli":"chinese","teriyaki-salmon-bowls":"japanese","pad-thai":"thai","potsticker-stirfry":"chinese","miso-ramen":"japanese","katsu-curry":"japanese","kung-pao-chicken":"chinese","tofu-peanut-stirfry":"thai","thai-peanut-salad":"thai","banh-mi":"vietnamese","shakshuka":"middleeastern","chicken-shawarma":"middleeastern","jambalaya":"southern","shrimp-grits":"southern","pulled-pork":"southern","crispy-chicken-sandwich":"southern","avocado-egg-toast":"american"};
 // sauces that carry an allergen whatever the dish's main protein
@@ -1656,8 +1718,7 @@ function peopleEditor(A){
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Weight (lb)"), el("input",{type:"number",id:"elb-"+i,value:est.lb,min:70,max:500,onchange:e=>est.lb=+e.target.value})),
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Activity"), el("select",{id:"eact-"+i,onchange:e=>est.act=+e.target.value}, [[1,"Mostly sitting"],[2,"Light exercise 1-3x/wk"],[3,"Active 3-5x/wk"],[4,"Very active daily"]].map(([v,l])=>el("option",{value:v,selected:est.act===v},l)))),
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Goal"), el("select",{id:"egoal-"+i,onchange:e=>est.goal=e.target.value}, [["lose","Lose weight"],["keep","Maintain"],["gain","Build muscle"]].map(([v,l])=>el("option",{value:v,selected:est.goal===v},l)))),
-        el("button",{class:"btn primary small",onclick:()=>{ p.kcal=estimateKcal(est); est.open=false; renderQuiz(); toast(personName(p,i)+": "+p.kcal.toLocaleString()+" kcal a day"); }},"Use this estimate")) : null,
-      macroEditor(p,i));
+        el("button",{class:"btn primary small",onclick:()=>{ p.kcal=estimateKcal(est); est.open=false; renderQuiz(); toast(personName(p,i)+": "+p.kcal.toLocaleString()+" kcal a day"); }},"Use this estimate")) : null);
     wrapEl.append(card);
   });
   if(A.people.length<6) wrapEl.append(el("button",{class:"btn",onclick:()=>{ A.people.push({name:"",kcal:2000}); renderQuiz(); }},"+ Add another person"));
@@ -1671,7 +1732,7 @@ const macroKcal = m => m.p*4 + m.c*4 + m.f*9;
 function macrosFromSplit(kcal,pp,cp,fp){ return {p:Math.round(kcal*pp/100/4), c:Math.round(kcal*cp/100/4), f:Math.round(kcal*fp/100/9)}; }
 function macroEditor(p,i){
   const open = p._mOpen ?? !!p.macros;
-  const tog = el("label",{class:"tog"}, el("input",{type:"checkbox",id:"pmac-"+i,checked:open,onchange:e=>{ p._mOpen=e.target.checked; if(!e.target.checked) p.macros=null; else if(!p.macros) p.macros=macrosFromSplit(p.kcal,30,40,30); renderQuiz(); }}), "Set my own macros (optional)");
+  const tog = el("label",{class:"tog"}, el("input",{type:"checkbox",id:"pmac-"+i,checked:open,onchange:e=>{ p._mOpen=e.target.checked; if(!e.target.checked) p.macros=null; else if(!p.macros) p.macros=macrosFromSplit(p.kcal,30,40,30); renderQuiz(); }}), "Set macro targets for "+personName(p,i));
   if(!open || !p.macros) return el("div",{class:"macros"}, tog);
   const m=p.macros, mk=macroKcal(m), off=Math.abs(mk-p.kcal)>Math.max(60,p.kcal*0.05);
   const fld=(k,label)=>el("label",{class:"fld"}, el("span",{class:"eyebrow"},label+" (g/day)"),
@@ -1683,7 +1744,7 @@ function macroEditor(p,i){
     el("p",{class:"note"+(off?" warnline":""),style:"margin:0"},
       `${pct("p")}% protein · ${pct("c")}% carbs · ${pct("f")}% fat = ${fmtInt(mk)} kcal a day`+(off?` (your daily calories are ${fmtInt(p.kcal)}). `:". "),
       off?el("button",{class:"linkbtn",onclick:()=>{ p.kcal=Math.min(5000,Math.max(1000,Math.round(mk/50)*50)); renderQuiz(); }},"Use "+fmtInt(Math.round(mk/50)*50)+" kcal as my daily calories"):null),
-    el("p",{class:"note",style:"margin:0"},"The planner leans toward dishes that fit these numbers, and your plan shows how close each day gets."));
+    null);
 }
 // how well a dish's calorie split matches the household's macro targets: 0 = perfect, 2 = opposite
 function macroMiss(r){
@@ -1891,13 +1952,13 @@ function versionPanel(r,slot){
   if(r.builder) return bsbPanel(r,slot);
   const vs=versionsOf(r); if(vs.length<2) return null;
   const ok=S.profile?vs.filter(eligible):vs; if(ok.length<2) return null;
-  return el("div",{class:"vpanel"}, el("span",{class:"eyebrow"},"Make it with"), el("div",{class:"vchips"}, ok.map(v=>el("button",{class:"chip"+(v.id===r.id?" on":""),title:v.id===r.id?"":signed(kcalDelta(r.id,v.id,slot&&slot.meal).serving)+" kcal per serving",onclick:()=>{ if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,v.id); openRecipe(v.id,Object.assign({},slot,{id:v.id})); } else openRecipe(v.id); }},proteinLabel(v), v.id===r.id?null:el("small",{class:"chipk"},signed(kcalDelta(r.id,v.id,slot&&slot.meal).serving))))),
+  return el("div",{class:"vpanel"}, el("span",{class:"eyebrow"},"Make it with"), el("div",{class:"vchips"}, ok.map(v=>el("button",{class:"chip"+(v.id===r.id?" on":""),title:v.id===r.id?"":signed(kcalDelta(r.id,v.id,slot&&slot.meal).serving)+" kcal per serving",onclick:()=>{ if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,v.id); openRecipe(v.id,Object.assign({},slot,{id:v.id})); } else openRecipe(v.id); }},proteinLabel(v), v.id===r.id?null:chipK(kcalDelta(r.id,v.id,slot&&slot.meal))))),
     el("p",{class:"note",style:"margin:0"},"Numbers show calories per serving compared with this version. Ingredients, steps, nutrition, cost and your grocery list switch to match."));
 }
 function bsbPanel(r,slot){
   const sel=bsbSel(r.id);
   const go=(k,v)=>{ const id=bsbId({...sel,[k]:v}); if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,id); openRecipe(id,Object.assign({},slot,{id})); } else openRecipe(id); };
-  const row=(k,label,opts)=>el("div",{class:"bsbrow"}, el("span",{class:"eyebrow"},label), el("div",{class:"vchips"}, opts.map(o=>{ const id=bsbId({...sel,[k]:o.k}); return el("button",{class:"chip"+(sel[k]===o.k?" on":""),onclick:()=>go(k,o.k)},o.label, sel[k]===o.k?null:el("small",{class:"chipk"},signed(kcalDelta(r.id,id,"breakfast").serving))); })));
+  const row=(k,label,opts)=>el("div",{class:"bsbrow"}, el("span",{class:"eyebrow"},label), el("div",{class:"vchips"}, opts.map(o=>{ const id=bsbId({...sel,[k]:o.k}); return el("button",{class:"chip"+(sel[k]===o.k?" on":""),onclick:()=>go(k,o.k)},o.label, sel[k]===o.k?null:chipK(kcalDelta(r.id,id,"breakfast"))); })));
   return el("div",{class:"vpanel bsb"}, el("b",{},"Build your sandwich"), row("protein","Protein",BSB.protein), row("egg","Egg",BSB.egg), row("cheese","Cheese",BSB.cheese), row("bread","Bread",BSB.bread),
     el("p",{class:"note",style:"margin:0"},"Each choice updates the recipe, nutrition, cost and shopping list"+(slot?", and saves to "+slot.day+".":".")));
 }
@@ -1911,12 +1972,13 @@ function kcalDelta(fromId, toId, meal){
   return {serving:Math.round(kb-ka), people:ps.map((p,j)=>({name:personName(p,j), d:Math.round(portionFor(p,m,b)*kb-portionFor(p,m,a)*ka)}))};
 }
 const signed = v => Math.abs(v)<10 ? "±0" : (v>0?"+":"−")+fmtInt(Math.abs(v));
+const chipK = d => { const v=d?d.serving:0; return el("small",{class:"chipk "+(Math.abs(v)<10?"":v>0?"up":"down")},signed(v)); };
 function deltaBadge(d){
   if(!d) return null; const v=d.serving, cls=Math.abs(v)<10?"same":v>0?"up":"down";
   return el("span",{class:"kd "+cls,title:"Calories per serving compared with what's planned now"}, Math.abs(v)<10?"same kcal":signed(v)+" kcal");
 }
 function deltaPeople(d){
-  if(!d||!d.people.length) return null;
+  if(!d||!d.people.length||d.people.every(x=>Math.abs(x.d)<10)) return null;
   return el("div",{class:"kdp"}, d.people.length>1||d.people[0].d!==d.serving ? "On each plate: "+d.people.map(x=>x.name+" "+signed(x.d)).join(" · ")+" kcal" : null);
 }
 
@@ -1945,20 +2007,26 @@ function renderSwap(){
   if(SWP.cuisine) list=list.filter(x=>META[x.best.id].cuisine===SWP.cuisine);
   if(SWP.protein){ list=list.map(x=>{ const m=x.all.filter(v=>{ const pr=META[v.id].protein; return SWP.protein==="seafood"?["shrimp","fish"].includes(pr):SWP.protein==="veg"?META[v.id].veg:SWP.protein==="chicken"?["chicken","turkey"].includes(pr):pr===SWP.protein; }); return m.length?{...x,best:m[0],all:x.all}:null; }).filter(Boolean); }
   if(SWP.quick) list=list.filter(x=>x.best.time<=30);
-  const sorters={best:(a,b)=>b.s-a.s, fast:(a,b)=>a.best.time-b.best.time, cheap:(a,b)=>recipeCost(a.best).perServing-recipeCost(b.best).perServing, light:(a,b)=>nutritionOf(a.best).kcal-nutritionOf(b.best).kcal, protein:(a,b)=>nutritionOf(b.best).protein-nutritionOf(a.best).protein};
+  const curK=cur&&R_BY_ID[cur]?nutritionOf(R_BY_ID[cur]).kcal:0;
+  const sorters={close:(a,b)=>Math.abs(nutritionOf(a.best).kcal-curK)-Math.abs(nutritionOf(b.best).kcal-curK), best:(a,b)=>b.s-a.s, fast:(a,b)=>a.best.time-b.best.time, cheap:(a,b)=>recipeCost(a.best).perServing-recipeCost(b.best).perServing, light:(a,b)=>nutritionOf(a.best).kcal-nutritionOf(b.best).kcal, protein:(a,b)=>nutritionOf(b.best).protein-nutritionOf(a.best).protein};
   list.sort(sorters[SWP.sort]);
   const pick=id=>{ swapSlot(meal,i,id); closeSheet(); };
-  const grid=el("div",{class:"swapgrid"}, list.map(x=>{ const r=x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur), d=isCur?null:kcalDelta(cur,r.id,meal);
+  const cardOf=(x,rv)=>{ const r=rv||x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur), d=isCur?null:kcalDelta(cur,r.id,meal);
     return el("div",{class:"swapcard"+(isCur?" current":"")},
       el("button",{class:"swpic",onclick:()=>pick(r.id),"aria-label":"Choose "+r.title}, el("img",{src:imgFor(r),"data-rid":r.id,alt:"",loading:"lazy"}), isCur?el("span",{class:"inweek"},"Current"):null),
       el("div",{class:"swbody"},
         el("div",{class:"eyebrow"},CUISINE_LABEL[META[r.id].cuisine]||""),
-        el("button",{class:"slottitle",onclick:()=>pick(r.id)},r.title),
-        el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(n.kcal)+" kcal"), el("span",{},n.protein+" g protein"), el("span",{},money(recipeCost(r).perServing)), deltaBadge(d)),
+        el("div",{class:"swtitle"}, el("button",{class:"slottitle",onclick:()=>pick(r.id)},r.title), deltaBadge(d)),
+        el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(n.kcal)+" kcal"), el("span",{},n.protein+" g protein"), el("span",{},money(recipeCost(r).perServing))),
         deltaPeople(d),
-        x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id),title:v.id===cur?"":signed(kcalDelta(cur,v.id,meal).serving)+" kcal per serving"},proteinLabel(v), v.id===cur?null:el("small",{class:"chipk"},signed(kcalDelta(cur,v.id,meal).serving))))) : null,
+        x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id),title:v.id===cur?"":signed(kcalDelta(cur,v.id,meal).serving)+" kcal per serving"},proteinLabel(v), v.id===cur?null:chipK(kcalDelta(cur,v.id,meal))))) : null,
         el("button",{class:"linkbtn",onclick:()=>openRecipe(r.id,{day,i,meal,label:meal[0].toUpperCase()+meal.slice(1),id:r.id,leftover:false})},"View recipe")));
-  }));
+  };
+  const grid=el("div",{class:"swapgrid"}, list.map(x=>cardOf(x)));
+  // dishes within about 8% of what's planned now, each in its closest-calorie version
+  const near=Math.max(50,curK*0.08);
+  const similar=curK ? list.filter(x=>!x.all.some(v=>v.id===cur)).map(x=>{ const v=x.all.slice().sort((a,b)=>Math.abs(nutritionOf(a).kcal-curK)-Math.abs(nutritionOf(b).kcal-curK))[0]; return {x,v,gap:Math.abs(nutritionOf(v).kcal-curK)}; })
+    .filter(o=>o.gap<=near).sort((a,b)=>a.gap-b.gap).slice(0,6) : [];
   const optionsTotal=list.reduce((a,x)=>a+x.all.length,0);
   p.append(el("div",{class:"content swapper"},
     el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Swap "+day+" "+meal), el("h2",{id:"dTitle"},"Pick something else")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
@@ -1967,11 +2035,16 @@ function renderSwap(){
       el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: curry, salmon, tacos…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
       el("select",{id:"swc","aria-label":"Cuisine",onchange:e=>{SWP.cuisine=e.target.value;renderSwap();}}, el("option",{value:""},"Any cuisine"), CUISINE_OPTS.map(([k,l])=>el("option",{value:k,selected:SWP.cuisine===k},l))),
       el("select",{id:"swp","aria-label":"Protein",onchange:e=>{SWP.protein=e.target.value;renderSwap();}}, [["","Any protein"],["chicken","Chicken & turkey"],["beef","Beef"],["pork","Pork"],["seafood","Seafood"],["veg","Vegetarian"]].map(([k,l])=>el("option",{value:k,selected:SWP.protein===k},l))),
-      el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
+      el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],["close","Closest calories"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
       el("label",{class:"tog"}, el("input",{type:"checkbox",id:"swquick",checked:SWP.quick,onchange:e=>{SWP.quick=e.target.checked;renderSwap();}}), "30 min or less"),
       el("label",{class:"tog"}, el("input",{type:"checkbox",id:"swany",checked:SWP.any,onchange:e=>{SWP.any=e.target.checked;renderSwap();}}), "Show all meal types"),
       el("button",{class:"btn small",onclick:()=>{ if(list.length){ const x=list[Math.floor(Math.random()*list.length)]; pick(x.best.id); } }},"Surprise me")),
-    list.length?grid:el("div",{class:"empty"},"Nothing matches those filters. Clear the search or try another cuisine.")));
+    list.length ? el("div",{},
+      similar.length ? el("section",{class:"simcal"},
+        el("h3",{class:"sub"},`Similar calories (within ${fmtInt(near)} kcal of ${fmtInt(curK)} per serving)`),
+        el("div",{class:"swapgrid"}, similar.map(o=>cardOf(o.x,o.v)))) : null,
+      el("h3",{class:"sub"},"All options"), el("p",{class:"note",style:"margin:-4px 0 8px"},"Green numbers mean fewer calories per serving than what's planned now, red numbers mean more."), grid)
+    : el("div",{class:"empty"},"Nothing matches those filters. Clear the search or try another cuisine.")));
   $("#sheet").scrollTop=0;
 }
 
@@ -2575,6 +2648,7 @@ const listJoin = a => a.length<2 ? a.join("") : a.slice(0,-1).join(", ")+" and "
 /* ------------------------------------------------------------------ questions */
 const QUESTIONS = [
  {id:"people",type:"people",q:"Who's eating, and how much?",sub:"Add everyone you're cooking for with their own daily calorie target. Portions are sized per person."},
+ {id:"macros",type:"macros",q:"Want to set macro targets?",sub:"Optional. Set protein, carbs and fat for anyone tracking them. The planner leans toward dishes that fit, and your plan shows how close each day gets. Skip it and portions simply follow calories."},
  {id:"meals",type:"multi",min:1,q:"Which meals should we plan?",sub:"Pick all that apply.",opts:[["breakfast","Breakfast"],["lunch","Lunch"],["dinner","Dinner"]]},
  {id:"days",type:"single",q:"How many days do you want planned?",opts:[[3,"3 days","Mon, Wed, Fri"],[5,"5 days","Monday to Friday"],[7,"7 days","The whole week"]]},
  {id:"diet",type:"single",q:"Do you follow an eating style?",opts:[["none","No preference","I eat everything"],["vegetarian","Vegetarian","No meat or fish"],["pescatarian","Pescatarian","Fish and seafood, no meat"]]},
@@ -2595,12 +2669,14 @@ let OB = null; // {i, A}
 const visibleQs = A => QUESTIONS.filter(q=>!q.cond || q.cond(A));
 function answered(q,A){
   if(q.type==="people") return A.people.length>0 && A.people.every(p=>p.kcal>=1000 && p.kcal<=5000);
+  if(q.type==="macros") return true;
   if(q.type==="multi"||q.type==="stores") return Array.isArray(A[q.id]) && A[q.id].length>=(q.min||0) && (q.min || A[q.id].length || A[q.id]._none);
   return A[q.id]!=null;
 }
 function answerText(q,A){
   const v=A[q.id];
-  if(q.type==="people") return A.people.map((p,i)=>personName(p,i)+" ("+p.kcal.toLocaleString()+" kcal"+(p.macros?`, ${p.macros.p}P/${p.macros.c}C/${p.macros.f}F g`:"")+")").join(", ");
+  if(q.type==="people") return A.people.map((p,i)=>personName(p,i)+" ("+p.kcal.toLocaleString()+" kcal)").join(", ");
+  if(q.type==="macros"){ const w=A.people.map((p,i)=>p.macros?`${personName(p,i)}: ${p.macros.p} g protein, ${p.macros.c} g carbs, ${p.macros.f} g fat`:null).filter(Boolean); return w.length?w.join(" · "):"Not set. Portions follow calories."; }
   if(q.type==="stores") return listJoin(v.map(s=>STORES[s].name));
   if(q.type==="multi") return v.length ? listJoin(v.map(x=>q.opts.find(o=>o[0]===x)[1])) : q.none;
   const o=q.opts.find(o=>o[0]===v); return o?o[1]:"";
@@ -2626,11 +2702,12 @@ function renderQuiz(){
   const body=el("div",{class:"opts"+(q.type==="single"&&q.opts.some(o=>o[2])?" tall":"")});
   if(q.type==="people"){
     body.className="peoplewrap"; body.append(peopleEditor(A));
+  } else if(q.type==="macros"){
+    body.className="peoplewrap";
+    A.people.forEach((p,i)=>body.append(el("div",{class:"person"}, el("div",{class:"pg-top"}, el("b",{},personName(p,i)), el("span",{class:"mono note"},fmtInt(p.kcal)+" kcal a day")), macroEditor(p,i))));
   } else if(q.type==="stores"){
-    body.className="opts stores";
-    for(const s of STORE_IDS){ const on=A.stores.includes(s);
-      body.append(el("button",{class:"opt store","aria-pressed":on,style:`--sc:var(${STORES[s].css})`,onclick:()=>{ A.stores=on?A.stores.filter(x=>x!==s):[...A.stores,s]; renderQuiz(); }},
-        el("span",{class:"sw"},STORES[s].short), el("span",{class:"ol"},STORES[s].name))); }
+    body.className="storepick-wrap";
+    body.append(storePicker(A, ()=>renderQuiz()));
   } else {
     const multi=q.type==="multi", cur=A[q.id];
     for(const [val,label,desc] of q.opts){
@@ -2668,11 +2745,51 @@ function finishQuiz(){
   A.people=A.people.map((p,i)=>({name:personName(p,i),kcal:p.kcal,macros:p.macros?{p:p.macros.p,c:p.macros.c,f:p.macros.f}:null}));
   if(!A.meals.includes("lunch")||!A.meals.includes("dinner")) A.leftovers="no";
   if(A.stores.length<2) A.mode="cheap";
-  S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
+  delete A._q; S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
   OB=null;
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"building"}, el("div",{class:"spinner"}), el("h2",{},"Building your week…"), el("p",{class:"lede"},"Matching "+RECIPES.length+" recipes to your answers and pricing your groceries.")));
   setTimeout(()=>{ generatePlan(); save(); showApp("plan"); }, 900);
+}
+
+/* ------------------------------------------------------------------ store picker (quiz and grocery tab) */
+// st: {stores:[...], region, _q}; changed() re-renders the caller
+function storePicker(st, changed){
+  const region=st.region||"all", q=(st._q||"").trim().toLowerCase();
+  const inRegion = s => region==="all" || STORES[s].regions==="all" || STORES[s].regions.split(" ").includes(region);
+  const matches = s => !q || (STORES[s].name+" "+(STORES[s].also||"")).toLowerCase().includes(q);
+  const card = s => { const on=st.stores.includes(s), x=STORES[s];
+    return el("button",{class:"opt store","aria-pressed":on,style:`--sc:var(${x.css})`,onclick:()=>{ st.stores=on?st.stores.filter(y=>y!==s):[...st.stores,s]; changed(); }},
+      el("span",{class:"sw"},x.short),
+      el("span",{class:"stx"}, el("span",{class:"ol"},x.name), el("span",{class:"note"},(x.also?x.also:STORE_KIND[x.kind])+(x.idx?"":" · hand-priced")))); };
+  const nat=STORE_IDS.filter(s=>STORES[s].regions==="all" && matches(s));
+  const reg=STORE_IDS.filter(s=>STORES[s].regions!=="all" && (inRegion(s)||st.stores.includes(s)) && matches(s));
+  const search=el("input",{class:"search",id:"storeq",type:"search",placeholder:"Search stores, e.g. Ralphs, Publix, H-E-B",value:st._q||"",
+    oninput:e=>{ st._q=e.target.value; const pos=e.target.selectionStart; changed(); const f=$("#storeq"); if(f){ f.focus(); f.setSelectionRange(pos,pos); } }});
+  return el("div",{class:"storepick"},
+    el("div",{class:"spctl"},
+      el("label",{class:"fld"}, el("span",{class:"eyebrow"},"Where you live"),
+        el("select",{id:"storeRegion",onchange:e=>{ st.region=e.target.value; changed(); }}, REGIONS.map(([k,l])=>el("option",{value:k,selected:region===k},l)))),
+      el("label",{class:"fld grow"}, el("span",{class:"eyebrow"},"Find a store"), search)),
+    el("p",{class:"note",style:"margin:0"}, st.stores.length ? `${st.stores.length} picked: ${listJoin(st.stores.map(s=>STORES[s].name))}` : "Pick at least one store."),
+    nat.length ? el("h3",{class:"sub"},"Nationwide") : null,
+    nat.length ? el("div",{class:"opts stores"}, nat.map(card)) : null,
+    reg.length ? el("h3",{class:"sub"}, region==="all" ? "Regional chains" : "Regional chains in "+REGIONS.find(r=>r[0]===region)[1]) : null,
+    reg.length ? el("div",{class:"opts stores"}, reg.map(card)) : null,
+    !nat.length && !reg.length ? el("div",{class:"empty"},"No store matches that search. Try another name, or pick a nearby chain with similar prices.") : null,
+    el("p",{class:"note"},"Trader Joe's, Costco, Aldi and Walmart use hand-checked typical prices. Other chains are estimated from their usual price level, so check shelf prices in-store. Warehouse clubs only sell bulk sizes, so pair one with a regular store."));
+}
+function openStoreSheet(){
+  const st={stores:S.stores.slice(), region:(S.profile&&S.profile.region)||"all", _q:""};
+  const p=$("#panel");
+  const draw=()=>{ p.innerHTML="";
+    p.append(el("div",{class:"content"},
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{id:"dTitle"},"Where do you shop?")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      storePicker(st, draw),
+      el("div",{class:"actions",style:"position:sticky;bottom:0;background:var(--surface);padding:12px 0"},
+        el("button",{class:"btn primary",disabled:!st.stores.length,onclick:()=>{ S.stores=st.stores.slice(); if(S.profile){ S.profile.stores=S.stores.slice(); S.profile.region=st.region; } S.overrides={}; save(); closeSheet(); refresh(); toast("Shopping at "+listJoin(S.stores.map(s=>STORES[s].name))); }},"Use these stores"),
+        el("button",{class:"btn",onclick:closeSheet},"Cancel")))); };
+  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
 }
 
 /* ------------------------------------------------------------------ planner */
@@ -2824,6 +2941,7 @@ function renderGroceries(){
       el("p",{class:"lede"},"Everything for your "+planDays().length+"-day plan, sized for "+answerText(QUESTIONS[0],A)+". Prices are estimates; check them in-store.")),
     el("div",{class:"actions"},
       S.stores.length>1?el("div",{class:"seg",id:"modeSeg"}, [["cheap","Lowest total"],["stops","Fewest stops"]].map(([k,l])=>el("button",{"aria-pressed":S.mode===k,onclick:()=>{ S.mode=k; S.overrides={}; save(); renderGroceries(); }},l))):null,
+      el("button",{class:"btn small",id:"storesBtn",onclick:openStoreSheet},"Change stores"),
       el("button",{class:"btn small",onclick:()=>{ S.checked={}; save(); renderGroceries(); }},"Uncheck all"))));
   m.append(el("div",{class:"summary"},
     el("div",{class:"stat"},el("b",{class:"mono"},money(t.total)),el("span",{},"Est. total")),
