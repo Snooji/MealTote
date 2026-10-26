@@ -127,7 +127,7 @@
  st:[3,3,"Store the components separately. Reheat beans and beef on the stove; re-crisp chicharrón in a 400°F oven for 8 minutes and fry eggs fresh."],
  src:["My Colombian Recipes","https://www.mycolombianrecipes.com/paisa-tray-bandeja-paisa/"]},
 
-{id:"ajiaco-bogotano",title:"Ajiaco Bogotano (Colombian Chicken, Corn & Three-Potato Soup)",meal:"Lunch",time:75,serves:6,m:{has:["dairy"],cuisine:"colombian",protein:"chicken",skill:2},
+{id:"ajiaco-bogotano",title:"Ajiaco Bogotano (Colombian Chicken, Corn & Potato Soup)",meal:"Lunch",time:75,serves:6,m:{has:["dairy"],cuisine:"colombian",protein:"chicken",skill:2},
  blurb:"Bogotá's beloved soup: chicken and corn simmered with potatoes until some dissolve into a thick, velvety broth, finished at the table with cream, capers and avocado.",
  ing:[["chicken_breast",1.33,"2 lb boneless chicken breasts"],["chicken_broth",1,"4 cups chicken broth"],["frozen_corn",1,"12 oz frozen corn (or 3 ears, cut in chunks)"],["green_onion",0.5,"4 scallions, left whole"],["garlic",0.05,"3 garlic cloves, minced"],["cilantro",1,"1 bunch cilantro, divided"],["russet",0.4,"2 lb russet potatoes, peeled and thinly sliced"],["baby_potatoes",1,"1½ lb baby gold potatoes, halved"],["heavy_cream",0.25,"½ cup heavy cream, for serving"],["capers",0.5,"¼ cup capers, for serving"],["avocado",0.75,"3 avocados, sliced, for serving"]],
  pantry:"1 tbsp dried oregano (or 3 tbsp dried guascas), salt, pepper",
