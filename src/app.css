@@ -460,3 +460,7 @@ nav.tabs .short,nav.tabs .mobile,nav.tabs button.mobile{display:none}
 .srow .grow small{color:var(--muted);font-size:13px}
 .srow::after{content:"›";color:var(--muted);font-size:20px}
 @media (max-width:720px){ body:has(nav.tabs:not([hidden])) .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))} }
+.mfit{display:grid;gap:2px;font-size:12.5px;font-family:var(--f-mono)}
+.mfit span{margin-right:8px;color:var(--muted)}
+.mfit span.good{color:var(--kd-down);font-weight:600}
+.mfit span.bad{color:var(--kd-up);font-weight:600}

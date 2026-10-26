@@ -1655,7 +1655,15 @@ for(const r of RECIPES){ if(!r.art) r.art=ART.A("bowl","#2E3A44","#E9E4DA",ART.s
 const MEAL_SHARE = {breakfast:0.25, lunch:0.33, dinner:0.37}; // the rest of the day is snacks
 const people = () => (S.profile && S.profile.people) || [{name:"You",kcal:2000}];
 const personName = (p,i) => (p.name||"").trim() || ("Person "+(i+1));
-function portionFor(p, meal, r){ const x=p.kcal*MEAL_SHARE[meal]/Math.max(150,nutritionOf(r).kcal); return Math.min(2.5, Math.max(0.5, Math.round(x*4)/4)); }
+// portion size: calories first; for anyone with macro targets, the portion whose protein/carbs/fat land closest
+// to their share for this meal (protein counts most), kept within -20%/+25% of the calorie portion
+function portionFor(p, meal, r){
+  const n=nutritionOf(r), share=MEAL_SHARE[meal]||0.33, xk=p.kcal*share/Math.max(150,n.kcal); let x=xk;
+  if(p.macros){ const a=[n.protein*4,n.carbs*4,n.fat*9], t=[p.macros.p*4*share,p.macros.c*4*share,p.macros.f*9*share], w=[1.5,1,1];
+    let num=0, den=0; for(let i=0;i<3;i++){ num+=w[i]*a[i]*t[i]; den+=w[i]*a[i]*a[i]; }
+    if(den>0) x=Math.min(xk*1.25, Math.max(xk*0.8, num/den)); }
+  return Math.min(2.5, Math.max(0.5, Math.round(x*4)/4));
+}
 function fmtPortion(x){ const w=Math.floor(x), f=x-w, fr={0:"",0.25:"¼",0.5:"½",0.75:"¾"}[f]??""; return (w?String(w):"")+fr || "0"; }
 function household(){ return people().length; }
 function slotsOf(){
@@ -2008,6 +2016,30 @@ function deltaBadge(d){
   if(!d) return null; const v=d.serving, cls=Math.abs(v)<10?"same":v>0?"up":"down";
   return el("span",{class:"kd "+cls,title:"Calories per serving compared with what's planned now"}, Math.abs(v)<10?"same kcal":signed(v)+" kcal");
 }
+// for each person with macro targets: how this swap moves their protein/carbs/fat at this meal (portions re-sized for each dish)
+function macroDelta(fromId, toId, meal){
+  const a=R_BY_ID[fromId], b=R_BY_ID[toId]; if(!a||!b||fromId===toId||!S.profile) return null;
+  const m=meal||b.meal.toLowerCase(), share=MEAL_SHARE[m]||0.33, na=nutritionOf(a), nb=nutritionOf(b);
+  const rows=people().map((p,j)=>[p,j]).filter(([p])=>p.macros).map(([p,j])=>{
+    const xa=portionFor(p,m,a), xb=portionFor(p,m,b), t={protein:p.macros.p*share,carbs:p.macros.c*share,fat:p.macros.f*share};
+    return {name:personName(p,j), parts:["protein","carbs","fat"].map(k=>{ const before=na[k]*xa, after=nb[k]*xb, d=Math.round(after-before);
+      const better=Math.abs(after-t[k])<Math.abs(before-t[k])-2, worse=Math.abs(after-t[k])>Math.abs(before-t[k])+2;
+      return {k, d, cls:better?"good":worse?"bad":""}; })};
+  });
+  return rows.length?rows:null;
+}
+// how far a dish leaves everyone with macro targets from their share for this meal, after portion sizing (grams, protein counted 1.5x)
+function macroGap(r, meal){
+  const ps=S.profile?people().filter(p=>p.macros):[]; if(!ps.length) return 0;
+  const m=meal||r.meal.toLowerCase(), share=MEAL_SHARE[m]||0.33, n=nutritionOf(r); let g=0;
+  for(const p of ps){ const x=portionFor(p,m,r); g+=1.5*Math.abs(n.protein*x-p.macros.p*share)+Math.abs(n.carbs*x-p.macros.c*share)+Math.abs(n.fat*x-p.macros.f*share)*2; }
+  return g/ps.length;
+}
+function macroDeltaEl(rows){
+  if(!rows) return null;
+  return el("div",{class:"mfit",title:"Change at this meal with portions re-sized for the new dish. Green moves toward the target, red away from it."},
+    rows.map(r=>el("div",{}, rows.length>1?el("b",{},r.name+" "):null, r.parts.map(x=>el("span",{class:x.cls},({protein:"P",carbs:"C",fat:"F"})[x.k]+" "+(x.d>0?"+":x.d<0?"−":"±")+Math.abs(x.d)+"g")))));
+}
 function deltaPeople(d){
   if(!d||!d.people.length||d.people.every(x=>Math.abs(x.d)<10)) return null;
   return el("div",{class:"kdp"}, d.people.length>1||d.people[0].d!==d.serving ? "On each plate: "+d.people.map(x=>x.name+" "+signed(x.d)).join(" · ")+" kcal" : null);
@@ -2040,7 +2072,8 @@ function drawSwap(){
   if(SWP.protein){ list=list.map(x=>{ const m=x.all.filter(v=>{ const pr=META[v.id].protein; return SWP.protein==="seafood"?["shrimp","fish"].includes(pr):SWP.protein==="veg"?META[v.id].veg:SWP.protein==="chicken"?["chicken","turkey"].includes(pr):pr===SWP.protein; }); return m.length?{...x,best:m[0],all:x.all}:null; }).filter(Boolean); }
   if(SWP.quick) list=list.filter(x=>x.best.time<=30);
   const curK=cur&&R_BY_ID[cur]?nutritionOf(R_BY_ID[cur]).kcal:0;
-  const sorters={close:(a,b)=>Math.abs(nutritionOf(a.best).kcal-curK)-Math.abs(nutritionOf(b.best).kcal-curK), best:(a,b)=>b.s-a.s, fast:(a,b)=>a.best.time-b.best.time, cheap:(a,b)=>recipeCost(a.best).perServing-recipeCost(b.best).perServing, light:(a,b)=>nutritionOf(a.best).kcal-nutritionOf(b.best).kcal, protein:(a,b)=>nutritionOf(b.best).protein-nutritionOf(a.best).protein};
+  if(SWP.sort==="macros") list=list.map(x=>{ const v=x.all.slice().sort((a,b)=>macroGap(a,meal)-macroGap(b,meal))[0]; return {...x,best:v,gap:macroGap(v,meal)}; });
+  const sorters={macros:(a,b)=>a.gap-b.gap, close:(a,b)=>Math.abs(nutritionOf(a.best).kcal-curK)-Math.abs(nutritionOf(b.best).kcal-curK), best:(a,b)=>b.s-a.s, fast:(a,b)=>a.best.time-b.best.time, cheap:(a,b)=>recipeCost(a.best).perServing-recipeCost(b.best).perServing, light:(a,b)=>nutritionOf(a.best).kcal-nutritionOf(b.best).kcal, protein:(a,b)=>nutritionOf(b.best).protein-nutritionOf(a.best).protein};
   list.sort(sorters[SWP.sort]);
   const pick=id=>{ swapSlot(meal,i,id); closeSheet(); };
   const cardOf=(x,rv)=>{ const r=rv||x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur), d=isCur?null:kcalDelta(cur,r.id,meal);
@@ -2050,7 +2083,7 @@ function drawSwap(){
         el("div",{class:"eyebrow"},CUISINE_LABEL[META[r.id].cuisine]||""),
         el("div",{class:"swtitle"}, el("button",{class:"slottitle",onclick:()=>pick(r.id)},r.title), deltaBadge(d)),
         el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(n.kcal)+" kcal"), el("span",{},n.protein+" g protein"), el("span",{},money(recipeCost(r).perServing))),
-        deltaPeople(d),
+        deltaPeople(d), isCur?null:macroDeltaEl(macroDelta(cur,r.id,meal)),
         x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id),title:v.id===cur?"":signed(kcalDelta(cur,v.id,meal).serving)+" kcal per serving"},proteinLabel(v), v.id===cur?null:chipK(kcalDelta(cur,v.id,meal))))) : null,
         el("button",{class:"linkbtn",onclick:()=>openRecipe(r.id,{day,i,meal,label:meal[0].toUpperCase()+meal.slice(1),id:r.id,leftover:false})},"View recipe")));
   };
@@ -2067,7 +2100,7 @@ function drawSwap(){
       el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: curry, salmon, tacos…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
       el("select",{id:"swc","aria-label":"Cuisine",onchange:e=>{SWP.cuisine=e.target.value;renderSwap();}}, el("option",{value:""},"Any cuisine"), cuisineSelectOpts(SWP.cuisine)),
       el("select",{id:"swp","aria-label":"Protein",onchange:e=>{SWP.protein=e.target.value;renderSwap();}}, [["","Any protein"],["chicken","Chicken & turkey"],["beef","Beef"],["pork","Pork"],["seafood","Seafood"],["veg","Vegetarian"]].map(([k,l])=>el("option",{value:k,selected:SWP.protein===k},l))),
-      el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],["close","Closest calories"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
+      el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],...(people().some(p=>p.macros)?[["macros","Best macro fit"]]:[]),["close","Closest calories"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
       el("label",{class:"tog"}, el("input",{type:"checkbox",id:"swquick",checked:SWP.quick,onchange:e=>{SWP.quick=e.target.checked;renderSwap();}}), "30 min or less"),
       el("label",{class:"tog"}, el("input",{type:"checkbox",id:"swany",checked:SWP.any,onchange:e=>{SWP.any=e.target.checked;renderSwap();}}), "Show all meal types"),
       el("button",{class:"btn small",onclick:()=>{ if(list.length){ const x=list[Math.floor(Math.random()*list.length)]; pick(x.best.id); } }},"Surprise me")),
@@ -2819,6 +2852,7 @@ function finishQuiz(){
   OB=null;
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"building"}, el("div",{class:"spinner"}), el("h2",{},"Building your week…"), el("p",{class:"lede"},"Matching "+RECIPES.length+" recipes to your answers and pricing your groceries.")));
+  if(isNew) track("plans");
   setTimeout(()=>{ generatePlan(); save(); showApp("plan"); }, 900);
 }
 
@@ -2962,6 +2996,7 @@ function alternativesFor(meal, i){
   return ranked(meal, S.plan.seed).filter(id=>id!==cur);
 }
 function swapSlot(meal,i,id){
+  track("swaps");
   const key=meal[0];
   if(!id){ const alts=alternativesFor(meal,i), used=new Set(S.plan[key]); id = alts.find(x=>!used.has(x)) || alts[0]; }
   if(!id){ toast("No other "+meal+" recipes fit your answers"); return; }
@@ -2971,7 +3006,7 @@ function swapSlot(meal,i,id){
 /* ------------------------------------------------------------------ app shell */
 let tab="plan";
 function showApp(t){
-  const prevTab=tab, y=window.scrollY; tab=t||tab;
+  const prevTab=tab, y=window.scrollY; tab=t||tab; if(tab!==prevTab) track("tab_"+tab);
   $("#tabs").hidden=false; $("#editBtn").hidden=false; $("#resetBtn").hidden=false;
   const m=$("#app"); m.innerHTML="";
   for(const b of document.querySelectorAll("#tabs button")) b.setAttribute("aria-selected", b.dataset.tab===tab);
@@ -3280,15 +3315,29 @@ const TOPUP_PROTEIN = {
   chicken:["oz extra cooked chicken",1,8.8,0,1,47], turkey:["oz extra cooked ground turkey",1,7.8,0,2.6,57], beef:["oz extra cooked lean beef",1,7.6,0,3,58],
   pork:["oz extra cooked pork",1,7.6,0,2.5,55], fish:["oz extra cooked fish",1,7,0,1.5,42], shrimp:["oz extra cooked shrimp",1,6.8,0,0.3,28],
   egg:["extra egg",1,6.3,0.4,5,72], veg:["cup plain Greek yogurt on the side",0.25,23,9,0.7,133]};
-const TOPUP = { carbs:[["cup cooked rice",0.25,4.3,45,0.4,205],["slice of toast",1,3,14,1,80],["banana",0.5,1.3,27,0.4,105]],
-  fat:[["avocado",0.25,2.7,12,21,234],["tsp olive oil",1,0,0,4.5,40]] };
+// sides that go with each part of the world, per unit: [label, step, protein, carbs, fat, kcal, singular label]
+const SIDES = {
+  asia:{protein:[["cup shelled edamame",0.25,17,13,8,190]], carbs:[["cup steamed jasmine rice",0.25,4.3,45,0.4,205]], fat:[["tbsp roasted peanuts",1,2.4,1.9,4.5,53]]},
+  southasia:{protein:[["cup cooked dal",0.25,18,40,0.8,230],["cup plain yogurt raita",0.25,9,12,8,150]], carbs:[["cup basmati rice",0.25,4.3,45,0.4,205],["naan",0.5,9,45,5,262]], fat:[["tsp ghee",1,0,0,5,45],["tbsp cashews",1,1.5,2.7,4.1,50]]},
+  latam:{protein:[["cup black beans",0.25,15,41,1,227]], carbs:[["corn tortillas",1,1.4,11,0.7,52,"corn tortilla"],["cup Mexican rice",0.25,4,42,4,215]], fat:[["avocado",0.25,2.7,12,21,234],["oz queso fresco",1,5,1,6,80]]},
+  us:{protein:[["hard-boiled eggs",1,6.3,0.6,5.3,78,"hard-boiled egg"],["cup cottage cheese",0.25,25,10,5,180]], carbs:[["cup roasted potatoes",0.25,4,30,4,170],["dinner rolls",1,3,14,2,85,"dinner roll"]], fat:[["tbsp butter",1,0.1,0,11.5,102],["avocado",0.25,2.7,12,21,234]]},
+  europe:{protein:[["cup white beans",0.25,17,45,0.6,250],["cup Greek yogurt",0.25,23,9,0.7,133]], carbs:[["slices crusty bread",1,3,15,0.6,80,"slice crusty bread"],["cup roasted potatoes",0.25,4,30,4,170]], fat:[["tsp olive oil",1,0,0,4.5,40],["tbsp grated parmesan",1,2,0.2,1.5,22]]},
+  mena:{protein:[["cup chickpeas",0.25,15,45,4,270],["cup Greek yogurt or labneh",0.25,23,9,0.7,133]], carbs:[["pita, warmed",0.5,5.5,33,1.2,165],["cup couscous",0.25,6,36,0.3,176]], fat:[["tbsp tahini",1,2.6,3.2,8,89],["tsp olive oil",1,0,0,4.5,40]]},
+  africa:{protein:[["cup black-eyed peas",0.25,13,36,1,200],["cup cooked red lentils",0.25,18,40,0.8,230]], carbs:[["cup rice",0.25,4.3,45,0.4,205],["fried plantain slices (½ plantain each)",1,1,29,6,170]], fat:[["avocado",0.25,2.7,12,21,234],["tbsp roasted peanuts",1,2.4,1.9,4.5,53]]},
+  breakfast:{protein:[["eggs",1,6.3,0.4,5,72,"egg"],["cup Greek yogurt",0.25,23,9,0.7,133],["cup cottage cheese",0.25,25,10,5,180]], carbs:[["slices of toast",1,3,14,1,80,"slice of toast"],["banana",0.5,1.3,27,0.4,105]], fat:[["avocado",0.25,2.7,12,21,234],["tbsp peanut butter",1,3.6,3.5,8,95]]},
+};
+const REGION_SIDES = {"United States":"us","Latin America & the Caribbean":"latam","Europe":"europe","Middle East & North Africa":"mena","Sub-Saharan Africa":"africa","South Asia":"southasia","East Asia":"asia","Southeast Asia":"asia"};
+function sidesFor(r, meal){
+  if(meal==="breakfast") return SIDES.breakfast;
+  const c=(META[r.id]||{}).cuisine, o=CUISINE_OPTS.find(x=>x[0]===c);
+  return SIDES[(o&&REGION_SIDES[o[2]])||"us"];
+}
 const STARCH = /rice|pasta|noodle|spaghetti|linguine|fettuccine|orzo|bread|tortilla|potato|bun|pita|naan|bagel|oats|couscous|quinoa|roll|arepa|dough/i;
 function topupLine(gap, macro, opt){
-  const [label,step,P,C,F,K]=opt, per={protein:P,carbs:C,fat:F}[macro];
+  const [label,step,P,C,F,K,one]=opt, per={protein:P,carbs:C,fat:F}[macro];
   const units=Math.max(step, Math.round(gap/per/step)*step);
-  const amt = step===0.25||step===0.5 ? fmtPortion(units) : String(units);
-  const plural = units>1 && /^(extra egg|slice of toast|banana)$/.test(label) ? label.replace(/^extra egg$/,"extra eggs").replace("slice of","slices of").replace(/^banana$/,"bananas") : label;
-  return `${amt} ${plural} (+${Math.round(units*per)} g ${macro}, +${Math.round(units*K)} kcal)`;
+  const amt = step<1 ? fmtPortion(units) : String(units);
+  return `${amt} ${units===1&&one?one:label} (+${Math.round(units*per)} g ${macro}, +${Math.round(units*K)} kcal)`;
 }
 function macroPanel(r, meal, slot){
   const ps=S.profile?people().map((p,j)=>[p,j]).filter(([p])=>p.macros):[]; if(!ps.length) return null;
@@ -3298,10 +3347,11 @@ function macroPanel(r, meal, slot){
     const x=portionFor(p,meal,r), share=MEAL_SHARE[meal]||0.33;
     const got={protein:n.protein*x, carbs:n.carbs*x, fat:n.fat*x}, want={protein:p.macros.p*share, carbs:p.macros.c*share, fat:p.macros.f*share};
     const gap=k=>want[k]-got[k], tips=[];
-    if(gap("protein")>=8) tips.push("Protein short by "+Math.round(gap("protein"))+" g: add "+topupLine(gap("protein"),"protein",TOPUP_PROTEIN[main]||TOPUP_PROTEIN.veg)+(main!=="veg"&&main!=="egg"?" or "+topupLine(gap("protein"),"protein",TOPUP_PROTEIN.veg):"")+".");
-    if(gap("carbs")>=12) tips.push("Carbs short by "+Math.round(gap("carbs"))+" g: add "+topupLine(gap("carbs"),"carbs",TOPUP.carbs[meal==="breakfast"?1:0])+" or "+topupLine(gap("carbs"),"carbs",TOPUP.carbs[2])+".");
+    const sd=sidesFor(r,meal), opts=k=>sd[k].map(o=>topupLine(gap(k),k,o));
+    if(gap("protein")>=8) tips.push("Protein short by "+Math.round(gap("protein"))+" g: add "+[...(TOPUP_PROTEIN[main]&&main!=="veg"&&main!=="egg"?[topupLine(gap("protein"),"protein",TOPUP_PROTEIN[main])]:[]), ...opts("protein")].join(", or ")+".");
+    if(gap("carbs")>=12) tips.push("Carbs short by "+Math.round(gap("carbs"))+" g: serve with "+opts("carbs").join(", or ")+".");
     else if(gap("carbs")<=-15) tips.push("About "+Math.round(-gap("carbs"))+" g over on carbs: "+(starch?"take a smaller scoop of the "+starch[2].replace(/^[\d½¼¾⅓⅔.\/\s-]+(cups?|lb|oz|g|slices?|pieces?|packages?|cans?)?\s*(of\s+)?/i,"").split(",")[0]:"go lighter on the starchy side")+", about "+Math.min(60,Math.round(-gap("carbs")/Math.max(1,got.carbs)*100/5)*5)+"% less of it.");
-    if(gap("fat")>=5) tips.push("Fat short by "+Math.round(gap("fat"))+" g: add "+topupLine(gap("fat"),"fat",TOPUP.fat[0])+" or "+topupLine(gap("fat"),"fat",TOPUP.fat[1])+".");
+    if(gap("fat")>=5) tips.push("Fat short by "+Math.round(gap("fat"))+" g: add "+opts("fat").join(", or ")+".");
     else if(gap("fat")<=-8) tips.push("About "+Math.round(-gap("fat"))+" g over on fat: go lighter on the oil, butter, cheese or sauce.");
     return el("div",{class:"mrow2"},
       el("div",{class:"pg-top"}, el("b",{},personName(p,j)), el("span",{class:"note mono"},`${fmtInt(got.protein)}/${fmtInt(want.protein)} P · ${fmtInt(got.carbs)}/${fmtInt(want.carbs)} C · ${fmtInt(got.fat)}/${fmtInt(want.fat)} F`)),
@@ -3318,6 +3368,7 @@ function macroPanel(r, meal, slot){
 }
 
 function openRecipe(id, slot){
+  track("recipeOpens");
   const r=R_BY_ID[id], c=recipeCost(r), p=$("#panel"); p.innerHTML="";
   const H=S.profile?household():r.serves, n=nutritionOf(r);
   const ingList=el("ul",{class:"ing"}, r.ing.map(([item,use,txt])=>{
@@ -3634,6 +3685,7 @@ async function makePdf(){
   btn.disabled=true; st.textContent="Building your PDF ("+ids.length+" recipes)…";
   try{
     const doc = await buildPdf(ids, {plan: scope==="plan", list: $("#incList").checked});
+    track("pdf");
     const blob = doc.output("blob"), name = scope==="plan" ? "mealtote-meal-plan.pdf" : "mealtote-all-recipes.pdf";
     const u=URL.createObjectURL(blob), a=el("a",{href:u,download:name}); document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),60000); st.textContent="PDF ready: "+name+".";
   }catch(err){ st.textContent="Couldn't build the PDF: "+(err&&err.message||err); }
@@ -3662,7 +3714,7 @@ async function onCloudUser(u){
   cloudUser=u; cloudLoaded=false; renderAccount();
   if(!u){ if(tab==="profile") tab="plan"; if(!OB) boot(); return; }
   try{
-    await cloud.ensureProfile();
+    const isNew=await cloud.ensureProfile(); track("signins"); if(isNew) track("signups");
     const d=await cloud.load();
     let remote=null; try{ remote=d&&d.state?normalize(JSON.parse(d.state)):null; }catch(e){}
     // newest plan wins: your account copy, unless this browser has newer work. An account copy without a plan never replaces one here.
@@ -3830,6 +3882,28 @@ function openPlansSheet(){
   });
   draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
 }
+
+/* ------------------------------------------------------------------ site analytics: anonymous daily counts for the Backend (stats/YYYY-MM-DD) */
+const TRACKED = new Set(["views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
+  "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile"]);
+let trackQ = {}, trackT = 0;
+function track(k, n=1){ if(!TRACKED.has(k)) return; trackQ[k]=(trackQ[k]||0)+n; clearTimeout(trackT); trackT=setTimeout(flushTrack, 4000); }
+function flushTrack(){
+  if(!Object.keys(trackQ).length || !window.cloud || !cloud.enabled || !cloud.track) return;
+  const q=trackQ; trackQ={}; cloud.track(q).catch(()=>{});
+}
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") flushTrack(); });
+document.addEventListener("click", e=>{ const a=e.target.closest&&e.target.closest('a[href^="support"]'); if(a) { track("supportClicks"); flushTrack(); } }, true);
+(function countVisit(){
+  if(/[?&]notrack\b/.test(location.search) || navigator.webdriver) return;
+  const today=new Date().toISOString().slice(0,10); let seen=null, day=null;
+  try{ seen=localStorage.getItem("mt-seen"); day=localStorage.getItem("mt-day"); localStorage.setItem("mt-seen","1"); localStorage.setItem("mt-day",today); }catch(e){}
+  track("views");
+  if(day!==today){ track("visitors"); track(seen?"returning":"newVisitors"); track(matchMedia("(max-width:720px)").matches?"mobile":"desktop"); }
+  if(navigator.standalone===true || matchMedia("(display-mode: standalone)").matches) track("installed");
+  const go=()=>setTimeout(flushTrack,1500);
+  if(window.cloud) go(); else window.addEventListener("cloud-ready",go,{once:true});
+})();
 
 function boot(){
   if(OB) return;

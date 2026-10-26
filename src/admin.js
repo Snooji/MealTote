@@ -1,4 +1,4 @@
-// MealTote Backend (admin.html): donation methods shown on the support page, and a hand-kept log of gifts received.
+// MealTote Backend (admin.html): site analytics, donation methods shown on the support page, and a hand-kept log of gifts received.
 // Only ADMIN_EMAIL gets in. That check here only decides what to draw; firestore.rules is what actually enforces it.
 import { firebaseConfig } from "./firebase-config.js";
 
@@ -6,7 +6,7 @@ const ADMIN_EMAIL = "starsidecollective@gmail.com";
 const SDK = "https://www.gstatic.com/firebasejs/10.12.2";
 const { initializeApp } = await import(`${SDK}/firebase-app.js`);
 const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp } = await import(`${SDK}/firebase-firestore.js`);
+const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where } = await import(`${SDK}/firebase-firestore.js`);
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app), db = getFirestore(app);
@@ -18,7 +18,7 @@ const money = n => "$" + (Math.round((n || 0) * 100) / 100).toLocaleString("en-U
 const toast = msg => { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2400); };
 const T = DONATE.TYPES;
 
-let user = null, cfg = null, log = [], tab = "overview", dirty = false;
+let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30;
 
 onAuthStateChanged(auth, async u => {
   user = u; $("#who").innerHTML = "";
@@ -30,6 +30,7 @@ onAuthStateChanged(auth, async u => {
     cfg = DONATE.normalize(snap.exists() ? snap.data() : DONATE.DEFAULT_DONATIONS);
     if (!snap.exists()) dirty = true; // first visit: nothing saved yet, so the support page is using the defaults
     await loadLog();
+    await loadStats();
     draw();
   } catch (e) {
     gate("Couldn't load the Backend: " + esc(e.code || e.message) + ". If you just changed firestore.rules, deploy them with <code>firebase deploy --only firestore:rules</code>.", false);
@@ -81,11 +82,62 @@ async function save(quiet) {
 function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
-    <div><div class="eyebrow">MealTote Backend</div><h2>Donations</h2></div>
-    <div class="tabs2" role="tablist">${[["overview", "Overview"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+}
+
+/* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
+async function loadStats() {
+  try {
+    const from = new Date(Date.now() - 120 * 864e5).toISOString().slice(0, 10);
+    const q = await getDocs(query(collection(db, "stats"), where(documentId(), ">=", from)));
+    stats = Object.fromEntries(q.docs.map(d => [d.id, d.data()])); statsErr = "";
+  } catch (e) { stats = {}; statsErr = e.code || e.message; }
+}
+const TAB_NAMES = { tab_plan: "My plan", tab_prep: "Meal prep", tab_groceries: "Groceries", tab_pantry: "Pantry", tab_recipes: "All recipes", tab_pdf: "Cookbook PDF", tab_settings: "Settings", tab_profile: "Profile" };
+const num = n => (n || 0).toLocaleString("en-US");
+function lastDays(n) {
+  const out = [], d = new Date();
+  for (let i = n - 1; i >= 0; i--) { const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - i)); const k = x.toISOString().slice(0, 10); out.push({ day: k, ...(stats[k] || {}) }); }
+  return out;
+}
+function drawAnalytics(p) {
+  const days = lastDays(range), sum = k => days.reduce((a, d) => a + (d[k] || 0), 0);
+  const today = days[days.length - 1], max = Math.max(1, ...days.map(d => d.views || 0));
+  const W = 700, H = 160, bw = W / days.length;
+  const bars = days.map((d, i) => { const hv = (d.views || 0) / max * (H - 20), hu = (d.visitors || 0) / max * (H - 20), x = i * bw;
+    return `<g><title>${d.day}: ${num(d.visitors)} visitors, ${num(d.views)} views</title><rect x="${x + bw * 0.12}" y="${H - hv}" width="${bw * 0.76}" height="${hv}" rx="2" fill="var(--sunk)"/><rect x="${x + bw * 0.25}" y="${H - hu}" width="${bw * 0.5}" height="${hu}" rx="2" fill="var(--accent)"/></g>`; }).join("");
+  const tabs = Object.keys(TAB_NAMES).map(k => [TAB_NAMES[k], sum(k)]).filter(x => x[1]).sort((a, b) => b[1] - a[1]), tabMax = Math.max(1, ...tabs.map(x => x[1]));
+  const mob = sum("mobile"), desk = sum("desktop"), dev = Math.max(1, mob + desk);
+  const tile = (label, v, sub) => `<div class="tile"><span>${label}</span><b>${num(v)}</b>${sub ? `<span>${sub}</span>` : ""}</div>`;
+  p.innerHTML = `${statsErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load analytics (${esc(statsErr)}). The database rules that allow it go live with the next deploy.</p></div>` : ""}
+    <div class="tabs2">${[7, 30, 90].map(n => `<button class="btn small${range === n ? " primary" : ""}" data-range="${n}">Last ${n} days</button>`).join("")}</div>
+    <div class="tiles">
+      ${tile("Visitors", sum("visitors"), `${num(today.visitors)} today`)}
+      ${tile("Page views", sum("views"), `${num(today.views)} today`)}
+      ${tile("New visitors", sum("newVisitors"), `${num(sum("returning"))} returning`)}
+      ${tile("Sign-ins", sum("signins"), `${num(sum("signups"))} new accounts`)}
+      ${tile("Plans made", sum("plans"), `${num(sum("swaps"))} swaps`)}
+      ${tile("Recipes opened", sum("recipeOpens"), `${num(sum("pdf"))} PDF exports`)}
+      ${tile("Home-screen app opens", sum("installed"), "")}
+      ${tile("Support page clicks", sum("supportClicks"), "")}
+    </div>
+    <div class="card"><h3>Visitors and page views per day</h3>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="Daily visitors and page views">${bars}</svg>
+      <p class="note" style="margin:0"><span style="display:inline-block;width:10px;height:10px;background:var(--accent);border-radius:2px"></span> visitors &nbsp; <span style="display:inline-block;width:10px;height:10px;background:var(--sunk);border:1px solid var(--line);border-radius:2px"></span> page views &nbsp;·&nbsp; ${days[0].day} to ${today.day} (UTC)</p></div>
+    <div class="grid2">
+      <div class="card"><h3>What people use</h3>${tabs.length ? `<table class="log">${tabs.map(([n, v]) => `<tr><td>${esc(n)}</td><td style="width:45%"><div class="meter"><i style="width:${Math.round(v / tabMax * 100)}%"></i></div></td><td class="n">${num(v)}</td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">No tab visits yet.</p>`}</div>
+      <div class="card"><h3>Devices</h3><table class="log"><tr><td>Phone</td><td style="width:45%"><div class="meter"><i style="width:${Math.round(mob / dev * 100)}%"></i></div></td><td class="n">${Math.round(mob / dev * 100)}%</td></tr><tr><td>Computer</td><td><div class="meter"><i style="width:${Math.round(desk / dev * 100)}%"></i></div></td><td class="n">${Math.round(desk / dev * 100)}%</td></tr></table>
+        <p class="note" style="margin:8px 0 0">Counted once per visitor per day.</p></div>
+    </div>
+    <details class="card"><summary><b>Day by day</b></summary><table class="log"><tr><th>Day</th><th class="n">Visitors</th><th class="n">Views</th><th class="n hide-s">Sign-ins</th><th class="n hide-s">Plans</th></tr>
+      ${days.slice().reverse().map(d => `<tr><td>${d.day}</td><td class="n">${num(d.visitors)}</td><td class="n">${num(d.views)}</td><td class="n hide-s">${num(d.signins)}</td><td class="n hide-s">${num(d.plans)}</td></tr>`).join("")}</table></details>
+    <p class="note">Counts only: no names, emails, IP addresses or cookies are stored, just one running total per day. Counting started when analytics was switched on, so earlier days show zero. Days are in UTC. <button class="btn small" id="statsReload">Refresh</button></p>`;
+  p.querySelectorAll("[data-range]").forEach(b => b.onclick = () => { range = +b.dataset.range; draw(); });
+  p.querySelector("#statsReload").onclick = async () => { await loadStats(); draw(); toast("Updated"); };
 }
 
 function drawOverview(p, t) {
@@ -97,7 +149,7 @@ function drawOverview(p, t) {
       <div class="tile"><span>Gifts logged</span><b>${t.n}</b></div>
       <div class="tile"><span>Supporters (by name)</span><b>${t.who.size}</b></div>
     </div>
-    ${cfg.goal.enabled ? `<div class="card"><h3>${esc(cfg.goal.label)}</h3><div class="bar"><i style="width:${pct}%"></i></div><p class="note" style="margin:0">${money(t.month)} of ${money(cfg.goal.amount)} this month (${pct}%). Shown on the support page.</p></div>` : ""}
+    ${cfg.goal.enabled ? `<div class="card"><h3>${esc(cfg.goal.label)}</h3><div class="meter"><i style="width:${pct}%"></i></div><p class="note" style="margin:0">${money(t.month)} of ${money(cfg.goal.amount)} this month (${pct}%). Shown on the support page.</p></div>` : ""}
     <div class="card"><h3>By method</h3>${Object.keys(t.by).length ? `<table class="log">${Object.entries(t.by).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="n">${money(v)}</td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">No gifts logged yet. When a donation comes in, add it under Donation log.</p>`}</div>
     <div class="card"><h3>Live on the support page</h3>${on.length ? `<ul style="margin:0;padding-left:20px">${on.map(x => `<li><b>${esc(x.label)}</b>: ${esc(x.handle)}</li>`).join("")}</ul>` : `<p class="note" style="margin:0">Every method is switched off, so the support page says donations are paused.</p>`}
       ${dirty ? `<p class="note warnline" style="margin:0">Nothing saved yet: the support page is showing the built-in defaults. Open "Where donations go" and click Save.</p>` : ""}</div>`;

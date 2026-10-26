@@ -38,6 +38,7 @@ Found a bug, a price that's way off, or want a recipe or store added? [Open an i
 
 - Prices are estimates of typical shelf prices. Trader Joe's, Costco, Aldi and Walmart are priced item by item. Other chains are estimated from their usual price level, so check prices in-store.
 - Nutrition is calculated from the ingredients and is approximate.
+- MealTote keeps anonymous daily counts (visits, plans made, which tabs get used) so I can see what helps. No names, emails, IP addresses or tracking cookies are collected.
 - Recipe photos are free-licensed from Wikimedia Commons, each credited in the app and in [CREDITS.md](CREDITS.md). Dishes without a good free photo show the MealTote logo for now.
 - Every recipe is also readable as markdown in [`cookbook/`](cookbook/INDEX.md).
 
