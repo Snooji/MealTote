@@ -408,3 +408,6 @@ footer.site a{color:var(--accent)}
 .opts.compact{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
 .opts.compact .opt{padding:10px 12px}
 .opts.compact .opt .ol{font-size:15px}
+.macrofit{gap:8px}
+.macrofit .mrow2{display:grid;gap:2px;padding-top:6px;border-top:1px solid var(--line)}
+.macrofit .mtips{margin:2px 0 0;display:grid;gap:4px;font-size:14px}

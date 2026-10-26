@@ -3170,6 +3170,49 @@ function renderPlan(){
 }
 
 /* ------------------------------------------------------------------ recipe sheet */
+/* ------------------------------------------------------------------ hitting macro targets from a recipe */
+// grams per unit for simple add-ons: [label per unit, unit step, protein, carbs, fat, kcal]
+const TOPUP_PROTEIN = {
+  chicken:["oz extra cooked chicken",1,8.8,0,1,47], turkey:["oz extra cooked ground turkey",1,7.8,0,2.6,57], beef:["oz extra cooked lean beef",1,7.6,0,3,58],
+  pork:["oz extra cooked pork",1,7.6,0,2.5,55], fish:["oz extra cooked fish",1,7,0,1.5,42], shrimp:["oz extra cooked shrimp",1,6.8,0,0.3,28],
+  egg:["extra egg",1,6.3,0.4,5,72], veg:["cup plain Greek yogurt on the side",0.25,23,9,0.7,133]};
+const TOPUP = { carbs:[["cup cooked rice",0.25,4.3,45,0.4,205],["slice of toast",1,3,14,1,80],["banana",0.5,1.3,27,0.4,105]],
+  fat:[["avocado",0.25,2.7,12,21,234],["tsp olive oil",1,0,0,4.5,40]] };
+const STARCH = /rice|pasta|noodle|spaghetti|linguine|fettuccine|orzo|bread|tortilla|potato|bun|pita|naan|bagel|oats|couscous|quinoa|roll|arepa|dough/i;
+function topupLine(gap, macro, opt){
+  const [label,step,P,C,F,K]=opt, per={protein:P,carbs:C,fat:F}[macro];
+  const units=Math.max(step, Math.round(gap/per/step)*step);
+  const amt = step===0.25||step===0.5 ? fmtPortion(units) : String(units);
+  const plural = units>1 && /^(extra egg|slice of toast|banana)$/.test(label) ? label.replace(/^extra egg$/,"extra eggs").replace("slice of","slices of").replace(/^banana$/,"bananas") : label;
+  return `${amt} ${plural} (+${Math.round(units*per)} g ${macro}, +${Math.round(units*K)} kcal)`;
+}
+function macroPanel(r, meal, slot){
+  const ps=S.profile?people().map((p,j)=>[p,j]).filter(([p])=>p.macros):[]; if(!ps.length) return null;
+  const n=nutritionOf(r), main=(META[r.id]||{}).protein||"veg";
+  const starch=r.ing.find(i=>STARCH.test(i[0])||STARCH.test(i[2]));
+  const rows=ps.map(([p,j])=>{
+    const x=portionFor(p,meal,r), share=MEAL_SHARE[meal]||0.33;
+    const got={protein:n.protein*x, carbs:n.carbs*x, fat:n.fat*x}, want={protein:p.macros.p*share, carbs:p.macros.c*share, fat:p.macros.f*share};
+    const gap=k=>want[k]-got[k], tips=[];
+    if(gap("protein")>=8) tips.push("Protein short by "+Math.round(gap("protein"))+" g: add "+topupLine(gap("protein"),"protein",TOPUP_PROTEIN[main]||TOPUP_PROTEIN.veg)+(main!=="veg"&&main!=="egg"?" or "+topupLine(gap("protein"),"protein",TOPUP_PROTEIN.veg):"")+".");
+    if(gap("carbs")>=12) tips.push("Carbs short by "+Math.round(gap("carbs"))+" g: add "+topupLine(gap("carbs"),"carbs",TOPUP.carbs[meal==="breakfast"?1:0])+" or "+topupLine(gap("carbs"),"carbs",TOPUP.carbs[2])+".");
+    else if(gap("carbs")<=-15) tips.push("About "+Math.round(-gap("carbs"))+" g over on carbs: "+(starch?"take a smaller scoop of the "+starch[2].replace(/^[\d½¼¾⅓⅔.\/\s-]+(cups?|lb|oz|g|slices?|pieces?|packages?|cans?)?\s*(of\s+)?/i,"").split(",")[0]:"go lighter on the starchy side")+", about "+Math.min(60,Math.round(-gap("carbs")/Math.max(1,got.carbs)*100/5)*5)+"% less of it.");
+    if(gap("fat")>=5) tips.push("Fat short by "+Math.round(gap("fat"))+" g: add "+topupLine(gap("fat"),"fat",TOPUP.fat[0])+" or "+topupLine(gap("fat"),"fat",TOPUP.fat[1])+".");
+    else if(gap("fat")<=-8) tips.push("About "+Math.round(-gap("fat"))+" g over on fat: go lighter on the oil, butter, cheese or sauce.");
+    return el("div",{class:"mrow2"},
+      el("div",{class:"pg-top"}, el("b",{},personName(p,j)), el("span",{class:"note mono"},`${fmtInt(got.protein)}/${fmtInt(want.protein)} P · ${fmtInt(got.carbs)}/${fmtInt(want.carbs)} C · ${fmtInt(got.fat)}/${fmtInt(want.fat)} F`)),
+      tips.length ? el("ul",{class:"plain mtips"}, tips.map(t=>el("li",{},t))) : el("p",{class:"note",style:"margin:2px 0 0"},"Right on target for this meal. Nothing to add."));
+  });
+  let better=null;
+  if(slot && !slot.leftover){
+    const mine=macroMiss(r), ids=alternativesFor(slot.meal,slot.i).map(a=>[a,macroMiss(R_BY_ID[a])]).filter(([,m])=>m!=null&&m<mine-0.04).sort((a,b)=>a[1]-b[1]).slice(0,3).map(a=>a[0]);
+    if(ids.length) better=el("div",{}, el("div",{class:"eyebrow",style:"margin-top:8px"},"Or swap to a closer macro fit"),
+      el("div",{class:"actions"}, ids.map(a=>el("button",{class:"btn small",onclick:()=>{ swapSlot(slot.meal,slot.i,a); openRecipe(a,Object.assign({},slot,{id:a})); refresh(); }},R_BY_ID[a].title))));
+  }
+  return el("div",{class:"pportions macrofit"}, el("div",{class:"eyebrow"},"Hit your macros"+(slot?" for "+slot.day+" "+slot.label.toLowerCase():"")),
+    el("p",{class:"note",style:"margin:0"},"Each person's portion vs their "+(meal||"meal")+" share of their daily targets (grams: this meal / target)."), rows, better);
+}
+
 function openRecipe(id, slot){
   const r=R_BY_ID[id], c=recipeCost(r), p=$("#panel"); p.innerHTML="";
   const H=S.profile?household():r.serves, n=nutritionOf(r);
@@ -3211,7 +3254,7 @@ function openRecipe(id, slot){
         S.photos[id]?el("button",{class:"btn",onclick:()=>{ delete S.photos[id]; save(); openRecipe(id,slot); refresh(); }},"Remove my photo"):null),
       el("div",{class:"cols"},
         el("div",{style:"display:grid;gap:18px;align-content:start"},
-          el("div",{}, el("h3",{class:"sub"},"Ingredients"), ingList, scaleNote, el("p",{class:"note"},"From your pantry: "+r.pantry+".")),
+          el("div",{}, el("h3",{class:"sub"},"Ingredients"), ingList, scaleNote, macroPanel(r,mealKey,slot), el("p",{class:"note"},"From your pantry: "+r.pantry+".")),
           el("div",{}, el("h3",{class:"sub"},"Nutrition"), nutritionPanel(r))),
         el("div",{}, el("h3",{class:"sub"},"Step-by-step"), r.swapNote?el("div",{class:"tip",style:"margin-bottom:12px"},el("b",{},"Swap note. "),r.swapNote):null, el("ol",{class:"steps"}, r.steps.map(s=>el("li",{},el("span",{},s)))),
           el("div",{class:"tip",style:"margin-top:16px"}, el("b",{},"Tip. "), r.tip),
