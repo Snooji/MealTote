@@ -4,7 +4,7 @@
 
 <sub>Photo: Ernesto Andrade from San Francisco, California, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Flickr_dongkwan_540812245--Shrimp_Tostada.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 35 min · serves 4 · skill 1/3
+**Dinner** · Mexican · 35 min · serves 4 · skill 1/3
 
 > Shredded chicken simmered in a smoky chipotle-tomato sauce, piled onto crunchy oven-baked tostadas with refried beans, lettuce, crema and crumbled cheese.
 

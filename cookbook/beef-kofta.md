@@ -4,7 +4,7 @@
 
 <sub>Photo: Fabienkhan · CC BY-SA 2.5 · [source](https://commons.wikimedia.org/wiki/File:Koofteh_tabrizi.jpg)</sub>
 
-**Dinner** · Middle Eastern · 35 min · serves 4 · skill 1/3
+**Dinner** · Turkish · 35 min · serves 4 · skill 1/3
 
 > Juicy grilled skewers of spiced ground beef and onion with cool tzatziki, warm pita and a bright tomato-cucumber salad.
 

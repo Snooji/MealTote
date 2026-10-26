@@ -4,7 +4,7 @@
 
 <sub>Photo: City Foodsters · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Tacos_de_Barba_Birria_8.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 210 min · serves 6 · skill 3/3
+**Dinner** · Mexican · 210 min · serves 6 · skill 3/3
 
 > A weekend project worth every minute: chuck roast braised in a smoky chile broth until it falls apart, tucked into tortillas dipped in the red fat, crisped with melty cheese and dunked in the consommé.
 

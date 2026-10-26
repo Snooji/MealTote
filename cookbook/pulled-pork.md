@@ -4,7 +4,7 @@
 
 <sub>Photo: Thogru · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Pulled_pork_while_pulling.JPG)</sub>
 
-**Dinner** · Southern & Cajun · 240 min · serves 8 · skill 1/3
+**Dinner** · Southern & soul food · 240 min · serves 8 · skill 1/3
 
 > Spice-rubbed pork shoulder cooked low and slow until it pulls apart, sauced with BBQ and piled on soft buns under crunchy vinegar slaw.
 

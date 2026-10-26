@@ -4,7 +4,7 @@
 
 <sub>Photo: Ramon FVelasquez · CC0 · [source](https://commons.wikimedia.org/wiki/File:Catfishjf.JPG)</sub>
 
-**Dinner** · Southern & Cajun · 40 min · serves 4 · skill 2/3
+**Dinner** · Cajun & Creole · 40 min · serves 4 · skill 2/3
 
 > Catfish fillets crusted in smoky, spicy Cajun seasoning and seared in butter until dark and fragrant, served over savory dirty rice studded with pork and the holy trinity.
 

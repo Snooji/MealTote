@@ -4,7 +4,7 @@
 
 <sub>Photo: Dtarazona · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Un_cuarto_de_Pollo_a_la_Brasa.JPG)</sub>
 
-**Dinner** · Caribbean & Latin · 90 min · serves 5 · skill 2/3
+**Dinner** · Peruvian · 90 min · serves 5 · skill 2/3
 
 > A whole chicken rubbed with garlic, cumin, lime and paprika and roasted until the skin crackles, served with crisp potato wedges and a creamy, spicy cilantro sauce you'll want on everything.
 

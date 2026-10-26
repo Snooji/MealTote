@@ -4,7 +4,7 @@
 
 <sub>Photo: Alpha from Melbourne, Australia · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_Vindaloo_-_Chilli_Mama,_Chadstone_(3014236693).jpg)</sub>
 
-**Dinner** · Indian · 90 min · serves 4 · skill 2/3
+**Dinner** · South Indian & Goan · 90 min · serves 4 · skill 2/3
 
 > Chicken and potatoes braised in a fiery, tangy paste of dried chilies, garlic and vinegar. It's sharp and bold, with no cream at all, and the opposite of a mellow butter chicken.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: TGrey89 · CC0 · [source](https://commons.wikimedia.org/wiki/File:RealRopaVieja.jpg)</sub>
 
-**Dinner** · Caribbean & Latin · 150 min · serves 5 · skill 2/3
+**Dinner** · Cuban · 150 min · serves 5 · skill 2/3
 
 > Flank steak braised until it pulls into tender shreds, then simmered in a cumin-scented tomato sauce with peppers, onions and briny olives. Cuba's national dish, made for rice and beans.
 

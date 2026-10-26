@@ -4,7 +4,7 @@
 
 <sub>Photo: Geoff Peters from Vancouver, BC, Canada · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Aloo_gobi_(cauliflower_and_potato)_(3170159574).jpg)</sub>
 
-**Dinner** · Indian · 45 min · serves 4 · skill 1/3
+**Dinner** · North Indian · 45 min · serves 4 · skill 1/3
 
 > Potatoes and cauliflower browned in a skillet with cumin, turmeric, ginger and tomato until tender and golden at the edges. It's a dry-style Punjabi curry, good with rice or warm roti.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Tomwsulcer · CC0 · [source](https://commons.wikimedia.org/wiki/File:Dinner_at_Friendlys_restaurant_quesedillas.jpg)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 30 min · serves 4 · skill 1/3
+**Breakfast** · Tex-Mex · 30 min · serves 4 · skill 1/3
 
 > Crisp, golden tortillas folded around soft scrambled eggs, homemade smoky turkey sausage and melty Mexican cheese, with salsa for dipping.
 

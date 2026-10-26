@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Chinese · 20 min · serves 4 · skill 1/3
+**Lunch** · Chinese & Cantonese · 20 min · serves 4 · skill 1/3
 
 > Slurpable noodles in a sweet-salty peanut sauce with crunchy carrots, cucumber and lots of green onion. Great cold.
 

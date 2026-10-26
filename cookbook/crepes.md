@@ -4,7 +4,7 @@
 
 <sub>Photo: Unknown · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Cr%C3%AApe_opened_up.jpg)</sub>
 
-**Breakfast** · French & Spanish · 35 min · serves 4 · skill 2/3
+**Breakfast** · French · 35 min · serves 4 · skill 2/3
 
 > Paper-thin, lacy-edged crêpes from a quick blender batter, folded around tangy Greek yogurt and fresh blueberries or a warm swipe of Nutella. Twelve crêpes, three each.
 

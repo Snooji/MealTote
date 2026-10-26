@@ -4,7 +4,7 @@
 
 <sub>Photo: Jeff Kramer from Austin, Texas, United States · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Flickr_jeffk_38941161--Taco_salad.jpg)</sub>
 
-**Lunch** · Mexican & Tex-Mex · 25 min · serves 4 · skill 1/3
+**Lunch** · Tex-Mex · 25 min · serves 4 · skill 1/3
 
 > Crunchy romaine piled with taco-spiced turkey, black beans, cheese, avocado and crushed tortilla chips, tossed in a creamy salsa dressing.
 

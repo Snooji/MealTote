@@ -4,7 +4,7 @@
 
 <sub>Photo: Karen and Brad Emerson · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 35 min · serves 4 · skill 1/3
+**Dinner** · Mexican · 35 min · serves 4 · skill 1/3
 
 > Roasted, smoky sweet potato and black beans in charred corn tortillas, topped with lime slaw, feta and a quick chipotle-style crema.
 

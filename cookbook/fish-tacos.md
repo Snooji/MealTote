@@ -4,7 +4,7 @@
 
 <sub>Photo: William Neuheisel · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:01_Tacos_al_Pastor.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 30 min · serves 4 · skill 2/3
+**Dinner** · Mexican · 30 min · serves 4 · skill 2/3
 
 > Golden panko-crusted cod in warm tortillas with a crunchy lime-chipotle slaw, avocado and a squeeze of lime. Baja vibes on a weeknight.
 

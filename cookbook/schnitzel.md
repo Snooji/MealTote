@@ -4,7 +4,7 @@
 
 <sub>Photo: Benreis · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Breitenlesau_Krug_Br%C3%A4u_Schnitzel.JPG)</sub>
 
-**Dinner** · French & Spanish · 50 min · serves 4 · skill 2/3
+**Dinner** · German & Austrian · 50 min · serves 4 · skill 2/3
 
 > Pounded-thin pork cutlets in a puffy, golden crumb crust, served with lemon and a tangy, bacon-studded warm potato salad. Chicken breast works just as well.
 

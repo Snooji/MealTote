@@ -4,7 +4,7 @@
 
 <sub>Photo: Daiju Azuma · CC BY-SA 2.5 · [source](https://commons.wikimedia.org/wiki/File:Chinese_rice_congee.jpg)</sub>
 
-**Breakfast** · Chinese · 75 min · serves 4 · skill 1/3
+**Breakfast** · Chinese & Cantonese · 75 min · serves 4 · skill 1/3
 
 > Silky, slow-simmered rice porridge infused with ginger and garlic, full of tender shredded chicken and finished with soy, sesame oil, green onions and a jammy egg.
 

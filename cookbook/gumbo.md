@@ -4,7 +4,7 @@
 
 <sub>Photo: Amadscientist · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Gumbo.JPG)</sub>
 
-**Dinner** · Southern & Cajun · 90 min · serves 6 · skill 3/3
+**Dinner** · Cajun & Creole · 90 min · serves 6 · skill 3/3
 
 > Louisiana in a bowl: a dark chocolate-colored roux, the holy trinity, smoky andouille and tender chicken, ladled over rice.
 

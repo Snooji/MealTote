@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Greek & Mediterranean · 15 min · serves 4 · skill 1/3
+**Lunch** · Greek · 15 min · serves 4 · skill 1/3
 
 > A crunchy, lemony no-cook salad of chickpeas, cucumber, tomatoes and feta that gets better as it sits. Packs perfectly.
 

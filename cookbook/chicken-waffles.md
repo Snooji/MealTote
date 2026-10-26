@@ -4,7 +4,7 @@
 
 <sub>Photo: Evan Swigart, TheCulinaryGeek from Chicago, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_and_Waffles_201_-_Evan_Swigart.jpg)</sub>
 
-**Breakfast** · Southern & Cajun · 60 min · serves 4 · skill 3/3
+**Breakfast** · Southern & soul food · 60 min · serves 4 · skill 3/3
 
 > Buttermilk-marinated fried chicken with a craggy, crunchy crust on golden waffles, all drizzled with honey spiked with hot sauce and chile.
 

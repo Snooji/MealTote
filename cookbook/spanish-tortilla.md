@@ -4,7 +4,7 @@
 
 <sub>Photo: Kent Wang · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Tortilla_de_patata_-_San_Sebasti%C3%A1n.jpg)</sub>
 
-**Breakfast** · French & Spanish · 50 min · serves 4 · skill 2/3
+**Breakfast** · Spanish · 50 min · serves 4 · skill 2/3
 
 > Thin-sliced potatoes and sweet onion slowly poached in olive oil, then set in eggs into a thick, custardy golden cake. Served warm or at room temperature with crusty bread.
 

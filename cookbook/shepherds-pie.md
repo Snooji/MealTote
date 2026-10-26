@@ -4,7 +4,7 @@
 
 <sub>Photo: Oxfordian Kissuth · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Homerton_College_-_Shepherd%27s_pie_(cropped).jpg)</sub>
 
-**Dinner** · French & Spanish · 75 min · serves 6 · skill 2/3
+**Dinner** · British & Irish · 75 min · serves 6 · skill 2/3
 
 > A savory, thyme-scented ground meat and vegetable filling under a golden, fluffy cheddar mash. Made with beef it's technically cottage pie; with turkey it's lighter but just as cozy.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: stu_spivack · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Migas.jpg)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 25 min · serves 4 · skill 1/3
+**Breakfast** · Tex-Mex · 25 min · serves 4 · skill 1/3
 
 > Soft scrambled eggs tangled with fresh-fried corn tortilla strips, onion, jalapeño and tomato, then blanketed in melted cheese and topped with avocado and salsa.
 

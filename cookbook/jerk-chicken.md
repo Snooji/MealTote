@@ -4,7 +4,7 @@
 
 <sub>Photo: OUTography.com from Gilbert, AZ, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:BBQJerk_Chicken.jpg)</sub>
 
-**Dinner** · Caribbean & Latin · 55 min · serves 4 · skill 2/3
+**Dinner** · Jamaican · 55 min · serves 4 · skill 2/3
 
 > Smoky, fiery jerk-marinated chicken charred until sticky, with coconut rice and beans and sweet fried plantains.
 

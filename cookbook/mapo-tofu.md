@@ -4,7 +4,7 @@
 
 <sub>Photo: Laitr Keiows · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mabodoufu_with_rice.jpg)</sub>
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 2/3
+**Dinner** · Sichuan & Hunan · 25 min · serves 4 · skill 2/3
 
 > Silky tofu in a fiery, savory Sichuan-style sauce with a little ground pork, ginger and garlic, spooned over rice.
 

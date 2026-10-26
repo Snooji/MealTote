@@ -4,7 +4,7 @@
 
 <sub>Photo: Gaurav Nemade · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Rajma_Masala_(32081557778).jpg)</sub>
 
-**Dinner** · Indian · 50 min · serves 4 · skill 1/3
+**Dinner** · North Indian · 50 min · serves 4 · skill 1/3
 
 > Kidney beans simmered in a thick, gingery onion-tomato gravy until creamy and rich. Over basmati it's rajma chawal, North India's beloved Sunday lunch.
 

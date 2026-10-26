@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Greek & Mediterranean · 60 min · serves 4 · skill 1/3
+**Dinner** · Greek · 60 min · serves 4 · skill 1/3
 
 > Crispy-skinned chicken thighs roasted over potato wedges that soak up a bright lemon, garlic and oregano broth.
 

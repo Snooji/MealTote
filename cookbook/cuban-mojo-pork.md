@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Caribbean & Latin · 210 min · serves 6 · skill 1/3
+**Dinner** · Cuban · 210 min · serves 6 · skill 1/3
 
 > Pork shoulder marinated in garlicky sour-orange mojo, slow-roasted until tender and crisped, served with black beans, rice and plantains.
 

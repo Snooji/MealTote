@@ -4,7 +4,7 @@
 
 <sub>Photo: Honahjs LWUEIMAHAG · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:HKU_%E9%A6%99%E6%B8%AF%E5%A4%A7%E5%AD%B8_Pok_Fu_Lam_Road_campus_%E8%8E%8A%E6%9C%88%E6%98%8E%E6%96%87%E5%A8%9B%E4%B8%AD%E5%BF%83_Chong_Yuet_Ming_Building_%E9%A4%90%E5%BB%B3_Canteen_%E5%8D%88%E9%A4%90_Lunch_%E7%87%92%E5%91%B3_siu_mei_%E5%8F%89%E7%87%92%E9%A3%AF_Char_Siu_Rice_February_2023_Px3_02.jpg)</sub>
 
-**Dinner** · Chinese · 75 min · serves 5 · skill 2/3
+**Dinner** · Chinese & Cantonese · 75 min · serves 5 · skill 2/3
 
 > Cantonese barbecue pork at home: strips of pork shoulder lacquered in a sticky hoisin-honey glaze and roasted until the edges char. Sliced over rice with garlicky bok choy.
 

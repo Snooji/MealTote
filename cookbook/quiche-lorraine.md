@@ -4,7 +4,7 @@
 
 <sub>Photo: Donna Alvita · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Quiche_de_Lorraine.jpg)</sub>
 
-**Breakfast** · French & Spanish · 75 min · serves 6 · skill 2/3
+**Breakfast** · French · 75 min · serves 6 · skill 2/3
 
 > A tall, silky custard of eggs, cream, smoky bacon and nutty Gruyère in a flaky crust. Brunch that reheats all week.
 

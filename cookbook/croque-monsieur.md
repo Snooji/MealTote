@@ -4,7 +4,7 @@
 
 <sub>Photo: Michael Brewer · CC BY-SA 2.5 · [source](https://commons.wikimedia.org/wiki/File:Croque_monsieur.jpg)</sub>
 
-**Lunch** · French & Spanish · 25 min · serves 4 · skill 1/3
+**Lunch** · French · 25 min · serves 4 · skill 1/3
 
 > Paris café classic: ham and Gruyère on toasted bread, smothered in creamy béchamel and broiled until bubbly and golden.
 

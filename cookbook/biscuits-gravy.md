@@ -4,7 +4,7 @@
 
 <sub>Photo: No machine-readable author provided. Kaszeta assumed (based on copyright claims) · Public domain · [source](https://commons.wikimedia.org/wiki/File:Biscuits-and-gravy.jpg)</sub>
 
-**Breakfast** · Southern & Cajun · 50 min · serves 6 · skill 2/3
+**Breakfast** · Southern & soul food · 50 min · serves 6 · skill 2/3
 
 > Tall, flaky, from-scratch buttermilk biscuits smothered in a peppery, sage-scented gravy made with homemade turkey sausage.
 

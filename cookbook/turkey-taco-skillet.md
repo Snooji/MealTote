@@ -4,7 +4,7 @@
 
 <sub>Photo: Ralf Peter Reimann · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Mexican_rice_144235.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 35 min · serves 4 · skill 1/3
+**Dinner** · Tex-Mex · 35 min · serves 4 · skill 1/3
 
 > Seasoned ground turkey, black beans, corn and rice simmered together in one pan, then blanketed with melty cheese. A fast, cheesy weeknight win with very few dishes.
 

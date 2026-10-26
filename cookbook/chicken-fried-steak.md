@@ -4,7 +4,7 @@
 
 <sub>Photo: Jessica from Hove, United Kingdom · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Flickr_wordridden_3397801155--Chicken_fried_steak.jpg)</sub>
 
-**Dinner** · Southern & Cajun · 55 min · serves 4 · skill 2/3
+**Dinner** · Southern & soul food · 55 min · serves 4 · skill 2/3
 
 > Craggy, crunchy buttermilk-battered cube steaks smothered in peppery cream gravy, with mashed potatoes and green beans. Pure Texas diner comfort.
 

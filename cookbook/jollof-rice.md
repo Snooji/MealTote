@@ -4,7 +4,7 @@
 
 <sub>Photo: DebbieUfedo · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Nigerian_Jollof_02.jpg)</sub>
 
-**Dinner** · African · 60 min · serves 6 · skill 2/3
+**Dinner** · Nigerian & West African · 60 min · serves 6 · skill 2/3
 
 > Smoky, party-style jollof: rice cooked in a rich blended pepper-tomato sauce, served with seasoned roasted chicken.
 

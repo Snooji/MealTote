@@ -4,7 +4,7 @@
 
 <sub>Photo: AlejandroLinaresGarcia · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:2015EncuentroChilenero004.JPG)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 150 min · serves 6 · skill 2/3
+**Dinner** · Mexican · 150 min · serves 6 · skill 2/3
 
 > A celebratory Mexican stew of tender pork and chewy hominy in a brick-red chile broth, piled high with crunchy cabbage, radish, lime and oregano.
 

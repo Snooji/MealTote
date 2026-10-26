@@ -4,7 +4,7 @@
 
 <sub>Photo: Daniel R. Blume from Toledo, Ohio, USA · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Carne_asada_(4472586086).jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 30 min · serves 4 · skill 1/3
+**Dinner** · Mexican · 30 min · serves 4 · skill 1/3
 
 > Citrus-garlic marinated flank steak, charred hot and sliced thin, in warm corn tortillas with onion, cilantro, salsa and guac.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Calliopejen1 · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg)</sub>
 
-**Breakfast** · Middle Eastern · 30 min · serves 4 · skill 2/3
+**Breakfast** · Israeli · 30 min · serves 4 · skill 2/3
 
 > Eggs gently poached in a smoky, peppery tomato sauce, crowned with feta and herbs. Bring the skillet to the table with pita for dunking.
 

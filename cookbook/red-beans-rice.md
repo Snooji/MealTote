@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Southern & Cajun · 60 min · serves 6 · skill 1/3
+**Dinner** · Cajun & Creole · 60 min · serves 6 · skill 1/3
 
 > New Orleans' Monday tradition: creamy, smoky red beans simmered with sausage and the trinity, over fluffy white rice.
 

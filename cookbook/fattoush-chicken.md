@@ -4,7 +4,7 @@
 
 <sub>Photo: Arousing Appetites · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Fattoush_mixed-salad.jpg)</sub>
 
-**Lunch** · Middle Eastern · 30 min · serves 4 · skill 1/3
+**Lunch** · Lebanese & Levantine · 30 min · serves 4 · skill 1/3
 
 > A crunchy Levantine bread salad of romaine, cucumber, tomato, herbs and golden toasted pita in a tart sumac-lemon dressing, topped with juicy sumac-rubbed chicken.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Jonathunder · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:ChickenDumplings.jpg)</sub>
 
-**Dinner** · Southern & Cajun · 45 min · serves 6 · skill 1/3
+**Dinner** · Southern & soul food · 45 min · serves 6 · skill 1/3
 
 > Creamy chicken stew with carrots and celery, topped with tender, fluffy biscuit dumplings. Pure Southern comfort.
 

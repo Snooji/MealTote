@@ -4,7 +4,7 @@
 
 <sub>Photo: E4024 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Menemen_in_a_sahan.jpg)</sub>
 
-**Breakfast** · Middle Eastern · 25 min · serves 4 · skill 1/3
+**Breakfast** · Turkish · 25 min · serves 4 · skill 1/3
 
 > Soft, saucy eggs scrambled into sweet stewed peppers and fresh tomatoes with a little feta and chile, meant for scooping up with crusty bread.
 

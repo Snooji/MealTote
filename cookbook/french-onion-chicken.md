@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · French & Spanish · 50 min · serves 4 · skill 2/3
+**Dinner** · French · 50 min · serves 4 · skill 2/3
 
 > Everything you love about French onion soup over seared chicken: deeply caramelized onions, a rich beef-thyme sauce and bubbling Gruyère.
 

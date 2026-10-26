@@ -4,7 +4,7 @@
 
 <sub>Photo: ProjectManhattan · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Sweet_and_sour_pork.jpg)</sub>
 
-**Dinner** · Chinese · 40 min · serves 4 · skill 2/3
+**Dinner** · Chinese & Cantonese · 40 min · serves 4 · skill 2/3
 
 > Crisp golden pork bites, juicy pineapple and peppers in a bright, tangy sauce that's nothing like the gloopy red stuff. Serve it over steamed rice.
 

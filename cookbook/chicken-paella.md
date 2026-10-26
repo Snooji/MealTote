@@ -4,7 +4,7 @@
 
 <sub>Photo: Jan Harenburg · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:01_Paella_Valenciana_original.jpg)</sub>
 
-**Dinner** · French & Spanish · 55 min · serves 6 · skill 3/3
+**Dinner** · Spanish · 55 min · serves 6 · skill 3/3
 
 > A showstopper skillet of smoky paprika rice with chicken, chorizo and shrimp, and the crispy socarrat bottom everyone fights over.
 

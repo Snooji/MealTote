@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 1/3
+**Dinner** · Chinese & Cantonese · 25 min · serves 4 · skill 1/3
 
 > Silky cod, steamed or pan-seared, then showered with ginger and green onions and finished with a splash of smoking-hot oil and soy. It's clean-tasting and fragrant, and it takes almost no work.
 

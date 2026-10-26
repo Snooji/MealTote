@@ -4,7 +4,7 @@
 
 <sub>Photo: benketaro · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_stroganoff_with_pasta.jpg)</sub>
 
-**Dinner** · French & Spanish · 40 min · serves 4 · skill 2/3
+**Dinner** · Russian & Ukrainian · 40 min · serves 4 · skill 2/3
 
 > Seared strips of tender steak and browned mushrooms in a tangy, silky sour cream gravy, spooned over buttery egg noodles. Classic Sunday comfort ready on a weeknight.
 

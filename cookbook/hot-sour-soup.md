@@ -4,7 +4,7 @@
 
 <sub>Photo: BrokenSphere · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Ping_SJ_hot_%26_sour_soup.JPG)</sub>
 
-**Lunch** · Chinese · 35 min · serves 6 · skill 2/3
+**Lunch** · Chinese & Cantonese · 35 min · serves 6 · skill 2/3
 
 > Silky, peppery and tangy, with ribbons of egg, shredded pork, shiitakes and plenty of tofu. It beats the takeout version and is served with rice to make a full lunch.
 

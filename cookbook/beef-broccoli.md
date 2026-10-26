@@ -4,7 +4,7 @@
 
 <sub>Photo: Joy · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_and_broccoli_stir_fry.jpg)</sub>
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 1/3
+**Dinner** · Chinese & Cantonese · 25 min · serves 4 · skill 1/3
 
 > Tender, velveted strips of beef and crisp-tender broccoli in a glossy garlic-ginger-soy sauce. Faster than delivery.
 

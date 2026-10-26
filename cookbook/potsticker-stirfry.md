@@ -4,7 +4,7 @@
 
 <sub>Photo: David · Public domain · [source](https://commons.wikimedia.org/wiki/File:FriedDumplings.JPG)</sub>
 
-**Dinner** · Chinese · 15 min · serves 3 · skill 1/3
+**Dinner** · Chinese & Cantonese · 15 min · serves 3 · skill 1/3
 
 > Frozen dumplings pan-fried until their bottoms shatter, then tossed with stir-fry vegetables in a garlicky soy glaze and spooned with chili crisp. A 15-minute dinner.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Alpha · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Spanakopita.jpg)</sub>
 
-**Dinner** · Greek & Mediterranean · 75 min · serves 4 · skill 2/3
+**Dinner** · Greek · 75 min · serves 4 · skill 2/3
 
 > Shattering, buttery phyllo wrapped around a lemony, herb-flecked spinach and feta filling, served with a crunchy cucumber and tomato salad.
 

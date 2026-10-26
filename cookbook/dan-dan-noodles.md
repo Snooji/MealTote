@@ -4,7 +4,7 @@
 
 <sub>Photo: KKPCW · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:%E5%86%B7%E3%82%84%E3%81%97%E6%8B%85%E3%80%85%E9%BA%BA.jpg)</sub>
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 2/3
+**Dinner** · Sichuan & Hunan · 25 min · serves 4 · skill 2/3
 
 > Springy noodles over a nutty, spicy sesame-chili sauce, topped with crispy savory pork and tender bok choy.
 

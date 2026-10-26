@@ -4,7 +4,7 @@
 
 <sub>Photo: Mahi Tatavarty · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:%22Hyderabadi_Dum_Biryani%22.jpg)</sub>
 
-**Dinner** · Indian · 60 min · serves 6 · skill 3/3
+**Dinner** · North Indian · 60 min · serves 6 · skill 3/3
 
 > Fragrant basmati layered with spiced yogurt-marinated chicken and crispy fried onions, steamed together so every grain is perfumed.
 

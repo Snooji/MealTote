@@ -4,7 +4,7 @@
 
 <sub>Photo: Silar · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:04848_Meatballs_Klopsy,_PL_2011.JPG)</sub>
 
-**Dinner** · Greek & Mediterranean · 40 min · serves 4 · skill 1/3
+**Dinner** · Greek · 40 min · serves 4 · skill 1/3
 
 > Juicy spinach-and-feta turkey meatballs roasted until golden, over buttery lemon-herb orzo with a cool cucumber-yogurt sauce.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: City Foodsters · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Kentuckyaki_Pig%E2%80%99s_Ear_Lettuce_Wraps,_Cabbage_and_Red_Onion_%E2%80%9CSlaw,%E2%80%9D_-_Toasted_Peanuts,_Cucumber-Lime_Dressing_(15383076453).jpg)</sub>
 
-**Lunch** · Chinese · 25 min · serves 4 · skill 1/3
+**Lunch** · Chinese & Cantonese · 25 min · serves 4 · skill 1/3
 
 > The restaurant favorite at home: savory hoisin-glazed chicken with crunchy water chestnuts and shiitakes, spooned into cool butter lettuce cups with a little rice.
 

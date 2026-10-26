@@ -4,7 +4,7 @@
 
 <sub>Photo: BBouchra00 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Tajine-marocain-un-plat-varie-et-sain_(cropped).jpg)</sub>
 
-**Dinner** · African · 55 min · serves 4 · skill 1/3
+**Dinner** · Moroccan · 55 min · serves 4 · skill 1/3
 
 > Chicken braised with warm spices, chickpeas, sweet apricots and lemon until tender, spooned over fluffy couscous.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: User:Mattes · CC BY 2.0 de · [source](https://commons.wikimedia.org/wiki/File:Pitagyros_mit_Beilagen_und_Bier_(Gastst%C3%A4tte).jpg)</sub>
 
-**Dinner** · Greek & Mediterranean · 30 min · serves 4 · skill 2/3
+**Dinner** · Greek · 30 min · serves 4 · skill 2/3
 
 > Lemon-oregano chicken over crisp greens with tomatoes, cucumber, feta, hummus and warm pita for scooping.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: whologwhy · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:EGGPLANT_TORTA.jpg)</sub>
 
-**Breakfast** · Indian · 20 min · serves 4 · skill 1/3
+**Breakfast** · North Indian · 20 min · serves 4 · skill 1/3
 
 > A thin, golden omelet packed with onion, tomato, green chile, cilantro and warm spices, the way it's made at Indian street stalls, folded beside buttered toast.
 

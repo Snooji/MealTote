@@ -4,7 +4,7 @@
 
 <sub>Photo: Bazel · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mujaddara.jpg)</sub>
 
-**Dinner** · Middle Eastern · 50 min · serves 5 · skill 1/3
+**Dinner** · Lebanese & Levantine · 50 min · serves 5 · skill 1/3
 
 > The Levant's beloved comfort food: cumin-scented lentils and rice under a heap of sweet, crispy fried onions, with yogurt and a chopped salad.
 

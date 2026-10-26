@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Caribbean & Latin · 20 min · serves 4 · skill 1/3
+**Lunch** · Cuban · 20 min · serves 4 · skill 1/3
 
 > Roast pork, ham, Swiss, pickles and mustard pressed in buttered bread until golden and melty.
 

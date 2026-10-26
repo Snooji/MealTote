@@ -4,7 +4,7 @@
 
 <sub>Photo: London Chow · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Giraffe_review_Islington_Essex_Road_huevos_rancheros.jpg)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 20 min · serves 4 · skill 1/3
+**Breakfast** · Mexican · 20 min · serves 4 · skill 1/3
 
 > Crisp corn tortillas topped with warm refried beans, crispy fried eggs, ranchero salsa, avocado and crumbled cheese.
 

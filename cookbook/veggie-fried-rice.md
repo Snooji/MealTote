@@ -4,7 +4,7 @@
 
 <sub>Photo: Alpha from Melbourne, Australia · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Crab_meat_fried_rice_-_Me_Dee_Thai.jpg)</sub>
 
-**Dinner** · Chinese · 20 min · serves 4 · skill 1/3
+**Dinner** · Chinese & Cantonese · 20 min · serves 4 · skill 1/3
 
 > Better than takeout and made from what's in the freezer: day-old rice, mixed vegetables, scrambled egg and a hit of soy and sesame.
 

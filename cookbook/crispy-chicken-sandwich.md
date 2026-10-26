@@ -4,7 +4,7 @@
 
 <sub>Photo: Evan-Amos · Public domain · [source](https://commons.wikimedia.org/wiki/File:McD-McChicken_(transparent).png)</sub>
 
-**Dinner** · Southern & Cajun · 40 min · serves 4 · skill 2/3
+**Dinner** · Southern & soul food · 40 min · serves 4 · skill 2/3
 
 > Buttermilk-brined chicken thighs fried until craggy and crunchy, drizzled with chili-spiked hot honey and stacked with slaw and pickles on brioche.
 

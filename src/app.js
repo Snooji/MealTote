@@ -1636,7 +1636,17 @@ const CUISINE_FIX = {"gochujang-chicken":"korean","red-curry-shrimp":"thai","bul
 // sauces that carry an allergen whatever the dish's main protein
 const IMPLIED_HAS = {oyster_sauce:"shellfish", fish_sauce:"fish"};
 for(const r of RECIPES){ const m=META[r.id]; if(!m) continue; m.has=m.has||[]; for(const [k] of r.ing) if(IMPLIED_HAS[k] && !m.has.includes(IMPLIED_HAS[k])) m.has.push(IMPLIED_HAS[k]); }
-for(const [id,m] of Object.entries(META)){ m.cuisine = CUISINE_FIX[id] || String(m.cuisine).toLowerCase(); m.veg = ["veg","egg"].includes(m.protein); m.pesc = m.veg || ["fish","shrimp"].includes(m.protein); }
+// the 16 broad cuisines became 50 (see CUISINE_OPTS); older recipes move to the closest specific one
+const CUISINE_SPLIT = {
+  "bean-quesadillas":"texmex","breakfast-burritos":"texmex","breakfast-quesadillas":"texmex","chicken-burrito-bowls":"texmex","migas":"texmex","steak-fajitas":"texmex","taco-salad":"texmex","turkey-taco-skillet":"texmex",
+  "blackened-catfish":"cajun","gumbo":"cajun","jambalaya":"cajun","muffuletta":"cajun","red-beans-rice":"cajun",
+  "dan-dan-noodles":"sichuan","kung-pao-chicken":"sichuan","mapo-tofu":"sichuan","chicken-vindaloo":"southindian",
+  "arepas":"venezuelan","arroz-con-pollo":"puertorican","beef-patties":"jamaican","cornmeal-porridge":"jamaican","jerk-chicken":"jamaican","gallo-pinto":"centralamerican","lomo-saltado":"peruvian","pollo-a-la-brasa":"peruvian",
+  "beef-stroganoff":"russian","belgian-waffles":"american","dutch-baby":"american","chicken-paella":"spanish","spanish-tortilla":"spanish","goulash":"hungarian","schnitzel":"german","shepherds-pie":"british",
+  "bobotie":"southafrican","peri-peri-wraps":"southafrican","chicken-tagine":"moroccan",
+  "turkey-hummus-wraps":"levantine","beef-kofta":"turkish","menemen":"turkish","turkish-eggs":"turkish","ful-medames":"egyptian","shakshuka":"israeli"};
+const CUISINE_OLD = {mediterranean:"greek", middleeastern:"levantine", european:"french", african:"westafrican", caribbean:"cuban"};
+for(const [id,m] of Object.entries(META)){ m.cuisine = CUISINE_SPLIT[id] || CUISINE_FIX[id] || String(m.cuisine).toLowerCase(); m.cuisine = CUISINE_OLD[m.cuisine] || m.cuisine; m.veg = ["veg","egg"].includes(m.protein); m.pesc = m.veg || ["fish","shrimp"].includes(m.protein); }
 // every pantry and pack item is known by now, so recompute anything worked out earlier
 for(const k in NUTR_CACHE) delete NUTR_CACHE[k];
 for(const r of RECIPES){ if(!r.art) r.art=ART.A("bowl","#2E3A44","#E9E4DA",ART.sauce("#C9772A","#9E5214","#E2973A"),ART.herbs(14)); const n=nutritionOf(r); r.kcal=n.kcal; r.protein=n.protein; }
@@ -1773,7 +1783,27 @@ const FAV_TEST = {
   breakfast_eggs:r=>r.meal==="Breakfast" && META[r.id].has.includes("egg"),
   sweet_breakfast:r=>r.meal==="Breakfast" && !META[r.id].has.includes("egg"),
 };
-const CUISINE_OPTS = [["mexican","Mexican & Tex-Mex"],["italian","Italian"],["american","American comfort"],["southern","Southern & Cajun"],["chinese","Chinese"],["japanese","Japanese"],["korean","Korean"],["thai","Thai"],["vietnamese","Vietnamese"],["indian","Indian"],["mediterranean","Greek & Mediterranean"],["middleeastern","Middle Eastern"],["caribbean","Caribbean & Latin"],["hawaiian","Hawaiian"],["european","French & Spanish"],["african","African"]];
+// [id, label, region]; the quiz groups them by region
+const CUISINE_OPTS = [
+  ["american","American comfort","United States"],["southern","Southern & soul food","United States"],["cajun","Cajun & Creole","United States"],["texmex","Tex-Mex","United States"],["hawaiian","Hawaiian","United States"],
+  ["mexican","Mexican","Latin America & the Caribbean"],["cuban","Cuban","Latin America & the Caribbean"],["puertorican","Puerto Rican & Dominican","Latin America & the Caribbean"],["jamaican","Jamaican","Latin America & the Caribbean"],["centralamerican","Salvadoran & Central American","Latin America & the Caribbean"],["colombian","Colombian","Latin America & the Caribbean"],["venezuelan","Venezuelan","Latin America & the Caribbean"],["peruvian","Peruvian","Latin America & the Caribbean"],["brazilian","Brazilian","Latin America & the Caribbean"],["argentinian","Argentinian","Latin America & the Caribbean"],
+  ["italian","Italian","Europe"],["french","French","Europe"],["spanish","Spanish","Europe"],["portuguese","Portuguese","Europe"],["greek","Greek","Europe"],["german","German & Austrian","Europe"],["british","British & Irish","Europe"],["polish","Polish","Europe"],["hungarian","Hungarian","Europe"],["russian","Russian & Ukrainian","Europe"],["scandinavian","Scandinavian","Europe"],
+  ["levantine","Lebanese & Levantine","Middle East & North Africa"],["turkish","Turkish","Middle East & North Africa"],["persian","Persian","Middle East & North Africa"],["israeli","Israeli","Middle East & North Africa"],["egyptian","Egyptian","Middle East & North Africa"],["moroccan","Moroccan","Middle East & North Africa"],
+  ["westafrican","Nigerian & West African","Sub-Saharan Africa"],["ethiopian","Ethiopian","Sub-Saharan Africa"],["eastafrican","Kenyan & East African","Sub-Saharan Africa"],["southafrican","South African","Sub-Saharan Africa"],
+  ["indian","North Indian","South Asia"],["southindian","South Indian & Goan","South Asia"],["pakistani","Pakistani","South Asia"],["srilankan","Sri Lankan","South Asia"],
+  ["chinese","Chinese & Cantonese","East Asia"],["sichuan","Sichuan & Hunan","East Asia"],["taiwanese","Taiwanese","East Asia"],["japanese","Japanese","East Asia"],["korean","Korean","East Asia"],
+  ["thai","Thai","Southeast Asia"],["vietnamese","Vietnamese","Southeast Asia"],["filipino","Filipino","Southeast Asia"],["indonesian","Indonesian","Southeast Asia"],["malaysian","Malaysian & Singaporean","Southeast Asia"]];
+const CUISINE_REGIONS = [...new Set(CUISINE_OPTS.map(o=>o[2]))];
+// answers saved before the split: each old pick becomes the cuisines it grew into
+const CUISINE_GREW = {mexican:["mexican","texmex"], southern:["southern","cajun"], chinese:["chinese","sichuan"], indian:["indian","southindian"],
+  mediterranean:["greek"], middleeastern:["levantine","turkish","persian","israeli","egyptian"], european:["french","spanish","german","british"],
+  african:["westafrican","ethiopian","southafrican","moroccan"], caribbean:["cuban","puertorican","jamaican","peruvian","centralamerican","venezuelan"]};
+// profiles carry cv:2 once their cuisines use the 50-cuisine ids
+function migrateCuisines(A){
+  if(!A || A.cv===2) return; A.cv=2;
+  if(Array.isArray(A.cuisines)) A.cuisines=[...new Set(A.cuisines.flatMap(x=>CUISINE_GREW[x]||[x]))].filter(x=>CUISINE_OPTS.some(o=>o[0]===x));
+}
+const cuisineSelectOpts = (sel, count) => CUISINE_REGIONS.map(g=>el("optgroup",{label:g}, CUISINE_OPTS.filter(o=>o[2]===g).map(([k,l])=>el("option",{value:k,selected:sel===k}, count?l+" ("+count(k)+")":l))));
 const CUISINE_LABEL = Object.fromEntries(CUISINE_OPTS);
 
 /* ------------------------------------------------------------------ house rule: no enchiladas */
@@ -2034,7 +2064,7 @@ function drawSwap(){
     el("p",{class:"note",style:"margin:0"},`${list.length} dishes, ${optionsTotal} ways to make them, all fitting your answers. Tap a dish or a protein to swap it in.`),
     el("div",{class:"swapctl"},
       el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: curry, salmon, tacos…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
-      el("select",{id:"swc","aria-label":"Cuisine",onchange:e=>{SWP.cuisine=e.target.value;renderSwap();}}, el("option",{value:""},"Any cuisine"), CUISINE_OPTS.map(([k,l])=>el("option",{value:k,selected:SWP.cuisine===k},l))),
+      el("select",{id:"swc","aria-label":"Cuisine",onchange:e=>{SWP.cuisine=e.target.value;renderSwap();}}, el("option",{value:""},"Any cuisine"), cuisineSelectOpts(SWP.cuisine)),
       el("select",{id:"swp","aria-label":"Protein",onchange:e=>{SWP.protein=e.target.value;renderSwap();}}, [["","Any protein"],["chicken","Chicken & turkey"],["beef","Beef"],["pork","Pork"],["seafood","Seafood"],["veg","Vegetarian"]].map(([k,l])=>el("option",{value:k,selected:SWP.protein===k},l))),
       el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],["close","Closest calories"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
       el("label",{class:"tog"}, el("input",{type:"checkbox",id:"swquick",checked:SWP.quick,onchange:e=>{SWP.quick=e.target.checked;renderSwap();}}), "30 min or less"),
@@ -2153,6 +2183,7 @@ function normalize(v){
   const moved = {"tikka-masala":"butter-chicken","chickpea-curry":"chana-masala","breakfast-sandwiches":"breakfast-sandwich-builder~bc-egg-ch-em","chicken-teriyaki":"teriyaki-salmon-bowls~chicken"};
   const fix = x => { const base=String(x||"").split("~")[0]; if(!R_BY_ID[x] && moved[base]) x = R_BY_ID[moved[base]] ? moved[base] : moved[base].split("~")[0]; return R_BY_ID[x]?x:null; };
   if(s.plan){ for(const k of ["b","l","d"]) s.plan[k]=(s.plan[k]||[]).map(fix); }
+  migrateCuisines(s.profile);
   return s;
 }
 function save(){
@@ -2656,7 +2687,7 @@ const QUESTIONS = [
  {id:"avoid",type:"multi",none:"No allergies",q:"Any allergies or foods you can't eat?",sub:"We'll never plan a recipe that contains these.",opts:[["gluten","Gluten"],["dairy","Dairy"],["egg","Eggs"],["nuts","Peanuts & tree nuts"],["sesame","Sesame"],["shellfish","Shellfish"],["fish","Fish"],["pork","Pork"],["beef","Beef"]]},
  {id:"favorites",type:"multi",none:"I like a bit of everything",q:"What are your favorite foods?",sub:"Pick as many as you like. We'll plan more of what you love.",opts:[["chicken","Chicken"],["beef","Beef & steak"],["pork","Pork & sausage"],["seafood","Shrimp & fish"],["veggie","Vegetarian mains"],["pasta","Pasta"],["noodles","Noodles & ramen"],["rice","Rice bowls"],["tacos","Tacos & burritos"],["sandwiches","Burgers & sandwiches"],["soups","Soups & stews"],["curries","Curries"],["salads","Big salads"],["pizza","Pizza & flatbreads"],["cheesy","Cheesy comfort food"],["spicy","Spicy food"],["breakfast_eggs","Eggy breakfasts"],["sweet_breakfast","Sweet breakfasts"]]},
  {id:"dislikes",type:"multi",none:"I'll eat anything",q:"Anything you'd rather not eat?",sub:"We'll steer around these. Garnishes like cilantro can just be left off.",opts:[["spicy","Spicy food"],["cilantro","Cilantro"],["coconut","Coconut"],["avocado","Avocado"],["feta","Feta"],["beans","Beans & lentils"],["kale","Kale"],["sweet_potato","Sweet potato"],["olives","Olives"],["mushroom_tofu","Tofu"]]},
- {id:"cuisines",type:"multi",none:"Surprise me",q:"Which cuisines do you love?",sub:"Pick as many as you like. We'll plan more of these and still mix in others.",opts:CUISINE_OPTS},
+ {id:"cuisines",type:"multi",none:"Surprise me",q:"Which cuisines do you love?",sub:"Pick as many as you like, or a whole region. We'll plan more of these and still mix in others.",opts:CUISINE_OPTS,groups:true},
  {id:"goals",type:"multi",none:"Nothing in particular",q:"What matters most this week?",sub:"Pick up to three.",max:3,opts:[["budget","Spending less"],["quick","Saving time"],["protein","More protein"],["lowcarb","Fewer carbs"],["variety","Trying new things"]]},
  {id:"time",type:"single",q:"How long can you spend cooking on a weeknight?",opts:[[20,"20 minutes or less"],[30,"About 30 minutes"],[45,"Up to 45 minutes"],[90,"Time isn't an issue"]]},
  {id:"skill",type:"single",q:"How comfortable are you in the kitchen?",opts:[[1,"Just starting out","Simple steps and few pans"],[2,"Comfortable","I can follow most recipes"],[3,"Confident","Bring on anything"]]},
@@ -2688,7 +2719,7 @@ function renderWelcome(){
   m.append(el("div",{class:"welcome"},
     el("div",{class:"eyebrow"},"Your weekly meal planner"),
     el("h2",{},"Tell us how you eat. We'll plan the week and write your grocery list."),
-    el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes to choose from, and a list of exactly what to buy at the stores you shop at, from "+STORE_IDS.length+" grocery chains."),
+    el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes from "+CUISINE_OPTS.length+" cuisines to choose from, and a list of exactly what to buy at the stores you shop at, from "+STORE_IDS.length+" grocery chains."),
     el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started"),
       Object.keys(PLANS).length?el("button",{class:"btn big",onclick:openPlansSheet},"My plans ("+Object.keys(PLANS).length+")"):el("span",{class:"note"},"Takes about a minute"))));
 }
@@ -2701,7 +2732,7 @@ function renderQuiz(){
   const A=OB.A, qs=visibleQs(A), m=$("#app"), sameQ=OB.shown===OB.i, y=window.scrollY; m.innerHTML="";
   if(OB.i>=qs.length) return renderReview();
   const q=qs[OB.i];
-  const body=el("div",{class:"opts"+(q.type==="single"&&q.opts.some(o=>o[2])?" tall":"")});
+  const body=el("div",{class:"opts"+(q.type==="single"&&q.opts.some(o=>o[2])?" tall":"")+(q.groups?" compact":"")});
   if(q.type==="people"){
     body.className="peoplewrap"; body.append(peopleEditor(A));
   } else if(q.type==="macros"){
@@ -2711,15 +2742,27 @@ function renderQuiz(){
     body.className="storepick-wrap";
     body.append(storePicker(A, ()=>renderQuiz()));
   } else {
-    const multi=q.type==="multi", cur=A[q.id];
+    // multi-select taps update the buttons in place, so the page never redraws or jumps while you pick
+    const multi=q.type==="multi", cur=()=>A[q.id]||[];
+    const sync=()=>{ const v=cur();
+      for(const btn of body.querySelectorAll(".opt[data-v]")) btn.setAttribute("aria-pressed", v.includes(btn.dataset.v));
+      const no=body.querySelector(".opt.none"); if(no) no.setAttribute("aria-pressed", !!(!v.length && v._none));
+      for(const g of body.querySelectorAll(".ogroup")) g.querySelector("button").textContent = g._ids.every(x=>v.includes(x))?"Clear":"Pick all";
+      const nb=$("#nextBtn"); if(nb) nb.disabled=!answered(q,A); };
+    let group=null;
     for(const [val,label,desc] of q.opts){
-      const on = multi ? (cur||[]).includes(val) : cur===val;
-      body.append(el("button",{class:"opt","aria-pressed":on,onclick:()=>{
-        if(multi){ let a=(cur||[]).filter(x=>x!==val); if(!on){ if(q.max && a.length>=q.max){ toast("Pick up to "+q.max); return; } a.push(val); } A[q.id]=a; renderQuiz(); }
-        else { A[q.id]=val; renderQuiz(); setTimeout(()=>{ if(OB && visibleQs(OB.A)[OB.i]===q){ OB.i++; renderQuiz(); } },220); }
-      }}, el("span",{class:"ol"},label), desc?el("span",{class:"od"},desc):null)); }
-    if(multi && q.none){ const on=!!(cur && !cur.length && cur._none);
-      body.append(el("button",{class:"opt none","aria-pressed":on,onclick:()=>{ const a=[]; a._none=true; A[q.id]=a; renderQuiz(); }}, el("span",{class:"ol"},q.none))); }
+      if(q.groups && desc!==group){ group=desc; const ids=q.opts.filter(o=>o[2]===group).map(o=>o[0]);
+        const g=el("div",{class:"ogroup"}, el("span",{},group), el("button",{class:"btn small",onclick:()=>{ const all=ids.every(x=>cur().includes(x)), a=cur().filter(x=>!ids.includes(x)); if(!all) a.push(...ids); A[q.id]=a; sync(); }}, "Pick all"));
+        g._ids=ids; body.append(g); }
+      const on = multi ? cur().includes(val) : A[q.id]===val;
+      body.append(el("button",{class:"opt","aria-pressed":on,"data-v":multi?val:null,onclick:()=>{
+        if(multi){ const has=cur().includes(val); let a=cur().filter(x=>x!==val); if(!has){ if(q.max && a.length>=q.max){ toast("Pick up to "+q.max); return; } a.push(val); } A[q.id]=a; sync(); }
+        else { A[q.id]=val; for(const btn of body.querySelectorAll(".opt")) btn.setAttribute("aria-pressed", btn.dataset.s===String(val)); setTimeout(()=>{ if(OB && visibleQs(OB.A)[OB.i]===q){ OB.i++; renderQuiz(); } },220); }
+      }}, el("span",{class:"ol"},label), desc&&!q.groups?el("span",{class:"od"},desc):null));
+      if(!multi) body.lastChild.dataset.s=String(val); }
+    if(multi && q.none){
+      body.append(el("button",{class:"opt none","aria-pressed":!!(A[q.id] && !A[q.id].length && A[q.id]._none),onclick:()=>{ const a=[]; a._none=true; A[q.id]=a; sync(); }}, el("span",{class:"ol"},q.none))); }
+    queueMicrotask(sync);
   }
   const ok=answered(q,A);
   m.append(el("div",{class:"quiz"},
@@ -2747,7 +2790,7 @@ function finishQuiz(){
   A.people=A.people.map((p,i)=>({name:personName(p,i),kcal:p.kcal,macros:p.macros?{p:p.macros.p,c:p.macros.c,f:p.macros.f}:null}));
   if(!A.meals.includes("lunch")||!A.meals.includes("dinner")) A.leftovers="no";
   if(A.stores.length<2) A.mode="cheap";
-  delete A._q; const isNew=!OB.edit || !S.planId;
+  delete A._q; A.cv=2; const isNew=!OB.edit || !S.planId;
   S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
   if(isNew){ S.planId=null; S.planName=null; S.planCreated=null; }
   OB=null;
@@ -2925,11 +2968,12 @@ function planTotals(){
 }
 
 function planTitle(){ const n=planDays().length; return n===7?"Seven days of meals, planned":n===5?"Your weeknights, planned":"Three days of meals, planned"; }
+const qById = id => QUESTIONS.find(q=>q.id===id);
 function profileSentence(){
   const A=S.profile, bits=[];
-  bits.push("For "+answerText(QUESTIONS[0],A));
+  bits.push("For "+answerText(qById("people"),A));
   if(A.diet!=="none") bits.push(A.diet);
-  if(A.avoid.length) bits.push("no "+listJoin(A.avoid.map(a=>QUESTIONS[4].opts.find(o=>o[0]===a)[1].toLowerCase())));
+  if(A.avoid.length) bits.push("no "+listJoin(A.avoid.map(a=>(qById("avoid").opts.find(o=>o[0]===a)||[a,a])[1].toLowerCase())));
   bits.push("up to "+(A.time>=90?"any time":A.time+" minutes")+" a night");
   bits.push("shopping at "+listJoin(A.stores.map(s=>STORES[s].name)));
   return bits.join(" · ")+".";
@@ -2967,7 +3011,7 @@ function renderGroceries(){
   const singles = S.stores.map(s=>{ let tot=0; for(const i of Object.keys(d)){ if(!offers(i)[s]) return null; tot+=storeCost(i,s,d[i]); } return {s,t:tot}; }).filter(Boolean).sort((a,b)=>a.t-b.t);
   m.append(el("div",{class:"planhead"},
     el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{},"What to buy, store by store"),
-      el("p",{class:"lede"},"Everything for your "+planDays().length+"-day plan, sized for "+answerText(QUESTIONS[0],A)+". Prices are estimates; check them in-store.")),
+      el("p",{class:"lede"},"Everything for your "+planDays().length+"-day plan, sized for "+answerText(qById("people"),A)+". Prices are estimates; check them in-store.")),
     el("div",{class:"actions"},
       S.stores.length>1?el("div",{class:"seg",id:"modeSeg"}, [["cheap","Lowest total"],["stops","Fewest stops"]].map(([k,l])=>el("button",{"aria-pressed":S.mode===k,onclick:()=>{ S.mode=k; S.overrides={}; save(); keepScroll(renderGroceries); }},l))):null,
       el("button",{class:"btn small",id:"storesBtn",onclick:openStoreSheet},"Change stores"),
@@ -3009,7 +3053,7 @@ function renderRecipes(){
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"toolbar"},
     el("div",{class:"seg"}, ["All","Breakfast","Lunch","Dinner"].map(x=>el("button",{"aria-pressed":mealFilter===x,onclick:()=>{mealFilter=x;keepScroll(renderRecipes);}},x))),
-    el("select",{id:"cuisineSel","aria-label":"Cuisine",onchange:e=>{ cuisineFilter=e.target.value; drawGrid(); }}, el("option",{value:""},"All cuisines ("+RECIPES.length+")"), CUISINE_OPTS.map(([k,l])=>el("option",{value:k,selected:cuisineFilter===k},l+" ("+RECIPES.filter(r=>META[r.id].cuisine===k).length+")"))),
+    el("select",{id:"cuisineSel","aria-label":"Cuisine",onchange:e=>{ cuisineFilter=e.target.value; drawGrid(); }}, el("option",{value:""},"All cuisines ("+RECIPES.length+")"), cuisineSelectOpts(cuisineFilter, k=>RECIPES.filter(r=>META[r.id].cuisine===k).length)),
     el("input",{class:"search",id:"search",type:"search",placeholder:"Search recipes or ingredients","aria-label":"Search recipes",value:query,oninput:e=>{ query=e.target.value; drawGrid(); }})));
   const g=el("div",{class:"grid",id:"grid"}); m.append(g); drawGrid();
 }
@@ -3064,6 +3108,9 @@ function renderPlan(){
     el("div",{class:"actions"}, el("button",{class:"btn",id:"shuffleBtn",onclick:()=>{ generatePlan(); save(); renderPlan(); renderCounts(); toast("New plan ready"); }},"Shuffle plan"),
       el("button",{class:"btn",onclick:()=>showApp("groceries")},"Grocery list"),
       el("button",{class:"btn primary",onclick:()=>showApp("pdf")},"Export PDF"))));
+  if(!cloudUser && cloudOn()) m.append(el("div",{class:"savebanner"},
+    el("div",{}, el("b",{},"This plan is only saved on this device."), el("div",{class:"note"},"Sign in with Google to keep it and all your plans on your account, on any phone or computer.")),
+    el("button",{class:"btn primary small",onclick:signIn},"Sign in to save")));
   m.append(el("div",{class:"summary"},
     el("div",{class:"stat"},el("b",{class:"mono"},meals),el("span",{},"Meals")),
     el("div",{class:"stat"},el("b",{class:"mono"},planRecipeIds().length),el("span",{},"Recipes to cook")),
@@ -3176,7 +3223,7 @@ async function buildPdf(ids, opts={}){
   const date = new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
   let page=0;
   const newPage=()=>{ if(page) doc.addPage(); page++; doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...muted);
-    doc.text("MealTote"+(S.profile?" · "+pdfText(answerText(QUESTIONS[0],S.profile)):"")+" · "+date, M, PH-24); doc.text(String(page), PW-M, PH-24, {align:"right"}); };
+    doc.text("MealTote"+(S.profile?" · "+pdfText(answerText(qById("people"),S.profile)):"")+" · "+date, M, PH-24); doc.text(String(page), PW-M, PH-24, {align:"right"}); };
   const T=(s,x,y,o)=>doc.text(pdfText(s),x,y,o);
   const wrap=(s,w)=>doc.splitTextToSize(pdfText(s),w);
   const H = S.profile ? household() : 1;
@@ -3191,7 +3238,7 @@ async function buildPdf(ids, opts={}){
   let y=M+2*(ch+8)+44;
   doc.setTextColor(...green); doc.setFont("times","bold"); doc.setFontSize(40); T(planMode?"Your Meal Plan":"The MealTote Cookbook", M, y);
   y+=26; doc.setFont("times","italic"); doc.setFontSize(15); doc.setTextColor(...ink);
-  T(planMode ? `${planDays().length} days for ${answerText(QUESTIONS[0],S.profile)}, shopped at ${listJoin(S.stores.map(s=>STORES[s].name))}` : `${ids.length} recipes with photos, nutrition and storage notes`, M, y);
+  T(planMode ? `${planDays().length} days for ${answerText(qById("people"),S.profile)}, shopped at ${listJoin(S.stores.map(s=>STORES[s].name))}` : `${ids.length} recipes with photos, nutrition and storage notes`, M, y);
   y+=16; doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...muted); T("Prepared "+date, M, y);
   if(planMode){
     y+=26; const avg=weekAvgNutrition(), meals=slotsOf().filter(s=>s.id).length;
@@ -3450,16 +3497,19 @@ async function onCloudUser(u){
   try{
     await cloud.ensureProfile();
     const d=await cloud.load();
-    if(d && d.state){
-      const remote=normalize(JSON.parse(d.state));
-      // newest wins: your account copy, unless this browser has newer unsaved work
-      if(!S.profile || (d.updatedMs||0) >= (S._ts||0)){ S=remote; if(S.theme) THEME.set(S.theme, true); } else pushCloud();
-    } else if(S.profile) pushCloud();
+    let remote=null; try{ remote=d&&d.state?normalize(JSON.parse(d.state)):null; }catch(e){}
+    // newest plan wins: your account copy, unless this browser has newer work. An account copy without a plan never replaces one here.
+    const remoteHasPlan=!!(remote&&remote.profile&&remote.plan), localHasPlan=!!(S.profile&&S.plan);
+    if(remoteHasPlan && (!localHasPlan || (d.updatedMs||0) >= (S._ts||0))){ const keep=S.photos; S=remote; S.photos=Object.assign({}, keep, S.photos); }
+    else { if(remote&&remote.theme&&(!localHasPlan||!S.theme)) S.theme=remote.theme; if(localHasPlan) pushCloud(); }
+    if(S.theme) THEME.set(S.theme, true);
     try{ Object.assign(S.photos, await cloud.loadPhotos()); }catch(e){}
     await syncPlans();
-    cloudLoaded=true; lsSet(S); if(!OB) boot();
+    // nothing open on this device yet: open your most recent saved plan
+    if(!(S.profile&&S.plan)){ const last=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs)[0]; if(last && !OB){ cloudLoaded=true; openPlan(last.id, true); } }
+    cloudLoaded=true; lsSet(S); if(!OB){ if(S.profile&&S.plan) tab="plan"; boot(); }
     toast("Signed in as "+(u.displayName||u.email));
-  }catch(e){ cloudLoaded=true; toast("Couldn't load your saved data. Changes will save in this browser."); }
+  }catch(e){ console.error("MealTote cloud load failed", e); cloudLoaded=true; if(!OB) boot(); toast("Couldn't load your saved data ("+(e&&(e.code||e.message)||"error")+"). Changes will save in this browser."); }
 }
 // photos travel separately (cloud.savePhoto), so the account copy leaves out their data URLs
 const cloudJSON = v => JSON.stringify(v,(k,x)=>typeof x==="string"&&x.startsWith("data:")?undefined:x);
@@ -3557,13 +3607,13 @@ function storePlan(){
   PLANS[S.planId]={id:S.planId, name:S.planName||"My plan", createdMs:S.planCreated||(prev&&prev.createdMs)||Date.now(), updatedMs:Date.now(), state:planState()};
   DIRTY_PLANS.add(S.planId); lsPlansSet();
 }
-function openPlan(id){
+function openPlan(id, quiet){
   const p=PLANS[id]; if(!p) return;
   let st={}; try{ st=JSON.parse(p.state)||{}; }catch(e){}
   const keep={photos:S.photos, theme:S.theme};
   S=normalize(Object.assign({}, st, keep, {planId:p.id, planName:p.name, planCreated:p.createdMs}));
   lsSet(S); clearTimeout(saveTimer); saveTimer=setTimeout(pushCloud, 800);
-  closeSheet(); tab="plan"; boot(); toast("Opened “"+p.name+"”");
+  closeSheet(); tab="plan"; boot(); if(!quiet) toast("Opened “"+p.name+"”");
 }
 function renamePlan(id, name){
   name=String(name||"").trim().slice(0,80); const p=PLANS[id]; if(!p||!name) return;

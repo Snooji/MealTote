@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Chinese · 35 min · serves 4 · skill 2/3
+**Dinner** · Chinese & Cantonese · 35 min · serves 4 · skill 2/3
 
 > Crispy cornstarch-coated chicken tossed in a sticky, tangy sauce made with fresh orange juice and zest, served with rice and steamed broccoli.
 

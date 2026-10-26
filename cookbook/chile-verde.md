@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Mexican & Tex-Mex · 150 min · serves 6 · skill 2/3
+**Dinner** · Mexican · 150 min · serves 6 · skill 2/3
 
 > Tender chunks of pork shoulder slowly braised in a tangy tomatillo and green chile sauce until they fall apart. Spoon it into tortillas or over rice.
 

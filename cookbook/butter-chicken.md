@@ -4,7 +4,7 @@
 
 <sub>Photo: Yuvraj Singh 97 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg)</sub>
 
-**Dinner** · Indian · 45 min · serves 4 · skill 2/3
+**Dinner** · North Indian · 45 min · serves 4 · skill 2/3
 
 > Yogurt-marinated chicken thighs charred under the broiler, then simmered in a silky, gently spiced tomato-butter-cream sauce. Better than most takeout.
 

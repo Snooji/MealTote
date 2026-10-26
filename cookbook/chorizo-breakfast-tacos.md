@@ -4,7 +4,7 @@
 
 <sub>Photo: Larry Miller · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 20 min · serves 4 · skill 1/3
+**Breakfast** · Mexican · 20 min · serves 4 · skill 1/3
 
 > Austin-style breakfast tacos: crispy potatoes, spicy chorizo and soft scrambled eggs in warm flour tortillas with cheese and salsa.
 

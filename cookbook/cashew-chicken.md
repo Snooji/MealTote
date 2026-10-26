@@ -4,7 +4,7 @@
 
 <sub>Photo: Simon Law from Montréal, QC, Canada · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Cashewchickenphoto.jpg)</sub>
 
-**Dinner** · Chinese · 30 min · serves 4 · skill 1/3
+**Dinner** · Chinese & Cantonese · 30 min · serves 4 · skill 1/3
 
 > Tender velveted chicken and crunchy toasted cashews tossed with sweet peppers in a glossy oyster-hoisin sauce. Faster than takeout and a lot fresher.
 

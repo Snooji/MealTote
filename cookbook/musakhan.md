@@ -4,7 +4,7 @@
 
 <sub>Photo: Kokaly · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mushakhan_Dish.jpg)</sub>
 
-**Dinner** · Middle Eastern · 75 min · serves 4 · skill 2/3
+**Dinner** · Lebanese & Levantine · 75 min · serves 4 · skill 2/3
 
 > Palestine's beloved Sunday dish: chicken roasted under a heap of olive-oil-soaked, sumac-stained onions, piled onto flatbread that drinks up every drop.
 

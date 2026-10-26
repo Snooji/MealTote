@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Greek & Mediterranean · 25 min · serves 4 · skill 1/3
+**Lunch** · Greek · 25 min · serves 4 · skill 1/3
 
 > Lemony orzo tossed with chickpeas, crunchy cucumber, sweet tomatoes, peppers, Kalamata olives and lots of salty feta. Built to sit in the fridge all week.
 

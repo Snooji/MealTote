@@ -4,7 +4,7 @@
 
 <sub>Photo: Cary Bass · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Picadillo_and_rice.jpg)</sub>
 
-**Dinner** · Caribbean & Latin · 35 min · serves 4 · skill 1/3
+**Dinner** · Cuban · 35 min · serves 4 · skill 1/3
 
 > Savory-sweet ground beef simmered with tomatoes, potatoes, olives and warm spices. Spoon over white rice with fried plantains.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Takeaway · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Smoked_chicken_and_avocado_wrap.jpg)</sub>
 
-**Lunch** · Greek & Mediterranean · 10 min · serves 4 · skill 1/3
+**Lunch** · Lebanese & Levantine · 10 min · serves 4 · skill 1/3
 
 > Tortillas spread with hummus and rolled around turkey, spinach and crunchy vegetables, then sliced into lunchbox pinwheels.
 

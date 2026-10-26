@@ -4,7 +4,7 @@
 
 <sub>Photo: Mariordo (Mario Roberto Durán Ortiz) · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:CRI_07_2018_0120_(cropped).jpg)</sub>
 
-**Breakfast** · Caribbean & Latin · 30 min · serves 4 · skill 1/3
+**Breakfast** · Salvadoran & Central American · 30 min · serves 4 · skill 1/3
 
 > Day-old rice and black beans fried together with onion, sweet pepper and lots of cilantro until speckled and savory, served with fried eggs and a spoonful of sour cream.
 

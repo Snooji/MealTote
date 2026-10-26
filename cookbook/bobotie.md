@@ -4,7 +4,7 @@
 
 <sub>Photo: Olga Ernst · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Bobotie,_South_African_dish.jpg)</sub>
 
-**Dinner** · African · 75 min · serves 5 · skill 2/3
+**Dinner** · South African · 75 min · serves 5 · skill 2/3
 
 > Gently curried ground beef with sweet apricots and a hint of lemon, baked under a silky savory custard. Cape Malay home cooking at its coziest, with turmeric-gold rice.
 

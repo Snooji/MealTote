@@ -4,7 +4,7 @@
 
 <sub>Photo: Cajsa Lilliehook from Portland · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Breakfast_burrito_(cropped).jpg)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 40 min · serves 8 · skill 2/3
+**Breakfast** · Tex-Mex · 40 min · serves 8 · skill 2/3
 
 > Crispy potatoes, sausage, soft scrambled eggs and melty cheese wrapped tight and frozen. Grab one, microwave, go.
 

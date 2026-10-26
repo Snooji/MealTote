@@ -4,7 +4,7 @@
 
 <sub>Photo: Matt Krause from Istanbul, Turkey · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Ezogelin_soup,_bread,_and_water.jpg)</sub>
 
-**Lunch** · Middle Eastern · 40 min · serves 6 · skill 1/3
+**Lunch** · Lebanese & Levantine · 40 min · serves 6 · skill 1/3
 
 > A velvety, cumin-scented soup of red lentils and sweet onions, brightened with plenty of lemon and topped with crisp toasted pita. Cheap, filling and better the next day.
 

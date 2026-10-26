@@ -4,7 +4,7 @@
 
 <sub>Photo: WikiHes · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Lomo-saltado-perudelights.jpg)</sub>
 
-**Dinner** · Caribbean & Latin · 45 min · serves 4 · skill 2/3
+**Dinner** · Peruvian · 45 min · serves 4 · skill 2/3
 
 > A sizzling Peruvian-Chinese stir-fry of soy-glazed steak, red onion and juicy tomatoes tossed with crispy oven fries and served with rice, so every bite gets some of the sauce.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Premshree Pillai from Brooklyn, NY, US · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:%C3%87%C4%B1lb%C4%B1r_with_duck-fat_saut%C3%A9ed_Ramps_(14826584557).jpg)</sub>
 
-**Breakfast** · Middle Eastern · 15 min · serves 2 · skill 2/3
+**Breakfast** · Turkish · 15 min · serves 2 · skill 2/3
 
 > Silky poached eggs over garlicky whipped yogurt, drizzled with sizzling chili-paprika butter. Bring crusty bread for dipping.
 

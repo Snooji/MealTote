@@ -4,7 +4,7 @@
 
 <sub>Photo: GeoTrinity · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mulligatawny-Soup_Mumbai.jpg)</sub>
 
-**Lunch** · Indian · 50 min · serves 6 · skill 1/3
+**Lunch** · North Indian · 50 min · serves 6 · skill 1/3
 
 > An Anglo-Indian classic: a gently spiced curry soup of chicken, red lentils, apple and coconut milk, served over a spoonful of basmati. It's warming, a little sweet and very satisfying.
 

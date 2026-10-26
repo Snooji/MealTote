@@ -4,7 +4,7 @@
 
 <sub>Photo: Craig Dugas from Bozeman, Montana, USA · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Mongolian_Beef_with_rice_and_noodles.jpg)</sub>
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 1/3
+**Dinner** · Chinese & Cantonese · 25 min · serves 4 · skill 1/3
 
 > Thin, lightly crisped flank steak tossed with scallions in a sticky brown-sugar, ginger and garlic soy glaze.
 

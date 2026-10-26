@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Greek & Mediterranean · 25 min · serves 4 · skill 2/3
+**Dinner** · Greek · 25 min · serves 4 · skill 2/3
 
 > One skillet, risotto-style orzo with butter, Parmesan and plenty of lemon, finished with seared shrimp and a tangle of wilted spinach.
 

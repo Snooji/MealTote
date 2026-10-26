@@ -4,7 +4,7 @@
 
 <sub>Photo: Bharat Mirchandani from Mumbai, India · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Dal_Tadka_01_(36779549481).jpg)</sub>
 
-**Dinner** · Indian · 35 min · serves 4 · skill 1/3
+**Dinner** · North Indian · 35 min · serves 4 · skill 1/3
 
 > Creamy, soothing red lentils finished with a sizzling tadka of butter, garlic, cumin and chili poured over at the table.
 

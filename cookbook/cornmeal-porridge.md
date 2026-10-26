@@ -4,7 +4,7 @@
 
 <sub>Photo: Dezidor · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:J%C3%A1hlov%C3%A1_ka%C5%A1e.jpg)</sub>
 
-**Breakfast** · Caribbean & Latin · 25 min · serves 4 · skill 1/3
+**Breakfast** · Jamaican · 25 min · serves 4 · skill 1/3
 
 > Velvety, warming cornmeal simmered in coconut milk and milk with cinnamon, nutmeg and vanilla, then sweetened with condensed milk the way Jamaican grannies make it.
 

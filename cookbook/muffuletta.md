@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Southern & Cajun · 80 min · serves 4 · skill 1/3
+**Lunch** · Cajun & Creole · 80 min · serves 4 · skill 1/3
 
 > A giant pressed sesame loaf layered with salami, mortadella, ham and provolone and soaked with a briny, garlicky olive and giardiniera salad. It gets better as it sits.
 

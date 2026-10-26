@@ -4,7 +4,7 @@
 
 <sub>Photo: cyclonebill · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Gr%C3%A6sk_salat.jpg)</sub>
 
-**Lunch** · Greek & Mediterranean · 25 min · serves 4 · skill 1/3
+**Lunch** · Greek · 25 min · serves 4 · skill 1/3
 
 > A big, crunchy horiatiki-style salad of tomatoes, cucumber, peppers, olives and feta with lemon-oregano chicken.
 

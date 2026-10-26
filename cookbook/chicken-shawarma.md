@@ -4,7 +4,7 @@
 
 <sub>Photo: secretlondon123 from London, England · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Mixed_Shawarma_(2843435528).jpg)</sub>
 
-**Dinner** · Middle Eastern · 40 min · serves 4 · skill 1/3
+**Dinner** · Lebanese & Levantine · 40 min · serves 4 · skill 1/3
 
 > Warmly spiced, lemony chicken thighs and onions roasted until charred, with garlicky yogurt sauce, hummus, a crunchy salad and warm pita.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Jengod · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Dutchbaby-DSCN8394.JPG)</sub>
 
-**Breakfast** · French & Spanish · 30 min · serves 4 · skill 1/3
+**Breakfast** · American comfort · 30 min · serves 4 · skill 1/3
 
 > A dramatic, oven-puffed pancake with tall crisp edges and a tender custardy center, finished with fresh lemon, powdered sugar, berries and yogurt.
 

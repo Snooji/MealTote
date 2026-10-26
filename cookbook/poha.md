@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Breakfast** · Indian · 25 min · serves 4 · skill 1/3
+**Breakfast** · North Indian · 25 min · serves 4 · skill 1/3
 
 > A fluffy, golden Maharashtrian breakfast of softened flattened rice tossed with mustard seeds, turmeric, onions, peas and crunchy peanuts, brightened with lemon and cilantro.
 

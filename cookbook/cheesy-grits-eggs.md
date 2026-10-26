@@ -4,7 +4,7 @@
 
 <sub>Photo: sashafatcat · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Grits1.jpg)</sub>
 
-**Breakfast** · Southern & Cajun · 25 min · serves 4 · skill 1/3
+**Breakfast** · Southern & soul food · 25 min · serves 4 · skill 1/3
 
 > Creamy, buttery sharp-cheddar grits topped with crispy-edged fried eggs, crumbled turkey bacon, green onions and a shake of hot sauce.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Kobako · CC BY-SA 2.5 · [source](https://commons.wikimedia.org/wiki/File:Arroz-con-Pollo.jpg)</sub>
 
-**Dinner** · Caribbean & Latin · 55 min · serves 6 · skill 1/3
+**Dinner** · Puerto Rican & Dominican · 55 min · serves 6 · skill 1/3
 
 > Latin one-pot comfort: seared chicken and saffron-yellow rice simmered with sofrito, peppers, peas and olives.
 

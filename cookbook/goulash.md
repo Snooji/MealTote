@@ -4,7 +4,7 @@
 
 <sub>Photo: Ralf Roletschek · GFDL 1.2 · [source](https://commons.wikimedia.org/wiki/File:2009-09-gulasch-p%C3%B6rk%C3%B6lt-paprikas-2.jpg)</sub>
 
-**Dinner** · French & Spanish · 150 min · serves 6 · skill 2/3
+**Dinner** · Hungarian · 150 min · serves 6 · skill 2/3
 
 > A brick-red, paprika-rich stew of slow-simmered beef, onions, peppers and potatoes, the real Hungarian gulyás, with crusty bread for dunking.
 

@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Greek & Mediterranean · 35 min · serves 4 · skill 1/3
+**Lunch** · Greek · 35 min · serves 4 · skill 1/3
 
 > Oregano-lemon chicken over fluffy quinoa with crunchy cucumber, tomatoes, olives, feta and a swoosh of hummus. It holds up for days in lunch containers.
 

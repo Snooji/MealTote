@@ -4,7 +4,7 @@
 
 <sub>Photo: Simon Law (sfllaw) from Montréal, QC, Canada · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Chana_masala.jpg)</sub>
 
-**Dinner** · Indian · 35 min · serves 4 · skill 1/3
+**Dinner** · North Indian · 35 min · serves 4 · skill 1/3
 
 > Punjabi-style chickpeas in a deeply browned onion, ginger and tomato gravy with warm spices and a squeeze of lemon. Vegan, pantry-friendly and deeply savory.
 

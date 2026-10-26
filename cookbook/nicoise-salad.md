@@ -4,7 +4,7 @@
 
 <sub>Photo: Wusel007 · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Nizza-Salat_an_der_F_Mittelmeerk%C3%BCste.JPG)</sub>
 
-**Lunch** · French & Spanish · 35 min · serves 4 · skill 2/3
+**Lunch** · French · 35 min · serves 4 · skill 2/3
 
 > A composed French platter of good tuna, jammy eggs, tender potatoes, crisp green beans, tomatoes and olives over greens, dressed in a sharp mustardy vinaigrette.
 

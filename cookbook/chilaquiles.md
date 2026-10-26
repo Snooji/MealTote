@@ -4,7 +4,7 @@
 
 <sub>Photo: AlejandroLinaresGarcia · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:CafeLaBlanca12.JPG)</sub>
 
-**Breakfast** · Mexican & Tex-Mex · 20 min · serves 4 · skill 1/3
+**Breakfast** · Mexican · 20 min · serves 4 · skill 1/3
 
 > Tortilla chips simmered briefly in tangy salsa verde so they're half crisp, half saucy, then crowned with fried eggs, crema, onion and cotija.
 

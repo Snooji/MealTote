@@ -4,7 +4,7 @@
 
 <sub>Photo: Satyajit Dhawale (Satyajit888) · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Kolkata_Rolls.jpg)</sub>
 
-**Lunch** · Indian · 35 min · serves 4 · skill 2/3
+**Lunch** · North Indian · 35 min · serves 4 · skill 2/3
 
 > Kolkata street food: flaky paratha wrapped around smoky spiced chicken, lime-pickled onions and a bright mint-cilantro yogurt chutney.
 

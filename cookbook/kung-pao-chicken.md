@@ -4,7 +4,7 @@
 
 <sub>Photo: Steven G. Johnson · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Kung-pao-shanghai.jpg)</sub>
 
-**Dinner** · Chinese · 25 min · serves 4 · skill 2/3
+**Dinner** · Sichuan & Hunan · 25 min · serves 4 · skill 2/3
 
 > Juicy chicken, crunchy peanuts and peppers in a tingly, sweet-sour-spicy sauce. Faster than ordering and far less greasy.
 

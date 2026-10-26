@@ -4,7 +4,7 @@
 
 <sub>Photo: ritcharnd moskow from Toshi Station, USA · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Jamaican_patties_and_redstripe.jpg)</sub>
 
-**Lunch** · Caribbean & Latin · 90 min · serves 6 · skill 3/3
+**Lunch** · Jamaican · 90 min · serves 6 · skill 3/3
 
 > Golden half-moon pastries with a buttery, flaky turmeric crust wrapped around spicy, thyme-scented curried beef. A dozen patties that freeze like a dream for grab-and-go lunches.
 

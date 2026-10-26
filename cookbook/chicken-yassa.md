@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · African · 90 min · serves 4 · skill 2/3
+**Dinner** · Nigerian & West African · 90 min · serves 4 · skill 2/3
 
 > Chicken marinated in lemon, mustard and chile, then braised in a mountain of slow-cooked onions until it's sweet, tangy and deeply savory. Senegal's classic over fluffy rice.
 

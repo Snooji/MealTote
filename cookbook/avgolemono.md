@@ -4,7 +4,7 @@
 
 <sub>Photo: robin.norwood · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Avgolemono_soup.jpg)</sub>
 
-**Lunch** · Greek & Mediterranean · 45 min · serves 6 · skill 2/3
+**Lunch** · Greek · 45 min · serves 6 · skill 2/3
 
 > Tender chicken and rice in a broth made silky and tangy with whisked eggs and lots of lemon. It's creamy without any cream.
 

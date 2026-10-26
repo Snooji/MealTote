@@ -4,7 +4,7 @@
 
 <sub>Photo: Gilabrand at English Wikipedia · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Pita_felafel.jpg)</sub>
 
-**Dinner** · Middle Eastern · 40 min · serves 4 · skill 2/3
+**Dinner** · Lebanese & Levantine · 40 min · serves 4 · skill 2/3
 
 > Herby, golden falafel (from canned chickpeas) stuffed into warm pitas with tahini sauce, tomatoes, cucumbers and pickled onions.
 

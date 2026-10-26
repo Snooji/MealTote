@@ -4,7 +4,7 @@
 
 <sub>Photo: Wikiwrimo · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Tortilla_Soup.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 30 min · serves 6 · skill 1/3
+**Dinner** · Mexican · 30 min · serves 6 · skill 1/3
 
 > A smoky, tomato-rich broth loaded with chicken, black beans and corn, piled high with crunchy tortilla strips, avocado and lime.
 

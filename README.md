@@ -12,7 +12,7 @@ Answer a few questions and MealTote builds your week:
 
 - **Who's eating.** Add everyone you cook for, each with their own daily calories. Portions are sized per person, so one recipe feeds a 1,700-calorie day and a 2,700-calorie day.
 - **Your macros, optionally.** Set protein, carbs and fat targets for anyone tracking them. The planner leans toward dishes that fit, and your plan shows how close each day gets.
-- **What you like.** Favorite foods, cuisines from 16 parts of the world, dislikes, allergies, diet, how much time you have and how confident you are in the kitchen.
+- **What you like.** Favorite foods, 50 cuisines grouped by region, dislikes, allergies, diet, how much time you have and how confident you are in the kitchen.
 - **Where you shop.** Pick from 36 US grocery chains, nationwide and regional. MealTote splits one grocery list between them, either cheapest overall or fewest stops.
 
 Then you get:

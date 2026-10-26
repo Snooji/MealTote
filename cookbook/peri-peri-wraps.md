@@ -4,7 +4,7 @@
 
 <sub>Photo: Banej · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Flame-grilled_PERi-PERi_chicken.jpg)</sub>
 
-**Lunch** · African · 30 min · serves 4 · skill 1/3
+**Lunch** · South African · 30 min · serves 4 · skill 1/3
 
 > Fiery, tangy peri-peri chicken with charred edges, rolled up with crisp lettuce, tomato and a cooling garlic yogurt sauce. A Mozambican-Portuguese favorite in a lunchbox-friendly wrap.
 

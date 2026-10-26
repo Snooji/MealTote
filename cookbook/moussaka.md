@@ -4,7 +4,7 @@
 
 <sub>Photo: Robert Kindermann aka RobertK · CC BY-SA 2.5 · [source](https://commons.wikimedia.org/wiki/File:MussakasMeMelitsanesKePatates01.JPG)</sub>
 
-**Dinner** · Greek & Mediterranean · 120 min · serves 6 · skill 3/3
+**Dinner** · Greek · 120 min · serves 6 · skill 3/3
 
 > Silky roasted eggplant layered with a cinnamon-warmed tomato meat sauce under a thick, golden béchamel crown. A weekend project that feeds a crowd and tastes even better the next day.
 

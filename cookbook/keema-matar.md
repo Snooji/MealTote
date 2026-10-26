@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Indian · 35 min · serves 4 · skill 1/3
+**Dinner** · North Indian · 35 min · serves 4 · skill 1/3
 
 > Ground turkey and sweet peas simmered in a spiced onion-tomato masala until rich and fragrant, then scooped up with warm naan. A weeknight Indian classic made leaner.
 

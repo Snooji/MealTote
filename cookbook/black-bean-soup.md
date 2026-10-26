@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Lunch** · Caribbean & Latin · 45 min · serves 6 · skill 1/3
+**Lunch** · Cuban · 45 min · serves 6 · skill 1/3
 
 > Thick, earthy black beans simmered with a garlicky pepper-and-onion sofrito, cumin and oregano, finished with a splash of vinegar and served over rice with cool lime crema.
 

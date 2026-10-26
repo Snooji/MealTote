@@ -4,7 +4,7 @@
 
 <sub>Photo: Jack145945 · CC0 · [source](https://commons.wikimedia.org/wiki/File:Ratatouille_home_cooked.jpg)</sub>
 
-**Dinner** · French & Spanish · 75 min · serves 4 · skill 2/3
+**Dinner** · French · 75 min · serves 4 · skill 2/3
 
 > A Provençal summer stew of eggplant, zucchini, peppers and tomatoes, each browned in olive oil then simmered with garlic and herbs until silky, with creamy white beans and warm bread for scooping.
 

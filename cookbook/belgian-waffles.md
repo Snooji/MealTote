@@ -4,7 +4,7 @@
 
 <sub>Photo: Ralph Daily · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Waffle_with_strawberries_and_confectioner%27s_sugar.jpg)</sub>
 
-**Breakfast** · French & Spanish · 35 min · serves 4 · skill 2/3
+**Breakfast** · American comfort · 35 min · serves 4 · skill 2/3
 
 > Deep-pocketed waffles that are shatteringly crisp outside and airy inside, thanks to whipped egg whites in a buttermilk batter. Piled with fresh blueberries and maple.
 

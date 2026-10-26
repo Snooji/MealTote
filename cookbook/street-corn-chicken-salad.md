@@ -4,7 +4,7 @@
 
 <sub>Photo: Manjeshwari poet mysore · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Roasted_Sweet_Corn_higher_resolution.jpg)</sub>
 
-**Lunch** · Mexican & Tex-Mex · 30 min · serves 4 · skill 1/3
+**Lunch** · Mexican · 30 min · serves 4 · skill 1/3
 
 > Smoky blistered corn and chili-lime chicken tossed with crisp romaine in a creamy lime dressing, then showered with cotija, cilantro and jalapeño.
 

@@ -4,7 +4,7 @@
 
 <sub>Photo: Amadscientist · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Homemade_Jambalaya.JPG)</sub>
 
-**Dinner** · Southern & Cajun · 50 min · serves 6 · skill 2/3
+**Dinner** · Cajun & Creole · 50 min · serves 6 · skill 2/3
 
 > New Orleans in one pot: smoky andouille, the Cajun trinity, tomatoes and rice simmered in spiced broth with shrimp folded in at the end.
 

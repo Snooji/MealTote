@@ -2,7 +2,7 @@
 
 _Illustrated in the app (no free-licensed photo yet)._
 
-**Dinner** · Chinese · 35 min · serves 4 · skill 2/3
+**Dinner** · Chinese & Cantonese · 35 min · serves 4 · skill 2/3
 
 > Takeout-style crispy chicken in a glossy, sweet-savory sesame glaze with steamed broccoli and rice.
 

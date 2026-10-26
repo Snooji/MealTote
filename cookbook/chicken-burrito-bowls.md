@@ -4,7 +4,7 @@
 
 <sub>Photo: 乾隆帝 · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Burrito_Bowl.jpg)</sub>
 
-**Lunch** · Mexican & Tex-Mex · 30 min · serves 4 · skill 1/3
+**Lunch** · Tex-Mex · 30 min · serves 4 · skill 1/3
 
 > Smoky chipotle-marinated chicken over cilantro-lime rice with black beans, corn salsa, cheese and guacamole. Meal-preps perfectly.
 

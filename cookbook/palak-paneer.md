@@ -4,7 +4,7 @@
 
 <sub>Photo: Radhikamprabhu82 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Cottage_cheese_in_spinach_gravy(palak_paneer).jpg)</sub>
 
-**Dinner** · Indian · 35 min · serves 4 · skill 2/3
+**Dinner** · North Indian · 35 min · serves 4 · skill 2/3
 
 > Golden pan-seared paneer cubes in a vivid, creamy spiced spinach sauce. Serve with naan or basmati.
 

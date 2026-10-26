@@ -4,7 +4,7 @@
 
 <sub>Photo: nsaum75¡שיחת!‎ · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Empanada_flor_de_Calabaza.jpg)</sub>
 
-**Lunch** · Mexican & Tex-Mex · 20 min · serves 4 · skill 1/3
+**Lunch** · Tex-Mex · 20 min · serves 4 · skill 1/3
 
 > Golden, crisp-edged quesadillas stuffed with seasoned black beans, sweet corn and plenty of melted cheese.
 

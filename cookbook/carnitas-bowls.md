@@ -4,7 +4,7 @@
 
 <sub>Photo: Mike McCune · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Carnitas.jpg)</sub>
 
-**Dinner** · Mexican & Tex-Mex · 200 min · serves 6 · skill 2/3
+**Dinner** · Mexican · 200 min · serves 6 · skill 2/3
 
 > Pork shoulder slow-roasted with orange and lime until meltingly tender, then crisped under the broiler and piled over cilantro-lime rice with beans, corn, salsa and guac.
 

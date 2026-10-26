@@ -4,7 +4,7 @@
 
 <sub>Photo: Nelson Fernando Sotelo Castro · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Arepa_de_chocolo.jpg)</sub>
 
-**Breakfast** · Caribbean & Latin · 40 min · serves 4 · skill 2/3
+**Breakfast** · Venezuelan · 40 min · serves 4 · skill 2/3
 
 > Crisp-shelled, fluffy corn cakes split open and stuffed with perico, Venezuela's soft eggs with tomato and green onion, plus melty cheese and avocado.
 

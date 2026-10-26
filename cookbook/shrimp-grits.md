@@ -4,7 +4,7 @@
 
 <sub>Photo: Jason Riedy · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Shrimp_and_grits_at_the_Green_Goddess.jpg)</sub>
 
-**Dinner** · Southern & Cajun · 35 min · serves 4 · skill 2/3
+**Dinner** · Southern & soul food · 35 min · serves 4 · skill 2/3
 
 > Creamy cheddar grits under garlicky Cajun shrimp in a buttery bacon pan sauce with a squeeze of lemon. Lowcountry comfort.
 
