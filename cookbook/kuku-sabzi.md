@@ -1,6 +1,6 @@
 # Kuku Sabzi (Persian Herb Frittata) with Yogurt & Walnuts
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Lunch** · Persian · 45 min · serves 4 · skill 2/3
 

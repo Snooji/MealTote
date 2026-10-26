@@ -1,6 +1,6 @@
 # Gambari Iskandarani (Alexandrian Spiced Garlic-Butter Shrimp) with Rice & Tahini
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Egyptian · 35 min · serves 4 · skill 1/3
 

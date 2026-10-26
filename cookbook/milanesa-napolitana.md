@@ -1,6 +1,6 @@
 # Milanesa a la Napolitana with Oven Fries
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Argentinian · 50 min · serves 4 · skill 2/3
 

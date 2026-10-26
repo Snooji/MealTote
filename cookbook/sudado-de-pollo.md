@@ -1,6 +1,6 @@
 # Sudado de Pollo (Colombian Chicken & Potato Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Colombian · 70 min · serves 4 · skill 1/3
 

@@ -1,6 +1,6 @@
 # Nargesi (Persian Saffron Onions, Spinach & Eggs)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Persian · 35 min · serves 4 · skill 1/3
 

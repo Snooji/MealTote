@@ -1,6 +1,6 @@
 # Kuku Paka (Kenyan Coastal Coconut Chicken Curry)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Kenyan & East African · 55 min · serves 4 · skill 2/3
 

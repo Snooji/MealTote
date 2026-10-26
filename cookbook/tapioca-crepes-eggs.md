@@ -1,6 +1,6 @@
 # Brazilian Tapioca Crepes with Scrambled Eggs & Cheese
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Brazilian · 25 min · serves 4 · skill 2/3
 

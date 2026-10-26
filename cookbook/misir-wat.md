@@ -1,6 +1,6 @@
 # Misir Wat (Spiced Red Lentils) with Garlicky Gomen Greens
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Ethiopian · 50 min · serves 4 · skill 1/3
 

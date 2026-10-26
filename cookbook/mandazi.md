@@ -1,6 +1,6 @@
 # Coconut-Cardamom Mandazi with Bananas
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Kenyan & East African · 60 min · serves 6 · skill 2/3
 

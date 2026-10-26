@@ -1,6 +1,6 @@
 # Photo credits
 
-Every recipe photo in `photos/` (352 of them) comes from [Wikimedia Commons](https://commons.wikimedia.org) under a free license. Photos were cropped to 4:3 and resized to 800 × 600. Recipes not listed here use a drawn illustration.
+Every recipe photo in `photos/` (352 of them) comes from [Wikimedia Commons](https://commons.wikimedia.org) under a free license. Photos were cropped to 4:3 and resized to 800 × 600. Recipes not listed here show the MealTote logo (`photos/placeholder.jpg`).
 
 | Recipe | Photo | Author | License |
 | --- | --- | --- | --- |

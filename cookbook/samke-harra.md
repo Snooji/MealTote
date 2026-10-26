@@ -1,6 +1,6 @@
 # Samke Harra (Spicy Baked Cod with Warm Tahini Sauce & Walnuts)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Lebanese & Levantine · 40 min · serves 4 · skill 2/3
 

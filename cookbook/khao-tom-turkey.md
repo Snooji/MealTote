@@ -1,6 +1,6 @@
 # Khao Tom (Thai Rice Soup) with Turkey Meatballs
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Thai · 40 min · serves 4 · skill 1/3
 

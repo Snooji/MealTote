@@ -1,6 +1,6 @@
 # Banana Greek Yogurt Protein Pancakes
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · American comfort · 25 min · serves 4 · skill 1/3
 

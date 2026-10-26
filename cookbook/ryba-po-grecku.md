@@ -1,6 +1,6 @@
 # Ryba po Grecku (Polish Fried Cod under Tomato-Vegetable Sauce)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Polish · 55 min · serves 4 · skill 2/3
 

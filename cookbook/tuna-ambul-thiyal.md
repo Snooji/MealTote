@@ -1,6 +1,6 @@
 # Tuna Ambul Thiyal (Sri Lankan Sour Pepper Fish)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Sri Lankan · 50 min · serves 4 · skill 2/3
 

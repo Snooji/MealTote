@@ -2675,7 +2675,9 @@ function creditFor(r){
   if(S.photos[r.id] || (r.base && S.photos[r.base])) return null;
   return PHOTO_CREDITS[r.id] || (r.base && PHOTO_CREDITS[r.base]) || (r.builder && !PHOTOS[r.base] ? PHOTO_CREDITS["breakfast-sandwiches"] : null) || null;
 }
-function imgFor(r){ return S.photos[r.id] || (r.base&&S.photos[r.base]) || PHOTOS[r.id] || (r.base&&PHOTOS[r.base]) || (r.builder&&PHOTOS["breakfast-sandwiches"]) || artFor(r); }
+// recipes without a photo show the MealTote logo
+const PLACEHOLDER = "photos/placeholder.jpg";
+function imgFor(r){ return S.photos[r.id] || (r.base&&S.photos[r.base]) || PHOTOS[r.id] || (r.base&&PHOTOS[r.base]) || (r.builder&&PHOTOS["breakfast-sandwiches"]) || PLACEHOLDER; }
 const listJoin = a => a.length<2 ? a.join("") : a.slice(0,-1).join(", ")+" and "+a[a.length-1];
 
 /* ------------------------------------------------------------------ questions */
@@ -3265,7 +3267,7 @@ function openRecipe(id, slot){
 }
 
 /* broken photo: fall back to the drawn illustration */
-document.addEventListener("error", e=>{ const t=e.target; if(t && t.tagName==="IMG" && t.dataset.rid && !t.dataset.fb){ t.dataset.fb=1; t.src=artFor(R_BY_ID[t.dataset.rid]); } }, true);
+document.addEventListener("error", e=>{ const t=e.target; if(t && t.tagName==="IMG" && t.dataset.rid && !t.dataset.fb){ t.dataset.fb=1; t.src=t.getAttribute("src")===PLACEHOLDER?artFor(R_BY_ID[t.dataset.rid]):PLACEHOLDER; } }, true);
 
 /* ------------------------------------------------------------------ PDF (jsPDF, US Letter) */
 async function cropTo(url, w, h){

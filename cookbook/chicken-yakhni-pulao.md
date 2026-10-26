@@ -1,6 +1,6 @@
 # Chicken Yakhni Pulao with Cucumber Raita
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Pakistani · 75 min · serves 5 · skill 2/3
 

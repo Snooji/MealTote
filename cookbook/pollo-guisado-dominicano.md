@@ -1,6 +1,6 @@
 # Dominican Pollo Guisado (Stewed Chicken with Peppers & Olives)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Puerto Rican & Dominican · 60 min · serves 4 · skill 1/3
 

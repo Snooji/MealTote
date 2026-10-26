@@ -1,6 +1,6 @@
 # Kerala Beef Fry (Beef Ularthiyathu) with Flaky Paratha
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · South Indian & Goan · 150 min · serves 5 · skill 2/3
 

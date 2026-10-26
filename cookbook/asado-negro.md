@@ -1,6 +1,6 @@
 # Venezuelan Asado Negro (Dark Caramelized Braised Beef)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Venezuelan · 270 min · serves 6 · skill 3/3
 

@@ -1,6 +1,6 @@
 # Mediterranean Chickpea Salad
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Lunch** · Greek · 15 min · serves 4 · skill 1/3
 

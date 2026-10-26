@@ -1,6 +1,6 @@
 # Turkey Ktzitzot (Israeli Meatballs in Spicy Tomato Sauce) with Couscous
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Israeli · 70 min · serves 4 · skill 2/3
 

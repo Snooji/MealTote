@@ -1,6 +1,6 @@
 # Csirkepaprikás (Hungarian Chicken Paprikash)
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Hungarian · 65 min · serves 4 · skill 2/3
 

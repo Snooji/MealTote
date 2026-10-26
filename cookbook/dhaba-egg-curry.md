@@ -1,6 +1,6 @@
 # Dhaba-Style Anda Curry with Peas
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · North Indian · 40 min · serves 4 · skill 1/3
 

@@ -38,7 +38,7 @@ for (const r of RECIPES) {
   const vs = versionsOf(r).filter(v => v.id !== r.id).map(v => v.variantLabel || v.title);
   const md = [
     `# ${r.title}`, "",
-    photos[r.id] ? `![${r.title}](../${photos[r.id]})` + (credits[r.id] ? `\n\n<sub>Photo: ${credits[r.id].author} · ${credits[r.id].license} · [source](${credits[r.id].page})</sub>` : "") : "_Illustrated in the app (no free-licensed photo yet)._", "",
+    photos[r.id] ? `![${r.title}](../${photos[r.id]})` + (credits[r.id] ? `\n\n<sub>Photo: ${credits[r.id].author} · ${credits[r.id].license} · [source](${credits[r.id].page})</sub>` : "") : "_No free-licensed photo yet; the app shows the MealTote logo._", "",
     `**${r.meal}** · ${cuisine(r.id)} · ${r.time} min · serves ${r.serves} · skill ${m.skill}/3`, "",
     `> ${r.blurb}`, "",
     `| Per serving | kcal | Protein | Carbs | Fat | Fiber | Sodium | Cost |`, `| --- | --- | --- | --- | --- | --- | --- | --- |`,

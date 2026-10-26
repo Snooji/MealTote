@@ -1,6 +1,6 @@
 # Jeyuk Bokkeum (Spicy Gochujang Pork) with Lettuce Wraps
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Korean · 35 min · serves 4 · skill 1/3
 

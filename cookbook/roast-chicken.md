@@ -1,6 +1,6 @@
 # Lemon-Herb Roast Chicken & Crispy Potatoes
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · American comfort · 90 min · serves 5 · skill 2/3
 
