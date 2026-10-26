@@ -1,23 +1,31 @@
+# Publishes the site to Firebase Hosting (mealtote.com) on every push to main.
+# Needs the FIREBASE_SERVICE_ACCOUNT_MEALTOTE_DA8A7 repo secret, which `firebase init hosting:github` creates.
+# Until that secret exists, the deploy step is skipped instead of failing.
 name: Deploy to Firebase Hosting
-# Runs on pushes to main once the FIREBASE_SERVICE_ACCOUNT secret is added (see README).
 on:
   push:
     branches: [main]
   workflow_dispatch:
+concurrency:
+  group: deploy
+  cancel-in-progress: true
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      HAS_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MEALTOTE_DA8A7 != '' }}
     steps:
       - uses: actions/checkout@v4
-        if: env.SA != ''
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        if: env.SA != ''
+      - name: Check the app script parses
+        run: node --check src/app.js
+      - name: Deploy
+        if: env.HAS_KEY == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MEALTOTE_DA8A7 }}
           channelId: live
-      - name: Skip (not set up yet)
-        if: env.SA == ''
-        run: echo "Add the FIREBASE_SERVICE_ACCOUNT secret to deploy automatically."
+          projectId: mealtote-da8a7
+      - name: Deploy skipped
+        if: env.HAS_KEY != 'true'
+        run: echo "Add the FIREBASE_SERVICE_ACCOUNT_MEALTOTE_DA8A7 secret (firebase init hosting:github) to turn on automatic deploys."
