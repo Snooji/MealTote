@@ -1,1 +1,77 @@
-(window.BB_MORE=window.BB_MORE||[]).push({pack:"caribbean", items:{}, nutr:{}, recipes:[]});
+(window.BB_MORE=window.BB_MORE||[]).push({pack:"caribbean",
+  items: {
+    tomato_sauce_8oz: ["Tomato sauce (8 oz can)","Pantry","Tomato Sauce (8 oz can)", 0.79, ["Hunt's Tomato Sauce (12 x 8 oz)", 12, 7.99]],
+    queso_fresco: ["Queso fresco","Dairy & Eggs","Queso Fresco (10 oz)", 3.98, null, "tj"],
+    queso_freir: ["Frying cheese (queso de freír)","Dairy & Eggs","Queso de Freír / Frying Cheese (12 oz)", 5.49, null, "tj,aldi,costco"],
+    salt_cod: ["Salt cod (bacalao)","Meat & Seafood","Boneless Salt Cod (16 oz)", 9.99, null, "tj,aldi,costco"],
+    ackee_canned: ["Canned ackee","International","Ackee in Brine (19 oz can)", 12.99, null, "tj,aldi,costco"],
+    pork_belly: ["Pork belly","Meat & Seafood","Pork Belly, skin-on (~1.5 lb)", 8.49, ["Pork Belly (~4 lb)", 2.67, 17.99], "tj"],
+    scotch_bonnet: ["Scotch bonnet or habanero peppers","Produce","Habanero Peppers (3 oz)", 1.49, null]
+  },
+  nutr: {
+    tomato_sauce_8oz: [55, 3, 12, 0, 3, 8, 1000],
+    queso_fresco: [850, 57, 9, 65, 0, 6, 1700],
+    queso_freir: [1120, 75, 9, 88, 0, 3, 3000],
+    salt_cod: [1320, 285, 0, 11, 0, 0, 6000],
+    ackee_canned: [510, 10, 30, 51, 10, 0, 800],
+    pork_belly: [3520, 63, 0, 360, 0, 0, 220],
+    scotch_bonnet: [34, 1, 8, 0, 1, 4, 5]
+  },
+  recipes: [
+
+{id:"fricase-de-pollo",title:"Cuban Fricasé de Pollo with Potatoes & Olives",meal:"Dinner",time:90,serves:5,m:{has:[],cuisine:"cuban",protein:"chicken",skill:2},
+ blurb:"Citrus-marinated chicken braised slowly in a garlicky tomato and wine sauce with potatoes, green olives and capers until it falls apart. The leftovers are even better.",
+ ing:[["chicken_thigh",1.67,"2½ lb boneless chicken thighs, halved"],["oranges",0.1,"1 orange, juiced"],["lime",0.15,"2 limes, juiced"],["garlic",0.1,"6 garlic cloves, minced"],["onion",0.17,"1 large yellow onion, diced"],["bell_peppers",0.33,"1 green bell pepper, diced"],["tomato_sauce_8oz",1,"1 (8 oz) can tomato sauce"],["olives",0.5,"½ cup pimento-stuffed green olives"],["capers",0.3,"3 tbsp capers"],["russet",0.3,"1½ lb russet potatoes, peeled, in 1½-inch chunks"],["jasmine_rice",0.4,"2 cups long-grain white rice"],["parsley",0.25,"chopped parsley, to finish"]],
+ pantry:"3 tbsp olive oil, ½ cup dry white wine, 1 tsp ground cumin, 1 tsp dried oregano, 1 bay leaf, salt, pepper",
+ steps:["Toss the chicken with the orange and lime juice, half the garlic, 1 tsp salt and the cumin. Marinate for at least 30 minutes, or up to overnight in the fridge.","Lift the chicken out of the marinade (keep the juices) and pat dry. Brown it in the oil in a Dutch oven over medium-high heat in two batches, 3 to 4 minutes per side, then set aside.","Lower the heat to medium. Cook the onion and green pepper in the same pot until soft, about 5 minutes, then add the rest of the garlic for 1 minute. Pour in the wine and scrape up the browned bits.","Stir in the tomato sauce, the reserved marinade, 1½ cups water, the olives, capers, oregano and bay leaf. Bring to a boil, then return the chicken and add the potatoes.","Cover and simmer on medium-low for 45 to 50 minutes, stirring now and then and adding a splash of water if it gets thick, until the potatoes are fork-tender and the chicken shreds easily. Cook the rice meanwhile.","Uncover for the last 5 minutes to thicken the sauce, season with salt and pepper, and serve over white rice with parsley."],
+ tip:"Cuban cooks use vino seco, a golden cooking wine. Any dry white wine works, and a tablespoon of sherry adds the same nutty note.",
+ st:[4,3,"Refrigerate in a covered container. Reheat gently on the stove with a splash of water until bubbling."],
+ src:["A Sassy Spoon","https://asassyspoon.com/fricase-de-pollo/"]},
+
+{id:"cuban-shrimp-creole",title:"Cuban Shrimp Creole with Sweet Plantains & White Rice",meal:"Dinner",time:35,serves:4,m:{has:["shellfish"],cuisine:"cuban",protein:"shrimp",skill:1},
+ blurb:"Big shrimp simmered in a tangy tomato, pepper and wine sauce with a little hot sauce, the way Cuban families make it for holidays. Spoon it over white rice with caramelized maduros.",
+ ing:[["shrimp",2,"2 lb large raw shrimp, peeled and deveined"],["onion",0.12,"1 medium onion, chopped"],["bell_peppers",0.67,"1 green and 1 red bell pepper, chopped"],["garlic",0.08,"4 garlic cloves, minced"],["tomato_sauce_8oz",2,"2 (8 oz) cans tomato sauce"],["parsley",0.25,"2 tbsp chopped parsley"],["plantains",1,"2 very ripe (black-spotted) plantains"],["jasmine_rice",0.35,"1¾ cups long-grain white rice"]],
+ pantry:"3 tbsp olive oil, 2 tbsp oil for frying, ⅓ cup dry white wine, 1 tbsp red wine vinegar, 2 tsp Worcestershire sauce, 2 tsp hot sauce, 1 bay leaf, salt, pepper",
+ steps:["Start the rice. Peel the plantains, slice them on a long diagonal ½ inch thick, and fry in the frying oil over medium heat until deep golden and soft, 2 to 3 minutes per side. Drain on paper towels and salt lightly.","Heat the olive oil in a large skillet over medium heat. Cook the onion and peppers until softened, 4 to 5 minutes, then add the garlic for 30 seconds.","Stir in the tomato sauce, wine, vinegar, Worcestershire, hot sauce and bay leaf. Simmer, partly covered, for 10 minutes so the sauce thickens and loses its raw edge.","Season the shrimp with salt and pepper and add them to the sauce. Cover and cook on low until pink and curled, 4 to 6 minutes; don't let them go longer or they turn rubbery.","Remove the bay leaf, stir in the parsley and taste for salt and heat. Serve over the rice with the sweet plantains."],
+ tip:"Traditional versions use a jar of roasted red pimientos; the red bell pepper stands in, but stir in a few chopped jarred pimientos if you have them.",
+ st:[2,0,"Refrigerate the sauce and shrimp separately from the rice. Reheat gently just until hot so the shrimp stay tender."],
+ src:["A Sassy Spoon","https://asassyspoon.com/camarones-enchilados/"]},
+
+{id:"huevos-habaneros",title:"Huevos Habaneros (Havana-Style Eggs Baked in Sofrito)",meal:"Breakfast",time:35,serves:4,m:{has:["egg","dairy","gluten"],cuisine:"cuban",protein:"egg",skill:1},
+ blurb:"Eggs baked on a soft bed of tomato, pepper and garlic sofrito with melted butter, a Cuban Easter brunch favorite. Mild, savory and perfect with crusty toast for dipping.",
+ ing:[["eggs",0.67,"8 large eggs"],["onion",0.08,"1 small onion, finely diced"],["bell_peppers",0.67,"1 green and 1 red bell pepper, finely diced"],["garlic",0.05,"3 garlic cloves, minced"],["tomato_sauce_8oz",1,"1 (8 oz) can tomato sauce"],["butter",0.09,"3 tbsp butter, melted"],["parsley",0.2,"chopped parsley"],["baguette",1,"1 baguette or Cuban bread, sliced and toasted"]],
+ pantry:"2 tbsp olive oil, 2 tbsp dry sherry or white wine, salt, pepper",
+ steps:["Heat the oven to 350°F. Warm the oil in an oven-safe 10-inch skillet over medium heat and cook the onion and peppers until very soft, about 8 minutes. Add the garlic for 1 minute.","Stir in the tomato sauce and sherry, season with salt and pepper, and simmer until thick enough to hold a trail from a spoon, about 5 minutes.","Make 8 wells in the sauce and crack an egg into each. Drizzle the melted butter over the eggs and season the tops with salt and pepper.","Bake until the whites are set but the yolks still jiggle, 10 to 14 minutes. Check at 10 minutes, since the eggs keep cooking in the hot pan.","Scatter with parsley and serve straight from the skillet with the toasted bread."],
+ tip:"You can bake this in four buttered ramekins with two eggs each; they take about 12 minutes and look lovely at the table.",
+ st:[1,0,"Best eaten right away. Leftover sauce keeps 3 days; reheat it in a skillet and crack in fresh eggs."],
+ src:["My Big Fat Cuban Family","https://www.mybigfatcubanfamily.com/2016/07/huevos-habaneros-recipe/"]},
+
+{id:"mangu-tres-golpes",title:"Dominican Mangú con los Tres Golpes",meal:"Breakfast",time:40,serves:4,m:{has:["pork","egg","dairy"],cuisine:"puertorican",protein:"pork",skill:2},
+ blurb:"Silky mashed green plantains under tangy vinegar onions, served with the 'three hits': fried salami, crisp golden frying cheese and fried eggs. It's the classic Dominican breakfast.",
+ ing:[["plantains",1.5,"3 green plantains"],["onion",0.17,"2 medium red onions, thinly sliced"],["salami",0.6,"4 oz salami, sliced ¼ inch thick"],["queso_freir",0.5,"6 oz frying cheese, in ½-inch slices"],["eggs",0.33,"4 large eggs"]],
+ pantry:"2 tbsp butter, 1 tbsp olive oil, 2 tbsp oil for frying, 2 tbsp apple cider vinegar, salt, pepper",
+ steps:["Peel the plantains, cut each into 4 pieces and boil in well-salted water until very tender when pierced, 20 to 25 minutes. Save 1 cup of the cooking water before draining.","Meanwhile, cook the onions in the olive oil over low heat until soft and pink, about 8 minutes. Add the vinegar and a pinch of salt and pepper, and cook 1 minute more.","Mash the hot plantains with the butter, adding the cooking water a splash at a time, until smooth and creamy. Keep it a little looser than you want, since it firms up as it sits.","Heat the frying oil in a nonstick skillet over medium-high. Fry the salami until browned at the edges, 1 to 2 minutes per side, then fry the cheese until crusty and golden, about 1 minute per side.","Lower the heat to medium and fry the eggs in the same pan until the whites are set and the edges are lacy. Serve the mangú topped with onions, with the salami, cheese and eggs alongside."],
+ tip:"Look for Dominican salami (Induveca or Campesino) and queso de freír in Latin markets; Genoa salami and halloumi are good stand-ins.",
+ st:[2,0,"Refrigerate the mangú separately. Reheat it with a splash of water in the microwave, mashing again, and fry the toppings fresh."],
+ src:["Dominican Cooking","https://www.dominicancooking.com/45141/tres-golpes-breakfast"]},
+
+{id:"pollo-guisado-dominicano",title:"Dominican Pollo Guisado (Stewed Chicken with Peppers & Olives)",meal:"Dinner",time:60,serves:4,m:{has:[],cuisine:"puertorican",protein:"chicken",skill:1},
+ blurb:"Lime and oregano chicken browned in caramelized sugar, then stewed with peppers, tomatoes and olives into a light, glossy sauce. It's the main dish on the Dominican lunch plate known as la bandera.",
+ ing:[["chicken_thigh",1.33,"2 lb boneless chicken thighs, in large pieces"],["lime",0.08,"1 lime, juiced"],["onion",0.1,"1 red onion, sliced"],["celery",0.15,"1 celery stalk, chopped"],["garlic",0.07,"4 garlic cloves, mashed"],["bell_peppers",0.67,"2 green bell peppers (or cubanelles), sliced"],["roma_tomatoes",1,"4 plum tomatoes, quartered"],["olives",0.33,"¼ cup pitted green olives"],["tomato_sauce_8oz",1,"1 (8 oz) can tomato sauce"],["cilantro",0.5,"½ bunch cilantro, chopped"],["jasmine_rice",0.35,"1¾ cups long-grain white rice"]],
+ pantry:"2 tbsp oil, 1 tsp sugar, 1 tsp dried oregano, salt, pepper",
+ steps:["Toss the chicken with the lime juice, oregano, onion, celery, garlic and 1 tsp salt. Let it sit for 30 minutes.","Heat the oil and sugar in a heavy pot over medium heat until the sugar turns dark amber, 1 to 2 minutes. Lift the chicken out of the marinade, add it carefully (it spatters) and stir until browned all over, about 5 minutes.","Add 2 tbsp water, cover and cook for 15 minutes, stirring occasionally and adding water by the spoonful if it starts to stick. Start the rice.","Add the reserved onion mixture, the peppers, tomatoes and olives. Cover and cook until the vegetables are soft, about 10 minutes.","Stir in the tomato sauce and ½ cup water and simmer uncovered on low for 10 minutes, until the sauce is lightly thickened and the chicken is very tender. Stir in the cilantro, season and serve over rice."],
+ tip:"Browning in caramelized sugar is the Dominican trick for deep color. Watch it closely: pull the pot off the heat if it goes past mahogany.",
+ st:[4,3,"Refrigerate in a covered container. Reheat on the stove with a splash of water, or microwave until steaming."],
+ src:["Dominican Cooking","https://www.dominicancooking.com/620/pollo-guisado"]},
+
+{id:"pastelon-turkey",title:"Puerto Rican Pastelón with Turkey Picadillo",meal:"Dinner",time:75,serves:6,m:{has:["egg","dairy"],cuisine:"puertorican",protein:"turkey",skill:2},
+ blurb:"Puerto Rico's sweet-and-savory 'lasagna': layers of fried ripe plantains and a sofrito turkey picadillo with olives, set with egg and baked under melted cheese. Classic versions use ground beef.",
+ ing:[["plantains",3,"6 very ripe plantains (mostly black)"],["ground_turkey",1.5,"1½ lb ground turkey"],["onion",0.08,"½ onion"],["bell_peppers",0.33,"1 green bell pepper (or cubanelle)"],["cilantro",0.5,"½ bunch cilantro"],["garlic",0.05,"3 garlic cloves"],["tomato_sauce_8oz",1,"1 (8 oz) can tomato sauce"],["olives",0.33,"¼ cup pimento-stuffed olives, chopped"],["eggs",0.17,"2 large eggs"],["mozzarella",1,"2 cups shredded mozzarella"]],
+ pantry:"½ cup oil for frying, 2 tsp white vinegar, 1 tsp ground cumin, 1 tsp ground coriander, 1 tsp turmeric, 1 tsp garlic powder, 1 tsp dried oregano, salt, pepper",
+ steps:["Heat the oven to 400°F. Pulse the onion, green pepper, cilantro and garlic in a food processor into a coarse sofrito.","Peel the plantains, halve them crosswise and cut each half lengthwise into 3 strips. Fry in batches in the oil in a large nonstick skillet over medium-high heat until deep golden, 3 to 4 minutes per side. Drain on paper towels.","Pour off all but 1 tbsp oil. Brown the turkey over medium-high, breaking it up, about 6 minutes. Add the spices, 1 tsp salt and the vinegar, then the sofrito, and cook until the onion softens, 3 minutes.","Stir in the tomato sauce and olives and simmer until the sauce clings to the meat, about 5 minutes.","Lay half the plantains in a greased 9x13 dish. Whisk the eggs with a pinch of salt and pour over them, spread on the picadillo, top with the rest of the plantains and scatter with the cheese.","Bake until the cheese is bubbling and browned in spots, 20 to 25 minutes. Rest 10 minutes before cutting into squares."],
+ tip:"The plantains must be very ripe and sweet; buy them yellow a few days ahead and let them blacken in a paper bag. Goya sazón can replace the spice mix (use 2 packets).",
+ st:[4,3,"Cover the dish or portion it out. Reheat covered in a 350°F oven for 20 minutes, or microwave single slices."],
+ src:["America's Test Kitchen","https://www.americastestkitchen.com/recipes/14127-pastelon-puerto-rican-sweet-plantain-and-picadillo-casserole"]},
+
+  ]
+});

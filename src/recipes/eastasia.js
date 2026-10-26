@@ -8,7 +8,10 @@
     wonton_wrappers: ["Wonton wrappers","Produce","Wonton Wrappers (12 oz, ~48 ct)", 2.99, null, "costco"],
     pork_belly: ["Pork belly","Meat & Seafood","Skinless Pork Belly (~1.5 lb)", 8.99, ["Kirkland Pork Belly (~4 lb)", 2.67, 18.99]],
     fried_shallots: ["Fried shallots","International","Crispy Fried Shallots (8 oz jar)", 4.99, null, "tj,aldi,costco"],
-    chinese_wheat_noodles: ["Chinese wheat noodles","International","Dried Chinese Wheat Noodles (16 oz)", 3.29, null, "tj,aldi,costco"]
+    chinese_wheat_noodles: ["Chinese wheat noodles","International","Dried Chinese Wheat Noodles (16 oz)", 3.29, null, "tj,aldi,costco"],
+    soy_milk_unsweet: ["Unsweetened soy milk","Dairy & Eggs","Unsweetened Soy Milk (half gallon)", 3.49, null],
+    rice_cakes_tteok: ["Korean rice cakes (tteok)","International","Tteokbokki Rice Cakes (1.5 lb)", 5.49, null, "aldi,costco"],
+    soft_tofu_sundubu: ["Extra-soft tofu (sundubu)","Produce","Extra-Soft Tofu Tube for Sundubu (11 oz)", 2.29, null, "aldi,costco"]
   },
   nutr: {
     doubanjiang: [270, 12, 30, 12, 10, 5, 13600],
@@ -19,7 +22,10 @@
     wonton_wrappers: [990, 33, 197, 5, 6, 0, 1900],
     pork_belly: [3520, 63, 0, 360, 0, 0, 220],
     fried_shallots: [1250, 8, 95, 92, 7, 15, 120],
-    chinese_wheat_noodles: [1620, 54, 330, 7, 12, 9, 1800]
+    chinese_wheat_noodles: [1620, 54, 330, 7, 12, 9, 1800],
+    soy_milk_unsweet: [640, 56, 32, 32, 8, 8, 680],
+    rice_cakes_tteok: [1560, 27, 350, 3, 5, 0, 1000],
+    soft_tofu_sundubu: [150, 14, 5, 8, 1, 1, 25]
   },
   recipes: [
 
