@@ -2144,8 +2144,9 @@ const MEALS = [["breakfast","Breakfast"],["lunch","Lunch"],["dinner","Dinner"]];
 const DEFAULT_STATE = { profile:null, plan:null, stores:["aldi","walmart"], mode:"cheap", overrides:{}, checked:{}, photos:{} };
 let S = structuredClone(DEFAULT_STATE);
 let saveTimer = null;
-function lsGet(){ try{ return JSON.parse(localStorage.getItem("bundle-and-bite-v1")||"null"); }catch(e){ return null; } }
-function lsSet(v){ try{ localStorage.setItem("bundle-and-bite-v1", JSON.stringify(v)); }catch(e){} }
+// plans saved under the app's old name (Bundle & Bite) carry over
+function lsGet(){ try{ return JSON.parse(localStorage.getItem("mealtote-v1")||localStorage.getItem("bundle-and-bite-v1")||"null"); }catch(e){ return null; } }
+function lsSet(v){ try{ localStorage.setItem("mealtote-v1", JSON.stringify(v)); }catch(e){} }
 function normalize(v){
   const s = Object.assign(structuredClone(DEFAULT_STATE), v||{});
   s.stores = (s.stores||[]).filter(x=>STORES[x]); if(!s.stores.length) s.stores=["aldi","walmart"];
@@ -3147,7 +3148,7 @@ async function buildPdf(ids, opts={}){
   const date = new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
   let page=0;
   const newPage=()=>{ if(page) doc.addPage(); page++; doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...muted);
-    doc.text("Bundle & Bite"+(S.profile?" · "+pdfText(answerText(QUESTIONS[0],S.profile)):"")+" · "+date, M, PH-24); doc.text(String(page), PW-M, PH-24, {align:"right"}); };
+    doc.text("MealTote"+(S.profile?" · "+pdfText(answerText(QUESTIONS[0],S.profile)):"")+" · "+date, M, PH-24); doc.text(String(page), PW-M, PH-24, {align:"right"}); };
   const T=(s,x,y,o)=>doc.text(pdfText(s),x,y,o);
   const wrap=(s,w)=>doc.splitTextToSize(pdfText(s),w);
   const H = S.profile ? household() : 1;
@@ -3160,7 +3161,7 @@ async function buildPdf(ids, opts={}){
   const cw=(CW-8)/2, ch=cw*0.66;
   for(let i=0;i<coverIds.length;i++) doc.addImage(await pdfImage(R_BY_ID[coverIds[i]],800,528),"JPEG",M+(i%2)*(cw+8),M+Math.floor(i/2)*(ch+8),cw,ch);
   let y=M+2*(ch+8)+44;
-  doc.setTextColor(...green); doc.setFont("times","bold"); doc.setFontSize(40); T(planMode?"Your Meal Plan":"The Bundle & Bite Cookbook", M, y);
+  doc.setTextColor(...green); doc.setFont("times","bold"); doc.setFontSize(40); T(planMode?"Your Meal Plan":"The MealTote Cookbook", M, y);
   y+=26; doc.setFont("times","italic"); doc.setFontSize(15); doc.setTextColor(...ink);
   T(planMode ? `${planDays().length} days for ${answerText(QUESTIONS[0],S.profile)}, shopped at ${listJoin(S.stores.map(s=>STORES[s].name))}` : `${ids.length} recipes with photos, nutrition and storage notes`, M, y);
   y+=16; doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...muted); T("Prepared "+date, M, y);
@@ -3385,7 +3386,7 @@ async function makePdf(){
   btn.disabled=true; st.textContent="Building your PDF ("+ids.length+" recipes)…";
   try{
     const doc = await buildPdf(ids, {plan: scope==="plan", list: $("#incList").checked});
-    const blob = doc.output("blob"), name = scope==="plan" ? "bundle-and-bite-meal-plan.pdf" : "bundle-and-bite-all-recipes.pdf";
+    const blob = doc.output("blob"), name = scope==="plan" ? "mealtote-meal-plan.pdf" : "mealtote-all-recipes.pdf";
     const u=URL.createObjectURL(blob), a=el("a",{href:u,download:name}); document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),60000); st.textContent="PDF ready: "+name+".";
   }catch(err){ st.textContent="Couldn't build the PDF: "+(err&&err.message||err); }
   btn.disabled=false;
@@ -3459,7 +3460,7 @@ async function openProfile(){
       el("div",{class:"actions"},
         el("button",{class:"btn small",onclick:async()=>{ await cloud.signOut(); toast("Signed out. Your plan stays in this browser."); boot(); }},"Sign out"),
         el("button",{class:"btn small danger",id:"delData",onclick:delData},"Delete my account data")),
-      el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from Bundle & Bite. Your Google account isn't affected."))));
+      el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected."))));
   async function loadPlans(){
     try{ const list=await cloud.listPlans(); plansBox.innerHTML="";
       if(!list.length){ plansBox.append(el("p",{class:"note"},"No saved plans yet.")); return; }

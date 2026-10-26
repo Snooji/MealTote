@@ -1,6 +1,6 @@
-# Bundle & Bite
+# MealTote
 
-Meal plans that shop across more than one store. Answer a few questions and Bundle & Bite builds a week of breakfasts, lunches and dinners. The questions cover who's eating, each person's calories and (optionally) their own macros, favorite foods, cuisines, time, budget, and which stores you use. It then splits one grocery list across the stores you pick, by cheapest price or fewest stops.
+Meal plans that shop across more than one store. Answer a few questions and MealTote builds a week of breakfasts, lunches and dinners. The questions cover who's eating, each person's calories and (optionally) their own macros, favorite foods, cuisines, time, budget, and which stores you use. It then splits one grocery list across the stores you pick, by cheapest price or fewest stops.
 
 **Stores:** 36 US grocery chains, nationwide and regional, plus their sister banners. Walmart, Target, Costco, Sam's Club, BJ's, Aldi, Lidl, Trader Joe's, Whole Foods, Amazon Fresh, Kroger (and Ralphs, Fred Meyer, King Soopers, Harris Teeter…), Safeway/Albertsons (and Vons, Jewel-Osco, Acme, Shaw's…), Publix, H-E-B, Meijer, Hy-Vee, Wegmans, ShopRite, Stop & Shop, Giant, Giant Eagle, Food Lion, Market Basket, WinCo, Sprouts, Winn-Dixie, Smart & Final and more. Pick your region to see the chains near you. Trader Joe's, Costco, Aldi and Walmart have hand-entered typical prices. The others are estimated from each chain's usual price level, so treat them as ballpark figures.
 
@@ -18,15 +18,15 @@ It's a static site: plain HTML, CSS and JavaScript with no build step and no ser
 
 You don't need to run anything on your PC. Everything below happens in a browser. On Firebase's free **Spark** plan, which doesn't need a credit card, it costs **$0**.
 
-| Piece | Free allowance (Spark plan, check [firebase.google.com/pricing](https://firebase.google.com/pricing)) | What Bundle & Bite uses |
+| Piece | Free allowance (Spark plan, check [firebase.google.com/pricing](https://firebase.google.com/pricing)) | What MealTote uses |
 | --- | --- | --- |
 | Hosting | 10 GB stored, about 360 MB downloaded per day | About 17 MB of site and photos; each visit loads only the photos on screen |
 | Google sign-in | Free | Signing in |
 | Firestore database | 1 GB stored, 50,000 reads and 20,000 writes per day | Each person's answers, plan, saved weeks and their own photos (about 100 KB each) |
 
-Firebase Cloud Storage now needs a billing account, so Bundle & Bite deliberately doesn't use it. People's own photos are shrunk and stored in Firestore instead.
+Firebase Cloud Storage now needs a billing account, so MealTote deliberately doesn't use it. People's own photos are shrunk and stored in Firestore instead.
 
-**A domain is optional.** Your site gets a free address such as `https://bundle-and-bite.web.app` with HTTPS included. If you'd like your own name (like `bundleandbite.com`), buy one from any registrar for about $10–15 a year and connect it in step 6.
+**The domain is the only cost.** mealtote.com is registered at Cloudflare; step 6 connects it. Every Firebase project also gets a free address like `https://YOUR_PROJECT.web.app`, with HTTPS included.
 
 ### 1. Create the Firebase project (5 minutes, all in the browser)
 
@@ -44,8 +44,8 @@ Open [`src/firebase-config.js`](src/firebase-config.js) on GitHub, click the pen
 Open [shell.cloud.google.com](https://shell.cloud.google.com), signed in with the same Google account, and run:
 
 ```sh
-git clone https://github.com/Snooji/bundle-and-bite.git
-cd bundle-and-bite
+git clone https://github.com/Snooji/mealtote.git
+cd mealtote
 npm install -g firebase-tools      # skip if `firebase --version` already works
 firebase login --no-localhost      # follow the link, paste the code back
 firebase deploy                    # uploads the site and the security rules
@@ -56,7 +56,7 @@ It prints your live address, such as `https://YOUR_PROJECT.web.app`. Open it, si
 ### 4. Optional: deploy automatically on every push
 
 1. In the same Cloud Shell folder, run `firebase init hosting:github`.
-2. Sign in to GitHub when asked and enter `Snooji/bundle-and-bite`. Firebase adds a secret to the repo named `FIREBASE_SERVICE_ACCOUNT_<YOUR_PROJECT_ID>`, in capitals with dashes turned into underscores, and prints its exact name.
+2. Sign in to GitHub when asked and enter `Snooji/mealtote`. Firebase adds a secret to the repo named `FIREBASE_SERVICE_ACCOUNT_<YOUR_PROJECT_ID>`, in capitals with dashes turned into underscores, and prints its exact name.
 3. Say **No** to the build-script and automatic-deployment questions, because this repo already has its own workflow. Any workflow files it writes inside Cloud Shell can be ignored.
 4. On GitHub, edit [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and replace both `secrets.FIREBASE_SERVICE_ACCOUNT` with `secrets.` plus that name.
 
@@ -66,16 +66,24 @@ From then on, every push to `main` publishes the site. When `firestore.rules` ch
 
 Anyone with a Google account can sign in and gets their own private space. Nobody can see anyone else's plans or photos.
 
-### 6. Optional: use your own domain
+### 6. Use mealtote.com (Cloudflare)
 
-1. Buy the domain from any registrar (Cloudflare, Porkbun, Namecheap and so on).
-2. In Firebase, go to **Hosting → Add custom domain**, enter it, and add the DNS records it shows at your registrar. HTTPS is set up for you; it can take up to a day.
-3. In **Authentication → Settings → Authorized domains**, add the domain so Google sign-in works there.
-4. Set `authDomain` in `src/firebase-config.js` to your domain, so the Google sign-in window shows your name and works in Safari, then commit.
+MealTote's domain, **mealtote.com**, is registered at Cloudflare. Firebase Hosting serves the site, and Cloudflare only handles DNS.
+
+1. In Firebase, go to **Hosting → Add custom domain** and enter `mealtote.com`. Then add `www.mealtote.com` and choose **Redirect to mealtote.com**.
+2. Firebase shows the DNS records it needs: a TXT record to prove ownership, then A records. In Cloudflare, open **mealtote.com → DNS → Records** and add each one exactly as shown. Delete any parking A or AAAA records Cloudflare made for the bare domain.
+3. **Set every one of those records to "DNS only" (grey cloud), not "Proxied" (orange).** Firebase can't issue the HTTPS certificate through Cloudflare's proxy. Verification and the certificate can take from a few minutes to a day; Firebase shows "Connected" when it's done.
+4. In Firebase, go to **Authentication → Settings → Authorized domains** and add `mealtote.com` and `www.mealtote.com`.
+5. Make the Google sign-in window say mealtote.com, which also keeps sign-in working in Safari:
+   - In `src/firebase-config.js`, set `authDomain: "mealtote.com"`.
+   - In the [Google Cloud console](https://console.cloud.google.com/apis/credentials) for the same project, open **APIs & Services → Credentials → Web client (auto created by Google Service)**. Under **Authorized redirect URIs**, add `https://mealtote.com/__/auth/handler` and save.
+   - Commit and deploy.
+
+The free `https://YOUR_PROJECT.web.app` address keeps working too.
 
 ### If more people show up than the free tier covers
 
-Hosting downloads are the first limit you'd hit, at around a few hundred visits a day. Firebase then pauses hosting until the next day, and nothing gets billed on Spark. To go further for free, host the files on [Cloudflare Pages](https://pages.cloudflare.com), which has no download cap, and keep Firebase for sign-in and data. Add the Pages domain to Firebase's authorized domains.
+Hosting downloads are the first limit you'd hit, at around a few hundred visits a day. Firebase then pauses hosting until the next day, and nothing gets billed on Spark. To go further for free, host the files on [Cloudflare Pages](https://pages.cloudflare.com), which has no download cap and sits next to your domain in the same Cloudflare account, and keep Firebase for sign-in and data. Point mealtote.com at Pages instead of Firebase Hosting, add it to Firebase's authorized domains, and set `authDomain` back to `YOUR_PROJECT.firebaseapp.com`, because the `/__/auth/handler` page only exists on Firebase Hosting.
 
 ## Run it on your own computer (optional, for development)
 
