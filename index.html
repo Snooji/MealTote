@@ -8,15 +8,18 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" id="tf-market" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="src/app.css">
+<link rel="stylesheet" href="src/themes.css">
+<meta name="theme-color" content="#FFFFFF">
+<script src="src/theme.js"></script>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <div class="bar">
       <div class="brand"><h1>Meal<b>Tote</b></h1><span>meal plans across your stores</span></div>
-      <div class="actions" id="hdrBtns"><div id="account"></div><button class="btn small" id="resetBtn" hidden>Start over</button><button class="btn small" id="editBtn" hidden>Edit my answers</button></div>
+      <div class="actions" id="hdrBtns"><div id="account"></div><a class="btn small support" href="support.html" aria-label="Support MealTote">♥ Support</a><button class="btn small" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small" id="resetBtn" hidden>Start over</button><button class="btn small" id="editBtn" hidden>Edit my answers</button></div>
     </div>
     <nav class="tabs" role="tablist" id="tabs" hidden>
       <button role="tab" data-tab="plan" aria-selected="true">My plan</button>
@@ -29,6 +32,11 @@
 </header>
 
 <main class="wrap" id="app"></main>
+
+<footer class="site wrap">
+  <p><b>MealTote is free</b>, with no ads and no paywall. If it saves you time or money, you can <a href="support.html">chip in to keep it running</a>.</p>
+  <p class="note"><a href="support.html">Support</a> · <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Feedback &amp; ideas</a> · <a href="https://github.com/Snooji/mealtote/blob/main/CREDITS.md" target="_blank" rel="noopener">Photo credits</a></p>
+</footer>
 
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle">
   <div class="panel" id="panel"></div>

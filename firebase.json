@@ -10,7 +10,10 @@
       "LICENSE",
       "firestore.rules",
       "tools/**",
-      "cookbook/**"
+      "cookbook/**",
+      "SETUP.md",
+      "bundle-and-bite.zip",
+      "*.zip"
     ],
     "headers": [
       {
@@ -31,7 +34,8 @@
           }
         ]
       }
-    ]
+    ],
+    "cleanUrls": true
   },
   "firestore": {
     "rules": "firestore.rules"

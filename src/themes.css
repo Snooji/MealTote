@@ -1,0 +1,313 @@
+/* ==========================================================================================================
+   MealTote themes: a mode (Auto / Light / Dark), a style, and an accent colour, picked independently.
+   src/theme.js sets <html data-mode data-style data-accent> and loads each style's Google fonts on demand.
+   Every style has a light and a dark version, its own type, corners and a CSS-only backdrop (no images).
+   Accents come last in this file so a chosen accent overrides the style's own; data-accent="style" keeps it.
+   Market (the default) is the base palette in app.css.
+   ========================================================================================================== */
+
+/* ---------- shared touches ---------- */
+:root[data-style] header.top, :root[data-style] .sheet .panel { background-color: var(--surface); }
+:root { --head-weight: 400; --head-case: none; --head-track: normal; }
+h1, h2, h3 { font-weight: var(--head-weight); text-transform: var(--head-case); letter-spacing: var(--head-track); }
+.brand h1 b { font-weight: var(--head-weight); }
+
+/* ---------- MARKET (default) preview swatch; the page itself uses app.css ---------- */
+[data-pv="market"] { --bg:#F3F6F0; --surface:#FFFFFF; --sunk:#E9EEE5; --ink:#1B2A21; --muted:#5B6A60; --line:#D9E1D4; --accent:#2E6A4E; --accent-ink:#FFFFFF;
+  --f-display:"Young Serif", Georgia, serif; --head-weight:400; --bg-art:none; }
+:root[data-mode="dark"] [data-pv="market"] { --bg:#111713; --surface:#18201B; --sunk:#202A23; --ink:#E6EDE6; --muted:#9BAAA0; --line:#2B372F; --accent:#74C49A; --accent-ink:#0E1A13; }
+
+/* ---------- FARMHOUSE: linen, gingham trim, soft serif ---------- */
+:root[data-style="farmhouse"], [data-pv="farmhouse"] {
+  --bg:#F6F0E4; --surface:#FFFCF6; --sunk:#EFE6D4; --ink:#2C2418; --muted:#6B5D48; --line:#E2D6BF;
+  --accent:#8C4A2F; --accent-ink:#FFFFFF; --yolk:#E8A93B; --warn:#A33A2A;
+  --f-display:"Fraunces", Georgia, serif; --f-body:"Nunito Sans", system-ui, sans-serif; --head-weight:600;
+  --r-card:16px; --r-btn:10px;
+  --bg-art: repeating-linear-gradient(0deg, rgb(140 74 47 / .045) 0 14px, transparent 14px 28px), repeating-linear-gradient(90deg, rgb(140 74 47 / .045) 0 14px, transparent 14px 28px);
+}
+:root[data-mode="dark"][data-style="farmhouse"], :root[data-mode="dark"] [data-pv="farmhouse"] {
+  --bg:#1C1712; --surface:#26201A; --sunk:#2F2820; --ink:#F1E8D8; --muted:#BFAF96; --line:#3B3228;
+  --accent:#E3A27E; --accent-ink:#2A140A; --yolk:#F0BE5E; --warn:#F08F7E;
+  --bg-art: repeating-linear-gradient(0deg, rgb(227 162 126 / .04) 0 14px, transparent 14px 28px), repeating-linear-gradient(90deg, rgb(227 162 126 / .04) 0 14px, transparent 14px 28px);
+}
+:root[data-style="farmhouse"] header.top { border-bottom: 3px double var(--line); }
+
+/* ---------- DINER: chrome, checkerboard floor, neon script ---------- */
+:root[data-style="diner"], [data-pv="diner"] {
+  --bg:#FFF8EE; --surface:#FFFFFF; --sunk:#FCEBD7; --ink:#1E1B22; --muted:#5E5566; --line:#EED9C0;
+  --accent:#C8102E; --accent-ink:#FFFFFF; --yolk:#FFC845; --warn:#B3261E;
+  --f-display:"Righteous", "Arial Rounded MT Bold", sans-serif; --f-body:"Rubik", system-ui, sans-serif;
+  --r-card:18px; --r-btn:999px; --head-track:.01em;
+  --bg-art: conic-gradient(rgb(30 27 34 / .05) 25%, transparent 0 50%, rgb(30 27 34 / .05) 0 75%, transparent 0) 0 0 / 36px 36px;
+}
+:root[data-mode="dark"][data-style="diner"], :root[data-mode="dark"] [data-pv="diner"] {
+  --bg:#131017; --surface:#1D1922; --sunk:#26212D; --ink:#F6EEF7; --muted:#B7ABBF; --line:#352E3E;
+  --accent:#FF5C7A; --accent-ink:#22040C; --yolk:#FFD166; --warn:#FF8A80;
+  --bg-art: conic-gradient(rgb(255 255 255 / .035) 25%, transparent 0 50%, rgb(255 255 255 / .035) 0 75%, transparent 0) 0 0 / 36px 36px;
+}
+:root[data-style="diner"] header.top { border-bottom: 4px solid var(--accent); }
+:root[data-style="diner"] .btn.primary { box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, #000); }
+:root[data-mode="dark"][data-style="diner"] .brand h1 b { text-shadow: 0 0 12px color-mix(in srgb, var(--accent) 70%, transparent); }
+
+/* ---------- BISTRO: chalkboard menu by night, printed carte by day ---------- */
+:root[data-style="bistro"], [data-pv="bistro"] {
+  --bg:#F4F1EA; --surface:#FFFFFF; --sunk:#ECE7DC; --ink:#1D1F1E; --muted:#5A5E5B; --line:#DAD4C7;
+  --accent:#7A1E2C; --accent-ink:#FFFFFF; --yolk:#C99A2E; --warn:#9A2A1E;
+  --f-display:"Playfair Display", Georgia, serif; --f-body:"Lato", system-ui, sans-serif; --head-weight:600;
+  --r-card:4px; --r-btn:4px;
+  --bg-art: linear-gradient(90deg, transparent 49.6%, rgb(29 31 30 / .05) 50%, transparent 50.4%) 0 0 / 100% 100%;
+}
+:root[data-mode="dark"][data-style="bistro"], :root[data-mode="dark"] [data-pv="bistro"] {
+  --bg:#1B201E; --surface:#232926; --sunk:#2B322F; --ink:#EDEBE4; --muted:#ABB0AB; --line:#38403C;
+  --accent:#E8C77A; --accent-ink:#1E1A0C; --yolk:#E8C77A; --warn:#F09A88;
+  --bg-art: radial-gradient(1200px 600px at 30% 0%, rgb(255 255 255 / .05), transparent 60%), radial-gradient(rgb(255 255 255 / .025) 1px, transparent 1.5px) 0 0 / 5px 5px;
+}
+:root[data-style="bistro"] h1, :root[data-style="bistro"] h2 { font-style: italic; }
+:root[data-style="bistro"] .eyebrow { letter-spacing: .18em; }
+
+/* ---------- BENTO: washi paper, sumi ink, a red hanko stamp ---------- */
+:root[data-style="bento"], [data-pv="bento"] {
+  --bg:#F7F4EC; --surface:#FFFEFA; --sunk:#EEE9DD; --ink:#1A1A1A; --muted:#5C5A55; --line:#E0DACB;
+  --accent:#B7282E; --accent-ink:#FFFFFF; --yolk:#D9A520; --warn:#B7282E;
+  --f-display:"Shippori Mincho", "Hiragino Mincho ProN", serif; --f-body:"Zen Kaku Gothic New", system-ui, sans-serif; --head-weight:600;
+  --r-card:2px; --r-btn:2px;
+  --bg-art: repeating-linear-gradient(115deg, rgb(26 26 26 / .018) 0 2px, transparent 2px 9px);
+}
+:root[data-mode="dark"][data-style="bento"], :root[data-mode="dark"] [data-pv="bento"] {
+  --bg:#121212; --surface:#1B1B1A; --sunk:#242422; --ink:#EEEAE0; --muted:#A8A399; --line:#33322F;
+  --accent:#F06A6A; --accent-ink:#2A0606; --yolk:#E9BE4F; --warn:#F06A6A;
+  --bg-art: repeating-linear-gradient(115deg, rgb(255 255 255 / .02) 0 2px, transparent 2px 9px);
+}
+:root[data-style="bento"] .brand h1 b { background: var(--accent); color: var(--accent-ink); padding: 0 .18em; margin-left: .08em; }
+
+/* ---------- TRATTORIA: terracotta, olive oil, red-check tablecloth ---------- */
+:root[data-style="trattoria"], [data-pv="trattoria"] {
+  --bg:#FBF3EA; --surface:#FFFBF6; --sunk:#F3E5D6; --ink:#2B1D16; --muted:#6E5546; --line:#EAD7C4;
+  --accent:#A63D2A; --accent-ink:#FFFFFF; --yolk:#D9A441; --warn:#A63D2A;
+  --f-display:"Cormorant Garamond", Georgia, serif; --f-body:"Source Sans 3", system-ui, sans-serif; --head-weight:700;
+  --r-card:10px; --r-btn:8px;
+  --bg-art: linear-gradient(rgb(166 61 42 / .06) 50%, transparent 0) 0 0 / 40px 40px, linear-gradient(90deg, rgb(166 61 42 / .06) 50%, transparent 0) 0 0 / 40px 40px;
+}
+:root[data-mode="dark"][data-style="trattoria"], :root[data-mode="dark"] [data-pv="trattoria"] {
+  --bg:#1D1512; --surface:#271C18; --sunk:#30231E; --ink:#F5E9DF; --muted:#C2A897; --line:#3E2E27;
+  --accent:#F08A6E; --accent-ink:#2A0C05; --yolk:#E9BE5E; --warn:#F08A6E;
+  --bg-art: linear-gradient(rgb(240 138 110 / .045) 50%, transparent 0) 0 0 / 40px 40px, linear-gradient(90deg, rgb(240 138 110 / .045) 50%, transparent 0) 0 0 / 40px 40px;
+}
+
+/* ---------- TAQUERÍA: papel picado brights, marigold and agave ---------- */
+:root[data-style="taqueria"], [data-pv="taqueria"] {
+  --bg:#FFF6EC; --surface:#FFFFFF; --sunk:#FFE9D2; --ink:#231A2B; --muted:#625470; --line:#F3D9BF;
+  --accent:#C2185B; --accent-ink:#FFFFFF; --yolk:#F5A623; --warn:#C62828;
+  --f-display:"Bowlby One", Impact, sans-serif; --f-body:"Rubik", system-ui, sans-serif;
+  --r-card:14px; --r-btn:999px;
+  --bg-art: linear-gradient(135deg, rgb(194 24 91 / .07) 25%, transparent 25%) 0 0 / 28px 14px, linear-gradient(225deg, rgb(0 150 136 / .07) 25%, transparent 25%) 14px 0 / 28px 14px;
+}
+:root[data-mode="dark"][data-style="taqueria"], :root[data-mode="dark"] [data-pv="taqueria"] {
+  --bg:#170F1C; --surface:#211727; --sunk:#2B1F33; --ink:#FBEFF7; --muted:#C3AECF; --line:#3A2B44;
+  --accent:#FF6FA8; --accent-ink:#2B0517; --yolk:#FFC24D; --warn:#FF8A80;
+  --bg-art: linear-gradient(135deg, rgb(255 111 168 / .07) 25%, transparent 25%) 0 0 / 28px 14px, linear-gradient(225deg, rgb(77 208 196 / .07) 25%, transparent 25%) 14px 0 / 28px 14px;
+}
+:root[data-style="taqueria"] header.top { border-image: repeating-linear-gradient(90deg, #C2185B 0 24px, #F5A623 24px 48px, #00968A 48px 72px, #6A3FB5 72px 96px) 0 0 4 0 / 0 0 4px 0; border-bottom-style: solid; }
+:root[data-style="taqueria"] h1, :root[data-style="taqueria"] h2 { letter-spacing: .01em; }
+
+/* ---------- SPICE MARKET: saffron, cardamom and tilework ---------- */
+:root[data-style="spice"], [data-pv="spice"] {
+  --bg:#FBF4E6; --surface:#FFFCF5; --sunk:#F3E6CB; --ink:#2A1A10; --muted:#6E5640; --line:#EAD8B6;
+  --accent:#9C4A00; --accent-ink:#FFFFFF; --yolk:#E2A400; --warn:#A8321C;
+  --f-display:"Marcellus", Georgia, serif; --f-body:"Mulish", system-ui, sans-serif;
+  --r-card:20px 4px 20px 4px; --r-btn:999px;
+  --bg-art: radial-gradient(circle at 50% 50%, rgb(156 74 0 / .07) 0 6px, transparent 7px) 0 0 / 32px 32px, radial-gradient(circle at 50% 50%, rgb(0 105 92 / .05) 0 3px, transparent 4px) 16px 16px / 32px 32px;
+}
+:root[data-mode="dark"][data-style="spice"], :root[data-mode="dark"] [data-pv="spice"] {
+  --bg:#1A120C; --surface:#241912; --sunk:#2E2118; --ink:#F7EAD6; --muted:#C9AE8E; --line:#3D2D21;
+  --accent:#F2A93B; --accent-ink:#2A1600; --yolk:#F2C14E; --warn:#F28B74;
+  --bg-art: radial-gradient(circle at 50% 50%, rgb(242 169 59 / .07) 0 6px, transparent 7px) 0 0 / 32px 32px, radial-gradient(circle at 50% 50%, rgb(77 182 172 / .06) 0 3px, transparent 4px) 16px 16px / 32px 32px;
+}
+
+/* ---------- CITRUS: lemon, lime and grapefruit, bright and round ---------- */
+:root[data-style="citrus"], [data-pv="citrus"] {
+  --bg:#FFFDF0; --surface:#FFFFFF; --sunk:#FFF6CC; --ink:#1D2416; --muted:#55604A; --line:#F0E9B8;
+  --accent:#4D7C0F; --accent-ink:#FFFFFF; --yolk:#FACC15; --warn:#C2410C;
+  --f-display:"Baloo 2", "Arial Rounded MT Bold", sans-serif; --f-body:"Nunito", system-ui, sans-serif; --head-weight:700;
+  --r-card:22px; --r-btn:999px;
+  --bg-art: radial-gradient(circle at 15% 10%, rgb(250 204 21 / .18), transparent 30%), radial-gradient(circle at 90% 30%, rgb(132 204 22 / .14), transparent 30%), radial-gradient(circle at 60% 95%, rgb(251 113 133 / .12), transparent 30%);
+}
+:root[data-mode="dark"][data-style="citrus"], :root[data-mode="dark"] [data-pv="citrus"] {
+  --bg:#12160D; --surface:#1B2114; --sunk:#242B1A; --ink:#F3F7E6; --muted:#B6C2A0; --line:#323B25;
+  --accent:#BEF264; --accent-ink:#152005; --yolk:#FDE047; --warn:#FDBA74;
+  --bg-art: radial-gradient(circle at 15% 10%, rgb(253 224 71 / .08), transparent 30%), radial-gradient(circle at 90% 30%, rgb(190 242 100 / .07), transparent 30%), radial-gradient(circle at 60% 95%, rgb(251 113 133 / .06), transparent 30%);
+}
+
+/* ---------- KITCHEN GARDEN: herbs, leaf veins, botanical serif ---------- */
+:root[data-style="garden"], [data-pv="garden"] {
+  --bg:#F1F5EC; --surface:#FBFDF8; --sunk:#E4ECDB; --ink:#18261A; --muted:#506352; --line:#D3DFC8;
+  --accent:#2F6B3A; --accent-ink:#FFFFFF; --yolk:#D9A93B; --warn:#9C3D22;
+  --f-display:"Lora", Georgia, serif; --f-body:"Karla", system-ui, sans-serif; --head-weight:600;
+  --r-card:18px 18px 18px 4px; --r-btn:999px;
+  --bg-art: radial-gradient(120% 60% at 0% 0%, rgb(47 107 58 / .10), transparent 60%), repeating-linear-gradient(60deg, rgb(47 107 58 / .03) 0 1px, transparent 1px 22px);
+}
+:root[data-mode="dark"][data-style="garden"], :root[data-mode="dark"] [data-pv="garden"] {
+  --bg:#0F1710; --surface:#162117; --sunk:#1E2B1F; --ink:#E7F0E2; --muted:#A3B8A0; --line:#2A3A2B;
+  --accent:#8FD19C; --accent-ink:#0C1F10; --yolk:#E8C25E; --warn:#F0997A;
+  --bg-art: radial-gradient(120% 60% at 0% 0%, rgb(143 209 156 / .07), transparent 60%), repeating-linear-gradient(60deg, rgb(143 209 156 / .03) 0 1px, transparent 1px 22px);
+}
+
+/* ---------- BAKERY: flour dust, pastel icing, rounded letters ---------- */
+:root[data-style="bakery"], [data-pv="bakery"] {
+  --bg:#FFF5F5; --surface:#FFFFFF; --sunk:#FCE7EA; --ink:#2E1F24; --muted:#6E5860; --line:#F4D9DE;
+  --accent:#B83B6B; --accent-ink:#FFFFFF; --yolk:#F2B84B; --warn:#B3261E;
+  --f-display:"Grandstander", "Comic Sans MS", sans-serif; --f-body:"Quicksand", system-ui, sans-serif; --head-weight:700;
+  --r-card:24px; --r-btn:999px;
+  --bg-art: radial-gradient(rgb(184 59 107 / .07) 1.5px, transparent 2px) 0 0 / 22px 22px, radial-gradient(rgb(242 184 75 / .08) 1.5px, transparent 2px) 11px 11px / 22px 22px;
+}
+:root[data-mode="dark"][data-style="bakery"], :root[data-mode="dark"] [data-pv="bakery"] {
+  --bg:#1C1316; --surface:#261A1F; --sunk:#302228; --ink:#FBEFF2; --muted:#D0B3BD; --line:#3E2C33;
+  --accent:#FF9CC2; --accent-ink:#2E0717; --yolk:#F7CB6B; --warn:#FF8A80;
+  --bg-art: radial-gradient(rgb(255 156 194 / .07) 1.5px, transparent 2px) 0 0 / 22px 22px, radial-gradient(rgb(247 203 107 / .07) 1.5px, transparent 2px) 11px 11px / 22px 22px;
+}
+:root[data-style="bakery"] body { font-weight: 500; }
+
+/* ---------- NIGHT MARKET: neon signs over steam; daytime stalls in light mode ---------- */
+:root[data-style="nightmarket"], [data-pv="nightmarket"] {
+  --bg:#F2F4F8; --surface:#FFFFFF; --sunk:#E6EAF2; --ink:#151827; --muted:#545A73; --line:#D8DDEA;
+  --accent:#5B2BD8; --accent-ink:#FFFFFF; --yolk:#F59E0B; --warn:#D9254F;
+  --f-display:"Bungee", Impact, sans-serif; --f-body:"Space Grotesk", system-ui, sans-serif;
+  --r-card:10px; --r-btn:8px; --head-case:uppercase;
+  --bg-art: linear-gradient(rgb(91 43 216 / .05) 1px, transparent 1px) 0 0 / 100% 26px;
+}
+:root[data-mode="dark"][data-style="nightmarket"], :root[data-mode="dark"] [data-pv="nightmarket"] {
+  --bg:#0B0B16; --surface:#14142A; --sunk:#1C1C38; --ink:#ECEBFF; --muted:#A9A7D6; --line:#2B2A52;
+  --accent:#FF4FD8; --accent-ink:#2A0626; --yolk:#FFD23F; --warn:#FF6B8B;
+  --bg-art: radial-gradient(900px 500px at 85% -10%, rgb(255 79 216 / .18), transparent 60%), radial-gradient(800px 500px at 0% 110%, rgb(0 229 255 / .14), transparent 60%);
+}
+:root[data-style="nightmarket"] .brand h1 { font-size: 22px; }
+:root[data-mode="dark"][data-style="nightmarket"] :is(.brand h1 b, .planhead h2) { text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 65%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 35%, transparent); }
+
+/* ---------- BUTCHER BLOCK: end-grain wood, kraft paper, stamped slab type ---------- */
+:root[data-style="butcher"], [data-pv="butcher"] {
+  --bg:#F3EADB; --surface:#FBF6EC; --sunk:#E9DCC5; --ink:#2A1C12; --muted:#6B5641; --line:#DCCAAE;
+  --accent:#8E2A1C; --accent-ink:#FFFFFF; --yolk:#C98A2B; --warn:#8E2A1C;
+  --f-display:"Alfa Slab One", Rockwell, serif; --f-body:"Archivo", system-ui, sans-serif;
+  --r-card:6px; --r-btn:6px;
+  --bg-art: repeating-linear-gradient(90deg, rgb(120 80 40 / .05) 0 2px, transparent 2px 7px, rgb(120 80 40 / .03) 7px 8px, transparent 8px 19px);
+}
+:root[data-mode="dark"][data-style="butcher"], :root[data-mode="dark"] [data-pv="butcher"] {
+  --bg:#1A130D; --surface:#241A12; --sunk:#2E2218; --ink:#F4E8D6; --muted:#C4AA8B; --line:#3C2D20;
+  --accent:#F08C6E; --accent-ink:#2A0D05; --yolk:#E2A85A; --warn:#F08C6E;
+  --bg-art: repeating-linear-gradient(90deg, rgb(255 220 180 / .03) 0 2px, transparent 2px 7px, rgb(255 220 180 / .02) 7px 8px, transparent 8px 19px);
+}
+:root[data-style="butcher"] .card, :root[data-style="butcher"] .slot { border-style: dashed; }
+
+/* ---------- SEAFOOD SHACK: harbor navy, rope and sea glass ---------- */
+:root[data-style="coastal"], [data-pv="coastal"] {
+  --bg:#EEF4F7; --surface:#FFFFFF; --sunk:#E0EBF0; --ink:#12232E; --muted:#4D6270; --line:#CFDDE5;
+  --accent:#145C7A; --accent-ink:#FFFFFF; --yolk:#E9B949; --warn:#B23B2E;
+  --f-display:"Josefin Sans", "Futura", sans-serif; --f-body:"Work Sans", system-ui, sans-serif; --head-weight:700;
+  --r-card:14px; --r-btn:999px; --head-track:.01em;
+  --bg-art: radial-gradient(60px 14px at 50% 100%, transparent 98%, rgb(20 92 122 / .06) 100%) 0 0 / 60px 28px;
+}
+:root[data-mode="dark"][data-style="coastal"], :root[data-mode="dark"] [data-pv="coastal"] {
+  --bg:#0B1820; --surface:#11222D; --sunk:#172C39; --ink:#E4F0F5; --muted:#9DB6C3; --line:#22394A;
+  --accent:#6CCBE8; --accent-ink:#04202C; --yolk:#F2CC6B; --warn:#F2917E;
+  --bg-art: radial-gradient(60px 14px at 50% 100%, transparent 98%, rgb(108 203 232 / .06) 100%) 0 0 / 60px 28px;
+}
+:root[data-style="coastal"] header.top { border-bottom: 3px solid var(--accent); }
+
+/* ---------- SMOKEHOUSE: charcoal, embers and woodcut type ---------- */
+:root[data-style="smokehouse"], [data-pv="smokehouse"] {
+  --bg:#F2ECE6; --surface:#FBF8F5; --sunk:#E6DDD4; --ink:#1F1A17; --muted:#5F5550; --line:#D8CDC3;
+  --accent:#B3401A; --accent-ink:#FFFFFF; --yolk:#E0912F; --warn:#B3261E;
+  --f-display:"Rye", Georgia, serif; --f-body:"Barlow", system-ui, sans-serif;
+  --r-card:8px; --r-btn:6px;
+  --bg-art: radial-gradient(900px 400px at 50% 120%, rgb(179 64 26 / .10), transparent 60%);
+}
+:root[data-mode="dark"][data-style="smokehouse"], :root[data-mode="dark"] [data-pv="smokehouse"] {
+  --bg:#141110; --surface:#1E1A18; --sunk:#282321; --ink:#F1E9E3; --muted:#B8ABA3; --line:#36302C;
+  --accent:#FF8A4C; --accent-ink:#2A0D02; --yolk:#FFB347; --warn:#FF8A80;
+  --bg-art: radial-gradient(900px 420px at 50% 120%, rgb(255 138 76 / .16), transparent 60%), radial-gradient(rgb(255 160 90 / .05) 1px, transparent 1.5px) 0 0 / 9px 9px;
+}
+
+/* ---------- MINIMAL: black, white and one colour; no texture ---------- */
+:root[data-style="minimal"], [data-pv="minimal"] {
+  --bg:#FFFFFF; --surface:#FFFFFF; --sunk:#F3F3F3; --ink:#111111; --muted:#5C5C5C; --line:#E2E2E2;
+  --accent:#111111; --accent-ink:#FFFFFF; --yolk:#F2B705; --warn:#C62828;
+  --f-display:"Inter", system-ui, sans-serif; --f-body:"Inter", system-ui, sans-serif; --head-weight:800; --head-track:-.02em;
+  --r-card:8px; --r-btn:8px;
+}
+:root[data-mode="dark"][data-style="minimal"], :root[data-mode="dark"] [data-pv="minimal"] {
+  --bg:#0A0A0A; --surface:#121212; --sunk:#1C1C1C; --ink:#F5F5F5; --muted:#A3A3A3; --line:#2A2A2A;
+  --accent:#F5F5F5; --accent-ink:#0A0A0A; --yolk:#F5C542; --warn:#FF8A80;
+}
+
+/* ---------- MIDNIGHT PANTRY: deep plum jars and brass labels ---------- */
+:root[data-style="pantry"], [data-pv="pantry"] {
+  --bg:#F5F1F6; --surface:#FFFFFF; --sunk:#ECE5EF; --ink:#211A26; --muted:#5F5468; --line:#DDD3E2;
+  --accent:#5E2B7E; --accent-ink:#FFFFFF; --yolk:#C9962E; --warn:#A8321C;
+  --f-display:"DM Serif Display", Georgia, serif; --f-body:"DM Sans", system-ui, sans-serif;
+  --r-card:14px; --r-btn:999px;
+  --bg-art: repeating-linear-gradient(0deg, transparent 0 46px, rgb(94 43 126 / .06) 46px 48px);
+}
+:root[data-mode="dark"][data-style="pantry"], :root[data-mode="dark"] [data-pv="pantry"] {
+  --bg:#150F1A; --surface:#1E1625; --sunk:#271E30; --ink:#F2EAF6; --muted:#BBAAC6; --line:#362A41;
+  --accent:#D9B25E; --accent-ink:#231804; --yolk:#E8C574; --warn:#F2917E;
+  --bg-art: repeating-linear-gradient(0deg, transparent 0 46px, rgb(217 178 94 / .07) 46px 48px);
+}
+
+/* ---------- MATCHA CAFÉ: whisked green tea, oat milk, ceramic ---------- */
+:root[data-style="matcha"], [data-pv="matcha"] {
+  --bg:#F3F4EA; --surface:#FDFDF7; --sunk:#E8EBD9; --ink:#1E2417; --muted:#575F4B; --line:#DADFC6;
+  --accent:#5A7A24; --accent-ink:#FFFFFF; --yolk:#C9A44C; --warn:#A8452A;
+  --f-display:"Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif; --f-body:"Zen Maru Gothic", system-ui, sans-serif; --head-weight:700;
+  --r-card:20px; --r-btn:999px;
+  --bg-art: radial-gradient(400px 300px at 100% 0%, rgb(90 122 36 / .10), transparent 70%), radial-gradient(500px 300px at 0% 100%, rgb(201 164 76 / .08), transparent 70%);
+}
+:root[data-mode="dark"][data-style="matcha"], :root[data-mode="dark"] [data-pv="matcha"] {
+  --bg:#11140D; --surface:#191D13; --sunk:#21271A; --ink:#EEF1E2; --muted:#AEB79A; --line:#2E3524;
+  --accent:#B5D67A; --accent-ink:#172005; --yolk:#E2C579; --warn:#F09A80;
+  --bg-art: radial-gradient(400px 300px at 100% 0%, rgb(181 214 122 / .07), transparent 70%), radial-gradient(500px 300px at 0% 100%, rgb(226 197 121 / .05), transparent 70%);
+}
+
+/* ==========================================================================================================
+   Accent colours. Each one is checked against white or near-black text for WCAG AA in its mode.
+   ========================================================================================================== */
+:root[data-accent="basil"]     { --accent:#2E6A4E; --accent-ink:#FFFFFF; }
+:root[data-accent="tomato"]    { --accent:#B3261E; --accent-ink:#FFFFFF; }
+:root[data-accent="carrot"]    { --accent:#A8430B; --accent-ink:#FFFFFF; }
+:root[data-accent="saffron"]   { --accent:#8A5A00; --accent-ink:#FFFFFF; }
+:root[data-accent="avocado"]   { --accent:#4D6B12; --accent-ink:#FFFFFF; }
+:root[data-accent="mint"]      { --accent:#0F7466; --accent-ink:#FFFFFF; }
+:root[data-accent="ocean"]     { --accent:#0B6690; --accent-ink:#FFFFFF; }
+:root[data-accent="blueberry"] { --accent:#3949AB; --accent-ink:#FFFFFF; }
+:root[data-accent="lavender"]  { --accent:#6243B0; --accent-ink:#FFFFFF; }
+:root[data-accent="plum"]      { --accent:#7B1FA2; --accent-ink:#FFFFFF; }
+:root[data-accent="beet"]      { --accent:#9C1C54; --accent-ink:#FFFFFF; }
+:root[data-accent="espresso"]  { --accent:#5D4037; --accent-ink:#FFFFFF; }
+:root[data-mode="dark"][data-accent="basil"]     { --accent:#74C49A; --accent-ink:#0E1A13; }
+:root[data-mode="dark"][data-accent="tomato"]    { --accent:#FF8A80; --accent-ink:#2A0A08; }
+:root[data-mode="dark"][data-accent="carrot"]    { --accent:#FFA36B; --accent-ink:#2A1203; }
+:root[data-mode="dark"][data-accent="saffron"]   { --accent:#F2C14E; --accent-ink:#2A1E00; }
+:root[data-mode="dark"][data-accent="avocado"]   { --accent:#B9DC6E; --accent-ink:#172005; }
+:root[data-mode="dark"][data-accent="mint"]      { --accent:#6EE0CB; --accent-ink:#04201B; }
+:root[data-mode="dark"][data-accent="ocean"]     { --accent:#6CC8F0; --accent-ink:#04202E; }
+:root[data-mode="dark"][data-accent="blueberry"] { --accent:#A3ADFF; --accent-ink:#0D1030; }
+:root[data-mode="dark"][data-accent="lavender"]  { --accent:#C2B2F7; --accent-ink:#1A1036; }
+:root[data-mode="dark"][data-accent="plum"]      { --accent:#DDA4F4; --accent-ink:#24062F; }
+:root[data-mode="dark"][data-accent="beet"]      { --accent:#F599C0; --accent-ink:#2E0617; }
+:root[data-mode="dark"][data-accent="espresso"]  { --accent:#D9BBA9; --accent-ink:#22150F; }
+
+/* ---------- theme picker ---------- */
+.themes{display:grid;gap:18px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tcard{border:2px solid var(--line);border-radius:12px;padding:0;overflow:hidden;background:var(--surface);text-align:left;display:grid}
+.tcard[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent)}
+.tprev{height:78px;padding:10px;display:grid;align-content:space-between;background-color:var(--bg);background-image:var(--bg-art);color:var(--ink)}
+.tprev b{font-family:var(--f-display);font-weight:var(--head-weight);text-transform:var(--head-case);font-size:19px;line-height:1.1}
+.tprev .tbar{display:flex;gap:5px}
+.tprev .tbar i{height:12px;border-radius:var(--r-btn);background:var(--accent);flex:0 0 34%}
+.tprev .tbar i+i{background:var(--surface);border:1px solid var(--line);flex:1;border-radius:var(--r-card)}
+.tname{padding:8px 10px 10px;display:grid;gap:2px}
+.tname span{font-size:12px;color:var(--muted);line-height:1.3}
+.aswatches{display:flex;flex-wrap:wrap;gap:8px}
+.asw{width:38px;height:38px;border-radius:50%;border:2px solid var(--line);background:var(--sw);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700;padding:0}
+.asw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--ink)}
+.asw.style{background:conic-gradient(#C8102E 0 25%,#2E6A4E 0 50%,#F5A623 0 75%,#3949AB 0);}

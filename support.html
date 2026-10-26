@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Support MealTote</title>
+<meta name="description" content="MealTote is a free meal planner and grocery list. Here's how to help keep it free.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" id="tf-market" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="src/app.css">
+<link rel="stylesheet" href="src/themes.css">
+<meta name="theme-color" content="#FFFFFF">
+<script src="src/theme.js"></script>
+<style>
+  .support-page{max-width:760px;margin:36px auto 24px;display:grid;gap:22px}
+  .support-page h2{font-size:clamp(30px,6vw,44px)}
+  .support-page .lede{font-size:18px;color:var(--muted);margin:0}
+  .give{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:22px}
+  .give .amounts{display:flex;flex-wrap:wrap;gap:10px}
+  .give .btn.big{font-size:17px}
+  .ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .way{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:16px;display:grid;gap:6px;align-content:start}
+  .way h3{font-size:20px}
+  .way p{margin:0;color:var(--muted)}
+  .support-page ul{margin:0;padding-left:20px;display:grid;gap:6px}
+  .support-page a:not(.btn){color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <div class="brand"><h1><a href="./" style="color:inherit;text-decoration:none">Meal<b>Tote</b></a></h1><span>meal plans across your stores</span></div>
+      <div class="actions"><a class="btn small" href="./">Back to MealTote</a></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap support-page">
+  <section>
+    <div class="eyebrow">Support MealTote</div>
+    <h2>Keep it free for everyone</h2>
+    <p class="lede">Most apps that help you plan meals and shopping lock the useful parts behind a subscription. I wanted one that does the whole job for free, so I built MealTote: the questions, the week of meals, the grocery list split across your stores, the prep guide and the cookbook PDF, with no ads and no paywall.</p>
+  </section>
+
+  <section class="give">
+    <h3 class="sub" style="margin:0">Chip in</h3>
+    <p style="margin:0">If MealTote saves you a trip, a takeout order or an hour of planning, a few dollars helps cover the domain and hosting so it can stay free. Pay what you like. It's a one-time tip, not a subscription.</p>
+    <div class="amounts">
+      <a class="btn primary big" href="https://paypal.me/snooji/3" target="_blank" rel="noopener">♥ $3</a>
+      <a class="btn primary big" href="https://paypal.me/snooji/5" target="_blank" rel="noopener">♥ $5</a>
+      <a class="btn primary big" href="https://paypal.me/snooji/10" target="_blank" rel="noopener">♥ $10</a>
+      <a class="btn big" href="https://paypal.me/snooji" target="_blank" rel="noopener">Any amount</a>
+    </div>
+    <p class="note" style="margin:0">Opens PayPal. Everything in MealTote stays free whether you chip in or not.</p>
+  </section>
+
+  <section>
+    <h3 class="sub">Other ways to help</h3>
+    <div class="ways">
+      <div class="way"><h3>Share it</h3><p>Send MealTote to someone who's tired of planning dinner. Word of mouth is how a free app grows.</p></div>
+      <div class="way"><h3>Tell me what's missing</h3><p>A store near you, a recipe you love, something confusing? <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Leave feedback or an idea</a>.</p></div>
+      <div class="way"><h3>Fix a price</h3><p>Store prices are estimates. If one is way off where you shop, let me know and I'll adjust it.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="sub">Where the money goes</h3>
+    <ul>
+      <li>The mealtote.com domain.</li>
+      <li>Hosting and the database behind sign-in and saved plans, once usage outgrows the free tier.</li>
+      <li>Time spent adding recipes, stores and features people ask for.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site wrap">
+  <p>Thank you for using MealTote.</p>
+  <p class="note"><a href="./">Plan your week</a> · <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Feedback &amp; ideas</a></p>
+</footer>
+</body>
+</html>

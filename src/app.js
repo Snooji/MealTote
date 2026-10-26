@@ -2793,6 +2793,31 @@ function openStoreSheet(){
   draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
 }
 
+/* ------------------------------------------------------------------ theme picker (mode, style, accent; see src/theme.js) */
+function openThemeSheet(){
+  THEME.loadAllFonts();
+  const p=$("#panel");
+  const draw=()=>{ const t=THEME.get(); p.innerHTML="";
+    const pick=patch=>{ THEME.set(patch); draw(); };
+    p.append(el("div",{class:"content themes"},
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Make it yours"), el("h2",{id:"dTitle"},"Theme")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      el("section",{}, el("h3",{class:"sub"},"Mode"),
+        el("div",{class:"seg",role:"group","aria-label":"Mode"}, [["auto","Auto"],["light","Light"],["dark","Dark"]].map(([k,l])=>el("button",{"aria-pressed":t.mode===k,onclick:()=>pick({mode:k})},l))),
+        el("p",{class:"note"},"Auto follows your device's light or dark setting.")),
+      el("section",{}, el("h3",{class:"sub"},"Style"),
+        el("div",{class:"tgrid"}, THEME.STYLES.map(([k,name,desc])=>el("button",{class:"tcard","aria-pressed":t.style===k,onclick:()=>pick({style:k}),"aria-label":name+" style"},
+          el("div",{class:"tprev","data-pv":k}, el("b",{},name), el("div",{class:"tbar"}, el("i"), el("i"))),
+          el("div",{class:"tname"}, el("b",{},name), el("span",{},desc)))))),
+      el("section",{}, el("h3",{class:"sub"},"Accent colour"),
+        el("div",{class:"aswatches"}, THEME.ACCENTS.map(([k,name,sw])=>el("button",{class:"asw"+(k==="style"?" style":""),style:sw?`--sw:${sw}`:"","aria-pressed":t.accent===k,title:name,"aria-label":name,onclick:()=>pick({accent:k})}))),
+        el("p",{class:"note"}, t.accent==="style" ? "Using this style's own colours." : "Accent: "+THEME.ACCENTS.find(a=>a[0]===t.accent)[1]+". It recolours buttons, highlights and links in any style.")),
+      el("p",{class:"note"}, cloudUser ? "Your theme is saved to your account, so it follows you to other devices." : "Your theme is saved on this device. Sign in to keep it on every device.")));
+  };
+  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
+}
+$("#themeBtn").addEventListener("click", openThemeSheet);
+window.addEventListener("themechange", e=>{ S.theme=e.detail; save(); });
+
 /* ------------------------------------------------------------------ planner */
 const SOFT_DISLIKES = new Set(["cilantro","avocado","feta"]);
 const DISLIKE_TEST = {
@@ -3362,7 +3387,13 @@ async function buildPdf(ids, opts={}){
 }
 window.buildPdf = buildPdf;
 
-function renderPdfTab(){
+// MealTote is free; a gentle, dismissible-by-ignoring nudge on the pages people finish on
+function supportCard(){
+  return el("div",{class:"supportcard"}, el("p",{}, el("b",{},"MealTote is free, with no ads and no paywall. "), "If it saved you time or money this week, a few dollars keeps it running."),
+    el("a",{class:"btn primary",href:"support.html"},"♥ Support MealTote"));
+}
+function renderPdfTab(){ renderPdfPanel(); $("#app").append(supportCard()); }
+function renderPdfPanel(){
   const m=$("#app"); m.innerHTML=""; const ids=planRecipeIds(), t=planTotals(), avg=weekAvgNutrition();
   m.append(el("div",{class:"pdfpanel"},
     el("div",{class:"opts2"},
@@ -3419,7 +3450,7 @@ async function onCloudUser(u){
     if(d && d.state){
       const remote=normalize(JSON.parse(d.state));
       // newest wins: your account copy, unless this browser has newer unsaved work
-      if(!S.profile || (d.updatedMs||0) >= (S._ts||0)) S=remote; else pushCloud();
+      if(!S.profile || (d.updatedMs||0) >= (S._ts||0)){ S=remote; if(S.theme) THEME.set(S.theme, true); } else pushCloud();
     } else if(S.profile) pushCloud();
     try{ Object.assign(S.photos, await cloud.loadPhotos()); }catch(e){}
     cloudLoaded=true; lsSet(S); if(!OB) boot();
@@ -3460,7 +3491,8 @@ async function openProfile(){
       el("div",{class:"actions"},
         el("button",{class:"btn small",onclick:async()=>{ await cloud.signOut(); toast("Signed out. Your plan stays in this browser."); boot(); }},"Sign out"),
         el("button",{class:"btn small danger",id:"delData",onclick:delData},"Delete my account data")),
-      el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected."))));
+      el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected.")),
+    supportCard()));
   async function loadPlans(){
     try{ const list=await cloud.listPlans(); plansBox.innerHTML="";
       if(!list.length){ plansBox.append(el("p",{class:"note"},"No saved plans yet.")); return; }
