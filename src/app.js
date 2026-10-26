@@ -2172,7 +2172,7 @@ const fmtHrs = m => m>=60 ? (Math.floor(m/60)+" h"+(m%60?" "+(m%60)+" m":"")) : 
 const R_BY_ID = R_ALL;
 const ALL_DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const MEALS = [["breakfast","Breakfast"],["lunch","Lunch"],["dinner","Dinner"]];
-const DEFAULT_STATE = { profile:null, plan:null, stores:["aldi","walmart"], mode:"cheap", overrides:{}, checked:{}, photos:{} };
+const DEFAULT_STATE = { profile:null, plan:null, stores:["aldi","walmart"], mode:"cheap", overrides:{}, checked:{}, photos:{}, pantry:{have:{},add:{}} };
 let S = structuredClone(DEFAULT_STATE);
 let saveTimer = null;
 // plans saved under the app's old name (Bundle & Bite) carry over
@@ -2185,6 +2185,7 @@ function normalize(v){
   const fix = x => { const base=String(x||"").split("~")[0]; if(!R_BY_ID[x] && moved[base]) x = R_BY_ID[moved[base]] ? moved[base] : moved[base].split("~")[0]; return R_BY_ID[x]?x:null; };
   if(s.plan){ for(const k of ["b","l","d"]) s.plan[k]=(s.plan[k]||[]).map(fix); }
   migrateCuisines(s.profile);
+  s.pantry=Object.assign({have:{},add:{}}, s.pantry||{});
   return s;
 }
 function save(){
@@ -2813,7 +2814,7 @@ function finishQuiz(){
   if(!A.meals.includes("lunch")||!A.meals.includes("dinner")) A.leftovers="no";
   if(A.stores.length<2) A.mode="cheap";
   delete A._q; A.cv=2; const isNew=!OB.edit || !S.planId;
-  S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
+  S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={}; S.pantry={have:{},add:{}};
   if(isNew){ S.planId=null; S.planName=null; S.planCreated=null; }
   OB=null;
   const m=$("#app"); m.innerHTML="";
@@ -2974,14 +2975,18 @@ function showApp(t){
   $("#tabs").hidden=false; $("#editBtn").hidden=false; $("#resetBtn").hidden=false;
   const m=$("#app"); m.innerHTML="";
   for(const b of document.querySelectorAll("#tabs button")) b.setAttribute("aria-selected", b.dataset.tab===tab);
-  ({plan:renderPlan, prep:renderPrep, groceries:renderGroceries, recipes:renderRecipes, pdf:renderPdfTab, profile:openProfile})[tab]();
+  ({plan:renderPlan, prep:renderPrep, groceries:renderGroceries, pantry:renderPantry, recipes:renderRecipes, pdf:renderPdfTab, settings:renderSettings, profile:openProfile})[tab]();
   renderCounts(); window.scrollTo(0, tab===prevTab ? y : 0);
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>showApp(b.dataset.tab)));
 $("#editBtn").addEventListener("click",()=>{ $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true; startQuiz(true); });
 let resetArmed=0;
 $("#resetBtn").addEventListener("click", openPlansSheet);
-function renderCounts(){ if(!S.plan) return; $("#listCount").textContent=Object.keys(planDemand()).length; }
+$("#settingsBtn").addEventListener("click", openSettings);
+function renderCounts(){ if(!S.plan) return;
+  $("#listCount").textContent=Object.keys(planDemand()).length+Object.keys(S.pantry.add).length;
+  const need=pantryItems().filter(x=>!S.pantry.have[x.key]&&!S.pantry.add[x.key]).length, pc=$("#pantryCount");
+  if(pc){ pc.textContent=need; pc.hidden=!need; } }
 
 function planTotals(){
   const d=planDemand(), {result,missing}=assign(d); let total=0; const used=new Set();
@@ -3028,6 +3033,94 @@ function shrinkImage(file,max){ return new Promise((res,rej)=>{ const img=new Im
   c.getContext("2d").drawImage(img,0,0,c.width,c.height); c.toBlob(b=>b?res(b):rej(),"image/jpeg",0.8); URL.revokeObjectURL(img.src); }; img.onerror=rej; img.src=URL.createObjectURL(file); }); }
 
 /* ------------------------------------------------------------------ groceries */
+/* ------------------------------------------------------------------ pantry: the staples the plan's recipes assume you have */
+// one name per staple, so "black pepper", "pepper" and "freshly ground pepper" are one checkbox
+const PANTRY_ALIAS = {"black pepper":"pepper","ground black pepper":"pepper","neutral oil":"oil","vegetable oil":"oil","mayonnaise":"mayo","worcestershire":"worcestershire sauce",
+  "dijon":"dijon mustard","cumin":"ground cumin","cinnamon":"ground cinnamon","ground turmeric":"turmeric","coriander":"ground coriander","vanilla extract":"vanilla",
+  "chili flakes":"red pepper flakes","red chili flakes":"red pepper flakes","bay leaf":"bay leaves","dried bay leaves":"bay leaves","fennel seed":"fennel seeds","coriander seed":"coriander seeds",
+  "dried red chiles":"dried red chilies","dried chilies":"dried red chilies","oregano":"dried oregano","thyme":"dried thyme","allspice":"ground allspice","ground white pepper":"white pepper",
+  "chicken bouillon cubes":"chicken bouillon cube","beef bouillon cubes":"beef bouillon cube","vegetable bouillon cubes":"vegetable bouillon cube","bouillon cube":"chicken bouillon cube",
+  "creole":"creole seasoning","cajun":"cajun seasoning","green cardamom":"green cardamom pods","cardamom pods":"green cardamom pods","saffron threads":"saffron","whole black peppercorns":"black peppercorns",
+  "chinese five-spice powder":"five-spice powder","toasted sesame oil":"sesame oil","cider":"apple cider vinegar","cider vinegar":"apple cider vinegar","whole allspice berries":"allspice berries","coarse salt":"salt","coarse sea salt":"salt"};
+const PANTRY_SKIP = /^(water|warm water|ice water|ice-cold water|ice cubes|ground|white|broken|crushed|coarsely crushed|freshly ground|each|egg|milk)$/;
+const PANTRY_UNITS = /^(tbsp|tablespoons?|tsp|teaspoons?|cups?|oz|ounces?|lbs?|pounds?|pinch(es)?|dash(es)?|cloves?|sprigs?|g|ml|liters?|handful|knob|splash|few|some|large|small|each|lots of|freshly ground|coarsely ground|chopped)\b\.?\s*/i;
+function pantryName(raw){
+  let x=String(raw).toLowerCase().replace(/^[^:]{2,30}:\s*/,"").replace(/\([^)]*\)?|\)/g,"").replace(/\s+(to serve|for (frying|serving|brushing|greasing|dredging|coating|shallow-frying|deep-frying|the [a-z]+))\b.*$/,"")
+    .replace(/\b(to taste|optional|divided|plus more|or more|as needed|if you like)\b.*$/,"").trim();
+  for(let i=0;i<4;i++) x=x.replace(/^(about|a|an|up to)\s+/,"").replace(/^[\d½¼¾⅓⅔⅛.\/\s–-]+/,"").replace(PANTRY_UNITS,"").replace(/^of\s+/,"").trim();
+  x=x.replace(/\s+or\s+.*$/,"").replace(/\s+with\s+.*$/,"").replace(/\s+in\s+\d.*$/,"").replace(/[.;:]+$/,"").trim();
+  x=PANTRY_ALIAS[x]||x;
+  if(!x || PANTRY_SKIP.test(x) || /^(to|for|or|with|serve|serving|garnish)\b/.test(x)) return null;
+  return x.length<=40 ? x.charAt(0).toUpperCase()+x.slice(1) : null;
+}
+function pantryItems(){
+  if(!S.plan) return [];
+  const map={};
+  for(const id of planRecipeIds()){ const r=R_BY_ID[id]; if(!r||!r.pantry) continue;
+    for(const part of r.pantry.split(/,\s*|;\s*|\.\s+|\s+and\s+|\s+plus\s+/)){ const n=pantryName(part); if(!n) continue;
+      const m=map[n]||(map[n]={key:n,recipes:[]}); if(!m.recipes.includes(r.title)) m.recipes.push(r.title); } }
+  return Object.values(map).sort((a,b)=>b.recipes.length-a.recipes.length||a.key.localeCompare(b.key));
+}
+function renderPantry(){
+  const m=$("#app"); m.innerHTML=""; const P=S.pantry, items=pantryItems();
+  const haveN=items.filter(x=>P.have[x.key]).length, addN=Object.keys(P.add).length;
+  m.append(el("div",{class:"planhead"},
+    el("div",{}, el("div",{class:"eyebrow"},"Pantry"), el("h2",{},"Staples for this plan"),
+      el("p",{class:"lede"},"Oils, spices and other basics this week's recipes expect you to have. Check off what's in your kitchen. Out of something? Add it to this plan's shopping list.")),
+    el("div",{class:"actions"},
+      el("button",{class:"btn small",onclick:()=>{ for(const x of items) if(!P.add[x.key]) P.have[x.key]=1; save(); keepScroll(renderPantry); renderCounts(); }},"I have everything"),
+      el("button",{class:"btn small",onclick:()=>{ S.pantry={have:{},add:{}}; save(); keepScroll(renderPantry); renderCounts(); }},"Start over"))));
+  m.append(el("div",{class:"summary"},
+    el("div",{class:"stat"},el("b",{class:"mono"},items.length),el("span",{},"Staples")),
+    el("div",{class:"stat"},el("b",{class:"mono"},haveN),el("span",{},"Have")),
+    el("div",{class:"stat"},el("b",{class:"mono"},addN),el("span",{},"On your list"))));
+  const own=el("input",{type:"text",id:"pantryAdd",placeholder:"Add something else, e.g. coffee",maxlength:40});
+  const addOwn=()=>{ const n=pantryName(own.value)||own.value.trim(); if(!n) return; P.add[n]=1; delete P.have[n]; save(); keepScroll(renderPantry); renderCounts(); toast("Added “"+n+"” to your list"); };
+  own.addEventListener("keydown",e=>{ if(e.key==="Enter") addOwn(); });
+  m.append(el("div",{class:"padd",style:"margin:6px 0 14px"}, own, el("button",{class:"btn primary small",onclick:addOwn},"Add to list")));
+  const list=el("div",{class:"pantry-list"});
+  for(const x of items){ const have=!!P.have[x.key], on=!!P.add[x.key];
+    list.append(el("div",{class:"prow2"+(have?" have":"")},
+      el("input",{type:"checkbox",checked:have,"aria-label":"Have "+x.key,onchange:e=>{ if(e.target.checked){ P.have[x.key]=1; delete P.add[x.key]; } else delete P.have[x.key]; save(); keepScroll(renderPantry); renderCounts(); }}),
+      el("div",{class:"grow",title:x.recipes.join(" · ")}, el("div",{class:"nm"},x.key), el("div",{class:"pd"},x.recipes.length>1?"Used in "+x.recipes.length+" recipes":"Used in "+x.recipes[0])),
+      el("button",{class:"btn small"+(on?" primary":""),onclick:()=>{ if(on) delete P.add[x.key]; else { P.add[x.key]=1; delete P.have[x.key]; } save(); keepScroll(renderPantry); renderCounts(); }}, on?"On list ✓":"+ List")));
+  }
+  const custom=Object.keys(P.add).filter(k=>!items.some(x=>x.key===k));
+  for(const k of custom) list.append(el("div",{class:"prow2"},
+    el("span",{class:"ti",style:"width:22px"}),
+    el("div",{class:"grow"}, el("div",{class:"nm"},k), el("div",{class:"pd"},"Added by you")),
+    el("button",{class:"btn small primary",onclick:()=>{ delete P.add[k]; save(); keepScroll(renderPantry); renderCounts(); }},"On list ✓")));
+  m.append(items.length||custom.length ? list : el("p",{class:"note"},"No pantry staples for this plan."));
+}
+
+/* ------------------------------------------------------------------ settings: everything that isn't a tab, in one place (the More tab on phones) */
+const APP_VERSION = "2026.10.26";
+function openSettings(){ if(S.profile && S.plan && !OB) showApp("settings"); else { OB=null; tab="settings"; $("#tabs").hidden=true; renderSettings(); window.scrollTo(0,0); } }
+function renderSettings(){
+  const m=$("#app"); m.innerHTML=""; const u=cloudUser, admin=u && u.email==="starsidecollective@gmail.com";
+  const row=(icon,title,sub,on,href)=>el(href?"a":"button",{class:"srow",href:href||null,onclick:href?null:on}, icon?el("span",{html:""}):null, el("span",{class:"grow"}, el("b",{},title), sub?el("small",{},sub):null));
+  const back = !(S.profile&&S.plan) ? el("button",{class:"btn small",onclick:()=>{ tab="plan"; boot(); }},"‹ Back") : null;
+  m.append(el("div",{class:"settings"},
+    el("div",{}, back, el("div",{class:"eyebrow"},"Settings"), el("h2",{},"Your MealTote")),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Account"),
+      u ? [row(null,u.displayName||"Your account",u.email+" · signed in",()=>openProfile()),
+           row(null,"Sign out","Your plans stay saved to your account",async()=>{ await cloud.signOut(); toast("Signed out"); tab="plan"; boot(); })]
+        : cloudOn() ? row(null,"Sign in with Google","Keep your plans on every device",signIn) : el("p",{class:"note"},"Sign-in isn't available right now.")),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Plans"),
+      row(null,"My plans",Object.keys(PLANS).length+" saved · open, rename or delete",openPlansSheet),
+      S.profile?row(null,"Edit my answers","People, macros, likes, stores and more",()=>{ $("#tabs").hidden=true; startQuiz(true); }):null,
+      row(null,"New plan","Start a fresh week",startNewPlan),
+      S.plan?row(null,"Cookbook PDF","Print, text or email this week",()=>showApp("pdf")):null),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Look"),
+      row(null,"Theme","Styles, light or dark and accent colors",openThemeSheet)),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Support & help"),
+      row(null,"♥ Support MealTote","Chip in to keep it free",null,"support.html"),
+      row(null,"Feedback & ideas","Report a bug or ask for a recipe or store",null,"https://github.com/Snooji/mealtote/issues"),
+      row(null,"Install on your phone","iPhone: Share → Add to Home Screen. Android: menu → Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
+    admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Donation methods, page text and the donation log",null,"admin.html")) : null,
+    el("p",{class:"note"},"MealTote "+APP_VERSION+(u?" · signed in as "+u.email:""))));
+}
+
 function renderGroceries(){
   const m=$("#app"); m.innerHTML=""; const A=S.profile, t=planTotals(), d=t.d;
   const singles = S.stores.map(s=>{ let tot=0; for(const i of Object.keys(d)){ if(!offers(i)[s]) return null; tot+=storeCost(i,s,d[i]); } return {s,t:tot}; }).filter(Boolean).sort((a,b)=>a.t-b.t);
@@ -3063,9 +3156,17 @@ function renderGroceries(){
     }
     wrap.append(box);
   }
-  const pantry=[...new Set(planRecipeIds().flatMap(id=>R_BY_ID[id].pantry.split(/,\s*/)).map(x=>x.replace(/^\d+[^a-z]*\s*(tbsp|tsp|cup)?\s*/i,"").replace(/\(.*?\)/g,"").trim()).filter(Boolean))];
-  wrap.append(el("div",{class:"storebox",style:"--sc:var(--line)"}, el("header",{}, el("h3",{},"Check your pantry")),
-    el("p",{class:"note",style:"margin:0 0 6px"},"Staples the recipes assume you have. Not priced."), el("p",{style:"margin:0"},pantry.join(" · "))));
+  const added=Object.keys(S.pantry.add);
+  const pbox=el("div",{class:"storebox",style:"--sc:var(--line)"}, el("header",{}, el("h3",{},"From your pantry list"), el("span",{class:"note"},"Not priced")));
+  if(added.length) pbox.append(el("div",{class:"aisle"}, added.map(k=>{ const ck="p:"+k, done=!!S.checked[ck];
+    const row=el("div",{class:"item"+(done?" done":"")},
+      el("input",{type:"checkbox",checked:done,"aria-label":"Got "+k,onchange:e=>{ if(e.target.checked) S.checked[ck]=1; else delete S.checked[ck]; save(); row.classList.toggle("done",e.target.checked); }}),
+      el("div",{style:"min-width:0"}, el("div",{class:"nm"},k), el("div",{class:"pd"},"Added from your pantry")),
+      el("button",{class:"btn small","aria-label":"Remove "+k,onclick:()=>{ delete S.pantry.add[k]; delete S.checked[ck]; save(); keepScroll(renderGroceries); renderCounts(); }},"Remove"));
+    return row; })));
+  else pbox.append(el("p",{class:"note",style:"margin:0 0 6px"},"Out of a staple? Add it from the Pantry tab and it shows up here for this plan."));
+  pbox.append(el("button",{class:"btn small",onclick:()=>showApp("pantry")},"Open pantry"));
+  wrap.append(pbox);
   m.append(wrap);
 }
 
@@ -3656,7 +3757,7 @@ async function openProfile(){
 /* ------------------------------------------------------------------ boot */
 /* ------------------------------------------------------------------ my plans: every plan is kept, each with its own answers, groceries and checkmarks */
 // PLANS[id] = {id, name, createdMs, updatedMs, state}; state is the plan's own part of S as JSON (photos and theme stay shared)
-const PLAN_KEYS = ["profile","plan","stores","mode","overrides","checked"];
+const PLAN_KEYS = ["profile","plan","stores","mode","overrides","checked","pantry"];
 let PLANS = {}, DIRTY_PLANS = new Set(), DELETED_PLANS = new Set();
 function lsPlansGet(){ try{ DELETED_PLANS=new Set(JSON.parse(localStorage.getItem("mealtote-plans-deleted")||"[]")); return JSON.parse(localStorage.getItem("mealtote-plans")||"{}")||{}; }catch(e){ return {}; } }
 function lsPlansSet(){ try{ localStorage.setItem("mealtote-plans", JSON.stringify(PLANS)); localStorage.setItem("mealtote-plans-deleted", JSON.stringify([...DELETED_PLANS])); }catch(e){} }
