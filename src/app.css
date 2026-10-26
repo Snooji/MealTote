@@ -338,6 +338,13 @@ ol.inside{margin:0 0 16px;padding-left:20px;display:grid;gap:6px}
 .prow input{flex:1 1 200px;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 12px;font:inherit}
 .plist{display:grid;gap:8px}
 .pitem{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.pitem.current{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.pitem .pmain{flex:1 1 220px;min-width:0;display:grid;gap:4px}
+.pitem .prow{align-items:center}
+.pitem .pname{font-weight:600}
+.pitem .actions{display:flex;gap:6px;flex-wrap:wrap}
+.pill{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.plans{display:grid;gap:14px}
 ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .btn.danger{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,var(--line))}
 @media (max-width:560px){ .brand span{display:none} .acct span:not(.initial){display:none} }

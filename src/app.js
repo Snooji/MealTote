@@ -2156,7 +2156,7 @@ function normalize(v){
   return s;
 }
 function save(){
-  S._ts = Date.now(); lsSet(S);
+  S._ts = Date.now(); storePlan(); lsSet(S);
   clearTimeout(saveTimer); saveTimer = setTimeout(pushCloud, 800);
 }
 
@@ -2688,8 +2688,9 @@ function renderWelcome(){
   m.append(el("div",{class:"welcome"},
     el("div",{class:"eyebrow"},"Your weekly meal planner"),
     el("h2",{},"Tell us how you eat. We'll plan the week and write your grocery list."),
-    el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes from 16 cuisines to choose from, and a list of exactly what to buy at Trader Joe's, Costco, Aldi or Walmart."),
-    el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started"), el("span",{class:"note"},"Takes about a minute"))));
+    el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes to choose from, and a list of exactly what to buy at the stores you shop at, from "+STORE_IDS.length+" grocery chains."),
+    el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started"),
+      Object.keys(PLANS).length?el("button",{class:"btn big",onclick:openPlansSheet},"My plans ("+Object.keys(PLANS).length+")"):el("span",{class:"note"},"Takes about a minute"))));
 }
 function startQuiz(edit){
   const A = edit && S.profile ? structuredClone(S.profile) : structuredClone(BLANK);
@@ -2746,7 +2747,9 @@ function finishQuiz(){
   A.people=A.people.map((p,i)=>({name:personName(p,i),kcal:p.kcal,macros:p.macros?{p:p.macros.p,c:p.macros.c,f:p.macros.f}:null}));
   if(!A.meals.includes("lunch")||!A.meals.includes("dinner")) A.leftovers="no";
   if(A.stores.length<2) A.mode="cheap";
-  delete A._q; S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
+  delete A._q; const isNew=!OB.edit || !S.planId;
+  S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
+  if(isNew){ S.planId=null; S.planName=null; S.planCreated=null; }
   OB=null;
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"building"}, el("div",{class:"spinner"}), el("h2",{},"Building your week…"), el("p",{class:"lede"},"Matching "+RECIPES.length+" recipes to your answers and pricing your groceries.")));
@@ -2912,10 +2915,7 @@ function showApp(t){
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>showApp(b.dataset.tab)));
 $("#editBtn").addEventListener("click",()=>{ $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true; startQuiz(true); });
 let resetArmed=0;
-$("#resetBtn").addEventListener("click",()=>{
-  if(Date.now()-resetArmed>4000){ resetArmed=Date.now(); $("#resetBtn").textContent="Tap again to erase everything"; setTimeout(()=>{ $("#resetBtn").textContent="Start over"; },4000); return; }
-  const photos=S.photos; S=structuredClone(DEFAULT_STATE); S.photos=photos; save(); resetArmed=0; $("#resetBtn").textContent="Start over"; tab="plan"; boot(); toast("Starting fresh");
-});
+$("#resetBtn").addEventListener("click", openPlansSheet);
 function renderCounts(){ if(!S.plan) return; $("#listCount").textContent=Object.keys(planDemand()).length; }
 
 function planTotals(){
@@ -3059,7 +3059,7 @@ function renderPlan(){
   const meals=slots.filter(s=>s.id).length, avg=weekAvgNutrition(), ps=people();
   const over = t.total > A.budget && A.budget<1000;
   m.append(el("div",{class:"planhead"},
-    el("div",{}, el("div",{class:"eyebrow"},"Your week"), el("h2",{},planTitle()),
+    el("div",{}, el("div",{class:"eyebrow"},S.planName||"Your week"), el("h2",{},planTitle()),
       el("p",{class:"lede"}, profileSentence())),
     el("div",{class:"actions"}, el("button",{class:"btn",id:"shuffleBtn",onclick:()=>{ generatePlan(); save(); renderPlan(); renderCounts(); toast("New plan ready"); }},"Shuffle plan"),
       el("button",{class:"btn",onclick:()=>showApp("groceries")},"Grocery list"),
@@ -3456,12 +3456,35 @@ async function onCloudUser(u){
       if(!S.profile || (d.updatedMs||0) >= (S._ts||0)){ S=remote; if(S.theme) THEME.set(S.theme, true); } else pushCloud();
     } else if(S.profile) pushCloud();
     try{ Object.assign(S.photos, await cloud.loadPhotos()); }catch(e){}
+    await syncPlans();
     cloudLoaded=true; lsSet(S); if(!OB) boot();
     toast("Signed in as "+(u.displayName||u.email));
   }catch(e){ cloudLoaded=true; toast("Couldn't load your saved data. Changes will save in this browser."); }
 }
 // photos travel separately (cloud.savePhoto), so the account copy leaves out their data URLs
-function pushCloud(){ if(cloudUser && cloudOn()) cloud.save(JSON.stringify(S,(k,v)=>typeof v==="string"&&v.startsWith("data:")?undefined:v), S._ts||Date.now()).catch(()=>toast("Couldn't save to your account. Check your connection.")); }
+const cloudJSON = v => JSON.stringify(v,(k,x)=>typeof x==="string"&&x.startsWith("data:")?undefined:x);
+async function pushCloud(){
+  if(!cloudUser || !cloudOn()) return;
+  try{
+    await cloud.save(cloudJSON(S), S._ts||Date.now());
+    for(const id of [...DIRTY_PLANS]){ const p=PLANS[id]; DIRTY_PLANS.delete(id); if(p) await cloud.putPlan(id,{name:p.name, createdMs:p.createdMs, updatedMs:p.updatedMs, state:p.state}); }
+    for(const id of [...DELETED_PLANS]){ await cloud.deletePlan(id); DELETED_PLANS.delete(id); lsPlansSet(); }
+  }catch(e){
+    console.error("MealTote cloud save failed", e);
+    toast(e && e.code==="permission-denied" ? "Couldn't save to your account: the database rules aren't deployed yet (permission denied)." : "Couldn't save to your account ("+(e&&(e.code||e.message)||"error")+"). Your plan is still saved on this device.");
+  }
+}
+// on sign-in: newest copy of each plan wins, and plans made on this device before signing in get uploaded
+async function syncPlans(){
+  try{
+    const remote=await cloud.listPlans();
+    for(const r of remote){ if(DELETED_PLANS.has(r.id)) continue; const l=PLANS[r.id], ru=r.updatedMs||r.createdMs||0;
+      if(!l || ru>l.updatedMs) PLANS[r.id]={id:r.id, name:r.name||"My plan", createdMs:r.createdMs||ru, updatedMs:ru, state:r.state};
+      else if(l.updatedMs>ru) DIRTY_PLANS.add(r.id); }
+    const ids=new Set(remote.map(r=>r.id)); for(const id of Object.keys(PLANS)) if(!ids.has(id)) DIRTY_PLANS.add(id);
+    lsPlansSet(); if(DIRTY_PLANS.size||DELETED_PLANS.size) pushCloud();
+  }catch(e){ console.error("MealTote plan sync failed", e); }
+}
 function connectStore(){
   const go=()=>{ renderAccount(); if(cloudOn()) cloud.onUser(onCloudUser); };
   if(window.cloud) go(); else window.addEventListener("cloud-ready",go,{once:true});
@@ -3474,8 +3497,7 @@ async function openProfile(){
   if(!cloudUser){ boot(); return; }
   const u=cloudUser, ps=S.profile?people():[];
   const nameIn=el("input",{type:"text",id:"profName",value:u.displayName||"",maxlength:40});
-  const planName=el("input",{type:"text",id:"planName",placeholder:"e.g. High-protein week",maxlength:60});
-  const plansBox=el("div",{class:"plist"},el("p",{class:"note"},"Loading your saved plans…"));
+  const plansBox=el("div",{class:"plist"});
   m.append(el("div",{class:"profile"},
     el("div",{class:"phead"},
       u.photoURL?el("img",{src:u.photoURL,alt:"",referrerpolicy:"no-referrer",class:"avatar"}):el("div",{class:"avatar initial"},(u.displayName||"?")[0]),
@@ -3486,10 +3508,10 @@ async function openProfile(){
       ps.length ? el("ul",{class:"plain"}, ps.map((p,j)=>el("li",{}, el("b",{},personName(p,j)), " · "+fmtInt(p.kcal)+" kcal a day"+(p.macros?` · ${p.macros.p} g protein, ${p.macros.c} g carbs, ${p.macros.f} g fat`:"")))) : el("p",{class:"note"},"No plan yet. Answer the questions to set up your household."),
       el("div",{class:"actions"}, el("button",{class:"btn small",onclick:()=>{ $("#tabs").hidden=true; startQuiz(!!S.profile); }}, S.profile?"Edit my answers":"Start the questions"),
         S.plan?el("button",{class:"btn small",onclick:()=>showApp("plan")},"Back to my plan"):null)),
-    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Saved plans"),
-      el("p",{class:"note",style:"margin-top:0"},"Save a week you liked and bring it back later. Saving keeps your answers, plan, swaps and shopping checkmarks."),
-      S.plan?el("div",{class:"prow"}, planName, el("button",{class:"btn primary small",onclick:async()=>{ const n=planName.value.trim()||("Week of "+new Date().toLocaleDateString("en-US",{month:"short",day:"numeric"})); await cloud.savePlan(n, JSON.stringify(S)); planName.value=""; toast("Saved “"+n+"”"); loadPlans(); }},"Save this week")):null,
-      plansBox),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"My plans"),
+      el("p",{class:"note",style:"margin-top:0"},"Every plan you make is saved automatically with its own answers, groceries, swaps and checkmarks."),
+      plansBox,
+      el("div",{class:"actions"}, el("button",{class:"btn small primary",onclick:openPlansSheet},"Open, rename or delete plans"), el("button",{class:"btn small",onclick:startNewPlan},"+ New plan"))),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Account"),
       el("div",{class:"actions"},
         el("button",{class:"btn small",onclick:async()=>{ await cloud.signOut(); toast("Signed out. Your plan stays in this browser."); boot(); }},"Sign out"),
@@ -3497,15 +3519,12 @@ async function openProfile(){
         u.email==="starsidecollective@gmail.com" ? el("a",{class:"btn small",href:"admin.html"},"Open the Backend") : null),
       el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected.")),
     supportCard()));
-  async function loadPlans(){
-    try{ const list=await cloud.listPlans(); plansBox.innerHTML="";
-      if(!list.length){ plansBox.append(el("p",{class:"note"},"No saved plans yet.")); return; }
-      for(const p of list){ let armed=0;
-        plansBox.append(el("div",{class:"pitem"}, el("div",{}, el("b",{},p.name), el("div",{class:"note"},new Date(p.createdMs).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"}))),
-          el("div",{class:"actions"},
-            el("button",{class:"btn small",onclick:()=>{ S=normalize(JSON.parse(p.state)); save(); toast("Loaded “"+p.name+"”"); showApp("plan"); }},"Load"),
-            el("button",{class:"btn small",onclick:async(e)=>{ if(Date.now()-armed>4000){ armed=Date.now(); e.target.textContent="Tap again to delete"; return; } await cloud.deletePlan(p.id); loadPlans(); }},"Delete")))); }
-    }catch(e){ plansBox.innerHTML=""; plansBox.append(el("p",{class:"note"},"Couldn't load saved plans.")); }
+  function loadPlans(){ plansBox.innerHTML="";
+    const list=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs);
+    if(!list.length){ plansBox.append(el("p",{class:"note"},"No plans yet.")); return; }
+    for(const p of list.slice(0,6)) plansBox.append(el("div",{class:"pitem"+(p.id===S.planId?" current":"")},
+      el("div",{class:"pmain"}, el("b",{},p.name), el("div",{class:"note"},planSummary(p))),
+      p.id===S.planId?el("span",{class:"pill"},"Open now"):el("button",{class:"btn small",onclick:()=>openPlan(p.id)},"Open")));
   }
   let delArmed=0;
   async function delData(e){
@@ -3518,11 +3537,89 @@ async function openProfile(){
 }
 
 /* ------------------------------------------------------------------ boot */
+/* ------------------------------------------------------------------ my plans: every plan is kept, each with its own answers, groceries and checkmarks */
+// PLANS[id] = {id, name, createdMs, updatedMs, state}; state is the plan's own part of S as JSON (photos and theme stay shared)
+const PLAN_KEYS = ["profile","plan","stores","mode","overrides","checked"];
+let PLANS = {}, DIRTY_PLANS = new Set(), DELETED_PLANS = new Set();
+function lsPlansGet(){ try{ DELETED_PLANS=new Set(JSON.parse(localStorage.getItem("mealtote-plans-deleted")||"[]")); return JSON.parse(localStorage.getItem("mealtote-plans")||"{}")||{}; }catch(e){ return {}; } }
+function lsPlansSet(){ try{ localStorage.setItem("mealtote-plans", JSON.stringify(PLANS)); localStorage.setItem("mealtote-plans-deleted", JSON.stringify([...DELETED_PLANS])); }catch(e){} }
+const newPlanId = () => "p"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function defaultPlanName(){
+  const base="Week of "+new Date().toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  let name=base, n=2; while(Object.values(PLANS).some(p=>p.name===name)) name=`${base} (${n++})`;
+  return name;
+}
+function planState(){ const o={}; for(const k of PLAN_KEYS) o[k]=S[k]; return JSON.stringify(o); }
+function storePlan(){
+  if(!S.plan || !S.profile) return;
+  if(!S.planId){ S.planId=newPlanId(); S.planName=defaultPlanName(); S.planCreated=Date.now(); }
+  const prev=PLANS[S.planId];
+  PLANS[S.planId]={id:S.planId, name:S.planName||"My plan", createdMs:S.planCreated||(prev&&prev.createdMs)||Date.now(), updatedMs:Date.now(), state:planState()};
+  DIRTY_PLANS.add(S.planId); lsPlansSet();
+}
+function openPlan(id){
+  const p=PLANS[id]; if(!p) return;
+  let st={}; try{ st=JSON.parse(p.state)||{}; }catch(e){}
+  const keep={photos:S.photos, theme:S.theme};
+  S=normalize(Object.assign({}, st, keep, {planId:p.id, planName:p.name, planCreated:p.createdMs}));
+  lsSet(S); clearTimeout(saveTimer); saveTimer=setTimeout(pushCloud, 800);
+  closeSheet(); tab="plan"; boot(); toast("Opened “"+p.name+"”");
+}
+function renamePlan(id, name){
+  name=String(name||"").trim().slice(0,80); const p=PLANS[id]; if(!p||!name) return;
+  p.name=name; p.updatedMs=Date.now(); if(S.planId===id){ S.planName=name; lsSet(S); }
+  DIRTY_PLANS.add(id); lsPlansSet(); clearTimeout(saveTimer); saveTimer=setTimeout(pushCloud, 800);
+}
+function removePlan(id){
+  delete PLANS[id]; DIRTY_PLANS.delete(id); DELETED_PLANS.add(id); lsPlansSet();
+  if(S.planId===id){
+    const next=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs)[0];
+    if(next) return openPlan(next.id);
+    const keep={photos:S.photos, theme:S.theme}; S=Object.assign(structuredClone(DEFAULT_STATE), keep); lsSet(S); tab="plan"; boot();
+  }
+  clearTimeout(saveTimer); saveTimer=setTimeout(pushCloud, 800);
+}
+// a brand-new plan: the questions start from the current answers so nothing needs retyping, but groceries, swaps and checkmarks start empty
+function startNewPlan(){
+  closeSheet(); $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true;
+  startQuiz(!!S.profile); OB.edit=false; OB.newPlan=true;
+}
+function planSummary(p){
+  let st={}; try{ st=JSON.parse(p.state)||{}; }catch(e){}
+  const A=st.profile||{}, days=(st.plan&&st.plan.b?st.plan.b.length:0)||A.days||0, ppl=(A.people||[]).length;
+  return [days?days+" days":null, ppl?ppl+(ppl>1?" people":" person"):null, (st.stores||[]).map(x=>STORES[x]&&STORES[x].name).filter(Boolean).join(" + ")||null].filter(Boolean).join(" · ");
+}
+function openPlansSheet(){
+  const p=$("#panel");
+  const draw=()=>keepSheetScroll(()=>{ p.innerHTML="";
+    const list=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs);
+    p.append(el("div",{class:"content plans"},
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},list.length+" saved"), el("h2",{id:"dTitle"},"My plans")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      el("p",{class:"note",style:"margin:0"},"Every plan you make is saved here with its own answers, groceries, swaps and checkmarks"+(cloudUser?", on every device you sign in to.":". Sign in to keep them on every device.")),
+      el("div",{}, el("button",{class:"btn primary",onclick:startNewPlan},"+ New plan")),
+      list.length ? el("div",{class:"plist"}, list.map(x=>{ const cur=x.id===S.planId; let armed=0;
+        const nameIn=el("input",{type:"text",value:x.name,maxlength:80,"aria-label":"Plan name",class:"pname"});
+        return el("div",{class:"pitem"+(cur?" current":"")},
+          el("div",{class:"pmain"},
+            el("div",{class:"prow"}, nameIn, cur?el("span",{class:"pill"},"Open now"):null),
+            el("div",{class:"note"}, [planSummary(x), "updated "+new Date(x.updatedMs).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})].filter(Boolean).join(" · "))),
+          el("div",{class:"actions"},
+            cur?null:el("button",{class:"btn small primary",onclick:()=>openPlan(x.id)},"Open"),
+            el("button",{class:"btn small",onclick:()=>{ renamePlan(x.id,nameIn.value); toast("Renamed"); draw(); if(cur) refresh(); }},"Rename"),
+            cur?el("button",{class:"btn small",onclick:()=>{ closeSheet(); $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true; startQuiz(true); }},"Edit answers"):null,
+            el("button",{class:"btn small danger",onclick:e=>{ if(Date.now()-armed>4000){ armed=Date.now(); e.target.textContent="Tap again to delete"; return; } removePlan(x.id); toast("Deleted “"+x.name+"”"); if(!$("#sheet").hidden) draw(); }},"Delete")));
+      })) : el("p",{class:"note"},"No plans yet. Answer the questions to make your first one.")));
+  });
+  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
+}
+
 function boot(){
   if(OB) return;
   if(S.profile && S.plan){ showApp(tab); }
   else { $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true; renderWelcome(); }
 }
 S = normalize(lsGet());
+PLANS = lsPlansGet();
+if(S.plan && S.profile && !PLANS[S.planId]) storePlan();
 boot();
 connectStore();

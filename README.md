@@ -26,7 +26,7 @@ Then you get:
 - **A cookbook PDF** to text, email or print: your week at a glance, the prep guide, cost and nutrition, every recipe with its photo, and the shopping list.
 - **18 themes,** each in light and dark, with 12 accent colors: Market, Farmhouse, Diner, Bistro, Bento, Trattoria, Taquería, Spice Market, Citrus, Kitchen Garden, Bakery, Night Market, Butcher Block, Seafood Shack, Smokehouse, Midnight Pantry, Matcha Café and Minimal.
 
-Sign in with Google to keep your plan on every device, save weeks you liked, and add your own photos. Your data is private to you, and you can delete all of it from your profile at any time.
+Every plan you make is saved in **My plans** with its own answers, groceries, swaps and checkmarks, so you can switch between weeks, rename them or delete them. Sign in with Google to keep your plans on every device and add your own photos. Your data is private to you, and you can delete all of it from your profile at any time.
 
 ## Support MealTote
 

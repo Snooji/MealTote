@@ -50,6 +50,8 @@ if (configured) {
       // saved plans: users/{uid}/plans/{id}
       async savePlan(name, stateJson) { const r = await addDoc(plansCol(), { name, state: stateJson, createdMs: Date.now(), createdAt: serverTimestamp() }); return r.id; },
       async listPlans() { const q = await getDocs(query(plansCol(), orderBy("createdMs", "desc"), limit(50))); return q.docs.map(d => ({ id: d.id, ...d.data() })); },
+      // My plans: each plan keeps its own doc, written in place so edits update it
+      async putPlan(id, data) { await setDoc(doc(db, "users", api.user.uid, "plans", id), { ...data, updatedAt: serverTimestamp() }, { merge: true }); },
       async deletePlan(id) { await deleteDoc(doc(db, "users", api.user.uid, "plans", id)); },
 
       // your own recipe photos: users/{uid}/photos/{recipeId} holds a small JPEG data URL (under Firestore's 1 MB limit)
