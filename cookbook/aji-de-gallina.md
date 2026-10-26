@@ -1,6 +1,8 @@
 # Ají de Gallina (Creamy Peruvian Chili Chicken)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ají de Gallina (Creamy Peruvian Chili Chicken)](../photos/aji-de-gallina.jpg)
+
+<sub>Photo: Feralbt · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Aj%C3%AD_de_gallina.jpg)</sub>
 
 **Dinner** · Peruvian · 55 min · serves 5 · skill 2/3
 

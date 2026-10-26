@@ -1,6 +1,8 @@
 # Rinderrouladen (Beef Rolls with Bacon, Mustard & Pickle)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Rinderrouladen (Beef Rolls with Bacon, Mustard & Pickle)](../photos/rinderrouladen.jpg)
+
+<sub>Photo: Robspinella · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Sliced_Flank_Roulade.jpg)</sub>
 
 **Dinner** · German & Austrian · 135 min · serves 4 · skill 3/3
 

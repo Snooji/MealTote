@@ -1,6 +1,8 @@
 # Turkey Albóndigas in Chipotle Tomato Sauce
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Turkey Albóndigas in Chipotle Tomato Sauce](../photos/albondigas-chipotle.jpg)
+
+<sub>Photo: Unknown · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Albondigas_en_Chipotle.jpg)</sub>
 
 **Dinner** · Mexican · 45 min · serves 4 · skill 2/3
 

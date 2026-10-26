@@ -1,6 +1,8 @@
 # Mumbai Pav Bhaji with Butter-Toasted Buns
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Mumbai Pav Bhaji with Butter-Toasted Buns](../photos/mumbai-pav-bhaji.jpg)
+
+<sub>Photo: Rupali Banarase · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Bambayya_Pav_bhaji.jpg)</sub>
 
 **Lunch** · North Indian · 45 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Kaya Toast with Soft-Cooked Kopitiam Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Kaya Toast with Soft-Cooked Kopitiam Eggs](../photos/kaya-toast-eggs.jpg)
+
+<sub>Photo: Deoma12 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Dessert_Merlion_Singapore_Cafe_Kaya_Toast.jpg)</sub>
 
 **Breakfast** · Malaysian & Singaporean · 40 min · serves 4 · skill 2/3
 

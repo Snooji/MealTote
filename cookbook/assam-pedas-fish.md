@@ -1,6 +1,8 @@
 # Asam Pedas (Sour & Spicy Tamarind Fish Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Asam Pedas (Sour & Spicy Tamarind Fish Stew)](../photos/assam-pedas-fish.jpg)
+
+<sub>Photo: Elly Suhailee · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:ASAM_PEDAS_IKAN_PARI.jpg)</sub>
 
 **Dinner** · Malaysian & Singaporean · 40 min · serves 4 · skill 2/3
 

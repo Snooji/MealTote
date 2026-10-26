@@ -1,6 +1,8 @@
 # Cartagena Fried Fish with Coconut Rice & Patacones
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cartagena Fried Fish with Coconut Rice & Patacones](../photos/pescado-frito-arroz-coco.jpg)
+
+<sub>Photo: ProtoplasmaKid · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Arroz_con_coco,_pescado_frito_y_patacones.jpg)</sub>
 
 **Dinner** · Colombian · 50 min · serves 4 · skill 2/3
 

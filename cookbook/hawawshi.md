@@ -1,6 +1,8 @@
 # Hawawshi (Egyptian Spiced Beef-Stuffed Crispy Pitas) with Tahini
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Hawawshi (Egyptian Spiced Beef-Stuffed Crispy Pitas) with Tahini](../photos/hawawshi.jpg)
+
+<sub>Photo: Mkevy · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Egyptian_meatloaf.jpg)</sub>
 
 **Lunch** · Egyptian · 45 min · serves 4 · skill 1/3
 

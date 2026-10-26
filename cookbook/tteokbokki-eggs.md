@@ -1,6 +1,8 @@
 # Tteokbokki (Spicy Korean Rice Cakes) with Boiled Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Tteokbokki (Spicy Korean Rice Cakes) with Boiled Eggs](../photos/tteokbokki-eggs.jpg)
+
+<sub>Photo: Popo le Chien · CC0 · [source](https://commons.wikimedia.org/wiki/File:Tteokbokki.JPG)</sub>
 
 **Lunch** · Korean · 40 min · serves 4 · skill 1/3
 

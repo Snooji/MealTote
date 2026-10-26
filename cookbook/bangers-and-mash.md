@@ -1,6 +1,8 @@
 # Bangers & Mash with Onion Gravy and Peas
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bangers & Mash with Onion Gravy and Peas](../photos/bangers-and-mash.jpg)
+
+<sub>Photo: anokarina · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Sausage_and_mash_with_peas.jpg)</sub>
 
 **Dinner** · British & Irish · 40 min · serves 4 · skill 1/3
 

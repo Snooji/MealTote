@@ -1,6 +1,8 @@
 # Beer-Battered Fish & Chips with Mushy Peas
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Beer-Battered Fish & Chips with Mushy Peas](../photos/beer-battered-fish-chips.jpg)
+
+<sub>Photo: Matthias Meckel · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Fish_and_chips_blackpool.jpg)</sub>
 
 **Dinner** · British & Irish · 60 min · serves 4 · skill 2/3
 

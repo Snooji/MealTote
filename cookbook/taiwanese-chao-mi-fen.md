@@ -1,6 +1,8 @@
 # Taiwanese Fried Rice Vermicelli with Shrimp & Shiitake (Chao Mi Fen)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Taiwanese Fried Rice Vermicelli with Shrimp & Shiitake (Chao Mi Fen)](../photos/taiwanese-chao-mi-fen.jpg)
+
+<sub>Photo: Midori · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Bihun_goreng.JPG)</sub>
 
 **Lunch** · Taiwanese · 35 min · serves 4 · skill 2/3
 

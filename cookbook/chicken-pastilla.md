@@ -1,6 +1,8 @@
 # Chicken Pastilla with Cinnamon-Sugared Almonds
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chicken Pastilla with Cinnamon-Sugared Almonds](../photos/chicken-pastilla.jpg)
+
+<sub>Photo: kochtopf · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Pastilla_marocaine_recouverte_de_sucre_glace.jpg)</sub>
 
 **Dinner** · Moroccan · 120 min · serves 6 · skill 3/3
 

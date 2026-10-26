@@ -1,6 +1,8 @@
 # Hoppin' John with Collards & Smoky Turkey
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Hoppin' John with Collards & Smoky Turkey](../photos/hoppin-john-greens.jpg)
+
+<sub>Photo: Srjenkins · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Hoppin-john-bowl.JPG)</sub>
 
 **Lunch** · Southern & soul food · 40 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Beef Nihari (Slow-Simmered Spiced Beef Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Beef Nihari (Slow-Simmered Spiced Beef Stew)](../photos/beef-nihari.jpg)
+
+<sub>Photo: Satcreak · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_Nihari,_made_by_Saleha_Atif,_Pakistan.jpg)</sub>
 
 **Dinner** · Pakistani · 240 min · serves 6 · skill 3/3
 

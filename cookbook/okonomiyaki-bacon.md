@@ -1,6 +1,8 @@
 # Okonomiyaki (Japanese Cabbage Pancakes with Bacon)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Okonomiyaki (Japanese Cabbage Pancakes with Bacon)](../photos/okonomiyaki-bacon.jpg)
+
+<sub>Photo: ume-y · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Okonomiyaki_001.jpg)</sub>
 
 **Lunch** · Japanese · 40 min · serves 4 · skill 2/3
 

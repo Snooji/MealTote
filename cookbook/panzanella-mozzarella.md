@@ -1,6 +1,8 @@
 # Tuscan Panzanella with Mozzarella & White Beans
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Tuscan Panzanella with Mozzarella & White Beans](../photos/panzanella-mozzarella.jpg)
+
+<sub>Photo: Heather Katsoulis · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Italian_Panzanella.jpg)</sub>
 
 **Lunch** · Italian · 40 min · serves 4 · skill 1/3
 

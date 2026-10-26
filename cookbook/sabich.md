@@ -1,6 +1,8 @@
 # Sabich (Fried Eggplant, Egg & Hummus Pitas with Tahini)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Sabich (Fried Eggplant, Egg & Hummus Pitas with Tahini)](../photos/sabich.jpg)
+
+<sub>Photo: ClyHell · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Clyhell6948.JPG)</sub>
 
 **Lunch** · Israeli · 40 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Garlic Mofongo with Shrimp in Criollo Sauce
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Garlic Mofongo with Shrimp in Criollo Sauce](../photos/mofongo-camarones.jpg)
+
+<sub>Photo: Diane · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Mofongo.jpg)</sub>
 
 **Dinner** · Puerto Rican & Dominican · 50 min · serves 4 · skill 2/3
 

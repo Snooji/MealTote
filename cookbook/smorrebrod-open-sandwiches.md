@@ -1,6 +1,8 @@
 # Smørrebrød (Danish Open-Faced Rye Sandwiches)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Smørrebrød (Danish Open-Faced Rye Sandwiches)](../photos/smorrebrod-open-sandwiches.jpg)
+
+<sub>Photo: Anneli Salo · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Sm%C3%B8rrebr%C3%B8d_at_Kastrup_IMG_8275_C.JPG)</sub>
 
 **Lunch** · Scandinavian · 25 min · serves 4 · skill 1/3
 

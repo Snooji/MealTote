@@ -1,6 +1,8 @@
 # Bacalhau à Brás (Portuguese Salt Cod with Eggs & Crispy Potatoes)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bacalhau à Brás (Portuguese Salt Cod with Eggs & Crispy Potatoes)](../photos/bacalhau-a-bras.jpg)
+
+<sub>Photo: Fpenteado at en.wikipedia · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Bacalhau_a_Bras.jpg)</sub>
 
 **Dinner** · Portuguese · 50 min · serves 4 · skill 2/3
 

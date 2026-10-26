@@ -1,6 +1,8 @@
 # Jamaican Ackee & Saltfish with Fried Dumplings
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Jamaican Ackee & Saltfish with Fried Dumplings](../photos/ackee-saltfish.jpg)
+
+<sub>Photo: gailf548 from New York State, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Ackee_and_Saltfish.jpg)</sub>
 
 **Breakfast** · Jamaican · 60 min · serves 4 · skill 2/3
 

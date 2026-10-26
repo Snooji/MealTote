@@ -1,6 +1,8 @@
 # Cuban Fricasé de Pollo with Potatoes & Olives
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cuban Fricasé de Pollo with Potatoes & Olives](../photos/fricase-de-pollo.jpg)
+
+<sub>Photo: Daniela Kloth · GFDL 1.2 · [source](https://commons.wikimedia.org/wiki/File:18-10-20_MG_4656.jpg)</sub>
 
 **Dinner** · Cuban · 90 min · serves 5 · skill 2/3
 

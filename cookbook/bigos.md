@@ -1,6 +1,8 @@
 # Bigos (Polish Hunter's Stew with Kielbasa & Sauerkraut)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bigos (Polish Hunter's Stew with Kielbasa & Sauerkraut)](../photos/bigos.jpg)
+
+<sub>Photo: bykst · CC0 · [source](https://commons.wikimedia.org/wiki/File:Bigos-445017.jpg)</sub>
 
 **Dinner** · Polish · 150 min · serves 6 · skill 2/3
 

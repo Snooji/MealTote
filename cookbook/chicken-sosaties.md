@@ -1,6 +1,8 @@
 # Cape Malay Chicken Sosaties with Yellow Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cape Malay Chicken Sosaties with Yellow Rice](../photos/chicken-sosaties.jpg)
+
+<sub>Photo: Anrie · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Sosaties.jpg)</sub>
 
 **Dinner** · South African · 65 min · serves 4 · skill 2/3
 

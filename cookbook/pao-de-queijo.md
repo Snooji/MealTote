@@ -1,6 +1,8 @@
 # Pão de Queijo (Brazilian Cheese Bread Puffs)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pão de Queijo (Brazilian Cheese Bread Puffs)](../photos/pao-de-queijo.jpg)
+
+<sub>Photo: Murilo manzini · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Cheesebread.jpg)</sub>
 
 **Breakfast** · Brazilian · 45 min · serves 4 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Huevos Habaneros (Havana-Style Eggs Baked in Sofrito)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Huevos Habaneros (Havana-Style Eggs Baked in Sofrito)](../photos/huevos-habaneros.jpg)
+
+<sub>Photo: Jpbrigand2 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Oeuf_cocotte.jpg)</sub>
 
 **Breakfast** · Cuban · 35 min · serves 4 · skill 1/3
 

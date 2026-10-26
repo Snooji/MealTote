@@ -1,6 +1,8 @@
 # Olivier Salad (Russian Potato Salad with Chicken)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Olivier Salad (Russian Potato Salad with Chicken)](../photos/olivier-salad.jpg)
+
+<sub>Photo: Carlosdisogra · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Ensalada_rusa_argentina.JPG)</sub>
 
 **Lunch** · Russian & Ukrainian · 50 min · serves 5 · skill 1/3
 

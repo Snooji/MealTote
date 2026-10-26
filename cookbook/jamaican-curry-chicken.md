@@ -1,6 +1,8 @@
 # Jamaican Curry Chicken with Potatoes & Carrots
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Jamaican Curry Chicken with Potatoes & Carrots](../photos/jamaican-curry-chicken.jpg)
+
+<sub>Photo: Thamizhpparithi Maari · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Aesthetic_Chicken_Curry.jpg)</sub>
 
 **Dinner** · Jamaican · 75 min · serves 5 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Spiced Turkey Murtabak with Pickled Onion
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Spiced Turkey Murtabak with Pickled Onion](../photos/turkey-murtabak.jpg)
+
+<sub>Photo: Mojackjutaily · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Murtabak.jpg)</sub>
 
 **Lunch** · Malaysian & Singaporean · 45 min · serves 4 · skill 2/3
 

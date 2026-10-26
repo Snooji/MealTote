@@ -1,6 +1,8 @@
 # Crispy Kimchi Pancakes (Kimchijeon) with Fried Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Crispy Kimchi Pancakes (Kimchijeon) with Fried Eggs](../photos/kimchijeon-breakfast.jpg)
+
+<sub>Photo: sharonang · CC0 · [source](https://commons.wikimedia.org/wiki/File:Kimchibuchimgae_(kimchi_pancake).jpg)</sub>
 
 **Breakfast** · Korean · 30 min · serves 4 · skill 1/3
 

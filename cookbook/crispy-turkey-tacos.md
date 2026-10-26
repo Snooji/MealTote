@@ -1,6 +1,8 @@
 # Texas-Style Crispy Ground Turkey Tacos
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Texas-Style Crispy Ground Turkey Tacos](../photos/crispy-turkey-tacos.jpg)
+
+<sub>Photo: Paul Goyette from Chicago, Illinois · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Barbacoa_taco.jpg)</sub>
 
 **Dinner** · Tex-Mex · 45 min · serves 4 · skill 2/3
 

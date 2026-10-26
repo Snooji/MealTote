@@ -1,6 +1,8 @@
 # Char Kway Teow (Smoky Fried Rice Noodles with Shrimp)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Char Kway Teow (Smoky Fried Rice Noodles with Shrimp)](../photos/char-kway-teow.jpg)
+
+<sub>Photo: brown_colour · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Char_kway_teow_in_parit_buntar.jpg)</sub>
 
 **Dinner** · Malaysian & Singaporean · 35 min · serves 4 · skill 2/3
 

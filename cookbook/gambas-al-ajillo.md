@@ -1,6 +1,8 @@
 # Gambas al Ajillo (Sizzling Garlic Shrimp) with Crusty Bread
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Gambas al Ajillo (Sizzling Garlic Shrimp) with Crusty Bread](../photos/gambas-al-ajillo.jpg)
+
+<sub>Photo: Javier Lastras from España/Spain · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Gambas_al_ajillo.jpg)</sub>
 
 **Dinner** · Spanish · 20 min · serves 4 · skill 1/3
 

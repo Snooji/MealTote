@@ -1,6 +1,8 @@
 # Turkey Sausage, Potato & Pepper Frittata
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Turkey Sausage, Potato & Pepper Frittata](../photos/turkey-sausage-potato-frittata.jpg)
+
+<sub>Photo: fir0002 · GFDL 1.2 · [source](https://commons.wikimedia.org/wiki/File:Frittata02.jpg)</sub>
 
 **Breakfast** · Italian · 35 min · serves 4 · skill 2/3
 

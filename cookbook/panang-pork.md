@@ -1,6 +1,8 @@
 # Panang Curry with Pork & Peanuts
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Panang Curry with Pork & Peanuts](../photos/panang-pork.jpg)
+
+<sub>Photo: Vee Satayamas from Bangkok, Thailand · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Panang_curry_(42943883862).jpg)</sub>
 
 **Dinner** · Thai · 35 min · serves 4 · skill 2/3
 

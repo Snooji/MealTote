@@ -1,6 +1,8 @@
 # Babi Kecap (Sweet Soy Braised Pork)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Babi Kecap (Sweet Soy Braised Pork)](../photos/babi-kecap.jpg)
+
+<sub>Photo: Gunawan Kartapranata · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Babi_kecap_1.jpg)</sub>
 
 **Dinner** · Indonesian · 110 min · serves 5 · skill 2/3
 

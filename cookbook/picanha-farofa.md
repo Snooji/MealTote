@@ -1,6 +1,8 @@
 # Brazilian Picanha with Farofa & Vinagrete
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Brazilian Picanha with Farofa & Vinagrete](../photos/picanha-farofa.jpg)
+
+<sub>Photo: Sepato · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Picanha_brazil.JPG)</sub>
 
 **Dinner** · Brazilian · 50 min · serves 5 · skill 2/3
 

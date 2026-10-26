@@ -1,6 +1,8 @@
 # Skillet Tacos al Pastor with Charred Pineapple
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Skillet Tacos al Pastor with Charred Pineapple](../photos/tacos-al-pastor.jpg)
+
+<sub>Photo: William Neuheisel · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:01_Tacos_al_Pastor.jpg)</sub>
 
 **Dinner** · Mexican · 60 min · serves 6 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Sabzi Polo ba Mahi (Persian Herbed Rice with Crisp Turmeric Salmon)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Sabzi Polo ba Mahi (Persian Herbed Rice with Crisp Turmeric Salmon)](../photos/sabzi-polo-mahi.jpg)
+
+<sub>Photo: مانفی · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Sabzi_polo.jpg)</sub>
 
 **Dinner** · Persian · 60 min · serves 4 · skill 2/3
 

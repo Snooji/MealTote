@@ -1,6 +1,8 @@
 # Fesenjan (Persian Chicken in Walnut-Pomegranate Sauce) with Saffron Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Fesenjan (Persian Chicken in Walnut-Pomegranate Sauce) with Saffron Rice](../photos/fesenjan.jpg)
+
+<sub>Photo: stringparts · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Khoresht-e_fesenjan.jpg)</sub>
 
 **Dinner** · Persian · 90 min · serves 6 · skill 2/3
 

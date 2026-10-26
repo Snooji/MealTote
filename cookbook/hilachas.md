@@ -1,6 +1,8 @@
 # Hilachas (Guatemalan Shredded Beef in Tomato-Tomatillo Sauce)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Hilachas (Guatemalan Shredded Beef in Tomato-Tomatillo Sauce)](../photos/hilachas.jpg)
+
+<sub>Photo: Joshua Heller · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Hilacha.jpg)</sub>
 
 **Dinner** · Salvadoran & Central American · 150 min · serves 6 · skill 2/3
 

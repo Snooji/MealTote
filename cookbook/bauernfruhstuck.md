@@ -1,6 +1,8 @@
 # Bauernfrühstück (German Farmer's Breakfast Skillet)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bauernfrühstück (German Farmer's Breakfast Skillet)](../photos/bauernfruhstuck.jpg)
+
+<sub>Photo: Josef Türk Reit im Winkl Chiemgau · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Bauernfr%C3%BChst%C3%BCck-01.jpg)</sub>
 
 **Breakfast** · German & Austrian · 40 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Khao Soi Gai (Chiang Mai Curry Noodle Soup)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Khao Soi Gai (Chiang Mai Curry Noodle Soup)](../photos/khao-soi-gai.jpg)
+
+<sub>Photo: Chainwit. · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Khao_Soi_Northern_Thai_food_%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%8B%E0%B8%AD%E0%B8%A2_%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%94%E0%B8%AD%E0%B8%87.jpg)</sub>
 
 **Lunch** · Thai · 45 min · serves 4 · skill 2/3
 

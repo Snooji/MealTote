@@ -1,6 +1,8 @@
 # Rava Upma with Vegetables & Cashews
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Rava Upma with Vegetables & Cashews](../photos/rava-upma.jpg)
+
+<sub>Photo: Thamizhpparithi Maari · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:A_photo_of_Upma.jpg)</sub>
 
 **Breakfast** · South Indian & Goan · 25 min · serves 4 · skill 1/3
 

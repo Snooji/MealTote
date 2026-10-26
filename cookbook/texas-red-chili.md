@@ -1,6 +1,8 @@
 # Texas Red Chili con Carne (No Beans)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Texas Red Chili con Carne (No Beans)](../photos/texas-red-chili.jpg)
+
+<sub>Photo: Agentseven at en.wikipedia · Public domain · [source](https://commons.wikimedia.org/wiki/File:Bowl_of_Chili_No_Beans.jpg)</sub>
 
 **Dinner** · Tex-Mex · 180 min · serves 6 · skill 2/3
 

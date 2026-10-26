@@ -1,6 +1,8 @@
 # Nigerian Catfish Pepper Soup with Boiled Plantain
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Nigerian Catfish Pepper Soup with Boiled Plantain](../photos/catfish-pepper-soup.jpg)
+
+<sub>Photo: bob walker · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Assorted_meat_pepper_soup_at_Lagos_Island.jpg)</sub>
 
 **Lunch** · Nigerian & West African · 40 min · serves 4 · skill 2/3
 

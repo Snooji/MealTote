@@ -1,6 +1,8 @@
 # Haemul Sundubu Jjigae (Spicy Soft Tofu Stew with Shrimp)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Haemul Sundubu Jjigae (Spicy Soft Tofu Stew with Shrimp)](../photos/haemul-sundubu-jjigae.jpg)
+
+<sub>Photo: by :/ · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Korean_stew-Sundubu_jjigae-03.jpg)</sub>
 
 **Dinner** · Korean · 30 min · serves 4 · skill 1/3
 

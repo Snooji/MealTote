@@ -1,6 +1,8 @@
 # Berlin Currywurst with Oven Fries
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Berlin Currywurst with Oven Fries](../photos/currywurst-fries.jpg)
+
+<sub>Photo: Superbass · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Curryking-4612.jpg)</sub>
 
 **Lunch** · German & Austrian · 45 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Malawach with Grated Tomato, Green Zhug & Hard-Boiled Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Malawach with Grated Tomato, Green Zhug & Hard-Boiled Eggs](../photos/malawach-zhug.jpg)
+
+<sub>Photo: Ayala Sender · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Malawach.jpg)</sub>
 
 **Breakfast** · Israeli · 30 min · serves 4 · skill 1/3
 

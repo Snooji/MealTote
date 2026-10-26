@@ -1,6 +1,8 @@
 # Lemon Rice (Chitranna) with Peanuts & Cucumber Raita
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Lemon Rice (Chitranna) with Peanuts & Cucumber Raita](../photos/lemon-rice-chitranna.jpg)
+
+<sub>Photo: Radhikapavan · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chitranna_and_Payasa.jpg)</sub>
 
 **Lunch** · South Indian & Goan · 30 min · serves 4 · skill 1/3
 

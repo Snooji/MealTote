@@ -1,6 +1,8 @@
 # Three Cup Chicken (San Bei Ji) with Basil
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Three Cup Chicken (San Bei Ji) with Basil](../photos/three-cup-chicken.jpg)
+
+<sub>Photo: Archon6812 · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Sanbeiji.jpg)</sub>
 
 **Dinner** · Taiwanese · 35 min · serves 4 · skill 1/3
 

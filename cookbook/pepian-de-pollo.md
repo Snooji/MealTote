@@ -1,6 +1,8 @@
 # Guatemalan Pepián de Pollo
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Guatemalan Pepián de Pollo](../photos/pepian-de-pollo.jpg)
+
+<sub>Photo: erwin.flores69 · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Cocinando_El_Pepian.jpg)</sub>
 
 **Dinner** · Salvadoran & Central American · 90 min · serves 6 · skill 3/3
 

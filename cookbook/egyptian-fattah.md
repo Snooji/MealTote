@@ -1,6 +1,8 @@
 # Egyptian Fattah (Beef over Crisp Pita & Rice with Garlic-Vinegar Tomato Sauce)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Egyptian Fattah (Beef over Crisp Pita & Rice with Garlic-Vinegar Tomato Sauce)](../photos/egyptian-fattah.jpg)
+
+<sub>Photo: David Berkowitz · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Fattah_at_Felfela_Restaurant_-_Cairo_Egypt_October_2009.jpg)</sub>
 
 **Dinner** · Egyptian · 150 min · serves 6 · skill 2/3
 

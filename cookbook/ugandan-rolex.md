@@ -1,6 +1,8 @@
 # Ugandan Rolex (Chapati Egg Roll-Ups)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ugandan Rolex (Chapati Egg Roll-Ups)](../photos/ugandan-rolex.jpg)
+
+<sub>Photo: Roxanne.heston · CC0 · [source](https://commons.wikimedia.org/wiki/File:Rolex_wrap.jpg)</sub>
 
 **Breakfast** · Kenyan & East African · 25 min · serves 4 · skill 1/3
 

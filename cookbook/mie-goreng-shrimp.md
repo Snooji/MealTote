@@ -1,6 +1,8 @@
 # Mie Goreng with Shrimp & Egg Ribbons
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Mie Goreng with Shrimp & Egg Ribbons](../photos/mie-goreng-shrimp.jpg)
+
+<sub>Photo: Gunawan Kartapranata · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mi_Goreng_GM.jpg)</sub>
 
 **Dinner** · Indonesian · 30 min · serves 4 · skill 2/3
 

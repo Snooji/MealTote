@@ -1,6 +1,8 @@
 # Slow-Simmered Beef Rendang
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Slow-Simmered Beef Rendang](../photos/beef-rendang.jpg)
+
+<sub>Photo: Midori · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Rendang_daging_sapi_asli_Padang.JPG)</sub>
 
 **Dinner** · Indonesian · 210 min · serves 6 · skill 3/3
 

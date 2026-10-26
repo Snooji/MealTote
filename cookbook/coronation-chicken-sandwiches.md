@@ -1,6 +1,8 @@
 # Coronation Chicken Sandwiches
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Coronation Chicken Sandwiches](../photos/coronation-chicken-sandwiches.jpg)
+
+<sub>Photo: Rosakoalaglitzereinhorn · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Coronation_chicken_sandwich_unwrapped_01.02.2012_15-34-38.JPG)</sub>
 
 **Lunch** · British & Irish · 20 min · serves 4 · skill 1/3
 

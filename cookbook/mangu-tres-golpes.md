@@ -1,6 +1,8 @@
 # Dominican Mangú con los Tres Golpes
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Dominican Mangú con los Tres Golpes](../photos/mangu-tres-golpes.jpg)
+
+<sub>Photo: Danimsosa · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Mangu.jpg)</sub>
 
 **Breakfast** · Puerto Rican & Dominican · 40 min · serves 4 · skill 2/3
 

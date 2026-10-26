@@ -1,6 +1,8 @@
 # Chicken Cacciatore over Soft Parmesan Polenta
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chicken Cacciatore over Soft Parmesan Polenta](../photos/chicken-cacciatore-polenta.jpg)
+
+<sub>Photo: Calgary Reviews from Calgary, Canada · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Braised_Quebec_rabbit_cacciatore_-_Giorgio%27s_Trattoria.jpg)</sub>
 
 **Dinner** · Italian · 75 min · serves 4 · skill 2/3
 

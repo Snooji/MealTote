@@ -1,6 +1,8 @@
 # Cá Kho Tộ (Caramelized Catfish) with Garlic Bok Choy
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cá Kho Tộ (Caramelized Catfish) with Garlic Bok Choy](../photos/ca-kho-to.jpg)
+
+<sub>Photo: Charles Haynes · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:C%C3%A1_kho_t%E1%BB%99,_c%C3%A1_h%C3%BA.jpg)</sub>
 
 **Dinner** · Vietnamese · 45 min · serves 4 · skill 2/3
 

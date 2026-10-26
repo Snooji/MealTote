@@ -1,6 +1,8 @@
 # Irish Boxty Potato Pancakes with Bacon & Fried Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Irish Boxty Potato Pancakes with Bacon & Fried Eggs](../photos/irish-boxty-breakfast.jpg)
+
+<sub>Photo: さえぼー · CC0 · [source](https://commons.wikimedia.org/wiki/File:Boxty_triangle.jpg)</sub>
 
 **Breakfast** · British & Irish · 60 min · serves 4 · skill 2/3
 

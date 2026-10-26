@@ -1,6 +1,8 @@
 # Shui Zhu Yu (Sichuan Boiled Fish in Chili Broth)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Shui Zhu Yu (Sichuan Boiled Fish in Chili Broth)](../photos/shui-zhu-yu-boiled-fish.jpg)
+
+<sub>Photo: Liu Nan · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Shuizhuniurou.jpg)</sub>
 
 **Dinner** · Sichuan & Hunan · 45 min · serves 4 · skill 2/3
 

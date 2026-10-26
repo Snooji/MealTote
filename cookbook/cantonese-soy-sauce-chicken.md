@@ -1,6 +1,8 @@
 # Cantonese Soy Sauce Chicken with Ginger-Scallion Oil
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cantonese Soy Sauce Chicken with Ginger-Scallion Oil](../photos/cantonese-soy-sauce-chicken.jpg)
+
+<sub>Photo: Dennis Wong from Hong Kong, Hong Kong · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Soy_Sauce_Chicken.jpg)</sub>
 
 **Dinner** · Chinese & Cantonese · 80 min · serves 6 · skill 2/3
 

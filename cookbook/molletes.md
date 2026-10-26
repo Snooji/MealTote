@@ -1,6 +1,8 @@
 # Molletes with Pico de Gallo
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Molletes with Pico de Gallo](../photos/molletes.jpg)
+
+<sub>Photo: T.Tseng · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Molletes_(34965662722).jpg)</sub>
 
 **Breakfast** · Mexican · 20 min · serves 4 · skill 1/3
 

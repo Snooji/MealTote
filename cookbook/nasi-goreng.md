@@ -1,6 +1,8 @@
 # Nasi Goreng with Chicken & Fried Eggs
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Nasi Goreng with Chicken & Fried Eggs](../photos/nasi-goreng.jpg)
+
+<sub>Photo: shankar s. from Dubai, united arab emirates · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung_(11967588375).jpg)</sub>
 
 **Lunch** · Indonesian · 30 min · serves 4 · skill 1/3
 

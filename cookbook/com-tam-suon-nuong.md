@@ -1,6 +1,8 @@
 # Cơm Tấm Sườn Nướng (Lemongrass Pork Chops & Rice)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Cơm Tấm Sườn Nướng (Lemongrass Pork Chops & Rice)](../photos/com-tam-suon-nuong.jpg)
+
+<sub>Photo: Christopher Crouzet · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:C%C6%A1m_T%E1%BA%A5m,_Da_Nang,_Vietnam.jpg)</sub>
 
 **Dinner** · Vietnamese · 75 min · serves 4 · skill 2/3
 

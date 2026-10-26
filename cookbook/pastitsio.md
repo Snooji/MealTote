@@ -1,6 +1,8 @@
 # Pastitsio (Greek Baked Pasta with Cinnamon Beef & Béchamel)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pastitsio (Greek Baked Pasta with Cinnamon Beef & Béchamel)](../photos/pastitsio.jpg)
+
+<sub>Photo: Katrin Morenz from Aachen, Deutschland · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Greek_pastitsio.jpg)</sub>
 
 **Dinner** · Greek · 120 min · serves 6 · skill 3/3
 

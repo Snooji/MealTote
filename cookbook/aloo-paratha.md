@@ -1,6 +1,8 @@
 # Aloo Paratha (Spiced Potato-Stuffed Flatbreads) with Yogurt
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Aloo Paratha (Spiced Potato-Stuffed Flatbreads) with Yogurt](../photos/aloo-paratha.jpg)
+
+<sub>Photo: Nithyasrm · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Triangle_paratha_(cropped).JPG)</sub>
 
 **Breakfast** · North Indian · 60 min · serves 4 · skill 2/3
 

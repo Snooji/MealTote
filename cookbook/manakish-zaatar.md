@@ -1,6 +1,8 @@
 # Za'atar Manakish with Labneh, Cucumber & Tomato
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Za'atar Manakish with Labneh, Cucumber & Tomato](../photos/manakish-zaatar.jpg)
+
+<sub>Photo: Unknown · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Za%27atar_bread.jpg)</sub>
 
 **Breakfast** · Lebanese & Levantine · 35 min · serves 4 · skill 2/3
 

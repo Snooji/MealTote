@@ -1,6 +1,8 @@
 # Pancit Bihon with Chicken & Vegetables
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pancit Bihon with Chicken & Vegetables](../photos/pancit-bihon.jpg)
+
+<sub>Photo: pulaw · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Pancit_Ilonggo_Style_-_12110747826.jpg)</sub>
 
 **Lunch** · Filipino · 40 min · serves 4 · skill 2/3
 

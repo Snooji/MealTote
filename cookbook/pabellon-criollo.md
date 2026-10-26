@@ -1,6 +1,8 @@
 # Pabellón Criollo (Venezuelan Shredded Beef, Black Beans, Rice & Plantains)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pabellón Criollo (Venezuelan Shredded Beef, Black Beans, Rice & Plantains)](../photos/pabellon-criollo.jpg)
+
+<sub>Photo: Byfreddygutierrez · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Pabell%C3%B3n_Criollo_Venezolano_1.jpg)</sub>
 
 **Dinner** · Venezuelan · 150 min · serves 6 · skill 2/3
 

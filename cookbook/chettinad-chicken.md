@@ -1,6 +1,8 @@
 # Chettinad Chicken Curry with Roasted Spices
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chettinad Chicken Curry with Roasted Spices](../photos/chettinad-chicken.jpg)
+
+<sub>Photo: Ask27 · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Anandas_Chettinad_Hotel,_sample_tray_in_Coimbatore.JPG)</sub>
 
 **Dinner** · South Indian & Goan · 60 min · serves 4 · skill 2/3
 

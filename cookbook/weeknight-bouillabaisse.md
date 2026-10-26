@@ -1,6 +1,8 @@
 # Weeknight Bouillabaisse with Garlic Rouille Toasts
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Weeknight Bouillabaisse with Garlic Rouille Toasts](../photos/weeknight-bouillabaisse.jpg)
+
+<sub>Photo: Arnaud 25 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Bouillabaisse_07.jpg)</sub>
 
 **Dinner** · French · 50 min · serves 4 · skill 2/3
 

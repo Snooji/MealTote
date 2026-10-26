@@ -1,6 +1,8 @@
 # Kenyan Wet-Fry Tilapia with Sukuma Wiki & Ugali
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Kenyan Wet-Fry Tilapia with Sukuma Wiki & Ugali](../photos/kenyan-wet-fry-fish.jpg)
+
+<sub>Photo: Tamuka Hwami · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Goat_Offal.JPG)</sub>
 
 **Dinner** · Kenyan & East African · 50 min · serves 4 · skill 2/3
 

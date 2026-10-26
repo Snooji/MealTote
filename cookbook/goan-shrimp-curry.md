@@ -1,6 +1,8 @@
 # Goan Shrimp Curry with Coconut & Tamarind
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Goan Shrimp Curry with Coconut & Tamarind](../photos/goan-shrimp-curry.jpg)
+
+<sub>Photo: Sanfy · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Goa_Sorpotel.jpg)</sub>
 
 **Dinner** · South Indian & Goan · 40 min · serves 4 · skill 2/3
 

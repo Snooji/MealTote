@@ -1,6 +1,8 @@
 # Doro Wat (Berbere Chicken Stew with Eggs)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Doro Wat (Berbere Chicken Stew with Eggs)](../photos/doro-wat.jpg)
+
+<sub>Photo: stu_spivack · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Ethiopian_wat.jpg)</sub>
 
 **Dinner** · Ethiopian · 90 min · serves 4 · skill 2/3
 

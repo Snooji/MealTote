@@ -1,6 +1,8 @@
 # Bifanas (Portuguese Garlic-Wine Pork Sandwiches)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bifanas (Portuguese Garlic-Wine Pork Sandwiches)](../photos/bifanas.jpg)
+
+<sub>Photo: Siliconred · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Porto-style_Bifana_sandwich_with_egg.jpg)</sub>
 
 **Lunch** · Portuguese · 30 min · serves 4 · skill 1/3
 

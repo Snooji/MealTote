@@ -1,6 +1,8 @@
 # Karnıyarık (Turkish Beef-Stuffed Eggplants) with Buttered Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Karnıyarık (Turkish Beef-Stuffed Eggplants) with Buttered Rice](../photos/karniyarik.jpg)
+
+<sub>Photo: E4024 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Meal_in_Turkey.jpg)</sub>
 
 **Dinner** · Turkish · 65 min · serves 4 · skill 2/3
 

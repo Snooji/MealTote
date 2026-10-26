@@ -1,6 +1,8 @@
 # Ukrainian Borscht with Beef, Beets & Dill
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ukrainian Borscht with Beef, Beets & Dill](../photos/ukrainian-borscht.jpg)
+
+<sub>Photo: liz west from Boxborough, MA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Borscht_served.jpg)</sub>
 
 **Lunch** · Russian & Ukrainian · 120 min · serves 6 · skill 2/3
 

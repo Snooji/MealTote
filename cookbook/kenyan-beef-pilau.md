@@ -1,6 +1,8 @@
 # Kenyan Beef Pilau with Kachumbari
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Kenyan Beef Pilau with Kachumbari](../photos/kenyan-beef-pilau.jpg)
+
+<sub>Photo: Tamorlan · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Arroz_enjoyado_-_Morasa_Pol%C3%B3.JPG)</sub>
 
 **Dinner** · Kenyan & East African · 90 min · serves 6 · skill 2/3
 

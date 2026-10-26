@@ -1,6 +1,8 @@
 # Nigerian Egg Sauce with Fried Plantains (Dodo)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Nigerian Egg Sauce with Fried Plantains (Dodo)](../photos/dodo-egg-sauce.jpg)
+
+<sub>Photo: Krista · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Aloko.jpg)</sub>
 
 **Breakfast** · Nigerian & West African · 30 min · serves 4 · skill 1/3
 

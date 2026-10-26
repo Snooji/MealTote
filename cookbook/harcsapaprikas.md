@@ -1,6 +1,8 @@
 # Harcsapaprikás (Hungarian Catfish Paprikash)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Harcsapaprikás (Hungarian Catfish Paprikash)](../photos/harcsapaprikas.jpg)
+
+<sub>Photo: Atilla the Great · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_Paprikash_(Csirke_Paprik%C3%A1s).jpg)</sub>
 
 **Dinner** · Hungarian · 40 min · serves 4 · skill 1/3
 

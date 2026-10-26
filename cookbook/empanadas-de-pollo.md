@@ -1,6 +1,8 @@
 # Argentine Chicken Empanadas with Peppers & Egg
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Argentine Chicken Empanadas with Peppers & Egg](../photos/empanadas-de-pollo.jpg)
+
+<sub>Photo: Adriao · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:%27Mpanatigghi.JPG)</sub>
 
 **Lunch** · Argentinian · 90 min · serves 6 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Arroz Chaufa with Shrimp (Peruvian-Chinese Fried Rice)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Arroz Chaufa with Shrimp (Peruvian-Chinese Fried Rice)](../photos/arroz-chaufa-camarones.jpg)
+
+<sub>Photo: Dtarazona · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chaufa_salvaje_Selva_17042010.JPG)</sub>
 
 **Dinner** · Peruvian · 35 min · serves 4 · skill 1/3
 

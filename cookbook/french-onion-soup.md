@@ -1,6 +1,8 @@
 # French Onion Soup with Gruyère Croutons
 
-_Illustrated in the app (no free-licensed photo yet)._
+![French Onion Soup with Gruyère Croutons](../photos/french-onion-soup.jpg)
+
+<sub>Photo: Ludovic Péron · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Soupe_%C3%A0_l%27oignon.jpg)</sub>
 
 **Lunch** · French · 110 min · serves 4 · skill 2/3
 

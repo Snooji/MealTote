@@ -1,6 +1,8 @@
 # Ghormeh Sabzi (Persian Herb & Beef Stew with Kidney Beans) over Saffron Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ghormeh Sabzi (Persian Herb & Beef Stew with Kidney Beans) over Saffron Rice](../photos/ghormeh-sabzi.jpg)
+
+<sub>Photo: AilinParsa · CC0 · [source](https://commons.wikimedia.org/wiki/File:Ailin14VeganGhormehSabzi.JPG)</sub>
 
 **Dinner** · Persian · 150 min · serves 6 · skill 2/3
 

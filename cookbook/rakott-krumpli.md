@@ -1,6 +1,8 @@
 # Rakott Krumpli (Hungarian Layered Potatoes with Sausage & Egg)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Rakott Krumpli (Hungarian Layered Potatoes with Sausage & Egg)](../photos/rakott-krumpli.jpg)
+
+<sub>Photo: zolakoma · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Rakott_krumpli.jpg)</sub>
 
 **Dinner** · Hungarian · 95 min · serves 6 · skill 2/3
 

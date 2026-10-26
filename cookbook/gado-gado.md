@@ -1,6 +1,8 @@
 # Gado-Gado with Crispy Tofu & Warm Peanut Sauce
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Gado-Gado with Crispy Tofu & Warm Peanut Sauce](../photos/gado-gado.jpg)
+
+<sub>Photo: Piknikdong · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Gado_gado_jakarta.jpg)</sub>
 
 **Lunch** · Indonesian · 40 min · serves 4 · skill 2/3
 

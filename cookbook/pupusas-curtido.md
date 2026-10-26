@@ -1,6 +1,8 @@
 # Salvadoran Bean & Cheese Pupusas with Curtido
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Salvadoran Bean & Cheese Pupusas with Curtido](../photos/pupusas-curtido.jpg)
+
+<sub>Photo: JMRAFFi · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Pupusas_El_Salvador_Centro_America.JPG)</sub>
 
 **Lunch** · Salvadoran & Central American · 60 min · serves 4 · skill 2/3
 

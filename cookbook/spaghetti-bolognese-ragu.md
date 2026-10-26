@@ -1,6 +1,8 @@
 # Spaghetti Bolognese with Beef & Pork Ragù
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Spaghetti Bolognese with Beef & Pork Ragù](../photos/spaghetti-bolognese-ragu.jpg)
+
+<sub>Photo: hozinja · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Spaghetti_bolognese_(hozinja).jpg)</sub>
 
 **Dinner** · Italian · 70 min · serves 5 · skill 2/3
 

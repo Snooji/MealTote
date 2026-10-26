@@ -1,6 +1,8 @@
 # Caldo Verde (Portuguese Potato, Kale & Linguiça Soup)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Caldo Verde (Portuguese Potato, Kale & Linguiça Soup)](../photos/caldo-verde.jpg)
+
+<sub>Photo: Mateus Hidalgo · CC BY-SA 2.5 br · [source](https://commons.wikimedia.org/wiki/File:Caldo_verde.jpg)</sub>
 
 **Lunch** · Portuguese · 50 min · serves 4 · skill 1/3
 

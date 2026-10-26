@@ -1,6 +1,8 @@
 # Huevos Rotos with Crispy Potatoes & Chorizo
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Huevos Rotos with Crispy Potatoes & Chorizo](../photos/huevos-rotos-chorizo.jpg)
+
+<sub>Photo: fluzo (Manuel Bartual) from Madrid, España · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:HuevosEstrellados.jpg)</sub>
 
 **Breakfast** · Spanish · 40 min · serves 4 · skill 2/3
 

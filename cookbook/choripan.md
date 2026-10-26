@@ -1,6 +1,8 @@
 # Choripán with Chimichurri & Salsa Criolla
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Choripán with Chimichurri & Salsa Criolla](../photos/choripan.jpg)
+
+<sub>Photo: ProtoplasmaKid · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Preparations_for_an_argentinian_asado_15.JPG)</sub>
 
 **Lunch** · Argentinian · 30 min · serves 4 · skill 1/3
 

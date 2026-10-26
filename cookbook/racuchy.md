@@ -1,6 +1,8 @@
 # Racuchy (Polish Yeasted Apple Pancakes)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Racuchy (Polish Yeasted Apple Pancakes)](../photos/racuchy.jpg)
+
+<sub>Photo: Wikited at English Wikipedia · Public domain · [source](https://commons.wikimedia.org/wiki/File:Polish_pastries.jpg)</sub>
 
 **Breakfast** · Polish · 85 min · serves 5 · skill 2/3
 

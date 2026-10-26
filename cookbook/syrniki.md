@@ -1,6 +1,8 @@
 # Syrniki (Ukrainian Farmer's Cheese Pancakes)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Syrniki (Ukrainian Farmer's Cheese Pancakes)](../photos/syrniki.jpg)
+
+<sub>Photo: Tatyana Morozyuk, color processing by Off-shell · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Syrniki6.jpg)</sub>
 
 **Breakfast** · Russian & Ukrainian · 30 min · serves 4 · skill 1/3
 

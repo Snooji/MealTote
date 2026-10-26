@@ -1,6 +1,8 @@
 # Southern Salmon Croquettes with Buttered Grits
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Southern Salmon Croquettes with Buttered Grits](../photos/salmon-croquettes-grits.jpg)
+
+<sub>Photo: David Adam Kess · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:(_Madrid,_Spain,_Tapas_)_best_of_the_best_of_the_best.jpg)</sub>
 
 **Breakfast** · Southern & soul food · 35 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Peruvian Ceviche with Sweet Potato & Corn
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Peruvian Ceviche with Sweet Potato & Corn](../photos/peruvian-ceviche.jpg)
+
+<sub>Photo: Picanteria karol · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Cebiche_de_corvina.JPG)</sub>
 
 **Lunch** · Peruvian · 45 min · serves 4 · skill 2/3
 

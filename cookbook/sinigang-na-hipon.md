@@ -1,6 +1,8 @@
 # Sinigang na Hipon (Sour Tamarind Shrimp Soup)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Sinigang na Hipon (Sour Tamarind Shrimp Soup)](../photos/sinigang-na-hipon.jpg)
+
+<sub>Photo: Yvette Tan · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Fely_J%27s_Sinigang_with_Guava.jpg)</sub>
 
 **Dinner** · Filipino · 35 min · serves 4 · skill 1/3
 

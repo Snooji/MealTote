@@ -1,6 +1,8 @@
 # Fugazzeta (Argentine Cheese-Stuffed Onion Pizza)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Fugazzeta (Argentine Cheese-Stuffed Onion Pizza)](../photos/fugazzeta.jpg)
+
+<sub>Photo: Aleposta · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Fugazzetta_en_Pizzer%C3%ADa_Guerrin,_Buenos_Aires.jpg)</sub>
 
 **Dinner** · Argentinian · 75 min · serves 4 · skill 2/3
 

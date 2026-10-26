@@ -1,6 +1,8 @@
 # Gigantes Plaki (Greek Baked Giant Beans with Feta)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Gigantes Plaki (Greek Baked Giant Beans with Feta)](../photos/gigantes-plaki.jpg)
+
+<sub>Photo: Hevesli · Public domain · [source](https://commons.wikimedia.org/wiki/File:Gigandes_plaki.jpg)</sub>
 
 **Lunch** · Greek · 75 min · serves 4 · skill 1/3
 

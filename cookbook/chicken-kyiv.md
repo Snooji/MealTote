@@ -1,6 +1,8 @@
 # Chicken Kyiv with Garlic-Dill Butter & Mashed Potatoes
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chicken Kyiv with Garlic-Dill Butter & Mashed Potatoes](../photos/chicken-kyiv.jpg)
+
+<sub>Photo: Bev Sykes from Davis, CA, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_Kiev_Flickr.jpg)</sub>
 
 **Dinner** · Russian & Ukrainian · 90 min · serves 4 · skill 3/3
 

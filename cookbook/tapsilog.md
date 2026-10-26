@@ -1,6 +1,8 @@
 # Tapsilog: Sweet Garlic Beef Tapa, Garlic Rice & Fried Egg
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Tapsilog: Sweet Garlic Beef Tapa, Garlic Rice & Fried Egg](../photos/tapsilog.jpg)
+
+<sub>Photo: Efrenefren · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_tapa_with_steamed_rice_and_sliced_tomato_and_cucumber.jpg)</sub>
 
 **Breakfast** · Filipino · 70 min · serves 4 · skill 2/3
 

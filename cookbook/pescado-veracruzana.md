@@ -1,6 +1,8 @@
 # Pescado a la Veracruzana (Fish with Tomatoes, Olives & Capers)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pescado a la Veracruzana (Fish with Tomatoes, Olives & Capers)](../photos/pescado-veracruzana.jpg)
+
+<sub>Photo: Thelmadatter · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:HuachinangoVeracruzana.JPG)</sub>
 
 **Dinner** · Mexican · 40 min · serves 4 · skill 1/3
 

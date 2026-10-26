@@ -1,6 +1,8 @@
 # Chicken Kottu Roti
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chicken Kottu Roti](../photos/chicken-kottu-roti.jpg)
+
+<sub>Photo: Dan arndt · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_Kottu.jpg)</sub>
 
 **Lunch** · Sri Lankan · 45 min · serves 4 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Lu Rou Fan (Taiwanese Braised Pork Rice with Soy Eggs)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Lu Rou Fan (Taiwanese Braised Pork Rice with Soy Eggs)](../photos/lu-rou-fan.jpg)
+
+<sub>Photo: 總統府 · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:L%C3%B3%CD%98-bah-pn%CC%84g_of_the_Wang%27s_Broth_at_Huaxi_Street_in_Wanhua,_Taipei_2023-04-28.jpg)</sub>
 
 **Dinner** · Taiwanese · 120 min · serves 6 · skill 2/3
 

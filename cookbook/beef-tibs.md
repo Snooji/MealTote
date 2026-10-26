@@ -1,6 +1,8 @@
 # Ethiopian Beef Tibs with Rosemary & Jalapeños
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ethiopian Beef Tibs with Rosemary & Jalapeños](../photos/beef-tibs.jpg)
+
+<sub>Photo: Pete unseth · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Ethiopian_cuisine_fusion.jpg)</sub>
 
 **Dinner** · Ethiopian · 30 min · serves 4 · skill 1/3
 

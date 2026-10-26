@@ -1,6 +1,8 @@
 # Molokhia (Egyptian Jute-Leaf & Garlic Stew) with Chicken & Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Molokhia (Egyptian Jute-Leaf & Garlic Stew) with Chicken & Rice](../photos/molokhia-chicken.jpg)
+
+<sub>Photo: Habib M'henni · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Molokheya_Egypt,_2012.JPG)</sub>
 
 **Dinner** · Egyptian · 80 min · serves 5 · skill 2/3
 

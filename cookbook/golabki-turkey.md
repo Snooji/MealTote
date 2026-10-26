@@ -1,6 +1,8 @@
 # Gołąbki (Turkey & Rice Cabbage Rolls in Tomato Sauce)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Gołąbki (Turkey & Rice Cabbage Rolls in Tomato Sauce)](../photos/golabki-turkey.jpg)
+
+<sub>Photo: Christo · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:T%C3%B6lt%C3%B6tt_k%C3%A1poszta,_2.jpg)</sub>
 
 **Dinner** · Polish · 105 min · serves 5 · skill 3/3
 

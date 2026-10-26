@@ -1,6 +1,8 @@
 # Hambagu (Japanese Hamburg Steaks with Ketchup Pan Sauce)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Hambagu (Japanese Hamburg Steaks with Ketchup Pan Sauce)](../photos/hambagu-hamburg-steak.jpg)
+
+<sub>Photo: MaedaAkihiko · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Hamburg-Steak.jpg)</sub>
 
 **Dinner** · Japanese · 55 min · serves 4 · skill 2/3
 

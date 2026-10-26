@@ -1,6 +1,8 @@
 # Jerusalem Mixed Grill (Spiced Chicken & Onions in Pita with Tahini)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Jerusalem Mixed Grill (Spiced Chicken & Onions in Pita with Tahini)](../photos/jerusalem-mixed-grill.jpg)
+
+<sub>Photo: Peterjerusalem · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Maoravyerushalmi.jpeg)</sub>
 
 **Lunch** · Israeli · 35 min · serves 4 · skill 1/3
 

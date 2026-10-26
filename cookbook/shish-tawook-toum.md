@@ -1,6 +1,8 @@
 # Shish Tawook with Toum, Pita & Pickles
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Shish Tawook with Toum, Pita & Pickles](../photos/shish-tawook-toum.jpg)
+
+<sub>Photo: Garrett Ziegler · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Tavuk_%C5%9Ei%C5%9F.jpg)</sub>
 
 **Dinner** · Lebanese & Levantine · 45 min · serves 4 · skill 2/3
 

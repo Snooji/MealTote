@@ -1,6 +1,8 @@
 # Fish-Fragrant Eggplant with Ground Turkey
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Fish-Fragrant Eggplant with Ground Turkey](../photos/yu-xiang-eggplant-turkey.jpg)
+
+<sub>Photo: Popo le Chien · CC0 · [source](https://commons.wikimedia.org/wiki/File:Qiezi.jpg)</sub>
 
 **Dinner** · Sichuan & Hunan · 35 min · serves 4 · skill 2/3
 

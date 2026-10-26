@@ -1,6 +1,8 @@
 # Somali Turkey Sambusa with Green Chili Sauce
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Somali Turkey Sambusa with Green Chili Sauce](../photos/turkey-sambusa.jpg)
+
+<sub>Photo: Adrião · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Chamu%C3%A7as.jpg)</sub>
 
 **Lunch** · Kenyan & East African · 60 min · serves 4 · skill 2/3
 

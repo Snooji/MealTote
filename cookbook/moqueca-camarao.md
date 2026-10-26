@@ -1,6 +1,8 @@
 # Moqueca de Camarão (Brazilian Coconut Shrimp Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Moqueca de Camarão (Brazilian Coconut Shrimp Stew)](../photos/moqueca-camarao.jpg)
+
+<sub>Photo: BR · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Moqueca.jpg)</sub>
 
 **Dinner** · Brazilian · 45 min · serves 4 · skill 2/3
 

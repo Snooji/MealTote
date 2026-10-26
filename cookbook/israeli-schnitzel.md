@@ -1,6 +1,8 @@
 # Israeli Sesame Chicken Schnitzel with Israeli Salad & Roast Potatoes
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Israeli Sesame Chicken Schnitzel with Israeli Salad & Roast Potatoes](../photos/israeli-schnitzel.jpg)
+
+<sub>Photo: Benreis · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Breitenlesau_Krug_Br%C3%A4u_Schnitzel.JPG)</sub>
 
 **Dinner** · Israeli · 55 min · serves 4 · skill 2/3
 

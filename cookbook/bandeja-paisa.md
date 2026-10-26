@@ -1,6 +1,8 @@
 # Bandeja Paisa (Colombian Platter with Beans, Beef & Chicharrón)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bandeja Paisa (Colombian Platter with Beans, Beef & Chicharrón)](../photos/bandeja-paisa.jpg)
+
+<sub>Photo: Dtarazona · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Bandeja_paisa_30062011.jpg)</sub>
 
 **Dinner** · Colombian · 90 min · serves 6 · skill 3/3
 

@@ -1,6 +1,8 @@
 # Chiles Rellenos de Queso in Tomato Caldillo
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Chiles Rellenos de Queso in Tomato Caldillo](../photos/chiles-rellenos.jpg)
+
+<sub>Photo: Skyler Lewis · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Breaded-Chile-Rellenos.jpg)</sub>
 
 **Dinner** · Mexican · 80 min · serves 4 · skill 3/3
 

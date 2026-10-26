@@ -1,6 +1,8 @@
 # Lecsó with Eggs (Hungarian Pepper & Tomato Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Lecsó with Eggs (Hungarian Pepper & Tomato Stew)](../photos/lecso-eggs.jpg)
+
+<sub>Photo: zeevveez · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Warm_Colors-_my_Mom%27s_Hungarian_Lecs%C3%B3_cropped.jpg)</sub>
 
 **Breakfast** · Hungarian · 40 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Revuelto Gramajo (Argentine Ham, Potato & Egg Scramble)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Revuelto Gramajo (Argentine Ham, Potato & Egg Scramble)](../photos/revuelto-gramajo.jpg)
+
+<sub>Photo: Neo139 · CC0 · [source](https://commons.wikimedia.org/wiki/File:Revuelto_gramajo.jpg)</sub>
 
 **Breakfast** · Argentinian · 30 min · serves 4 · skill 1/3
 

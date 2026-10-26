@@ -1,6 +1,8 @@
 # Senegalese Chicken Maafe (Peanut Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Senegalese Chicken Maafe (Peanut Stew)](../photos/chicken-maafe.jpg)
+
+<sub>Photo: Marshiayers · CC0 · [source](https://commons.wikimedia.org/wiki/File:Mafe.malien.jpg)</sub>
 
 **Dinner** · Nigerian & West African · 70 min · serves 6 · skill 1/3
 

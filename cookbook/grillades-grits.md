@@ -1,6 +1,8 @@
 # New Orleans Grillades & Grits
 
-_Illustrated in the app (no free-licensed photo yet)._
+![New Orleans Grillades & Grits](../photos/grillades-grits.jpg)
+
+<sub>Photo: Infrogmation of New Orleans · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:GreenGoddessGritsGrillades.JPG)</sub>
 
 **Breakfast** · Cajun & Creole · 110 min · serves 6 · skill 2/3
 

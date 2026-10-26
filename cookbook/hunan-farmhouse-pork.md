@@ -1,6 +1,8 @@
 # Hunan Farmhouse Pork with Blistered Peppers
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Hunan Farmhouse Pork with Blistered Peppers](../photos/hunan-farmhouse-pork.jpg)
+
+<sub>Photo: Prince Roy · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Hunan_Cured_Ham.jpg)</sub>
 
 **Dinner** · Sichuan & Hunan · 30 min · serves 4 · skill 2/3
 

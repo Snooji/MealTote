@@ -1,6 +1,8 @@
 # Koshari (Egyptian Lentils, Rice & Pasta with Spicy Tomato Sauce & Crispy Onions)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Koshari (Egyptian Lentils, Rice & Pasta with Spicy Tomato Sauce & Crispy Onions)](../photos/koshari.jpg)
+
+<sub>Photo: Dina Said · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Egyptian_food_Koshary.jpg)</sub>
 
 **Dinner** · Egyptian · 75 min · serves 6 · skill 2/3
 

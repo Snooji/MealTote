@@ -1,6 +1,8 @@
 # Singapore Curry Rice Noodles with Shrimp & Egg
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Singapore Curry Rice Noodles with Shrimp & Egg](../photos/singapore-curry-noodles.jpg)
+
+<sub>Photo: Frank Sheeran · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:R5_2023_08_02_0147-singapore-noodles.jpg)</sub>
 
 **Lunch** · Chinese & Cantonese · 30 min · serves 4 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Filipino Chicken Adobo with Garlic & Bay
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Filipino Chicken Adobo with Garlic & Bay](../photos/chicken-adobo.jpg)
+
+<sub>Photo: Joy D. Ganaden · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Adobo_DSCF4391.jpg)</sub>
 
 **Dinner** · Filipino · 60 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Nasi Lemak with Sambal, Eggs & Peanuts
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Nasi Lemak with Sambal, Eggs & Peanuts](../photos/nasi-lemak.jpg)
+
+<sub>Photo: Meandkancil2020 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas,_di_Penang_Summer_Restaurant.jpg)</sub>
 
 **Breakfast** · Malaysian & Singaporean · 50 min · serves 4 · skill 2/3
 

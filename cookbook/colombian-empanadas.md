@@ -1,6 +1,8 @@
 # Colombian Beef & Potato Empanadas with Ají Picante
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Colombian Beef & Potato Empanadas with Ají Picante](../photos/colombian-empanadas.jpg)
+
+<sub>Photo: Tamorlan · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Tapa_de_empanadillitas.JPG)</sub>
 
 **Lunch** · Colombian · 75 min · serves 5 · skill 3/3
 

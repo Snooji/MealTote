@@ -1,6 +1,8 @@
 # Dan Bing (Taiwanese Egg Crepe Rolls with Cheese & Scallion)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Dan Bing (Taiwanese Egg Crepe Rolls with Cheese & Scallion)](../photos/taiwanese-dan-bing.jpg)
+
+<sub>Photo: Joy · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Dan_Bing_(Taiwanese_egg_crepe).jpg)</sub>
 
 **Breakfast** · Taiwanese · 25 min · serves 4 · skill 1/3
 

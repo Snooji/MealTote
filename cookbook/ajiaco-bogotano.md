@@ -1,6 +1,8 @@
 # Ajiaco Bogotano (Colombian Chicken, Corn & Potato Soup)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Ajiaco Bogotano (Colombian Chicken, Corn & Potato Soup)](../photos/ajiaco-bogotano.jpg)
+
+<sub>Photo: Mauricio Giraldo from Bogotá, Colombia · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Ajiaco.jpg)</sub>
 
 **Lunch** · Colombian · 75 min · serves 6 · skill 2/3
 

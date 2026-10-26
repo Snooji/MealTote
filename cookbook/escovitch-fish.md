@@ -1,6 +1,8 @@
 # Jamaican Escovitch Fish with Coconut Rice & Peas
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Jamaican Escovitch Fish with Coconut Rice & Peas](../photos/escovitch-fish.jpg)
+
+<sub>Photo: Xaymacan · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Escoveitch_fish_Jamaica.jpg)</sub>
 
 **Dinner** · Jamaican · 45 min · serves 4 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Beef Suya Skewers with Onion-Tomato Salad
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Beef Suya Skewers with Onion-Tomato Salad](../photos/beef-suya.jpg)
+
+<sub>Photo: WhisperToMe · CC0 · [source](https://commons.wikimedia.org/wiki/File:SuyavarietiesTX.JPG)</sub>
 
 **Dinner** · Nigerian & West African · 50 min · serves 4 · skill 2/3
 

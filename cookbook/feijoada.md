@@ -1,6 +1,8 @@
 # Brazilian Feijoada (Black Bean & Pork Stew)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Brazilian Feijoada (Black Bean & Pork Stew)](../photos/feijoada.jpg)
+
+<sub>Photo: Bradleyzm · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Feijoada_%C3%A0_brasileira_-02.jpg)</sub>
 
 **Dinner** · Brazilian · 120 min · serves 6 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Bò Kho (Vietnamese Lemongrass Beef Stew) with Baguette
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Bò Kho (Vietnamese Lemongrass Beef Stew) with Baguette](../photos/bo-kho.jpg)
+
+<sub>Photo: Phương Huy · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:B%C3%A1nh_m%E1%BB%B3_v%C3%A0_b%C3%B2_kho_(b%C3%B2_Ph%C3%BA_Y%C3%AAn)_%E1%BB%9F_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m,_T%C3%A2n_Ph%C3%BA_n%C4%83m_2015_(3).jpg)</sub>
 
 **Dinner** · Vietnamese · 150 min · serves 6 · skill 2/3
 

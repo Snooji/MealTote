@@ -1,6 +1,8 @@
 # Peshawari Chapli Kebabs with Naan & Mint Raita
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Peshawari Chapli Kebabs with Naan & Mint Raita](../photos/peshawari-chapli-kebab.jpg)
+
+<sub>Photo: Murcotipton · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Chapli_Kebab.jpg)</sub>
 
 **Lunch** · Pakistani · 45 min · serves 4 · skill 2/3
 

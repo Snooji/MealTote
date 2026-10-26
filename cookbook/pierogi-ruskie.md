@@ -1,6 +1,8 @@
 # Pierogi Ruskie with Browned Onions & Mizeria
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Pierogi Ruskie with Browned Onions & Mizeria](../photos/pierogi-ruskie.jpg)
+
+<sub>Photo: 10xxx01 · CC0 · [source](https://commons.wikimedia.org/wiki/File:Bryndzove_pirohy.jpg)</sub>
 
 **Dinner** · Polish · 120 min · serves 4 · skill 3/3
 

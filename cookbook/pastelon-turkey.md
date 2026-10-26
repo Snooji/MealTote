@@ -1,6 +1,8 @@
 # Puerto Rican Pastelón with Turkey Picadillo
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Puerto Rican Pastelón with Turkey Picadillo](../photos/pastelon-turkey.jpg)
+
+<sub>Photo: Jonbuck9 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Puerto_rican_dish.jpg)</sub>
 
 **Dinner** · Puerto Rican & Dominican · 75 min · serves 6 · skill 2/3
 

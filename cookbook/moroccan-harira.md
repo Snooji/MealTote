@@ -1,6 +1,8 @@
 # Harira (Moroccan Tomato, Lentil & Chickpea Soup)
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Harira (Moroccan Tomato, Lentil & Chickpea Soup)](../photos/moroccan-harira.jpg)
+
+<sub>Photo: إيان · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:%D8%AD%D8%B1%D9%8A%D8%B1%D8%A9.jpg)</sub>
 
 **Lunch** · Moroccan · 60 min · serves 6 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Sigara Böreği (Crisp Feta & Parsley Phyllo Rolls) with Shepherd's Salad
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Sigara Böreği (Crisp Feta & Parsley Phyllo Rolls) with Shepherd's Salad](../photos/sigara-boregi.jpg)
+
+<sub>Photo: Slothtysloth · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Bourekalgerien.jpg)</sub>
 
 **Breakfast** · Turkish · 50 min · serves 5 · skill 2/3
 

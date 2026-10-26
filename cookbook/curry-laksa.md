@@ -1,6 +1,8 @@
 # Curry Laksa with Chicken & Tofu
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Curry Laksa with Chicken & Tofu](../photos/curry-laksa.jpg)
+
+<sub>Photo: Giddy98 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Nyonya_Laksa.jpg)</sub>
 
 **Dinner** · Malaysian & Singaporean · 50 min · serves 4 · skill 2/3
 

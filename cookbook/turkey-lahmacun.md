@@ -1,6 +1,8 @@
 # Turkey Lahmacun (Thin Spiced-Meat Flatbreads) with Parsley-Onion Salad
 
-_Illustrated in the app (no free-licensed photo yet)._
+![Turkey Lahmacun (Thin Spiced-Meat Flatbreads) with Parsley-Onion Salad](../photos/turkey-lahmacun.jpg)
+
+<sub>Photo: No machine-readable author provided. Rainer Zenz assumed (based on copyright claims). · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Lahmacun.jpg)</sub>
 
 **Lunch** · Turkish · 50 min · serves 4 · skill 2/3
 
