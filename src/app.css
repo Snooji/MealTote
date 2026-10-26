@@ -343,3 +343,23 @@ ol.inside{margin:0 0 16px;padding-left:20px;display:grid;gap:6px}
 ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .btn.danger{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,var(--line))}
 @media (max-width:560px){ .brand span{display:none} .acct span:not(.initial){display:none} }
+
+/* calorie change on swaps */
+.kd{font-family:var(--f-mono);font-size:12px;font-weight:600;padding:1px 7px;border-radius:999px;white-space:nowrap}
+.kd.up{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.kd.down{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.kd.same{background:var(--sunk);color:var(--muted)}
+.kdp{font-size:12.5px;color:var(--muted)}
+.kdp:empty{display:none}
+.chipk{font-family:var(--f-mono);font-weight:500;font-size:11px;margin-left:5px;opacity:.75}
+.chip.on .chipk{display:none}
+
+/* optional macro targets */
+.macros{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mrow input{width:100%}
+.mbars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:6px}
+.mtgt{display:grid;gap:4px}
+.mtgt .pg-top{font-size:12.5px}
+.mtgt .nbar{height:5px}
+.warn{color:var(--warn)}

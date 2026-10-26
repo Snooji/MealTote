@@ -1,4 +1,5 @@
-// Firebase layer: Google sign-in, profile + plan sync (Firestore) and recipe photo uploads (Storage).
+// Firebase layer: Google sign-in plus Firestore for profiles, plans and people's own recipe photos.
+// Everything here fits Firebase's free Spark plan (no Cloud Storage, which now needs a billing account).
 // The app works without this (signed out, saved in the browser). It switches on once
 // src/firebase-config.js holds a real Firebase web config.
 import { firebaseConfig } from "./firebase-config.js";
@@ -13,10 +14,9 @@ if (configured) {
     const { initializeApp } = await import(`${SDK}/firebase-app.js`);
     const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
     const { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } = await import(`${SDK}/firebase-firestore.js`);
-    const { getStorage, ref, uploadBytes, getDownloadURL, listAll, deleteObject } = await import(`${SDK}/firebase-storage.js`);
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app), db = getFirestore(app), storage = getStorage(app);
+    const auth = getAuth(app), db = getFirestore(app);
     const userDoc = () => doc(db, "users", api.user.uid);
     const plansCol = () => collection(db, "users", api.user.uid, "plans");
 
@@ -52,17 +52,19 @@ if (configured) {
       async listPlans() { const q = await getDocs(query(plansCol(), orderBy("createdMs", "desc"), limit(50))); return q.docs.map(d => ({ id: d.id, ...d.data() })); },
       async deletePlan(id) { await deleteDoc(doc(db, "users", api.user.uid, "plans", id)); },
 
-      // your own recipe photos: users/{uid}/photos/{recipeId}.jpg
-      async uploadPhoto(recipeId, blob) {
-        const r = ref(storage, `users/${api.user.uid}/photos/${recipeId.replace(/[^a-z0-9~-]/gi, "_")}.jpg`);
-        await uploadBytes(r, blob, { contentType: "image/jpeg" });
-        return getDownloadURL(r);
+      // your own recipe photos: users/{uid}/photos/{recipeId} holds a small JPEG data URL (under Firestore's 1 MB limit)
+      async savePhoto(recipeId, dataUrl) {
+        await setDoc(doc(db, "users", api.user.uid, "photos", recipeId.replace(/[^a-z0-9~-]/gi, "_")), { data: dataUrl, updatedMs: Date.now() });
+      },
+      async loadPhotos() {
+        const q = await getDocs(collection(db, "users", api.user.uid, "photos"));
+        return Object.fromEntries(q.docs.map(d => [d.id, d.data().data]));
       },
 
       // "Delete my data": plans, photos, then the profile itself
       async deleteAll() {
         for (const p of await api.listPlans()) await api.deletePlan(p.id);
-        try { const l = await listAll(ref(storage, `users/${api.user.uid}/photos`)); for (const it of l.items) await deleteObject(it); } catch (e) {}
+        for (const d of (await getDocs(collection(db, "users", api.user.uid, "photos"))).docs) await deleteDoc(d.ref);
         await deleteDoc(userDoc());
       },
     };

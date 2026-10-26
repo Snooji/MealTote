@@ -6,7 +6,7 @@ const STORES = {
   walmart: {name:"Walmart",      short:"WM", css:"--walmart", pdf:[30,138,156]},
 };
 const STORE_IDS = Object.keys(STORES);
-const AISLES = ["Produce","Meat & Seafood","Dairy & Eggs","Bakery & Tortillas","Pantry","Sauces & Spices","Frozen"];
+const AISLES = ["Produce","Meat & Seafood","Dairy & Eggs","Bakery & Tortillas","Pantry","Sauces & Spices","International","Frozen"];
 
 // item: [display name, aisle, {store: [product, est. price, units (how many "standard packs" it covers)]}]
 const ITEMS = {
@@ -105,13 +105,6 @@ const RECIPES = [
  tip:"For extra char, switch to broil for the last 2 minutes and watch it closely. Honey burns fast.",
  art:{bg:"#2F3A40",vessel:"bowl",vc:"#E9E4DA",layers:[{t:"grain",c:["#FFFFFF","#F7F5EE"],x:-0.42,y:0.05,r:0.52,n:900,s:1},{t:"floret",c:["#3E7B2E","#2C5E22","#6FA04A"],x:0.4,y:-0.4,r:0.42,n:7,s:1.15},{t:"chunk",c:["#C2401F","#7E1F0E","#E8763F"],x:0.32,y:0.28,r:0.55,n:9,s:0.95},{t:"round",c:["#7FBF4A","#D9EFC2"],x:0.1,y:0,r:0.75,n:22,s:0.22,d:"ring"},{t:"dot",c:["#F3E7C4","#F8F1DA"],x:0.15,y:0.05,r:0.8,n:120,s:0.6}]}},
 
-{id:"green-chile-enchiladas",title:"Rotisserie Chicken Salsa Verde Enchiladas",meal:"Dinner",time:40,serves:5,kcal:610,protein:39,
- blurb:"A whole store-bought rotisserie chicken turned into a bubbling tray of tangy green enchiladas with a cool sour cream drizzle.",
- ing:[["rotisserie",0.6,"4 cups shredded rotisserie chicken (about ⅔ of a bird)"],["salsa_verde",1,"16 oz salsa verde, divided"],["sour_cream",0.5,"1 cup sour cream, divided"],["cheese_mex",1,"2 cups shredded Mexican cheese, divided"],["flour_tortillas",1,"10 flour tortillas (8-inch)"],["onion",0.17,"½ yellow onion, finely diced"],["cilantro",0.5,"½ bunch cilantro, chopped"],["lime",0.125,"1 lime"]],
- pantry:"Cooking spray, salt",
- steps:["Heat the oven to 400°F and spray a 9x13 baking dish.","Mix the chicken, half the salsa verde, ½ cup sour cream, 1 cup cheese, the onion and half the cilantro. Taste and add salt.","Spread ¼ cup salsa verde over the bottom of the dish. Fill each tortilla with a heaped ⅓ cup of the chicken mixture, roll tightly and lay seam-side down.","Pour the rest of the salsa verde over the rolls and scatter on the remaining cheese. Bake 20 minutes, until bubbling and spotted brown.","Thin the remaining sour cream with lime juice and a splash of water. Drizzle over the enchiladas and finish with cilantro."],
- tip:"Costco's bird is the cheapest by far. Pick up two and use the other for the chicken salad wraps and tortilla soup.",
- art:{bg:"#4A3A2E",vessel:"dish",vc:"#E9E1CF",layers:[{t:"base",c:["#8FA348","#6E8233"],x:0,y:0,r:1.05},{t:"roll",c:["#E9D3A1","#C9AB70"],n:5},{t:"base",c:["#9CB050","#7C9038"],x:0,y:0,r:0.95,a:0.6},{t:"blob",c:["#F6E3A6","#E7B962","#C88A3A"],x:0,y:0,r:0.95,n:22,s:0.5},{t:"drizzle",c:["#FBF8F1"],n:2,w:5},{t:"leaf",c:["#3F7D33","#5C9C45"],x:0,y:0,r:0.9,n:26,s:0.35}]}},
 
 {id:"lemon-orzo-shrimp",title:"Creamy Lemon Orzo with Shrimp & Spinach",meal:"Dinner",time:25,serves:4,kcal:520,protein:33,
  blurb:"One skillet, risotto-style orzo with butter, Parmesan and plenty of lemon, finished with seared shrimp and a tangle of wilted spinach.",
@@ -367,7 +360,6 @@ RECIPES.push(
 /* recipe facts for the planner: has = allergens/avoids, cuisine, main protein, skill 1-3, lc = easy to keep low-carb */
 const META = {
   "gochujang-chicken":{has:["gluten","sesame","spicy"],cuisine:"Asian",protein:"chicken",skill:1},
-  "green-chile-enchiladas":{has:["dairy","gluten"],cuisine:"Mexican",protein:"chicken",skill:2},
   "lemon-orzo-shrimp":{has:["shellfish","dairy","gluten"],cuisine:"Mediterranean",protein:"shrimp",skill:2},
   "everything-salmon":{has:["fish","dairy","sesame"],cuisine:"American",protein:"fish",skill:2},
   "sweet-potato-tacos":{has:["dairy"],cuisine:"Mexican",protein:"veg",skill:1},
@@ -495,17 +487,6 @@ const ART = {
 };
 const GOLD=["#D99A4A","#9C5A1E","#F2C27A"], CRISP=["#E0A44E","#A8661E","#F6CF86"], BEEF=["#6B3A22","#3E1F10","#8C5333"], PORK=["#B9774E","#7A4220","#D9A27A"];
 
-/* ------------------------------------------------------------------ better enchiladas */
-(function(){
-  const i = RECIPES.findIndex(r=>r.id==="green-chile-enchiladas");
-  RECIPES[i] = {id:"green-chile-enchiladas",title:"Creamy Chicken Enchiladas Verdes",meal:"Dinner",time:45,serves:5,kcal:640,protein:41,
-   blurb:"Corn tortillas softened in hot oil, rolled around juicy chicken and Jack cheese, then smothered in a creamy, tangy salsa verde sauce and baked until bubbling and browned. Finished with crema, avocado and quick-pickled onion.",
-   ing:[["rotisserie",0.6,"4 cups shredded rotisserie chicken"],["salsa_verde",1.5,"24 oz salsa verde"],["sour_cream",0.75,"1½ cups sour cream, divided"],["chicken_broth",0.25,"1 cup chicken broth"],["cilantro",1,"1 bunch cilantro"],["jalapeno",0.34,"1 jalapeño"],["cheese_mex",1.5,"3 cups shredded Mexican or Monterey Jack cheese, divided"],["corn_tortillas",0.85,"12 corn tortillas"],["onion",0.17,"1 small onion (half for filling, half pickled)"],["lime",0.25,"2 limes"],["avocado",0.5,"2 avocados"]],
-   pantry:"⅓ cup neutral oil, 1 tsp cumin, salt, 1 tsp sugar",
-   steps:["Quick-pickle the topping: thinly slice half the onion and cover with the juice of 1 lime, a pinch of salt and the sugar. Set aside.","Make the sauce: blend the salsa verde, 1 cup sour cream, the broth, half the cilantro (stems and all), the jalapeño and the cumin until smooth. Taste and salt it well.","Heat the oven to 400°F. Mix the chicken with the remaining onion (finely diced), 1½ cups cheese, 1 cup of the sauce and a big pinch of salt.","Heat the oil in a small skillet over medium-high. Dip each tortilla in for 5 seconds per side, just until pliable, and drain on paper towels. This keeps them from cracking or going mushy.","Spread 1 cup sauce in a 9x13 dish. Fill each tortilla with chicken, roll tightly and pack seam-side down. Pour over the remaining sauce and scatter on the rest of the cheese.","Bake 20 to 25 minutes, until bubbling, then broil 2 minutes to brown the cheese. Rest 5 minutes. Top with the remaining sour cream thinned with lime juice, avocado, pickled onion and cilantro."],
-   tip:"Don't skip frying the tortillas. It's the difference between restaurant enchiladas and a soggy casserole.",
-   art:ART.A("dish","#4A3A2E","#E9E1CF",{t:"base",c:["#7E9A3A","#5E7A26"],x:0,y:0,r:1.05},{t:"roll",c:["#E2C27A","#B8914A"],n:6},{t:"base",c:["#8FAE48","#6E8E30","#A6C25C"],x:0,y:0,r:0.95,a:0.75},ART.cheese(0,0,0.9,26,0.55),{t:"drizzle",c:["#FBF8F1"],n:2,w:4},{t:"avoslice",c:["#9BC15A","#D9E89A","#3E5A1C"],x:-0.3,y:0.3,r:0.2,n:5,s:0.6},{t:"strip",c:["#C2407A","#E07AA8"],x:0.3,y:-0.2,r:0.4,n:10,s:0.5,l:3},ART.herbs(22))};
-})();
 
 /* ------------------------------------------------------------------ the big library */
 const MORE = [
@@ -550,13 +531,6 @@ const MORE = [
  tip:"Leftover carnitas crisp up perfectly in a hot skillet. Use them for tacos or breakfast hash later in the week.",
  art:ART.A("bowl","#33302B","#C9562E",ART.rice(-0.35,-0.35,0.42,420),{t:"shred",c:["#B8763E","#8C4A1E","#D99A5A"],x:0.3,y:-0.2,r:0.38,n:24,s:0.9},{t:"bean",c:["#1E1A22","#4A4352"],x:-0.4,y:0.35,r:0.25,n:16,s:0.55},{t:"dot",c:["#F6C734","#E8A81E"],x:0.4,y:0.4,r:0.22,n:40,s:1.8},{t:"dollop",c:["#9BC15A","#7EA63E"],x:0,y:0.45,r:0.1,n:1,s:0.9},{t:"dollop",c:["#C8321F","#9E2414"],x:0.05,y:0.05,r:0.1,n:1,s:0.7},ART.herbs(14),ART.lime())},
 
-{id:"beef-enchiladas",title:"Red Chile Beef & Cheese Enchiladas",meal:"Dinner",time:45,serves:5,kcal:690,protein:36,m:{has:["beef","dairy"],cuisine:"Mexican",protein:"beef",skill:2},
- blurb:"Tex-Mex comfort: seasoned ground beef and sharp cheddar rolled in oil-softened corn tortillas under a glossy red chile sauce and a blanket of melted cheese.",
- ing:[["ground_beef",1,"1 lb ground beef"],["onion",0.17,"1 onion, diced"],["taco_seasoning",0.5,"1 packet taco seasoning"],["enchilada_sauce",1.5,"28 oz red enchilada sauce"],["cheddar",2,"4 cups shredded sharp cheddar, divided"],["corn_tortillas",0.85,"12 corn tortillas"],["sour_cream",0.25,"sour cream"],["green_onion",0.5,"4 green onions, sliced"]],
- pantry:"⅓ cup oil, salt",
- steps:["Heat the oven to 375°F. Brown the beef with the onion, breaking it up, 8 minutes. Drain, then stir in the seasoning, ½ cup water and ½ cup enchilada sauce and simmer until thick.","Soften the tortillas one at a time in hot oil for 5 seconds per side and drain.","Spread 1 cup sauce in a 9x13 dish. Fill each tortilla with beef and a little cheese, roll and pack seam-side down.","Pour over the remaining sauce and cover generously with the rest of the cheese.","Bake 20 minutes until bubbling. Top with sour cream and green onions."],
- tip:"Add a diced pickled jalapeño to the filling if you like a kick.",
- art:ART.A("dish","#3A3530","#B8462F",{t:"base",c:["#9E2A14","#7A1E0E"],x:0,y:0,r:1.05},{t:"roll",c:["#D9A85A","#B07A30"],n:6},{t:"base",c:["#A8301A","#7A1E0E","#C2452A"],x:0,y:0,r:0.95,a:0.7},ART.cheese(0,0,0.9,30,0.6),ART.dollop(0.1,-0.1,0.6),ART.scallion(20))},
 
 {id:"chicken-parm",title:"Crispy Chicken Parmesan",meal:"Dinner",time:45,serves:4,kcal:780,protein:52,m:{has:["dairy","gluten","egg"],cuisine:"Italian",protein:"chicken",skill:2},
  blurb:"Thin, golden panko-Parmesan cutlets topped with marinara and bubbling mozzarella, served over spaghetti. The red-sauce classic, done right.",
@@ -1072,7 +1046,6 @@ const RH = {
 };
 const STORAGE = {
   "gochujang-chicken":[4,3,"Store chicken and rice in separate containers. "+RH.micro],
-  "green-chile-enchiladas":[4,3,"Cover the dish tightly or portion into containers. "+RH.oven],
   "lemon-orzo-shrimp":[2,0,"Shrimp turns rubbery when frozen. "+RH.pasta],
   "everything-salmon":[3,0,"Keep the yogurt sauce separate. Reheat salmon gently at 275°F for 10 minutes, or eat it cold on salads. Re-crisp potatoes in a hot oven or air fryer."],
   "sweet-potato-tacos":[4,0,"Store the filling, slaw and crema separately and build tacos fresh. Reheat the filling in a skillet."],
@@ -1107,7 +1080,6 @@ const STORAGE = {
   "birria-tacos":[4,3,"Store meat in its consommé. Reheat the consommé on the stove and griddle fresh tacos."],
   "chicken-tinga":[4,3,"Store chicken separately and crisp tostadas fresh. "+RH.micro],
   "carnitas-bowls":[4,3,"Store pork with some juices. Crisp it in a hot skillet. Keep guac and toppings separate."],
-  "beef-enchiladas":[4,3,RH.oven],
   "chicken-parm":[3,2,"Reheat cutlets at 400°F for 10 minutes so they stay crisp. Microwave the pasta separately."],
   "carbonara":[1,0,"Carbonara doesn't reheat well. Make only what you'll eat, or reheat gently with a splash of water over low heat."],
   "marry-me-chicken":[3,0,"Cream sauces split when frozen. Reheat gently on low with a splash of broth."],
@@ -1580,10 +1552,31 @@ const MORE5 = [
 ];
 for(const r of MORE5){ META[r.id]=r.m; STORAGE[r.id]=r.st; delete r.m; delete r.st; RECIPES.push(r); }
 
+/* items the breakfast sandwich builder and several packs share */
+Object.assign(ITEMS, {
+  turkey_bacon:G("Turkey bacon","Meat & Seafood","Turkey Bacon (12 oz)",3.99,["Jennie-O Turkey Bacon (3 x 12 oz)",3,9.99]),
+  flour:G("All-purpose flour","Pantry","All-Purpose Flour (5 lb)",3.49,["Gold Medal All-Purpose Flour (25 lb)",5,9.99]),
+  buttermilk:G("Buttermilk","Dairy & Eggs","Buttermilk (1 qt)",2.29,null,"costco"),
+  pepper_jack:G("Sliced pepper jack","Dairy & Eggs","Sliced Pepper Jack (8 oz)",3.29,["Tillamook Pepper Jack Slices (2 lb)",4,10.99]),
+});
+Object.assign(NUTR, { turkey_bacon:[480,32,2,38,0,0,2600], flour:[8255,233,1730,22,61,6,45], buttermilk:[380,32,46,8,0,46,1000], pepper_jack:[830,52,2,68,0,0,1360] });
+
+/* more recipe packs from src/recipes/*.js: {items:{key:[G args]}, nutr:{key:[...]}, recipes:[same shape as MORE5]} */
+for(const pack of (window.BB_MORE||[])){
+  for(const [k,a] of Object.entries(pack.items||{})){ ITEMS[k]=G(...a); if(!AISLES.includes(ITEMS[k][1])) ITEMS[k][1] = /bakery|bread/i.test(ITEMS[k][1]) ? "Bakery & Tortillas" : "Pantry"; }
+  Object.assign(NUTR, pack.nutr||{});
+  for(const r of pack.recipes||[]){ META[r.id]=r.m; STORAGE[r.id]=r.st; delete r.m; delete r.st; RECIPES.push(r); }
+}
+
 
 /* regroup earlier recipes into the finer cuisine list; finish every recipe's facts */
 const CUISINE_FIX = {"gochujang-chicken":"korean","red-curry-shrimp":"thai","bulgogi-bowls":"korean","peanut-noodles":"chinese","veggie-fried-rice":"chinese","orange-chicken":"chinese","beef-broccoli":"chinese","teriyaki-salmon-bowls":"japanese","pad-thai":"thai","potsticker-stirfry":"chinese","miso-ramen":"japanese","katsu-curry":"japanese","kung-pao-chicken":"chinese","tofu-peanut-stirfry":"thai","thai-peanut-salad":"thai","banh-mi":"vietnamese","shakshuka":"middleeastern","chicken-shawarma":"middleeastern","jambalaya":"southern","shrimp-grits":"southern","pulled-pork":"southern","crispy-chicken-sandwich":"southern","avocado-egg-toast":"american"};
+// sauces that carry an allergen whatever the dish's main protein
+const IMPLIED_HAS = {oyster_sauce:"shellfish", fish_sauce:"fish"};
+for(const r of RECIPES){ const m=META[r.id]; if(!m) continue; m.has=m.has||[]; for(const [k] of r.ing) if(IMPLIED_HAS[k] && !m.has.includes(IMPLIED_HAS[k])) m.has.push(IMPLIED_HAS[k]); }
 for(const [id,m] of Object.entries(META)){ m.cuisine = CUISINE_FIX[id] || String(m.cuisine).toLowerCase(); m.veg = ["veg","egg"].includes(m.protein); m.pesc = m.veg || ["fish","shrimp"].includes(m.protein); }
+// every pantry and pack item is known by now, so recompute anything worked out earlier
+for(const k in NUTR_CACHE) delete NUTR_CACHE[k];
 for(const r of RECIPES){ if(!r.art) r.art=ART.A("bowl","#2E3A44","#E9E4DA",ART.sauce("#C9772A","#9E5214","#E2973A"),ART.herbs(14)); const n=nutritionOf(r); r.kcal=n.kcal; r.protein=n.protein; }
 
 /* ------------------------------------------------------------------ people & portions */
@@ -1620,7 +1613,8 @@ function weekAvgNutrition(){
   return people().map((p,j)=>{ const t={kcal:0,protein:0,carbs:0,fat:0,fiber:0,sugar:0,sodium:0,target:0};
     for(const d of days) for(const k in t) t[k]+=d[j][k];
     for(const k in t) t[k]/=Math.max(1,days.length);
-    return Object.assign(t,{name:personName(p,j), daily:p.kcal}); });
+    const mt = p.macros ? {protein:p.macros.p*t.target/p.kcal, carbs:p.macros.c*t.target/p.kcal, fat:p.macros.f*t.target/p.kcal} : null;
+    return Object.assign(t,{name:personName(p,j), daily:p.kcal, macros:p.macros||null, mt}); });
 }
 function portionsLine(r, meal){
   if(!S.profile) return "";
@@ -1662,12 +1656,42 @@ function peopleEditor(A){
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Weight (lb)"), el("input",{type:"number",id:"elb-"+i,value:est.lb,min:70,max:500,onchange:e=>est.lb=+e.target.value})),
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Activity"), el("select",{id:"eact-"+i,onchange:e=>est.act=+e.target.value}, [[1,"Mostly sitting"],[2,"Light exercise 1-3x/wk"],[3,"Active 3-5x/wk"],[4,"Very active daily"]].map(([v,l])=>el("option",{value:v,selected:est.act===v},l)))),
         el("label",{class:"fld"},el("span",{class:"eyebrow"},"Goal"), el("select",{id:"egoal-"+i,onchange:e=>est.goal=e.target.value}, [["lose","Lose weight"],["keep","Maintain"],["gain","Build muscle"]].map(([v,l])=>el("option",{value:v,selected:est.goal===v},l)))),
-        el("button",{class:"btn primary small",onclick:()=>{ p.kcal=estimateKcal(est); est.open=false; renderQuiz(); toast(personName(p,i)+": "+p.kcal.toLocaleString()+" kcal a day"); }},"Use this estimate")) : null);
+        el("button",{class:"btn primary small",onclick:()=>{ p.kcal=estimateKcal(est); est.open=false; renderQuiz(); toast(personName(p,i)+": "+p.kcal.toLocaleString()+" kcal a day"); }},"Use this estimate")) : null,
+      macroEditor(p,i));
     wrapEl.append(card);
   });
   if(A.people.length<6) wrapEl.append(el("button",{class:"btn",onclick:()=>{ A.people.push({name:"",kcal:2000}); renderQuiz(); }},"+ Add another person"));
   wrapEl.append(el("p",{class:"note",style:"margin:0"},"Portions are sized so each person's planned meals fit their own daily calories (breakfast about 25%, lunch 33%, dinner 37%, leaving room for snacks)."));
   return wrapEl;
+}
+
+/* ------------------------------------------------------------------ optional macro targets (grams a day, per person) */
+const MACRO_PRESETS = [["balanced","Balanced",30,40,30],["protein","High protein",40,30,30],["lowcarb","Lower carb",40,20,40],["keto","Keto",25,5,70],["endurance","Endurance",20,55,25]];
+const macroKcal = m => m.p*4 + m.c*4 + m.f*9;
+function macrosFromSplit(kcal,pp,cp,fp){ return {p:Math.round(kcal*pp/100/4), c:Math.round(kcal*cp/100/4), f:Math.round(kcal*fp/100/9)}; }
+function macroEditor(p,i){
+  const open = p._mOpen ?? !!p.macros;
+  const tog = el("label",{class:"tog"}, el("input",{type:"checkbox",id:"pmac-"+i,checked:open,onchange:e=>{ p._mOpen=e.target.checked; if(!e.target.checked) p.macros=null; else if(!p.macros) p.macros=macrosFromSplit(p.kcal,30,40,30); renderQuiz(); }}), "Set my own macros (optional)");
+  if(!open || !p.macros) return el("div",{class:"macros"}, tog);
+  const m=p.macros, mk=macroKcal(m), off=Math.abs(mk-p.kcal)>Math.max(60,p.kcal*0.05);
+  const fld=(k,label)=>el("label",{class:"fld"}, el("span",{class:"eyebrow"},label+" (g/day)"),
+    el("input",{type:"number",id:`pm${k}-${i}`,min:0,max:600,step:5,value:m[k],class:"mono",onchange:e=>{ m[k]=Math.max(0,Math.min(600,Math.round(+e.target.value||0))); renderQuiz(); }}));
+  const pct=k=>Math.round(m[k]*(k==="f"?9:4)/Math.max(1,mk)*100);
+  return el("div",{class:"macros"}, tog,
+    el("div",{class:"presets"}, MACRO_PRESETS.map(([k,l,pp,cp,fp])=>el("button",{class:"chip",title:`${pp}% protein · ${cp}% carbs · ${fp}% fat`,onclick:()=>{ p.macros=macrosFromSplit(p.kcal,pp,cp,fp); renderQuiz(); }},l))),
+    el("div",{class:"mrow"}, fld("p","Protein"), fld("c","Carbs"), fld("f","Fat")),
+    el("p",{class:"note"+(off?" warnline":""),style:"margin:0"},
+      `${pct("p")}% protein · ${pct("c")}% carbs · ${pct("f")}% fat = ${fmtInt(mk)} kcal a day`+(off?` (your daily calories are ${fmtInt(p.kcal)}). `:". "),
+      off?el("button",{class:"linkbtn",onclick:()=>{ p.kcal=Math.min(5000,Math.max(1000,Math.round(mk/50)*50)); renderQuiz(); }},"Use "+fmtInt(Math.round(mk/50)*50)+" kcal as my daily calories"):null),
+    el("p",{class:"note",style:"margin:0"},"The planner leans toward dishes that fit these numbers, and your plan shows how close each day gets."));
+}
+// how well a dish's calorie split matches the household's macro targets: 0 = perfect, 2 = opposite
+function macroMiss(r){
+  const ps=(S.profile?people():[]).filter(p=>p.macros); if(!ps.length) return null;
+  const n=nutritionOf(r), k=Math.max(1,n.protein*4+n.carbs*4+n.fat*9);
+  let miss=0; for(const p of ps){ const mk=Math.max(1,macroKcal(p.macros));
+    miss += Math.abs(n.protein*4/k - p.macros.p*4/mk) + Math.abs(n.carbs*4/k - p.macros.c*4/mk) + Math.abs(n.fat*9/k - p.macros.f*9/mk); }
+  return miss/ps.length;
 }
 
 /* ------------------------------------------------------------------ favorites & cuisine tags */
@@ -1693,15 +1717,11 @@ const CUISINE_LABEL = Object.fromEntries(CUISINE_OPTS);
 
 /* ------------------------------------------------------------------ house rule: no enchiladas */
 for(let i=RECIPES.length-1;i>=0;i--) if(/enchilada/i.test(RECIPES[i].id+" "+RECIPES[i].title)) RECIPES.splice(i,1);
+// near-duplicates of other dishes (see recipes/INDEX.md before adding new ones)
+const RETIRED = new Set(["tikka-masala","chickpea-curry","breakfast-sandwiches","chicken-teriyaki"]);
+for(let i=RECIPES.length-1;i>=0;i--) if(RETIRED.has(RECIPES[i].id)) RECIPES.splice(i,1);
 
 /* ------------------------------------------------------------------ build-your-own breakfast sandwiches */
-Object.assign(ITEMS, {
-  turkey_bacon:G("Turkey bacon","Meat & Seafood","Turkey Bacon (12 oz)",3.99,["Jennie-O Turkey Bacon (3 x 12 oz)",3,9.99]),
-  flour:G("All-purpose flour","Pantry","All-Purpose Flour (5 lb)",3.49,["Gold Medal All-Purpose Flour (25 lb)",5,9.99]),
-  buttermilk:G("Buttermilk","Dairy & Eggs","Buttermilk (1 qt)",2.29,null,"costco"),
-  pepper_jack:G("Sliced pepper jack","Dairy & Eggs","Sliced Pepper Jack (8 oz)",3.29,["Tillamook Pepper Jack Slices (2 lb)",4,10.99]),
-});
-Object.assign(NUTR, { turkey_bacon:[480,32,2,38,0,0,2600], flour:[8255,233,1730,22,61,6,45], buttermilk:[380,32,46,8,0,46,1000], pepper_jack:[830,52,2,68,0,0,1360] });
 
 const BSB = {
   id:"breakfast-sandwich-builder",
@@ -1871,15 +1891,33 @@ function versionPanel(r,slot){
   if(r.builder) return bsbPanel(r,slot);
   const vs=versionsOf(r); if(vs.length<2) return null;
   const ok=S.profile?vs.filter(eligible):vs; if(ok.length<2) return null;
-  return el("div",{class:"vpanel"}, el("span",{class:"eyebrow"},"Make it with"), el("div",{class:"vchips"}, ok.map(v=>el("button",{class:"chip"+(v.id===r.id?" on":""),onclick:()=>{ if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,v.id); openRecipe(v.id,Object.assign({},slot,{id:v.id})); } else openRecipe(v.id); }},proteinLabel(v)))),
-    el("p",{class:"note",style:"margin:0"},"Ingredients, steps, nutrition, cost and your grocery list switch to match."));
+  return el("div",{class:"vpanel"}, el("span",{class:"eyebrow"},"Make it with"), el("div",{class:"vchips"}, ok.map(v=>el("button",{class:"chip"+(v.id===r.id?" on":""),title:v.id===r.id?"":signed(kcalDelta(r.id,v.id,slot&&slot.meal).serving)+" kcal per serving",onclick:()=>{ if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,v.id); openRecipe(v.id,Object.assign({},slot,{id:v.id})); } else openRecipe(v.id); }},proteinLabel(v), v.id===r.id?null:el("small",{class:"chipk"},signed(kcalDelta(r.id,v.id,slot&&slot.meal).serving))))),
+    el("p",{class:"note",style:"margin:0"},"Numbers show calories per serving compared with this version. Ingredients, steps, nutrition, cost and your grocery list switch to match."));
 }
 function bsbPanel(r,slot){
   const sel=bsbSel(r.id);
   const go=(k,v)=>{ const id=bsbId({...sel,[k]:v}); if(slot&&!slot.leftover){ swapSlot(slot.meal,slot.i,id); openRecipe(id,Object.assign({},slot,{id})); } else openRecipe(id); };
-  const row=(k,label,opts)=>el("div",{class:"bsbrow"}, el("span",{class:"eyebrow"},label), el("div",{class:"vchips"}, opts.map(o=>el("button",{class:"chip"+(sel[k]===o.k?" on":""),onclick:()=>go(k,o.k)},o.label))));
+  const row=(k,label,opts)=>el("div",{class:"bsbrow"}, el("span",{class:"eyebrow"},label), el("div",{class:"vchips"}, opts.map(o=>{ const id=bsbId({...sel,[k]:o.k}); return el("button",{class:"chip"+(sel[k]===o.k?" on":""),onclick:()=>go(k,o.k)},o.label, sel[k]===o.k?null:el("small",{class:"chipk"},signed(kcalDelta(r.id,id,"breakfast").serving))); })));
   return el("div",{class:"vpanel bsb"}, el("b",{},"Build your sandwich"), row("protein","Protein",BSB.protein), row("egg","Egg",BSB.egg), row("cheese","Cheese",BSB.cheese), row("bread","Bread",BSB.bread),
     el("p",{class:"note",style:"margin:0"},"Each choice updates the recipe, nutrition, cost and shopping list"+(slot?", and saves to "+slot.day+".":".")));
+}
+
+/* ------------------------------------------------------------------ calorie change when you swap */
+// per serving, plus what each person actually eats once their portion re-fits the new dish
+function kcalDelta(fromId, toId, meal){
+  const a=R_BY_ID[fromId], b=R_BY_ID[toId]; if(!a||!b||fromId===toId) return null;
+  const ka=nutritionOf(a).kcal, kb=nutritionOf(b).kcal, m=meal||b.meal.toLowerCase();
+  const ps=S.profile?people():[];
+  return {serving:Math.round(kb-ka), people:ps.map((p,j)=>({name:personName(p,j), d:Math.round(portionFor(p,m,b)*kb-portionFor(p,m,a)*ka)}))};
+}
+const signed = v => Math.abs(v)<10 ? "±0" : (v>0?"+":"−")+fmtInt(Math.abs(v));
+function deltaBadge(d){
+  if(!d) return null; const v=d.serving, cls=Math.abs(v)<10?"same":v>0?"up":"down";
+  return el("span",{class:"kd "+cls,title:"Calories per serving compared with what's planned now"}, Math.abs(v)<10?"same kcal":signed(v)+" kcal");
+}
+function deltaPeople(d){
+  if(!d||!d.people.length) return null;
+  return el("div",{class:"kdp"}, d.people.length>1||d.people[0].d!==d.serving ? "On each plate: "+d.people.map(x=>x.name+" "+signed(x.d)).join(" · ")+" kcal" : null);
 }
 
 /* ------------------------------------------------------------------ swap picker */
@@ -1910,14 +1948,15 @@ function renderSwap(){
   const sorters={best:(a,b)=>b.s-a.s, fast:(a,b)=>a.best.time-b.best.time, cheap:(a,b)=>recipeCost(a.best).perServing-recipeCost(b.best).perServing, light:(a,b)=>nutritionOf(a.best).kcal-nutritionOf(b.best).kcal, protein:(a,b)=>nutritionOf(b.best).protein-nutritionOf(a.best).protein};
   list.sort(sorters[SWP.sort]);
   const pick=id=>{ swapSlot(meal,i,id); closeSheet(); };
-  const grid=el("div",{class:"swapgrid"}, list.map(x=>{ const r=x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur);
+  const grid=el("div",{class:"swapgrid"}, list.map(x=>{ const r=x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur), d=isCur?null:kcalDelta(cur,r.id,meal);
     return el("div",{class:"swapcard"+(isCur?" current":"")},
       el("button",{class:"swpic",onclick:()=>pick(r.id),"aria-label":"Choose "+r.title}, el("img",{src:imgFor(r),"data-rid":r.id,alt:"",loading:"lazy"}), isCur?el("span",{class:"inweek"},"Current"):null),
       el("div",{class:"swbody"},
         el("div",{class:"eyebrow"},CUISINE_LABEL[META[r.id].cuisine]||""),
         el("button",{class:"slottitle",onclick:()=>pick(r.id)},r.title),
-        el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(n.kcal)+" kcal"), el("span",{},n.protein+" g protein"), el("span",{},money(recipeCost(r).perServing))),
-        x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id)},proteinLabel(v)))) : null,
+        el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(n.kcal)+" kcal"), el("span",{},n.protein+" g protein"), el("span",{},money(recipeCost(r).perServing)), deltaBadge(d)),
+        deltaPeople(d),
+        x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id),title:v.id===cur?"":signed(kcalDelta(cur,v.id,meal).serving)+" kcal per serving"},proteinLabel(v), v.id===cur?null:el("small",{class:"chipk"},signed(kcalDelta(cur,v.id,meal).serving))))) : null,
         el("button",{class:"linkbtn",onclick:()=>openRecipe(r.id,{day,i,meal,label:meal[0].toUpperCase()+meal.slice(1),id:r.id,leftover:false})},"View recipe")));
   }));
   const optionsTotal=list.reduce((a,x)=>a+x.all.length,0);
@@ -1925,7 +1964,7 @@ function renderSwap(){
     el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Swap "+day+" "+meal), el("h2",{id:"dTitle"},"Pick something else")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
     el("p",{class:"note",style:"margin:0"},`${list.length} dishes, ${optionsTotal} ways to make them, all fitting your answers. Tap a dish or a protein to swap it in.`),
     el("div",{class:"swapctl"},
-      el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: enchiladas, curry, salmon…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
+      el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: curry, salmon, tacos…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
       el("select",{id:"swc","aria-label":"Cuisine",onchange:e=>{SWP.cuisine=e.target.value;renderSwap();}}, el("option",{value:""},"Any cuisine"), CUISINE_OPTS.map(([k,l])=>el("option",{value:k,selected:SWP.cuisine===k},l))),
       el("select",{id:"swp","aria-label":"Protein",onchange:e=>{SWP.protein=e.target.value;renderSwap();}}, [["","Any protein"],["chicken","Chicken & turkey"],["beef","Beef"],["pork","Pork"],["seafood","Seafood"],["veg","Vegetarian"]].map(([k,l])=>el("option",{value:k,selected:SWP.protein===k},l))),
       el("select",{id:"sws","aria-label":"Sort",onchange:e=>{SWP.sort=e.target.value;renderSwap();}}, [["best","Best match"],["fast","Fastest"],["cheap","Cheapest"],["light","Fewest calories"],["protein","Most protein"]].map(([k,l])=>el("option",{value:k,selected:SWP.sort===k},l))),
@@ -2037,7 +2076,9 @@ function lsSet(v){ try{ localStorage.setItem("bundle-and-bite-v1", JSON.stringif
 function normalize(v){
   const s = Object.assign(structuredClone(DEFAULT_STATE), v||{});
   s.stores = (s.stores||[]).filter(x=>STORES[x]); if(!s.stores.length) s.stores=["aldi","walmart"];
-  if(s.plan){ for(const k of ["b","l","d"]) s.plan[k]=(s.plan[k]||[]).map(x=>R_BY_ID[x]?x:null); }
+  const moved = {"tikka-masala":"butter-chicken","chickpea-curry":"chana-masala","breakfast-sandwiches":"breakfast-sandwich-builder~bc-egg-ch-em","chicken-teriyaki":"teriyaki-salmon-bowls~chicken"};
+  const fix = x => { const base=String(x||"").split("~")[0]; if(!R_BY_ID[x] && moved[base]) x = R_BY_ID[moved[base]] ? moved[base] : moved[base].split("~")[0]; return R_BY_ID[x]?x:null; };
+  if(s.plan){ for(const k of ["b","l","d"]) s.plan[k]=(s.plan[k]||[]).map(fix); }
   return s;
 }
 function save(){
@@ -2559,7 +2600,7 @@ function answered(q,A){
 }
 function answerText(q,A){
   const v=A[q.id];
-  if(q.type==="people") return A.people.map((p,i)=>personName(p,i)+" ("+p.kcal.toLocaleString()+" kcal)").join(", ");
+  if(q.type==="people") return A.people.map((p,i)=>personName(p,i)+" ("+p.kcal.toLocaleString()+" kcal"+(p.macros?`, ${p.macros.p}P/${p.macros.c}C/${p.macros.f}F g`:"")+")").join(", ");
   if(q.type==="stores") return listJoin(v.map(s=>STORES[s].name));
   if(q.type==="multi") return v.length ? listJoin(v.map(x=>q.opts.find(o=>o[0]===x)[1])) : q.none;
   const o=q.opts.find(o=>o[0]===v); return o?o[1]:"";
@@ -2624,7 +2665,7 @@ function renderReview(){
 }
 function finishQuiz(){
   const A=OB.A; for(const k of ["avoid","favorites","dislikes","goals","cuisines"]) A[k]=[...(A[k]||[])];
-  A.people=A.people.map((p,i)=>({name:personName(p,i),kcal:p.kcal}));
+  A.people=A.people.map((p,i)=>({name:personName(p,i),kcal:p.kcal,macros:p.macros?{p:p.macros.p,c:p.macros.c,f:p.macros.f}:null}));
   if(!A.meals.includes("lunch")||!A.meals.includes("dinner")) A.leftovers="no";
   if(A.stores.length<2) A.mode="cheap";
   S.profile=A; S.stores=A.stores.slice(); S.mode=A.mode; S.overrides={}; S.checked={};
@@ -2666,6 +2707,7 @@ function score(r, jitter){
   if(A.goals.includes("budget")||A.budget<=75) s+= (2.6-cps)*1.4;
   for(const d of A.dislikes) if(DISLIKE_TEST[d] && DISLIKE_TEST[d](r)) s-= SOFT_DISLIKES.has(d)?1.5:8;
   if(recipeCost(r).miss.length) s-=6;
+  const mm=macroMiss(r); if(mm!==null) s += (0.4-mm)*16; // people who set macros care about them more than most preferences
   return s;
 }
 function ranked(meal, seed){
@@ -2762,15 +2804,16 @@ $("#photoInput").addEventListener("change", async e=>{
   const f=e.target.files[0]; if(!f||!photoTarget) return;
   const id=photoTarget; toast("Adding photo…");
   try{
-    const blob = await shrinkImage(f, 1600); let url=null;
-    if(cloudUser && cloudOn()){ try{ url=await cloud.uploadPhoto(id, blob); }catch(err){ url=null; } }
-    if(!url) url = await new Promise(res=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.readAsDataURL(blob); });
-    S.photos[id]=url; save(); toast("Photo added"); openRecipe(id); refresh();
+    const blob = await shrinkImage(f, 1100);
+    const url = await new Promise(res=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.readAsDataURL(blob); });
+    S.photos[id]=url; save();
+    if(cloudUser && cloudOn()) cloud.savePhoto(id, url).catch(()=>toast("Photo saved here, but not to your account. Check your connection."));
+    toast("Photo added"); openRecipe(id); refresh();
   }catch(err){ toast("That image couldn't be read. Try a JPEG or PNG."); }
 });
 function shrinkImage(file,max){ return new Promise((res,rej)=>{ const img=new Image(); img.onload=()=>{
   const k=Math.min(1,max/Math.max(img.width,img.height)), c=document.createElement("canvas"); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
-  c.getContext("2d").drawImage(img,0,0,c.width,c.height); c.toBlob(b=>b?res(b):rej(),"image/jpeg",0.86); URL.revokeObjectURL(img.src); }; img.onerror=rej; img.src=URL.createObjectURL(file); }); }
+  c.getContext("2d").drawImage(img,0,0,c.width,c.height); c.toBlob(b=>b?res(b):rej(),"image/jpeg",0.8); URL.revokeObjectURL(img.src); }; img.onerror=rej; img.src=URL.createObjectURL(file); }); }
 
 /* ------------------------------------------------------------------ groceries */
 function renderGroceries(){
@@ -2882,7 +2925,11 @@ function renderPlan(){
   m.append(el("div",{class:"pgoals"}, avg.map(a=>{ const pct=Math.round(a.kcal/Math.max(1,a.target)*100);
     return el("div",{class:"pgoal"}, el("div",{class:"pg-top"}, el("b",{},a.name), el("span",{class:"mono"},fmtInt(a.kcal)+" / "+fmtInt(a.target)+" kcal")),
       el("div",{class:"nbar"},el("i",{style:`width:${Math.min(100,pct)}%`})),
-      el("div",{class:"note"},`Daily target ${fmtInt(a.daily)} kcal · planned meals cover ${fmtInt(a.target)} · avg protein ${fmtInt(a.protein)} g, carbs ${fmtInt(a.carbs)} g, fat ${fmtInt(a.fat)} g`)); })));
+      a.mt ? el("div",{class:"mbars"}, [["protein","Protein"],["carbs","Carbs"],["fat","Fat"]].map(([k,l])=>{ const q=Math.round(a[k]/Math.max(1,a.mt[k])*100);
+        return el("div",{class:"mtgt"}, el("div",{class:"pg-top"}, el("span",{},l), el("span",{class:"mono"+(q>115||q<85?" warn":"")},fmtInt(a[k])+" / "+fmtInt(a.mt[k])+" g")), el("div",{class:"nbar"},el("i",{style:`width:${Math.min(100,q)}%`}))); })) : null,
+      a.mt && a.protein < a.mt.protein*0.85 ? el("div",{class:"note warnline"}, `About ${fmtInt(a.mt.protein-a.protein)} g short on protein a day. Most dishes come with rice, pasta or bread, so take a bigger share of the meat or beans and less of the starch, swap toward "Most protein" dishes, or add a protein snack like Greek yogurt or eggs.`) : null,
+      el("div",{class:"note"}, a.mt ? `Daily target ${fmtInt(a.daily)} kcal · ${fmtInt(a.macros.p)} g protein, ${fmtInt(a.macros.c)} g carbs, ${fmtInt(a.macros.f)} g fat · bars show planned meals vs their share`
+        : `Daily target ${fmtInt(a.daily)} kcal · planned meals cover ${fmtInt(a.target)} · avg protein ${fmtInt(a.protein)} g, carbs ${fmtInt(a.carbs)} g, fat ${fmtInt(a.fat)} g`)); })));
   if(over) m.append(el("p",{class:"note warnline"},"This plan runs over your budget. Try Shuffle plan, or turn on leftovers for lunch to cook fewer recipes."));
   const days=planDays(), grid=el("div",{class:"days"});
   days.forEach((day,i)=>{
@@ -2929,7 +2976,7 @@ function openRecipe(id, slot){
     const ids=alternativesFor(slot.meal,slot.i).slice(0,4);
     if(ids.length) alts=el("div",{}, el("div",{class:"althead"}, el("h3",{class:"sub"},"Not feeling it? Swap for one of these"), el("button",{class:"btn small",onclick:()=>openSwap(slot.meal,slot.i)},"See all "+versionsFor(slot.meal,false).length+" options")),
       el("div",{class:"alts"}, ids.map(a=>{ const ar=R_BY_ID[a]; return el("button",{class:"alt",onclick:()=>{ swapSlot(slot.meal,slot.i,a); openRecipe(a,Object.assign({},slot,{id:a})); }},
-        el("img",{src:imgFor(ar),"data-rid":ar.id,alt:""}), el("span",{},ar.title), el("span",{class:"note"},fmtInt(nutritionOf(ar).kcal)+" kcal · "+ar.time+" min")); })));
+        el("img",{src:imgFor(ar),"data-rid":ar.id,alt:""}), el("span",{},ar.title), el("span",{class:"note"},fmtInt(nutritionOf(ar).kcal)+" kcal · "+ar.time+" min"), deltaBadge(kcalDelta(id,a,slot.meal))); })));
   }
   const cr = creditFor(r);
   const credit = cr ? el("a",{class:"credit",href:cr.page,target:"_blank",rel:"noopener"},"Photo: "+cr.author+" · "+cr.license) : null;
@@ -3088,7 +3135,8 @@ async function buildPdf(ids, opts={}){
     y+=16; doc.setFont("helvetica","bold"); doc.setFontSize(8.5); doc.setTextColor(...muted); avg.forEach((a,k)=>T(wrap(a.name,pc-8)[0].toUpperCase(),M+130+k*pc,y));
     [["Daily target","daily"," kcal"],["Planned meals target","target"," kcal"],["Calories","kcal"," kcal"],["Protein","protein"," g"],["Carbohydrates","carbs"," g"],["Fat","fat"," g"],["Fiber","fiber"," g"],["Sugars","sugar"," g"],["Sodium","sodium"," mg"]].forEach(([l,k,u],ri)=>{
       y+=16; doc.setFont("helvetica",ri<2?"italic":"normal"); doc.setFontSize(9.8); doc.setTextColor(...ink); T(l,M,y);
-      avg.forEach((a,c)=>T(nf(a[k])+u,M+130+c*pc,y)); doc.setDrawColor(...line); doc.line(M,y+5,M+CW,y+5); });
+      avg.forEach((a,c)=>T(nf(a[k])+u+(a.mt&&a.mt[k]!==undefined?" / "+nf(a.mt[k])+u:""),M+130+c*pc,y)); doc.setDrawColor(...line); doc.line(M,y+5,M+CW,y+5); });
+    if(avg.some(a=>a.mt)){ y+=14; doc.setFont("helvetica","italic"); doc.setFontSize(8.5); doc.setTextColor(...muted); T("Protein, carbs and fat show planned meals / your macro target for those meals.",M,y); }
 
     y+=34; doc.setFont("helvetica","bold"); doc.setFontSize(11); doc.setTextColor(...ink); T("Cook & store plan",M,y); y+=6;
     const cookDay={}; slotsOf().forEach(s=>{ if(s.id&&!s.leftover&&!cookDay[s.id]) cookDay[s.id]=s.day; });
@@ -3254,11 +3302,12 @@ async function onCloudUser(u){
       // newest wins: your account copy, unless this browser has newer unsaved work
       if(!S.profile || (d.updatedMs||0) >= (S._ts||0)) S=remote; else pushCloud();
     } else if(S.profile) pushCloud();
+    try{ Object.assign(S.photos, await cloud.loadPhotos()); }catch(e){}
     cloudLoaded=true; lsSet(S); if(!OB) boot();
     toast("Signed in as "+(u.displayName||u.email));
   }catch(e){ cloudLoaded=true; toast("Couldn't load your saved data. Changes will save in this browser."); }
 }
-// photos added while signed out stay in this browser (too big for the account copy)
+// photos travel separately (cloud.savePhoto), so the account copy leaves out their data URLs
 function pushCloud(){ if(cloudUser && cloudOn()) cloud.save(JSON.stringify(S,(k,v)=>typeof v==="string"&&v.startsWith("data:")?undefined:v), S._ts||Date.now()).catch(()=>toast("Couldn't save to your account. Check your connection.")); }
 function connectStore(){
   const go=()=>{ renderAccount(); if(cloudOn()) cloud.onUser(onCloudUser); };
@@ -3281,7 +3330,7 @@ async function openProfile(){
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Display name"),
       el("div",{class:"prow"}, nameIn, el("button",{class:"btn small",onclick:async()=>{ await cloud.saveProfile({displayName:nameIn.value.trim()}); toast("Saved"); }},"Save"))),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Who you're cooking for"),
-      ps.length ? el("ul",{class:"plain"}, ps.map((p,j)=>el("li",{}, el("b",{},personName(p,j)), " · "+fmtInt(p.kcal)+" kcal a day"))) : el("p",{class:"note"},"No plan yet. Answer the questions to set up your household."),
+      ps.length ? el("ul",{class:"plain"}, ps.map((p,j)=>el("li",{}, el("b",{},personName(p,j)), " · "+fmtInt(p.kcal)+" kcal a day"+(p.macros?` · ${p.macros.p} g protein, ${p.macros.c} g carbs, ${p.macros.f} g fat`:"")))) : el("p",{class:"note"},"No plan yet. Answer the questions to set up your household."),
       el("div",{class:"actions"}, el("button",{class:"btn small",onclick:()=>{ $("#tabs").hidden=true; startQuiz(!!S.profile); }}, S.profile?"Edit my answers":"Start the questions"),
         S.plan?el("button",{class:"btn small",onclick:()=>showApp("plan")},"Back to my plan"):null)),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Saved plans"),
