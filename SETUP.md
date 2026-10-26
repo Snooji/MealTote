@@ -39,7 +39,15 @@ firebase login --no-localhost      # follow the link, paste the code back
 firebase deploy                    # uploads the site and the security rules
 ```
 
-It prints your live address, such as `https://YOUR_PROJECT.web.app`. Open it, sign in with Google, and you're done.
+It prints your live address, such as `https://YOUR_PROJECT.web.app`.
+
+If the upload stalls with "An unexpected error has occurred" (the debug log shows `ConnectTimeoutError ... upload-firebasehosting.googleapis.com`), Cloud Shell's network is choking on too many parallel uploads. Upload fewer at a time, prefer IPv4, and run it again. Files already uploaded are skipped:
+
+```sh
+export FIREBASE_HOSTING_UPLOAD_CONCURRENCY=8
+export NODE_OPTIONS="--dns-result-order=ipv4first"
+firebase deploy --only hosting
+``` Open it, sign in with Google, and you're done.
 
 ### 4. Optional: deploy automatically on every push
 
