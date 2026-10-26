@@ -32,6 +32,7 @@ From the pantry: 1 tbsp coarse sea salt (Hawaiian alaea if you have it), 1 tbsp 
 
 **Tip:** Short on time? Cook it in a pressure cooker on high for 90 minutes with a natural release, or in a slow cooker on low for 8 to 10 hours.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat in a skillet with a splash of juices or water until hot and a little crispy, 4 to 5 minutes.

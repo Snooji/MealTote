@@ -35,6 +35,7 @@ From the pantry: 1 tbsp olive oil, 1 tsp thyme, 1 tbsp flour, splash of dry sher
 
 **Tip:** Low and slow onions are worth it. Add a splash of water if they start to stick.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Reheat covered at 350°F for 15 minutes.

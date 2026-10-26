@@ -36,6 +36,7 @@ From the pantry: ⅓ cup cider or white vinegar, 2 tbsp Kashmiri chili powder or
 
 **Tip:** Kashmiri chili powder gives vindaloo its brick-red color without overwhelming heat. Turn the heat up or down with the cayenne.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat on the stove until bubbling. Like most vinegar curries, it's better on day two.

@@ -42,6 +42,7 @@ From the pantry: 3 tbsp olive oil, 2 tbsp tomato paste, 1 tsp dried oregano, 1 t
 
 **Tip:** The soup thickens a lot as it sits; thin leftovers with a cup of water or broth when you reheat.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat on the stove with a splash of water. Pasta softens after freezing, so you can freeze the soup before adding it.

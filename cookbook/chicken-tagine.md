@@ -40,6 +40,7 @@ From the pantry: 2 tbsp olive oil, 2 tsp cumin, 1 tsp cinnamon, 1 tsp turmeric, 
 
 **Tip:** Even better the next day as the spices deepen.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

@@ -36,6 +36,7 @@ From the pantry: 5 tbsp olive oil, 2 tsp ground cumin, ½ tsp turmeric, ¼ tsp c
 
 **Tip:** Be generous with the lemon. The acid lifts the earthy lentils, so taste and keep adding until the soup tastes bright.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. The soup thickens as it sits. Reheat on the stove with a splash of water, stirring, until simmering. Keep the pita chips in a sealed bag at room temperature.

@@ -38,6 +38,7 @@ From the pantry: 2 tbsp cornstarch, ¼ tsp baking soda, 2 tbsp oil, 1 tsp sesame
 
 **Tip:** Freeze the steak for 20 minutes before slicing to get paper-thin strips.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

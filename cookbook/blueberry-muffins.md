@@ -36,6 +36,7 @@ From the pantry: ⅔ cup sugar, 2 tsp baking powder, ½ tsp baking soda, 1 tsp v
 
 **Tip:** Starting at 400°F gives the muffins a quick rise and tall domes. If you use frozen blueberries, add them straight from the freezer so they don't streak the batter.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Keep airtight at room temperature 2 days or chilled 3. Freeze individually; microwave 20 to 30 seconds.

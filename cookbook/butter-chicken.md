@@ -41,6 +41,7 @@ From the pantry: 2 tsp chili powder or paprika, 1 tsp cumin, 1 tsp sugar, salt
 
 **Tip:** Charring the chicken under the broiler gives the smoky, tandoor-like flavor that makes this taste like a restaurant made it.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store curry and rice separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

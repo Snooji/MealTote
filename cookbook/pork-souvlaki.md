@@ -37,6 +37,7 @@ From the pantry: ¼ cup olive oil, 1 tbsp dried oregano, 1 tsp paprika, salt, pe
 
 **Tip:** Soak wooden skewers 20 minutes so they don't burn.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat pork in a skillet. Build pitas fresh.

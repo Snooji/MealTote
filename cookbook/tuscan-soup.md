@@ -39,6 +39,7 @@ From the pantry: 1 tbsp olive oil, red pepper flakes, salt, pepper
 
 **Tip:** Throw in a Parmesan rind while it simmers if you have one.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. The kale softens further but tastes great. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

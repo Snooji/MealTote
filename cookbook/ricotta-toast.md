@@ -32,6 +32,7 @@ From the pantry: 1 tbsp olive oil, flaky salt
 
 **Tip:** Toast the bread properly dark. A sturdy, crunchy slice holds the creamy ricotta without going soft.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store the whipped ricotta covered up to 3 days and assemble toasts fresh.

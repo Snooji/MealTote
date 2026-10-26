@@ -38,6 +38,7 @@ From the pantry: 2 tbsp oil, 2 tbsp flour, 1 tbsp Dijon mustard, 1 tsp paprika, 
 
 **Tip:** Never let the sauce boil once the sour cream is in, or it will split. Warm it through gently.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat gently in a skillet over low with a splash of broth, 4 to 5 minutes, without boiling.

@@ -37,6 +37,7 @@ From the pantry: ¾ cup cornstarch, ⅓ cup oil, 2 tbsp rice vinegar, 1 tsp sesa
 
 **Tip:** Fry the chicken a second time for 1 minute just before saucing if you want it extra crunchy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp in a 400°F oven or air fryer for 6 to 8 minutes.

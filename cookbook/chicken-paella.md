@@ -41,6 +41,7 @@ From the pantry: 3 tbsp olive oil, pinch of saffron (optional), salt
 
 **Tip:** Resist stirring after the broth goes in. Stirring makes it risotto, not paella.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Shrimp toughens when frozen. Microwave covered with a splash of broth.

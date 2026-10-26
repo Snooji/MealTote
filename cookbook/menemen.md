@@ -36,6 +36,7 @@ From the pantry: 3 tbsp olive oil, 1 tbsp butter, 1 tsp Aleppo pepper or ½ tsp 
 
 **Tip:** Grating the tomatoes on a box grater (skin side out) gives a smooth sauce and leaves the tough skins behind in your hand.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best eaten right away. The pepper and tomato base keeps 3 days; reheat it and add fresh eggs.

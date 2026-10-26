@@ -38,6 +38,7 @@ From the pantry: 1 tbsp oil, salt
 
 **Tip:** Swap the rice for cauliflower rice to make these low-carb.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat covered at 350°F for 15 to 20 minutes (or microwave single portions 2 minutes).

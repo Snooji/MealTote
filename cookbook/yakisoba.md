@@ -37,6 +37,7 @@ From the pantry: 2 tbsp Worcestershire, 2 tbsp ketchup, 1 tsp sugar, 2 tbsp oil
 
 **Tip:** Finish with a squiggle of mayo and a pinch of red pickled ginger for the street-food version.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat in a skillet with a splash of water, tossing, 3 minutes.

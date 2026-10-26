@@ -37,6 +37,7 @@ From the pantry: ½ cup flour, ½ cup oil for frying, 1 tsp garlic powder, salt,
 
 **Tip:** Put the sauce only on the center of each cutlet so the edges stay crunchy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat cutlets at 400°F for 10 minutes so they stay crisp. Microwave the pasta separately.

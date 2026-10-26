@@ -38,6 +38,7 @@ From the pantry: 3 tbsp olive oil, ½ cup dry white wine (or extra broth), 1 tsp
 
 **Tip:** Don't crowd or stir the mushrooms early. Letting them sit in a hot pan gives the browned, meaty flavor the whole dish depends on.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Risotto thickens in the fridge. Reheat in a skillet with a few splashes of broth, stirring, 4 to 5 minutes, or press it into patties and pan-fry.

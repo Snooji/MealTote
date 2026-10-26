@@ -34,6 +34,7 @@ From the pantry: 2 tbsp oil, 1 tsp Worcestershire sauce, ½ tsp garlic powder, s
 
 **Tip:** If your steak isn't pre-shaved, freeze a ribeye for 30 minutes and slice it paper-thin against the grain.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Wrap in foil and reheat in a 350°F oven for 10 to 12 minutes.

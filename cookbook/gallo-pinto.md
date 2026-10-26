@@ -37,6 +37,7 @@ From the pantry: 3 tbsp oil, 1 tsp cumin, 1 tsp hot sauce, salt, pepper
 
 **Tip:** If you can find Salsa Lizano in the Latin aisle, a few spoonfuls stirred in at the end is the authentic Costa Rican finish.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store without eggs. Reheat in a skillet with a splash of water until hot, 5 minutes.

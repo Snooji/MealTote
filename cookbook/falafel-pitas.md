@@ -39,6 +39,7 @@ From the pantry: ⅓ cup flour, 2 tsp cumin, 1 tsp coriander, 1 tsp baking powde
 
 **Tip:** Dry chickpeas are key. Wet ones make mushy falafel.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Re-crisp falafel at 400°F for 8 minutes. Keep sauce separate.

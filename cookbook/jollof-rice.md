@@ -39,6 +39,7 @@ From the pantry: ⅓ cup oil, 2 tsp curry powder, 2 tsp thyme, 2 bay leaves, 1 b
 
 **Tip:** Don't rush reducing the pepper sauce. Frying it down is where the flavor comes from.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Microwave covered with a splash of water.

@@ -36,6 +36,7 @@ From the pantry: 2 tbsp oil, 1 tbsp rice vinegar
 
 **Tip:** Leave the potstickers alone while they crisp. Moving them tears the bottoms.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Re-crisp in a skillet over medium, 3 to 4 minutes.

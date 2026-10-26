@@ -40,6 +40,7 @@ From the pantry: 1 tbsp oil, 3 tsp curry powder, 1 tsp turmeric, 1 tsp dried thy
 
 **Tip:** Make sure the filling is completely cool before you fill the dough, or the butter melts and the crust won't flake.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Freeze baked patties individually. Reheat from frozen at 375°F for 18 to 20 minutes, or from the fridge for 10 minutes.

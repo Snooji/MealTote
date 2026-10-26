@@ -41,6 +41,7 @@ From the pantry: 1 tbsp oil, salt
 
 **Tip:** For packed lunches, keep the turkey, the dressing and the chips in separate containers and combine at lunchtime so the chips stay crunchy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Store turkey, salad and chips separately. Microwave the turkey for 1 minute before topping; it freezes well on its own.

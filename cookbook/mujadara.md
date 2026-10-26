@@ -37,6 +37,7 @@ From the pantry: ½ cup olive oil, 2 tsp cumin, 1 tsp allspice, salt
 
 **Tip:** Toss the onions with a tablespoon of cornstarch before frying for extra-crunchy results.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Microwave with a splash of water. Store crispy onions separately so they stay crunchy.

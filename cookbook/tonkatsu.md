@@ -36,6 +36,7 @@ From the pantry: ½ cup flour for dredging, 1 cup oil for frying, ¼ cup ketchup
 
 **Tip:** Drain the cutlets on a wire rack. If they sit on paper towels the bottom steams and loses its crunch.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 1 months. Re-crisp on a rack in a 400°F oven or air fryer for 6 to 8 minutes. Never microwave.

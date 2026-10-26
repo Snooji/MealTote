@@ -36,6 +36,7 @@ From the pantry: Capers and fresh dill (optional), black pepper
 
 **Tip:** Soak the onion slices in ice water for 5 minutes to make them milder and extra crisp.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Assemble fresh. Smoked salmon keeps 5 days once opened.

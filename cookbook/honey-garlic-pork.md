@@ -36,6 +36,7 @@ From the pantry: 3 tbsp olive oil, 1 tsp Dijon mustard, salt, pepper
 
 **Tip:** Pull the pork at 140°F. Carryover heat takes it to a juicy 145°F while it rests.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Slice only what you'll eat. Microwave covered, 1½ to 2 minutes, stirring halfway.

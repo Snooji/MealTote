@@ -38,6 +38,7 @@ From the pantry: 5 tbsp oil, 2 tbsp red wine vinegar, 1 tsp ground cumin, 1 tsp 
 
 **Tip:** Keep the pan very hot and work fast. The tomatoes should barely wilt, and the fries go in at the very end so they stay crisp.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Reheat in a hot skillet for 3 to 4 minutes. The fries will soften, so re-crisp them in a 425°F oven if you can.

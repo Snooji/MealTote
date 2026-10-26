@@ -35,6 +35,7 @@ From the pantry: Rub: 2 tbsp brown sugar, 1 tbsp smoked paprika, 2 tsp each salt
 
 **Tip:** Spread sauced pork on a sheet pan and broil 3 minutes for crispy, bark-like edges.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 4 months. Store pork with its juices. Reheat covered in the microwave or a pot. Keep slaw separate.

@@ -35,6 +35,7 @@ From the pantry: ⅓ cup mayo, 1 tsp Dijon mustard, salt, pepper
 
 **Tip:** For packed lunches, keep the tomato in a separate container and add it at lunchtime so the toast stays crisp.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best the day it's made. Wrap tightly and refrigerate; eat cold.

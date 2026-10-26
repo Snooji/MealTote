@@ -38,6 +38,7 @@ From the pantry: 3 tbsp oil, 1 tbsp butter, salt
 
 **Tip:** Stale tortillas work best. Leave fresh ones out on the counter for an hour, or dry the strips in a 300°F oven for 10 minutes, so they crisp instead of steaming.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best fresh; the tortilla strips soften as they sit. Reheat gently in a skillet.

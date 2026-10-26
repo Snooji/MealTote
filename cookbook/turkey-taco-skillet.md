@@ -41,6 +41,7 @@ From the pantry: 1 tbsp oil, ½ tsp salt
 
 **Tip:** Keep the lid on while the rice cooks. Peeking lets out steam and leaves crunchy grains on top.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Microwave covered with a splash of water, 1½ to 2 minutes, stirring halfway.

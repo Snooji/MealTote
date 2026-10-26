@@ -41,6 +41,7 @@ From the pantry: 1 tbsp oil, 1 tsp smoked paprika, ½ tsp dried thyme, ½ tsp sa
 
 **Tip:** Blackening makes a lot of smoke, so open a window. For a lighter plate, swap the rice for vinegar coleslaw.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Reheat rice covered in the microwave with a splash of water; warm the fish uncovered at 350°F for 8 to 10 minutes.

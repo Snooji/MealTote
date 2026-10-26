@@ -34,6 +34,7 @@ From the pantry: Butter, salt, pepper, hot sauce
 
 **Tip:** To make ahead, assemble without baking the hash browns first, refrigerate overnight and bake 50 minutes at 375°F.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat covered at 350°F for 15 to 20 minutes (or microwave single portions 2 minutes).

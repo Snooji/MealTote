@@ -35,6 +35,7 @@ From the pantry: 1 tsp red pepper flakes, olive oil, dried oregano
 
 **Tip:** Thicker pepperoni cups better. Look for the slices sold in a stick or a deli tray.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat in a 400°F oven or air fryer for 4 to 5 minutes to re-crisp.

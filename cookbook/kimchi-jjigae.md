@@ -37,6 +37,7 @@ From the pantry: 1 tbsp gochugaru or ½ tsp red pepper flakes, 1 tsp sugar, 1 tb
 
 **Tip:** Older, really sour kimchi makes the best jjigae. If yours is fresh, add 1 tsp rice vinegar to brighten the broth.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Simmer on the stove until bubbling. It tastes even better the next day.

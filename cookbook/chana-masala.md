@@ -39,6 +39,7 @@ From the pantry: 3 tbsp oil, 2 tsp cumin, 1 tsp coriander, ½ tsp turmeric, salt
 
 **Tip:** A splash of the chickpea can liquid makes the gravy extra creamy.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Store curry and rice separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

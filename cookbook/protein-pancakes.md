@@ -35,6 +35,7 @@ From the pantry: 2 tsp baking powder, 1 tbsp sugar, 1 tsp vanilla, 1 tsp cinnamo
 
 **Tip:** Cook these a notch lower than regular pancakes. The banana and yogurt brown fast, so medium-low lets the centers cook through before the outsides darken.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Cool, then stack with parchment between. Toast or microwave 30 to 45 seconds.

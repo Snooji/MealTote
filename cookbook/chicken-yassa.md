@@ -35,6 +35,7 @@ From the pantry: ¼ cup oil, 3 tbsp Dijon mustard, 1 tbsp white vinegar, 1 tsp d
 
 **Tip:** Patience with the onions makes the dish. They should melt and turn golden before the marinade goes back in.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium with a splash of water until simmering, or microwave 2 to 3 minutes.

@@ -36,6 +36,7 @@ From the pantry: 3 tbsp flour, salt, pepper
 
 **Tip:** Russets break down into a naturally creamy soup. Waxy potatoes stay too firm.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Dairy soups go grainy when frozen. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

@@ -36,6 +36,7 @@ From the pantry: 1 tsp garlic powder, nutmeg, salt, pepper
 
 **Tip:** A zip-top bag with the corner snipped off makes filling the shells fast and tidy.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat covered at 350°F for 15 to 20 minutes (or microwave single portions 2 minutes).

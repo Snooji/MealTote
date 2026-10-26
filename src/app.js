@@ -3195,7 +3195,8 @@ function openRecipe(id, slot){
           el("div",{}, el("h3",{class:"sub"},"Ingredients"), ingList, scaleNote, el("p",{class:"note"},"From your pantry: "+r.pantry+".")),
           el("div",{}, el("h3",{class:"sub"},"Nutrition"), nutritionPanel(r))),
         el("div",{}, el("h3",{class:"sub"},"Step-by-step"), r.swapNote?el("div",{class:"tip",style:"margin-bottom:12px"},el("b",{},"Swap note. "),r.swapNote):null, el("ol",{class:"steps"}, r.steps.map(s=>el("li",{},el("span",{},s)))),
-          el("div",{class:"tip",style:"margin-top:16px"}, el("b",{},"Tip. "), r.tip))),
+          el("div",{class:"tip",style:"margin-top:16px"}, el("b",{},"Tip. "), r.tip),
+          r.src&&/^https:\/\//.test(r.src[1]||"")?el("p",{class:"note",style:"margin-top:12px"},"Adapted from ", el("a",{href:r.src[1],target:"_blank",rel:"noopener"},r.src[0]),"."):null)),
       alts));
   $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0; p.scrollTop=0;
 }

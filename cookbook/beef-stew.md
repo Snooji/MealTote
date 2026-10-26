@@ -38,6 +38,7 @@ From the pantry: 3 tbsp oil, ¼ cup flour, 3 tbsp tomato paste, 1 tbsp red wine 
 
 **Tip:** Browning in small batches matters. A crowded pot steams the beef grey instead of building the deep brown crust that flavors the gravy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once. Potatoes soften a little after freezing.

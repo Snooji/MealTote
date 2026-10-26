@@ -36,6 +36,7 @@ From the pantry: 1 tsp baking powder, 1½ tsp cinnamon, 1 tsp vanilla, ½ tsp sa
 
 **Tip:** Warm a square with a splash of milk and a spoon of Greek yogurt.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Store squares in a container. Microwave 45 seconds with a splash of milk.

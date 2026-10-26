@@ -37,6 +37,7 @@ From the pantry: 2 tbsp olive oil, red pepper flakes, salt, pepper
 
 **Tip:** Pull the shrimp while they're still slightly translucent. They finish cooking in the sauce.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Add a splash of water or milk and microwave covered 1½ to 2 minutes, stirring halfway.

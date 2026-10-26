@@ -39,6 +39,7 @@ From the pantry: 3 tbsp oil, 2 tbsp tomato paste, 2 tsp ground cumin, 1 tsp drie
 
 **Tip:** Shred the beef along the grain into long strands, which is how the dish gets its 'old clothes' name and its texture.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium with a splash of water until simmering, or microwave 2 to 3 minutes.

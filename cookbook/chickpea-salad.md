@@ -33,6 +33,7 @@ From the pantry: 3 tbsp olive oil, 1 tsp dried oregano, salt, pepper
 
 **Tip:** Spoon it over spring mix or into a pita to stretch it into a bigger lunch.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Gets better as it sits. Eat cold or at room temperature. No reheating needed.

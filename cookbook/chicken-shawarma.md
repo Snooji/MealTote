@@ -39,6 +39,7 @@ From the pantry: ¼ cup olive oil; 2 tsp each cumin, paprika; 1 tsp each coriand
 
 **Tip:** Marinate the chicken in the morning and dinner is 25 minutes of hands-off roasting.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store chicken, salad and sauces separately. Microwave covered, 1½ to 2 minutes, stirring halfway.

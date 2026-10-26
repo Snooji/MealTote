@@ -38,6 +38,7 @@ From the pantry: 3 tbsp mirin, pickled ginger (optional)
 
 **Tip:** Ask the butcher counter for shabu-shabu or Philly cheesesteak beef if you can't find shaved steak.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store beef in its broth. Reheat on the stove and cook a fresh egg.

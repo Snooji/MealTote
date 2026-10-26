@@ -39,6 +39,7 @@ From the pantry: 5 tbsp olive oil, ¼ cup flour, 2 tbsp tomato paste, 1 tsp cinn
 
 **Tip:** Roasting the eggplant instead of frying it keeps the dish from going greasy and saves a lot of standing at the stove.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat squares covered at 350°F for 20 to 25 minutes, or microwave a portion 2 to 3 minutes.

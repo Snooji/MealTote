@@ -33,6 +33,7 @@ From the pantry: Yellow mustard, salt, pepper
 
 **Tip:** No panini press? Weigh it down with a cast-iron pan and a can.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Assemble fresh. Re-press leftovers in a skillet.

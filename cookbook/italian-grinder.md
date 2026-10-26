@@ -37,6 +37,7 @@ From the pantry: Grinder dressing: ⅓ cup mayo, 2 tbsp red wine vinegar, 1 tsp 
 
 **Tip:** Slice the lettuce as thin as you can. It should be almost like slaw.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Store the grinder salad separately and assemble fresh.

@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, salt
 
 **Tip:** A spoon of honey or a square of dark chocolate stirred in at the end rounds out the flavor.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 4 months. Store toppings separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

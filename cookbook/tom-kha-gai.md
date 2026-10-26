@@ -40,6 +40,7 @@ From the pantry: 1 tbsp sugar, ½ tsp salt
 
 **Tip:** Season it off the heat and taste as you go. Lime juice turns bitter if boiled, and each brand of fish sauce is a different saltiness.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Coconut milk can turn grainy when frozen. Reheat gently over medium-low until steaming, then add a squeeze of fresh lime.

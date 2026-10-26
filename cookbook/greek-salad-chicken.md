@@ -38,6 +38,7 @@ From the pantry: ⅓ cup olive oil, 2 tbsp red wine vinegar, 2 tsp oregano, salt
 
 **Tip:** Pack dressing separately for lunches and the salad stays crunchy for days.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Keep dressing separate. Chicken is great cold.

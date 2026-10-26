@@ -36,6 +36,7 @@ From the pantry: Nutmeg, salt, pepper
 
 **Tip:** Pull it while the middle still jiggles. It sets as it cools and stays silky.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat slices at 325°F for 10 minutes or microwave 45 seconds.

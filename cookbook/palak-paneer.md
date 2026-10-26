@@ -39,6 +39,7 @@ From the pantry: 2 tbsp butter or ghee, 1 tsp cumin, ½ tsp turmeric, salt
 
 **Tip:** Ice-bathing the spinach keeps the sauce bright green instead of army green.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat gently on low. Add a splash of water or cream.

@@ -35,6 +35,7 @@ From the pantry: Pinch of salt, cinnamon
 
 **Tip:** Warm the peanut butter for 10 seconds in the microwave so it drizzles.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Portion into containers. Add a splash of milk and microwave 1½ minutes.

@@ -35,6 +35,7 @@ From the pantry: 1 tbsp white vinegar, pinch of cayenne, salt
 
 **Tip:** Poach eggs ahead: drop them into ice water, refrigerate up to a day, then rewarm in hot (not simmering) water for 1 minute just before serving.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best fresh. Hollandaise doesn't reheat well; make it right before serving.

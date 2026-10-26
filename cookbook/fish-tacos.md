@@ -39,6 +39,7 @@ From the pantry: ¼ cup flour, 1 tsp chili powder, oil for frying, salt
 
 **Tip:** For an easier version, bake the breaded fish at 450°F on an oiled rack for 12 minutes.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best eaten fresh. Re-crisp fish at 400°F for 6 minutes if needed.

@@ -38,6 +38,7 @@ From the pantry: ½ cup rice vinegar, 2 tbsp sugar, ⅓ cup mayo, 1 tbsp srirach
 
 **Tip:** The pickled carrots keep 2 weeks in the fridge. Make a big jar.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store chicken and pickles separately. Build sandwiches fresh on a toasted baguette.

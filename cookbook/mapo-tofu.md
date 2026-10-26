@@ -38,6 +38,7 @@ From the pantry: 1 tbsp oil, 1 tbsp cornstarch, 1 tsp sugar, 1 tsp Sichuan peppe
 
 **Tip:** Swap the pork for chopped mushrooms to make it vegetarian.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat gently in a covered pan or the microwave, stirring carefully.

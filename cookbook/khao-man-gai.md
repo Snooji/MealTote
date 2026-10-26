@@ -40,6 +40,7 @@ From the pantry: 2 tbsp oil, 1 tbsp sugar, 2 tbsp rice vinegar, salt
 
 **Tip:** Keep the poaching water barely trembling. Boiling squeezes the moisture out of the chicken and makes it stringy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Keep chicken, rice and broth separate. Microwave the rice and chicken covered with a spoonful of broth, and heat the broth on the stove.

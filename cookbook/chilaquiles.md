@@ -38,6 +38,7 @@ From the pantry: 2 tbsp oil, salt
 
 **Tip:** Use thick restaurant-style chips. Thin ones dissolve in the sauce.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Best made fresh. The chips go soft quickly.

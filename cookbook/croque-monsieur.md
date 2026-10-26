@@ -34,6 +34,7 @@ From the pantry: 2 tbsp flour, 2 tsp Dijon, nutmeg, salt, pepper
 
 **Tip:** Add a fried egg on top and it becomes a croque madame.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best fresh. Reheat at 375°F for 8 minutes.

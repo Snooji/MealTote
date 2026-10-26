@@ -36,6 +36,7 @@ From the pantry: 3 tbsp olive oil, 1 tbsp maple syrup, 1 tsp dried sage, 1 tsp f
 
 **Tip:** Covering the pan for the first 8 minutes steams the sweet potatoes through, so they brown without burning before the middles are soft.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Store the hash without eggs. Reheat in a skillet over medium until hot and re-crisped, 5 minutes, then fry fresh eggs.

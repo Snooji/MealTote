@@ -34,6 +34,7 @@ From the pantry: 2 tbsp olive oil, 2 tsp salt, pepper
 
 **Tip:** Save the carcass. Simmered with an onion and water for 2 hours, it makes stock for next week's soup.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Pull the meat off the bones before storing. Use it in salads, wraps or soup, or reheat with a splash of broth.

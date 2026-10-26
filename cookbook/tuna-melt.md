@@ -36,6 +36,7 @@ From the pantry: ⅓ cup mayo, 1 tsp Dijon, salt, pepper
 
 **Tip:** Cheese on both sides of the tuna glues the sandwich together.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Tuna salad keeps 3 days. Grill sandwiches fresh.

@@ -38,6 +38,7 @@ From the pantry: 2 tbsp cornstarch, 2 tbsp rice vinegar, 8 dried chilies or 1 ts
 
 **Tip:** Sichuan peppercorns give the famous numbing tingle. Find them in the spice aisle.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

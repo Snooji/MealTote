@@ -36,6 +36,7 @@ From the pantry: 2 tbsp olive oil, ½ tsp red pepper flakes, salt, pepper
 
 **Tip:** Par-baking the crust before adding the eggs keeps the middle from going soggy and means the yolks stay runny by the time the crust is done.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat slices in a 400°F oven or skillet for 6 to 8 minutes; yolks will firm up.

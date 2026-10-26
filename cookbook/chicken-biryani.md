@@ -40,6 +40,7 @@ From the pantry: ⅓ cup oil or ghee, 2 tsp chili powder, 1 tsp turmeric, 4 gree
 
 **Tip:** A tight seal matters. Put a sheet of foil under the lid to trap the steam.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Sprinkle with water and reheat covered in the microwave or a low oven.

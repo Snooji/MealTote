@@ -37,6 +37,7 @@ From the pantry: ⅓ cup olive oil, 2 tbsp red wine vinegar, 1 tsp dried oregano
 
 **Tip:** Soak the diced red onion in cold water for 10 minutes before adding it to take the harsh bite off.
 
+
 ## Storing
 
 Fridge 5 days · freezer not recommended. Eat cold or at room temperature. Stir in a squeeze of lemon and a splash of olive oil to refresh leftovers.

@@ -34,6 +34,7 @@ From the pantry: 3 tbsp oil, 1 tbsp brown sugar, 1 tbsp apple cider vinegar, 1 t
 
 **Tip:** Pull the chops at 145°F and let them rest. A blush of pink means juicy, not undercooked.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat covered in a skillet with a splash of broth over medium-low, 5 to 7 minutes.

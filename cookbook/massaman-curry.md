@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 2 tbsp brown sugar, 1 tsp ground cinnamon, ½ tsp g
 
 **Tip:** Many brands don't sell massaman paste, so red curry paste plus cinnamon, cardamom and cumin gets you close. If you find Maesri or Mae Ploy massaman paste, use it instead and skip the dried spices.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat gently on the stove with a splash of water until bubbling. The flavor deepens overnight.

@@ -41,6 +41,7 @@ From the pantry: 2 tsp cumin, 2 tsp dried oregano, 1 tbsp salt, 2 bay leaves
 
 **Tip:** Leftover carnitas crisp up perfectly in a hot skillet. Use them for tacos or breakfast hash later in the week.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store pork with some juices. Crisp it in a hot skillet. Keep guac and toppings separate.

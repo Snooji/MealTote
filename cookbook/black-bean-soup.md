@@ -36,6 +36,7 @@ From the pantry: 3 tbsp olive oil, 2 tsp cumin, 1 tsp dried oregano, 2 bay leave
 
 **Tip:** The splash of vinegar at the end is traditional and brightens the beans. Don't skip it.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Store rice separately. Reheat the soup on the stove, thinning with water as it thickens.

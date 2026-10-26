@@ -38,6 +38,7 @@ From the pantry: 3 tbsp oil, 1 tsp cumin seeds, 1 tsp turmeric, 2 tsp ground cor
 
 **Tip:** Mashing some of the beans makes the gravy creamy without any cream. For a richer finish, stir in 1 tbsp butter at the end.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat on the stove with a splash of water. It thickens and gets better overnight.

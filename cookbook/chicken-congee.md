@@ -37,6 +37,7 @@ From the pantry: 1 tbsp oil, 1 tbsp sesame oil, ½ tsp white pepper, salt
 
 **Tip:** Tossing the raw rice in a little oil and salt before simmering is a Cantonese trick that helps the grains break down into a smoother, silkier congee.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Congee thickens as it sits. Reheat on the stove with ¼ to ½ cup water per serving, stirring, until loose and steaming.

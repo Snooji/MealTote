@@ -37,6 +37,7 @@ From the pantry: 3 tbsp oil, salt, hot sauce
 
 **Tip:** Spoon hot oil over the egg whites as they fry to set them without flipping.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Best made fresh. Leftover beans and salsa keep 4 days.

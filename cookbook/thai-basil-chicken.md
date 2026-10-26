@@ -38,6 +38,7 @@ From the pantry: 3 tbsp oil, 2 tsp sugar
 
 **Tip:** Hand-chopping thighs gives a juicier, chunkier texture than ground chicken.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat in a skillet. Fry a fresh egg.

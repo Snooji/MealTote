@@ -47,6 +47,7 @@ for (const r of RECIPES) {
     `## Ingredients`, "", ...r.ing.map(i => `- ${i[2]}`), "", `From the pantry: ${r.pantry}`, "",
     `## Steps`, "", ...r.steps.map((s, i) => `${i + 1}. ${s}`), "",
     `**Tip:** ${r.tip}`, "",
+    r.src ? `Adapted from [${r.src[0]}](${r.src[1]}).\n` : "",
     `## Storing`, "", `Fridge ${st[0]} days · freezer ${st[1] ? "up to " + st[1] + " months" : "not recommended"}. ${st[2]}`, "",
     vs.length ? `## Other ways to make it\n\n${vs.map(v => "- " + v).join("\n")}\n` : "",
   ].join("\n");

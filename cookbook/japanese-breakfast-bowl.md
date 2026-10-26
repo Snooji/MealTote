@@ -36,6 +36,7 @@ From the pantry: 1 tsp oil, 1 tbsp rice vinegar, 1 tsp sugar, 1 tsp sesame oil, 
 
 **Tip:** Salting the salmon 15 minutes ahead draws out moisture so the skin side browns and the flesh seasons all the way through.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store the parts separately. Eat salmon cold over warm rice or rewarm briefly; reheat miso soup gently without boiling.

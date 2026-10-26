@@ -36,6 +36,7 @@ From the pantry: 1 tbsp oil, ⅓ cup ketchup, 2 tbsp brown sugar, 1 tbsp Worcest
 
 **Tip:** Ground turkey is lean, so let the sauce reduce until thick; that's what keeps it from soaking straight through the bun.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store the filling separately from the buns. Reheat in a covered pan or microwave until steaming.

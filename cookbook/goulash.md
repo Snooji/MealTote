@@ -39,6 +39,7 @@ From the pantry: 3 tbsp oil, 3 tbsp sweet paprika, 1 tsp caraway seeds, 1 tsp dr
 
 **Tip:** Use fresh sweet Hungarian paprika if you can get it. A stale jar makes the stew taste flat and dusty.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

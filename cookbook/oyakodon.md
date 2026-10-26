@@ -36,6 +36,7 @@ From the pantry: 3 tbsp mirin, 1 tbsp sugar, shichimi togarashi to serve (option
 
 **Tip:** Don't over-beat the eggs. Streaks of white and yolk give the classic silky, marbled texture.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store the topping apart from the rice. Reheat gently, covered, in the microwave at 50% power so the egg doesn't turn rubbery.

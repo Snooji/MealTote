@@ -40,6 +40,7 @@ From the pantry: ½ cup oil, ½ cup flour, 2 bay leaves, hot sauce, filé powder
 
 **Tip:** Have every vegetable chopped before you start the roux. It goes fast at the end.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

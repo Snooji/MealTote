@@ -42,6 +42,7 @@ From the pantry: 1 tbsp oil, salt
 
 **Tip:** This freezes well. Keep the toppings separate and add them fresh.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Store toppings separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

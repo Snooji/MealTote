@@ -38,6 +38,7 @@ From the pantry: ¾ cup cornstarch, ½ cup oil, 2 tbsp rice vinegar, red pepper 
 
 **Tip:** Toss at the last second. Crispy chicken goes soft if it sits in sauce.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat in a 400°F oven or air fryer for 6 to 8 minutes to re-crisp.

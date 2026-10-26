@@ -36,6 +36,7 @@ From the pantry: 1 tbsp butter, 1 tsp sesame oil, 1 tbsp soy sauce
 
 **Tip:** Older, sour kimchi makes the best fried rice.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a hot skillet. Fry a fresh egg.

@@ -37,6 +37,7 @@ From the pantry: ¼ cup olive oil, 1½ tsp cumin, ½ tsp red pepper flakes, salt
 
 **Tip:** Be generous with the olive oil and lemon at the end. Plain fava beans taste flat; those two make them taste like the street-cart version.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store the beans separately from the vegetables. Reheat with a splash of water, then add fresh lemon and oil.

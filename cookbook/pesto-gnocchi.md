@@ -35,6 +35,7 @@ From the pantry: 2 tbsp olive oil, salt, pepper
 
 **Tip:** Don't boil shelf-stable gnocchi first. Pan-frying from raw is what makes them crisp outside and fluffy inside.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Gnocchi softens in the fridge. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

@@ -35,6 +35,7 @@ From the pantry: Honey (optional)
 
 **Tip:** Peel and freeze ripe bananas in chunks so you always have smoothie bowls ready.
 
+
 ## Storing
 
 Fridge 0 days · freezer up to 3 months. Freeze pre-portioned smoothie packs of fruit, spinach and yogurt cubes. Blend fresh.

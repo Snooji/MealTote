@@ -39,6 +39,7 @@ From the pantry: 6 tbsp olive oil, 2 tbsp sumac, 1 tsp dried mint, 1 tsp honey, 
 
 **Tip:** Sumac is a lemony red spice sold in the spice aisle or at Middle Eastern markets. A pinch of extra lemon zest stands in if you can't find it.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store the greens, dressing, pita and chicken separately and toss at lunchtime. The chicken is good cold or microwaved for 1 minute.

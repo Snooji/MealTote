@@ -35,6 +35,7 @@ From the pantry: Black pepper
 
 **Tip:** Wrapped in plastic, the uncut rolls hold for 2 days without going soggy.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Keep rolls whole, wrapped tightly, and slice just before eating.

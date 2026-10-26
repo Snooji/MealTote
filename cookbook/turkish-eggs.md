@@ -36,6 +36,7 @@ From the pantry: ½ tsp chili flakes, 1 tbsp vinegar, salt
 
 **Tip:** Room-temperature yogurt is the trick. Cold yogurt chills the eggs.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Best made fresh.

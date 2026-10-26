@@ -40,6 +40,7 @@ From the pantry: 2 tbsp oil, 1 tsp cumin, 1 tsp oregano, salt
 
 **Tip:** Pack the guac with plastic pressed onto its surface and it stays green for 2 days.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Pack rice, chicken and beans together and the cold toppings separately. Microwave covered, 1½ to 2 minutes, stirring halfway.

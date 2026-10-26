@@ -37,6 +37,7 @@ From the pantry: 3 tbsp olive oil, 1 tbsp red wine vinegar, 1 tsp dried oregano,
 
 **Tip:** Make it the night before: the press lets the olive oil soak into the bread, which is what makes a real muffuletta.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Keep wrapped in the fridge. Eat cold or at room temperature, or warm wedges in a 350°F oven for 10 minutes.

@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 1 tbsp sugar, 1 tbsp rice vinegar, salt
 
 **Tip:** Cook the udon apart from the broth. Frozen udon sheds starch that clouds the soup, and noodles stored in the broth go soft.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store the noodles and broth separately. Reheat the broth on the stove until simmering, then add the noodles for 1 minute. Freeze the broth only.

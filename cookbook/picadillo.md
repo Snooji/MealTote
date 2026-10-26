@@ -37,6 +37,7 @@ From the pantry: 2 tbsp oil, 1 tsp cumin, 1 tsp oregano, ¼ cup raisins (optiona
 
 **Tip:** Picadillo makes great empanada, taco or stuffed-pepper filling too.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Microwave covered, 1½ to 2 minutes, stirring halfway.

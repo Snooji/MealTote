@@ -36,6 +36,7 @@ From the pantry: 1 tbsp sugar, 2 tbsp powdered sugar, 1 tsp vanilla, pinch of sa
 
 **Tip:** Room-temperature eggs and milk give the biggest puff. Set them out 30 minutes ahead, or warm the milk for 20 seconds in the microwave.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best straight from the oven. Leftovers reheat in a 350°F oven for 5 minutes but won't puff again.

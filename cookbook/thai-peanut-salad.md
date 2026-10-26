@@ -40,6 +40,7 @@ From the pantry: 1 tbsp rice vinegar, 1 tsp sesame oil, 1 garlic clove, chili fl
 
 **Tip:** Unlike lettuce salads, this one tastes better on day two.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Holds up for days. Add peanuts just before eating. Eat cold or at room temperature. No reheating needed.

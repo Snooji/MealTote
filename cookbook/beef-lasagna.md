@@ -40,6 +40,7 @@ From the pantry: 1 tbsp olive oil, 1 tsp dried oregano, salt, pepper
 
 **Tip:** Freeze half before baking. Bake from frozen, covered, at 375°F for about 90 minutes.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat covered at 350°F for 15 to 20 minutes (or microwave single portions 2 minutes).

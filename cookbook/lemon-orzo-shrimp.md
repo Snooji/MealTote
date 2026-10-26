@@ -35,6 +35,7 @@ From the pantry: 1 tbsp olive oil, salt, pepper, red pepper flakes
 
 **Tip:** Frozen shrimp thaw in 10 minutes in a bowl of cold water. Start them before anything else.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Shrimp turns rubbery when frozen. Add a splash of water or milk and microwave covered 1½ to 2 minutes, stirring halfway.

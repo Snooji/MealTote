@@ -35,6 +35,7 @@ From the pantry: 2 tbsp butter, 1 tbsp oil, ½ tsp garlic powder, salt, pepper
 
 **Tip:** For packed lunches, pack the slaw separately and add it just before eating so the wrap doesn't get soggy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store chicken and slaw separately. Warm the chicken 1 minute in the microwave before rolling.

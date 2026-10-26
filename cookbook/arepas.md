@@ -36,6 +36,7 @@ From the pantry: 2 tbsp oil, 1 tsp salt
 
 **Tip:** Masarepa is not masa harina or cornmeal; look for P.A.N. or Goya masarepa in the Latin aisle. Other corn flours won't hold together.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Freeze cooked, unfilled arepas. Reheat in a 375°F oven or toaster oven for 10 to 12 minutes until crisp.

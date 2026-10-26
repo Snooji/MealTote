@@ -42,6 +42,7 @@ From the pantry: 2 tbsp olive oil, 1 tsp dried oregano, ½ tsp garlic powder, sa
 
 **Tip:** Wet your hands with cold water while rolling the meatballs so the mixture doesn't stick and they stay round.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. The orzo drinks up broth, so add water or broth when reheating on the stove.

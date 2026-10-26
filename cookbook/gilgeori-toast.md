@@ -35,6 +35,7 @@ From the pantry: 3 tbsp ketchup, 2 tbsp mayo, 1 tbsp sugar, salt
 
 **Tip:** The sprinkle of sugar sounds odd but it's the signature. It plays off the salty egg and tangy ketchup the way it does at the street stalls.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best fresh. Wrapped tightly, it holds 1 day in the fridge; warm in a dry skillet over low.

@@ -38,6 +38,7 @@ From the pantry: 3 tbsp olive oil, 1 tsp cumin, pinch of sugar, salt
 
 **Tip:** Crack each egg into a small cup first so a broken yolk doesn't end up in the pan.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store leftover sauce without eggs. Reheat the sauce in a skillet and poach fresh eggs in it.

@@ -36,6 +36,7 @@ From the pantry: Vinaigrette: ⅓ cup olive oil, 3 tbsp red wine vinegar, 1 tsp 
 
 **Tip:** For packed lunches, layer the toppings in jars with the dressing on the bottom and lettuce on top.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store dressing separately. Add avocado the day you eat it.

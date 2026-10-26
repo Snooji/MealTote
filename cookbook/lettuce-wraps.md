@@ -39,6 +39,7 @@ From the pantry: 2 tbsp oil, 1 tbsp rice vinegar, 2 tsp sesame oil, 1 tsp sugar,
 
 **Tip:** Chop the chicken into pieces the size of a pea. They brown faster and stay juicier than store-bought ground chicken.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store the filling apart from the lettuce. Microwave the filling 1 to 1½ minutes, or pack it cold with the lettuce on the side.

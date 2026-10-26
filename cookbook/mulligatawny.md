@@ -43,6 +43,7 @@ From the pantry: 2 tbsp oil, ½ tsp ground cumin, 2 tsp salt, ½ tsp pepper
 
 **Tip:** Toast the curry powder in the oil for a full minute before adding liquid. It takes the raw, dusty edge off the spices.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Store the rice separately. Reheat the soup over medium with a splash of broth, since it thickens as it sits.

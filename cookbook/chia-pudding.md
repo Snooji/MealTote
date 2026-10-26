@@ -34,6 +34,7 @@ From the pantry: 1 tsp vanilla, pinch of salt
 
 **Tip:** Whisking twice is the trick to pudding that sets evenly with no clumps.
 
+
 ## Storing
 
 Fridge 5 days · freezer not recommended. Eat cold. Stir before eating.

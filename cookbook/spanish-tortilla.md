@@ -33,6 +33,7 @@ From the pantry: ¾ cup olive oil, 1¼ tsp salt
 
 **Tip:** Save the strained potato oil. It's full of flavor and great for frying eggs or roasting vegetables later in the week.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Keeps well and is classic at room temperature. Bring cold slices out 20 minutes before eating, or warm in a 300°F oven for 10 minutes.

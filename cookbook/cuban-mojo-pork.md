@@ -36,6 +36,7 @@ From the pantry: ¼ cup olive oil, 2 tsp cumin, 2 tsp oregano, 2 tsp salt, 2 tbs
 
 **Tip:** Leftovers make perfect Cuban sandwiches with ham, Swiss, pickles and mustard.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 4 months. Reheat pork with its juices, then crisp in a hot skillet.

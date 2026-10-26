@@ -35,6 +35,7 @@ From the pantry: 2 tbsp oil, red pepper flakes, flaky salt, pepper
 
 **Tip:** Don't crowd the pan. Sear the steak in two batches if needed, or it will steam instead of brown.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat briefly in a hot skillet so the steak doesn't overcook.

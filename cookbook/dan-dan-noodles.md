@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 1 tbsp rice vinegar, 1 tsp sugar
 
 **Tip:** Let the pork get properly crispy. The crunch is the point.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store pork, sauce and noodles separately. Warm the pork, toss with fresh-boiled noodles.

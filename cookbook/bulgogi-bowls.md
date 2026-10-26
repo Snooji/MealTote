@@ -40,6 +40,7 @@ From the pantry: 1 tsp sesame oil, 1 tbsp neutral oil, rice vinegar, salt
 
 **Tip:** Kimchi is the one item Aldi often doesn't carry. Your bundle picks it up from another stop.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store beef, rice and cold toppings separately. Fry a fresh egg when serving. Microwave covered, 1½ to 2 minutes, stirring halfway.

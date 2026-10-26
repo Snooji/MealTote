@@ -35,6 +35,7 @@ From the pantry: 1 cup flour, for dredging, oil for frying, 1 tbsp sugar, 2 tsp 
 
 **Tip:** Rubbing a little buttermilk into the dredge creates shaggy bits that fry up into an extra-crunchy crust.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store chicken and waffles separately. Re-crisp both in a 400°F oven or air fryer, 6 to 8 minutes.

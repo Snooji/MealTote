@@ -38,6 +38,7 @@ From the pantry: 2 tbsp olive oil, 1 tsp sugar, salt, pepper
 
 **Tip:** Low and slow is the key to grilled cheese. High heat burns the bread before the cheese melts.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Freeze the soup without the cream, then stir it in when reheating. Make grilled cheese fresh.

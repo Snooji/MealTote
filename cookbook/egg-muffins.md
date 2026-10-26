@@ -35,6 +35,7 @@ From the pantry: Cooking spray, salt, pepper
 
 **Tip:** Keep them in the fridge for 5 days, or freeze and microwave from frozen for 60 seconds.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 2 months. Cool fully, then refrigerate or freeze in a bag. Microwave 30 seconds from the fridge, 60 to 75 seconds from frozen.

@@ -38,6 +38,7 @@ From the pantry: ½ cup flour, for dredging, 3 tbsp olive oil, 1 tsp salt, ½ ts
 
 **Tip:** Swirl in the last of the butter off the heat. If the sauce boils after that, it can turn greasy instead of creamy.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat in a covered skillet over low with a splash of broth until warm, 4 to 6 minutes.

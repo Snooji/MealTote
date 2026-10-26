@@ -35,6 +35,7 @@ From the pantry: ¼ cup olive oil, 1 tbsp dried oregano, 1½ tsp salt, pepper
 
 **Tip:** If the pan dries out, add a splash more broth. You want a little lemony sauce at the end.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat at 375°F for 15 minutes to re-crisp.

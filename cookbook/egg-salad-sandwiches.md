@@ -35,6 +35,7 @@ From the pantry: ⅓ cup mayo, 2 tsp Dijon mustard, 1 tsp lemon juice, ½ tsp pa
 
 **Tip:** Eggs that are a week or so old peel much more easily than very fresh ones.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Keep the egg salad in a sealed container and make sandwiches the day you eat them.

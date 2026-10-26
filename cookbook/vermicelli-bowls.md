@@ -41,6 +41,7 @@ From the pantry: Nuoc cham: ½ cup warm water, 3 tbsp sugar, 1 chili. Plus 1 tbs
 
 **Tip:** Nuoc cham keeps a week in the fridge. Make a double batch.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Pack pork, noodles, veg and sauce separately. Eat cold or warm the pork.

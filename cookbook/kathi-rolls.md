@@ -40,6 +40,7 @@ From the pantry: 1 tbsp oil, 1 tsp chili powder, 1 tsp ground cumin, ½ tsp turm
 
 **Tip:** For a classic egg kathi roll, pour a beaten egg into the pan, set the paratha on top, and flip after 30 seconds so the egg cooks onto the bread.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store the chicken, chutney and onions separately. Warm the chicken in a skillet 3 minutes and the parathas 1 minute per side, then roll fresh.

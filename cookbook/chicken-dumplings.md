@@ -38,6 +38,7 @@ From the pantry: ⅓ cup flour, 1 tsp thyme, salt, pepper
 
 **Tip:** Keep the lid on so the dumplings steam and puff.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Dumplings get soggy when frozen. Reheat gently with a splash of broth.

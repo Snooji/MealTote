@@ -34,6 +34,7 @@ From the pantry: ⅔ cup brown sugar, 1 tsp baking soda, 1 tsp vanilla, 1 tsp ci
 
 **Tip:** Use bananas that are more brown than yellow. The riper they are, the sweeter and more moist the bread.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Wrap tightly; keeps 2 days at room temperature or 4 chilled. Freeze slices and toast from frozen.

@@ -40,6 +40,7 @@ From the pantry: 1 tbsp oil, 2 tbsp tomato paste, 1 tbsp cornstarch, 1 tsp dried
 
 **Tip:** Dragging a fork across the mash makes ridges that brown into crispy edges. Run it under the broiler for 2 minutes if you want it extra golden.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat covered at 350°F for 20 to 25 minutes, or microwave portions 2 to 3 minutes.

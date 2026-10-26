@@ -36,6 +36,7 @@ From the pantry: 1 tbsp butter, 1 tsp Dijon mustard, ½ tsp salt, pepper
 
 **Tip:** Dry, day-old bread is the key. It drinks up the custard without going soggy, so the strata is tender inside with a crisp top.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Cover and chill. Reheat squares in a 350°F oven for 12 to 15 minutes, or microwave 1 to 2 minutes.

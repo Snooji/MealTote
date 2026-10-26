@@ -36,6 +36,7 @@ From the pantry: 1¼ cups flour, for dredging, ½ cup oil, for shallow-frying, 1
 
 **Tip:** Let the coated steaks sit on a rack for 10 minutes before frying. The coating hydrates and grips the meat, so it won't slide off in the pan.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store gravy separately. Re-crisp steaks at 400°F for 8 to 10 minutes and warm the gravy on the stove with a splash of milk.

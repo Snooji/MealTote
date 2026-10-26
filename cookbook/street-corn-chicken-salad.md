@@ -40,6 +40,7 @@ From the pantry: ⅓ cup mayo, 2 tbsp oil, 2 tsp chili powder, 1 tsp smoked papr
 
 **Tip:** Pat the thawed corn completely dry, or it will steam instead of char.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store the dressed corn and chicken apart from the greens and avocado; eat cold or warm the chicken briefly.

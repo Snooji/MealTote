@@ -38,6 +38,7 @@ From the pantry: 3 tbsp oil, salt
 
 **Tip:** Slice the steak while it's half-frozen and you'll get thin, even strips.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Store meat and vegetables together, toppings separately. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

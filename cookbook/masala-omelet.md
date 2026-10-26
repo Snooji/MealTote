@@ -35,6 +35,7 @@ From the pantry: 3 tbsp butter, ½ tsp turmeric, ½ tsp chili powder, ½ tsp gar
 
 **Tip:** Chop the onion and tomato small and blot the tomato on a towel. Big, wet pieces make the omelet tear when you flip it.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best fresh. Leftover omelet can be wrapped in toast as a sandwich and eaten cold or warmed.

@@ -34,6 +34,7 @@ From the pantry: 3 tbsp sugar, 2 tbsp mirin, 1 tbsp rice vinegar, 1 tsp oil, sal
 
 **Tip:** Wet your hands and the mold before packing the rice, and press hard. Firmly packed rice is what keeps musubi from falling apart.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Wrap each in plastic and keep at room temperature up to 6 hours. Chilled rice turns hard; if you refrigerate, microwave 20 to 30 seconds.

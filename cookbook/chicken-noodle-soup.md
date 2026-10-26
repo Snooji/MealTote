@@ -38,6 +38,7 @@ From the pantry: 2 tbsp butter, 1 tbsp oil, 1 tsp dried thyme, 2 bay leaves, sal
 
 **Tip:** If you plan to have leftovers, cook the noodles separately and add them to each bowl, so they don't soak up all the broth overnight.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Freeze without noodles if you can. Reheat on the stove until steaming, adding a splash of water or broth.

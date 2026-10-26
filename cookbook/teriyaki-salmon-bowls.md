@@ -40,6 +40,7 @@ From the pantry: 1 tbsp rice vinegar, 1 tsp cornstarch, sriracha mayo (optional)
 
 **Tip:** Line the pan with foil. The glaze burns onto the pan otherwise.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store salmon, rice and toppings separately. Salmon is good cold or warmed gently.

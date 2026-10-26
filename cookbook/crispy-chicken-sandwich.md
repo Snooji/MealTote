@@ -35,6 +35,7 @@ From the pantry: 1½ cups flour, 2 tbsp cornstarch, 2 tsp paprika, 1 tsp each ga
 
 **Tip:** Thighs stay juicy even if you overshoot the cooking time. Breasts don't.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp chicken at 400°F or in an air fryer for 8 minutes. Build sandwiches fresh.

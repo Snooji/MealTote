@@ -37,6 +37,7 @@ From the pantry: ½ cup flour, for coating, 5 tbsp olive oil, 1 tsp dried oregan
 
 **Tip:** Leave the edges of the top layer of eggplant peeking out of the sauce so they stay crunchy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat covered at 350°F for 20 minutes, uncovering for the last 5 to re-crisp.

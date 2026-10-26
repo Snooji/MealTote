@@ -36,6 +36,7 @@ From the pantry: 2 tbsp sugar, 1 tsp vanilla, pinch of salt
 
 **Tip:** The first crêpe is always a tester. Use it to judge the heat and how much batter your pan needs, then adjust.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Stack unfilled crêpes with parchment between and wrap. Warm in a skillet 20 seconds per side or microwave briefly.

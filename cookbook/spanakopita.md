@@ -38,6 +38,7 @@ From the pantry: 2 tbsp olive oil, 2 tsp dried dill, 1 tsp dried oregano, ¼ tsp
 
 **Tip:** Squeeze the spinach until it is truly dry. Leftover water is what makes the bottom layer soggy.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp squares uncovered at 350°F for 10 to 15 minutes. Avoid the microwave, which makes the phyllo chewy.

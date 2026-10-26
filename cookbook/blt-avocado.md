@@ -36,6 +36,7 @@ From the pantry: ⅓ cup mayo, flaky salt, pepper
 
 **Tip:** Salting the tomatoes a few minutes ahead makes them taste much more like tomato.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Best assembled fresh. Cooked bacon keeps 5 days.

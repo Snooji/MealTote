@@ -37,6 +37,7 @@ From the pantry: 3 tbsp oil, 1 tsp smoked paprika, 1 tsp garlic powder, salt, pe
 
 **Tip:** Par-cooking the potatoes in the microwave cuts the time in half and gives creamy insides with crunchy outsides.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store steak and potatoes without eggs. Rewarm potatoes in a hot skillet and steak just briefly so it doesn't overcook.

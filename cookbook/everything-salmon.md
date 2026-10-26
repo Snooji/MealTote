@@ -36,6 +36,7 @@ From the pantry: 4 tbsp olive oil, salt, pepper
 
 **Tip:** Smash the potatoes thin. More craggy edges means more crunch.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Keep the yogurt sauce separate. Reheat salmon gently at 275°F for 10 minutes, or eat it cold on salads. Re-crisp potatoes in a hot oven or air fryer.

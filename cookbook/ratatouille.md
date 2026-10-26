@@ -39,6 +39,7 @@ From the pantry: ½ cup olive oil, 2 tsp herbes de Provence (or dried thyme), 1 
 
 **Tip:** Browning each vegetable separately keeps them from turning to mush and gives the stew far more flavor. It is also even better the next day.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes. It's also great at room temperature.

@@ -37,6 +37,7 @@ From the pantry: 1 tbsp olive oil, nutmeg, salt, pepper
 
 **Tip:** Alfredo thickens fast as it cools. Keep some pasta water nearby to loosen it at the table.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Alfredo thickens. Reheat on low with a splash of milk, stirring constantly.

@@ -39,6 +39,7 @@ From the pantry: Salt, pepper, hot sauce
 
 **Tip:** If the grits stiffen while they wait, whisk in a splash of hot milk.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Whisk the grits with hot milk to loosen. Warm the shrimp gently.

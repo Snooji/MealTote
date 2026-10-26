@@ -35,6 +35,7 @@ From the pantry: 2 tbsp sugar, 2 tsp baking powder, ½ tsp baking soda, 1 tsp va
 
 **Tip:** Don't stack hot waffles. Steam softens them in seconds; a single layer on a rack in a low oven keeps every one crisp.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Freeze in a single layer, then bag. Reheat straight from frozen in a toaster or a 375°F oven for 5 to 7 minutes.

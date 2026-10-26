@@ -34,6 +34,7 @@ From the pantry: ⅓ cup oil, 1 tsp sugar, 1 tbsp Shaoxing wine or dry sherry (o
 
 **Tip:** Cut the ginger and scallions as thin as you can. The hot oil only half-cooks them, so thin shreds turn sweet while thick pieces stay harsh.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Best fresh. Reheat gently, covered, in the microwave at 50% power for 1 to 2 minutes.

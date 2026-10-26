@@ -38,6 +38,7 @@ From the pantry: ⅓ cup olive oil, 2 tbsp red wine vinegar, 1 tbsp Dijon mustar
 
 **Tip:** Dressing the potatoes while they're still warm is what makes them taste seasoned all the way through.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Pack the components and dressing separately and assemble at lunchtime. Eat cold.

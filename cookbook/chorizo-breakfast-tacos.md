@@ -37,6 +37,7 @@ From the pantry: 1 tbsp oil, salt
 
 **Tip:** Wrap leftovers individually in foil and freeze for grab-and-go mornings.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Microwave wrapped in a damp paper towel, 1 to 1½ minutes.

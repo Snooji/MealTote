@@ -39,6 +39,7 @@ From the pantry: 2 tsp cumin, 2 tsp paprika, 1 tsp coriander, ½ tsp cinnamon, 1
 
 **Tip:** Chill the shaped kofta 15 minutes so they hold on the skewers.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat kofta in a skillet or microwave. Keep tzatziki cold.

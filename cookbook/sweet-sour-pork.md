@@ -37,6 +37,7 @@ From the pantry: ½ cup cornstarch, ⅓ cup oil, ⅓ cup ketchup, ¼ cup rice vi
 
 **Tip:** Toss the pork in the sauce at the last second. The coating stays crisp for a few minutes, so get it to the table.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat the pork on a rack in a 400°F oven or air fryer for 6 to 8 minutes, then warm the sauce and vegetables separately.

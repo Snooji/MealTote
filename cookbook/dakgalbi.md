@@ -41,6 +41,7 @@ From the pantry: 2 tbsp gochugaru or 1 tsp red pepper flakes, 1 tsp curry powder
 
 **Tip:** When most of it is gone, add a scoop of rice and a little kimchi to the leftover sauce in the pan and fry it until crisp. That's how it's finished in Korea.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat in a skillet over medium heat with a splash of water, 4 to 5 minutes.

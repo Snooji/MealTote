@@ -40,6 +40,7 @@ From the pantry: 3 star anise, 1 cinnamon stick, 4 cloves, 1 tsp coriander seed,
 
 **Tip:** The broth must be at a hard boil when you pour it so it warms the noodles and chicken.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store broth, noodles and chicken separately. Freeze just the broth.

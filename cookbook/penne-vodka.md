@@ -37,6 +37,7 @@ From the pantry: 1 tbsp olive oil, 3 tbsp tomato paste, ¼ cup vodka (optional),
 
 **Tip:** Browning the tomato paste well is what gives this its deep, sweet flavor, so don't rush that step.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Add a splash of water or milk and microwave covered 1½ to 2 minutes, stirring halfway.

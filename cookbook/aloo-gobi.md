@@ -40,6 +40,7 @@ From the pantry: 4 tbsp oil, 1 tsp cumin seeds, 1 tsp turmeric, 2 tsp ground cor
 
 **Tip:** Keep the water to a minimum. Aloo gobi should be dry and spiced, not saucy, so the potatoes stay whole.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a skillet with a little oil to bring back the browned edges, or microwave 2 minutes.

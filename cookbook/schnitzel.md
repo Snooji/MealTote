@@ -37,6 +37,7 @@ From the pantry: ½ cup flour, for dredging, ½ cup oil, for shallow-frying, 3 t
 
 **Tip:** Shake the pan gently while frying. Hot oil rolling over the top is what makes the crust puff away from the meat in proper waves.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp cutlets at 400°F for 8 minutes. The potato salad is good cold or warmed briefly in the microwave.

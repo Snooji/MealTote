@@ -39,6 +39,7 @@ From the pantry: ⅓ cup flour, 1 tsp dried thyme, salt, pepper
 
 **Tip:** Make sure the filling is well seasoned before you cover it. You can't taste it once the lid is on.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Reheat covered at 350°F for 20 minutes. Uncover for the last 5 to crisp the pastry.

@@ -39,6 +39,7 @@ From the pantry: ⅓ cup mayo, 3 tbsp oil, 2 tsp ground cumin, 1 tsp dried orega
 
 **Tip:** Marinating overnight makes a real difference, and drying the skin uncovered in the fridge gets it extra crisp.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat chicken and potatoes uncovered at 375°F for 12 to 15 minutes. Keep the sauce cold; it lasts 4 days.

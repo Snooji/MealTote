@@ -37,6 +37,7 @@ From the pantry: 1 tbsp dark soy sauce or 1 tsp molasses, 2 tbsp sugar, 1 tsp co
 
 **Tip:** Don't stir constantly. The smoky, browned spots on the noodles are the point, and you only get them by leaving the pan alone.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Reheat in a hot skillet with a splash of water until the noodles soften again, 3 minutes.

@@ -39,6 +39,7 @@ From the pantry: 3 tbsp cornstarch, 3 tbsp oil, chili flakes, sesame oil
 
 **Tip:** Press the tofu between towels under a heavy pan for 15 minutes. Drier tofu gets crispier.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

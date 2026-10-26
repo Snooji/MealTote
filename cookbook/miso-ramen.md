@@ -41,6 +41,7 @@ From the pantry: 1 tbsp sesame oil, 2 tbsp soy sauce, 1 tbsp tahini or peanut bu
 
 **Tip:** Cook the noodles in a separate pot so their starch doesn't cloud the broth.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Store broth, noodles and toppings separately. Freeze only the broth. Reheat the broth to a simmer and pour over the noodles.

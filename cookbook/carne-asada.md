@@ -39,6 +39,7 @@ From the pantry: ¼ cup oil, 2 tsp cumin, 1 tbsp soy sauce, salt
 
 **Tip:** Don't marinate longer than 8 hours. The citrus turns the steak mushy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat sliced steak briefly in a hot skillet.

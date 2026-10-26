@@ -41,6 +41,7 @@ From the pantry: 1 tbsp sugar, 1 tsp cornstarch, 2 tbsp oil, 1 tbsp rice vinegar
 
 **Tip:** Don't crowd the pan. If the beef steams instead of sizzling it turns gray, so cook it in two batches.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store the beef apart from the salad. Warm it briefly in a hot skillet so it doesn't overcook.

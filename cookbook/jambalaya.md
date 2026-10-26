@@ -40,6 +40,7 @@ From the pantry: 1 tbsp oil, 2 bay leaves, hot sauce
 
 **Tip:** Keep the lid on while the rice simmers. Lifting it lets out the steam the rice needs.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Shrimp toughens when frozen. Microwave covered, 1½ to 2 minutes, stirring halfway.

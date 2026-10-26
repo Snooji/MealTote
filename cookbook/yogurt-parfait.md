@@ -33,6 +33,7 @@ From the pantry: ½ tsp vanilla (optional)
 
 **Tip:** For make-ahead jars, pack the granola separately and add it in the morning.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Pack granola separately so it stays crunchy.

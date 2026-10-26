@@ -39,6 +39,7 @@ From the pantry: 1 tsp turmeric, 2 tsp cumin seeds, ½ tsp chili flakes, 1 tbsp 
 
 **Tip:** Cheap, high-fiber and freezer-friendly. One of the best budget dinners there is.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 3 months. Thickens as it sits. Reheat with a splash of water.

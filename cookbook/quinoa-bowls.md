@@ -38,6 +38,7 @@ From the pantry: 4 tbsp olive oil, 2 tsp dried oregano, 1 tsp paprika, 1 tsp sal
 
 **Tip:** Pack the dressing separately and add it at lunchtime so the cucumber stays crisp.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Keep the dressing on the side. Eat cold, or warm the chicken and quinoa for 1 minute before adding the vegetables.

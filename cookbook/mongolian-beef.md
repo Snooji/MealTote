@@ -37,6 +37,7 @@ From the pantry: ⅓ cup cornstarch, 3 tbsp oil, red pepper flakes
 
 **Tip:** Slice against the grain. Look for the lines running through the meat and cut across them, not along.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a skillet with a splash of water, 3 minutes.

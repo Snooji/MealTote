@@ -39,6 +39,7 @@ From the pantry: 3 tbsp olive oil, 2 tsp dried oregano, salt, pepper
 
 **Tip:** Marinate the night before and dinner takes fifteen minutes.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store chicken, salad and sauces separately. Chicken is great cold or microwaved 1 minute.

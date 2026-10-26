@@ -36,6 +36,7 @@ From the pantry: 2 tbsp neutral oil, 1 tsp sesame oil
 
 **Tip:** Freshly cooked rice turns mushy. Cook it a day ahead, or spread it on a tray and chill for 30 minutes.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat in a skillet over medium with a splash of water until hot, 3 to 5 minutes.

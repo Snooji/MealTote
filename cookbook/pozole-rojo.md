@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 2 tsp Mexican oregano, 1 tsp cumin, 2 bay leaves, s
 
 **Tip:** The toppings make pozole. Don't skip them.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 4 months. Store toppings separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

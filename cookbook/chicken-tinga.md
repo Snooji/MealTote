@@ -40,6 +40,7 @@ From the pantry: 3 tbsp oil, 1 tsp dried oregano, salt
 
 **Tip:** Start with 2 chipotles for medium heat. You can always stir in more adobo sauce.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store chicken separately and crisp tostadas fresh. Microwave covered, 1½ to 2 minutes, stirring halfway.

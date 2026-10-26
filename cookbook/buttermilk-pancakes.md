@@ -35,6 +35,7 @@ From the pantry: 2 cups flour, 2 tbsp sugar, 2 tsp baking powder, 1 tsp baking s
 
 **Tip:** Don't press the pancakes after flipping. It knocks out the air that makes them fluffy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Freeze in a single layer, then bag. Toast or microwave 45 seconds.

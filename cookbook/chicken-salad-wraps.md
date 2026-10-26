@@ -37,6 +37,7 @@ From the pantry: 1 tbsp Dijon mustard, salt, pepper
 
 **Tip:** Make a double batch of the salad on Sunday. Wrap it fresh each morning so the tortilla doesn't go soggy.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Keep the chicken salad separate and wrap the morning you eat it.

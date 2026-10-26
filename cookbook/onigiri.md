@@ -36,6 +36,7 @@ From the pantry: 3 tbsp rice vinegar, 2 tsp sugar, 2 tsp sesame oil, 1½ tsp sal
 
 **Tip:** Shape the rice while it's still warm, and keep your hands wet and salted. Cold rice won't stick together, and the salt on your hands seasons the outside.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Wrap each onigiri tightly in plastic and keep the nori separate so it stays crisp. Eat at room temperature, or microwave 20 seconds if the rice has firmed up.

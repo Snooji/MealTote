@@ -39,6 +39,7 @@ From the pantry: 3 tbsp sesame oil, 1 tbsp oil
 
 **Tip:** Japchae is great at room temperature, so it's perfect for lunches.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Microwave 1 to 2 minutes or eat at room temperature.

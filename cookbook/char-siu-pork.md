@@ -39,6 +39,7 @@ From the pantry: 1 tsp five-spice powder, 1 tbsp sesame oil, 2 tbsp oil, 1 tbsp 
 
 **Tip:** Pork shoulder stays juicy even if you roast it a little long. A thick slice of tenderloin works too, but pull it at 145°F.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store the sliced pork separately from the rice. Reheat in a covered skillet with a splash of water, or eat it cold in fried rice.

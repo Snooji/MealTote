@@ -38,6 +38,7 @@ From the pantry: ½ cup rice vinegar, ⅓ cup cornstarch, 1 tbsp oil, 2 tsp sesa
 
 **Tip:** Add the vinegar at the very end and off the heat. Boiling it drives off the sourness that gives the soup its name.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Reheat on the stove over medium until steaming but not boiling, then add a splash of vinegar to brighten it. The egg ribbons hold up fine.

@@ -35,6 +35,7 @@ From the pantry: Special sauce: ⅓ cup mayo, 2 tbsp ketchup, 1 tbsp pickle brin
 
 **Tip:** Keep the beef cold and don't press it into patties first. Loose balls give the craggy, crispy edges.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Cook patties fresh if you can. Reheat leftovers in a hot skillet, 1 minute per side.

@@ -36,6 +36,7 @@ From the pantry: 2 tbsp butter, 2 tbsp flour, 1 tbsp Worcestershire, salt, peppe
 
 **Tip:** Serve with a scoop of macaroni salad for the full plate-lunch experience.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Store patties in gravy. Reheat covered and fry a fresh egg.

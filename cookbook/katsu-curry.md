@@ -37,6 +37,7 @@ From the pantry: ½ cup flour, oil for frying, salt
 
 **Tip:** Pickled ginger or a fried egg on top makes it feel like the real Tokyo curry-shop thing.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 3 months. Freeze only the curry. Re-crisp katsu at 400°F for 8 minutes.

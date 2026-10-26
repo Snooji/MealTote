@@ -35,6 +35,7 @@ From the pantry: 2 tbsp oil, salt, pepper
 
 **Tip:** Let the fillings cool before rolling for the freezer, so the tortillas don't go soggy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Wrap each in foil. From frozen, unwrap, cover with a damp paper towel and microwave 2 to 2½ minutes, turning once.

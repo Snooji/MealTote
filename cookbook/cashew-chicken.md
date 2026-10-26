@@ -40,6 +40,7 @@ From the pantry: 2 tbsp cornstarch, 3 tbsp oil, 1 tbsp rice vinegar, 1 tsp sugar
 
 **Tip:** Add the cashews at the very end so they stay crunchy. If they sit in the sauce they go soft.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Reheat in a skillet with a splash of water, or microwave 2 minutes. The cashews soften a bit but still taste good.

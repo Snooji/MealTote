@@ -38,6 +38,7 @@ From the pantry: 2 tbsp oil, 1 tsp smoked paprika, 1 tsp dried oregano, 1 tsp sa
 
 **Tip:** Toss the cooked chicken in fresh sauce. The marinade's heat mellows on the stove, and the final toss brings back the bright, vinegary kick.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store the chicken separately from the vegetables and sauce. Warm the chicken for 1 minute in the microwave, then build the wrap. Wraps made ahead keep 1 day.

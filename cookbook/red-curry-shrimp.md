@@ -40,6 +40,7 @@ From the pantry: 1 tbsp oil, 1 tsp sugar
 
 **Tip:** Red curry paste varies a lot in heat. Start with 2 tbsp and add more after tasting the sauce.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Store curry and rice separately. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

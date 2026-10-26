@@ -34,6 +34,7 @@ From the pantry: Lots of freshly ground black pepper, salt
 
 **Tip:** Grate the Parmesan on the finest holes you have. Coarse shreds won't melt into a smooth sauce.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Carbonara doesn't reheat well. Make only what you'll eat, or reheat gently with a splash of water over low heat.

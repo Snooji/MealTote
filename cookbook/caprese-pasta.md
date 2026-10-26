@@ -35,6 +35,7 @@ From the pantry: 2 tbsp olive oil, 1 tbsp red wine vinegar, salt, pepper
 
 **Tip:** Hold back a spoon of pesto and stir it in just before eating to refresh leftovers.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Stir in a spoon of pesto or olive oil to refresh. Eat cold or at room temperature. No reheating needed.

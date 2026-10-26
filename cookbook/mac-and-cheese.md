@@ -36,6 +36,7 @@ From the pantry: ¼ cup flour, 1 tsp dry mustard, ½ tsp paprika, salt, pepper
 
 **Tip:** Shred your own cheddar from a block if you can. Bagged cheese has anti-caking powder that makes the sauce grainy.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 2 months. Add a splash of milk and reheat covered at 350°F for 15 minutes, or microwave.

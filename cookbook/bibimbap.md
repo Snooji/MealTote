@@ -41,6 +41,7 @@ From the pantry: 2 tbsp sesame oil, 1 tbsp rice vinegar, 1 tsp sugar, 1 tbsp oil
 
 **Tip:** Use a hot cast-iron or stone bowl with a little sesame oil for crispy rice on the bottom (dolsot style).
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Store components separately. Microwave the rice and beef, add cold veg and a fresh egg.

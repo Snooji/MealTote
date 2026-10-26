@@ -36,6 +36,7 @@ From the pantry: 1 tbsp oil, 1 tsp hot sauce, salt, pepper
 
 **Tip:** Whisk the grits into simmering, not boiling, liquid and add them in a slow stream. That's what keeps them lump-free.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Grits set firm in the fridge. Reheat with a splash of milk over low, whisking, until creamy again.

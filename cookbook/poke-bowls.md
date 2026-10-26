@@ -37,6 +37,7 @@ From the pantry: 1 tbsp sesame oil, 2 tbsp rice vinegar, 1 tsp sugar, ⅓ cup ma
 
 **Tip:** Buy fish labeled sushi- or sashimi-grade and eat it the same day.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Eat poke within 24 hours. Keep it very cold.

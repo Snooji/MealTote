@@ -38,6 +38,7 @@ From the pantry: 1 tbsp oil, 1 tbsp brown sugar
 
 **Tip:** Start with 2 tbsp paste and add more after tasting. Brands vary wildly in heat.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store curry and rice separately. Reheat on the stove.

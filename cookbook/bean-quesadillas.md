@@ -36,6 +36,7 @@ From the pantry: 1 tbsp butter or oil
 
 **Tip:** Press down with a spatula as they cook. More contact with the pan means crispier edges.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp in a dry skillet over medium, 2 minutes per side.

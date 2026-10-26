@@ -38,6 +38,7 @@ From the pantry: Glaze: ½ cup ketchup, 2 tbsp brown sugar, 1 tbsp vinegar. Plus
 
 **Tip:** Baking it free-form on a sheet pan instead of in a loaf tin gives more glazed, caramelized crust.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat slices in a skillet or microwave. Leftovers make great sandwiches.

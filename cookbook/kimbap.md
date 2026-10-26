@@ -40,6 +40,7 @@ From the pantry: 3 tbsp sesame oil, 1 tbsp oil, 2 tsp sugar, 1 tsp salt
 
 **Tip:** Keep the rice layer thin, about two grains deep. Too much rice is the main reason kimbap won't close or falls apart when sliced.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Best the day it's made. Chilled rice hardens, so dip leftover slices in beaten egg and pan-fry 1 to 2 minutes per side.

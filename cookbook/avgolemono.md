@@ -39,6 +39,7 @@ From the pantry: 2 tbsp olive oil, 1 tsp salt, ½ tsp pepper, 1 bay leaf
 
 **Tip:** Never let the soup boil once the eggs are in, or they'll scramble. Steaming and barely trembling is perfect.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. The egg can curdle in the freezer. Reheat gently over medium-low, stirring, until hot but not boiling; add a splash of broth if the rice has soaked up the liquid.

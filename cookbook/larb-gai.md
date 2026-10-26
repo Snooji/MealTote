@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 1 tsp sugar, 1 to 2 tsp chili flakes
 
 **Tip:** No steamer? Microwave the soaked, drained rice with ½ cup water in a covered bowl for 3 minutes, stir, then cook in 2-minute bursts until translucent.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Pack the herbs and toasted rice separately. Eat the larb cold or at room temperature. Microwave sticky rice under a damp paper towel for 1 minute to soften it.

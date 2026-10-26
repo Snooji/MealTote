@@ -40,6 +40,7 @@ From the pantry: 3 tbsp oil, 2 tbsp ketchup or tamarind paste, 1 tbsp rice vineg
 
 **Tip:** Under-soak rather than over-soak the noodles. They finish softening in the pan.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Add a splash of water and reheat in a skillet, tossing, 3 minutes.

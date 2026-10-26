@@ -36,6 +36,7 @@ From the pantry: 2 tbsp oil, 2 tsp ground cumin, 1 tsp dried oregano, 1½ tsp sa
 
 **Tip:** A slow cooker works too: brown the pork, then cook everything on low for 7 to 8 hours.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

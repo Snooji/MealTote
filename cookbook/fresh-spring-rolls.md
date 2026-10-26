@@ -41,6 +41,7 @@ From the pantry: 1 tsp sugar, 1 tsp rice vinegar, ½ tsp chili flakes, salt
 
 **Tip:** Pull the rice paper out while it still feels a little stiff. It keeps softening on the towel, and an oversoaked wrapper tears.
 
+
 ## Storing
 
 Fridge 1 days · freezer not recommended. Wrap each roll in plastic wrap so they don't stick together. Eat cold within a day; the sauce keeps 5 days.

@@ -37,6 +37,7 @@ From the pantry: 1 tbsp oil, 2 bay leaves, 1 tsp thyme, hot sauce
 
 **Tip:** Even better on day two, which is why New Orleans makes it on laundry day.
 
+
 ## Storing
 
 Fridge 5 days · freezer up to 4 months. Reheat on the stove over medium until simmering, or microwave 2 to 3 minutes, stirring once.

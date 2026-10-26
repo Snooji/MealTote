@@ -36,6 +36,7 @@ From the pantry: Flaky salt, olive oil
 
 **Tip:** Ice-water-shocked eggs peel far more easily. Give them at least 2 minutes.
 
+
 ## Storing
 
 Fridge 0 days · freezer not recommended. Best made fresh. Jammy eggs keep 3 days peeled in a sealed container.

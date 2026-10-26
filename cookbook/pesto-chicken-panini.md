@@ -35,6 +35,7 @@ From the pantry: 2 tbsp butter, 1 tbsp oil, ½ tsp Italian seasoning, salt, pepp
 
 **Tip:** Keep the heat at medium-low so the cheese melts before the bread gets too dark.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Refrigerate wrapped. Re-crisp in a skillet or a 375°F oven for 8 to 10 minutes.

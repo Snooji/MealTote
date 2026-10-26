@@ -39,6 +39,7 @@ From the pantry: 1 tbsp oil, 1 tbsp cumin, 2 tsp dried oregano, 2 bay leaves, 1 
 
 **Tip:** Make the beef a day ahead. The fat sets on top in the fridge and lifts right off for dipping.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store meat in its consommé. Reheat the consommé on the stove and griddle fresh tacos.

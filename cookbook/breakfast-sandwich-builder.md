@@ -38,6 +38,7 @@ From the pantry: 1 tbsp baking powder, ½ tsp baking soda, 1 tsp salt, 1 tsp sug
 
 **Tip:** Freeze them individually wrapped, then microwave 60 to 90 seconds from the fridge or about 2 minutes from frozen, flipping halfway. Biscuits stay flakier if you finish them in a 350°F oven for 5 minutes.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Wrap each sandwich in foil or parchment. Reheat from the fridge: unwrap, wrap in a paper towel, microwave 60 to 90 seconds. From frozen: about 2 minutes, flipping halfway.

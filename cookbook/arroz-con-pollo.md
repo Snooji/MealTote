@@ -39,6 +39,7 @@ From the pantry: 2 tbsp olive oil, 1 tsp cumin, 1 tsp oregano, 1 tsp turmeric (o
 
 **Tip:** Don't stir the rice while it simmers. A little crispy bottom (pegao) is a prize.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Microwave with a splash of broth, covered.

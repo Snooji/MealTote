@@ -35,6 +35,7 @@ From the pantry: 1 tsp vanilla extract, pinch of salt
 
 **Tip:** Costco's 4-lb berry bag covers a month of jars. Leave it in the freezer.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. Keep jars sealed in the fridge. Eat cold, or microwave 1 minute.

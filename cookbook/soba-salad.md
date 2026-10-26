@@ -41,6 +41,7 @@ From the pantry: 3 tbsp rice vinegar, 2 tbsp sesame oil, 1 tsp chili flakes, pin
 
 **Tip:** Rinse soba hard in cold water. The surface starch makes the noodles gummy and clumped by lunchtime if you skip it.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Eat cold. If the noodles soak up the dressing overnight, loosen them with a splash of soy sauce and rice vinegar.

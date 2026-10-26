@@ -35,6 +35,7 @@ From the pantry: 2 tbsp sugar, 1 tsp cinnamon, 1 tsp vanilla, pinch of salt, pow
 
 **Tip:** Keep finished slices in a 200°F oven on a rack while you cook the rest.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Freeze between parchment. Reheat in a toaster or 375°F oven.

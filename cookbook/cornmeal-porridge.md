@@ -34,6 +34,7 @@ From the pantry: 1 tsp cinnamon, ½ tsp nutmeg, 1 tsp vanilla, ½ tsp salt
 
 **Tip:** Always mix the cornmeal with cold water first. Pouring dry cornmeal straight into hot liquid makes lumps that won't whisk out.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. It sets firm when cold. Reheat over low with a splash of milk, whisking until smooth.

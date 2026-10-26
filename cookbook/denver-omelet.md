@@ -35,6 +35,7 @@ From the pantry: 3 tbsp butter, 1 tbsp oil, salt, pepper
 
 **Tip:** Keep the heat at medium, not high: the omelet should be pale yellow and tender, not browned and rubbery.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Best fresh. Leftover filling keeps 3 days for quick omelets or scrambles.

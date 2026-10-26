@@ -37,6 +37,7 @@ From the pantry: ½ cup olive oil, 1 tsp allspice, 1 tsp cumin, ½ tsp cinnamon,
 
 **Tip:** Don't skimp on the oil or rush the onions: slow, soft, oily onions are the whole point, and the bread is meant to soak them up.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Store chicken and onions apart from the bread. Reheat covered at 350°F for 15 minutes, then crisp fresh flatbread on the rack.

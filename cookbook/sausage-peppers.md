@@ -36,6 +36,7 @@ From the pantry: 2 tbsp olive oil, 1 tsp dried oregano, ¼ tsp red pepper flakes
 
 **Tip:** For a no-bread night, serve it over soft polenta or creamy grits instead of rolls.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Keep the filling separate from the bread. Reheat in a skillet with a splash of water, 5 minutes, then fill fresh-toasted rolls.

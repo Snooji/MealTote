@@ -34,6 +34,7 @@ From the pantry: 3 tbsp oil, 1 tsp mustard seeds, ½ tsp turmeric, 1 tsp sugar, 
 
 **Tip:** Use thick poha, not thin. Thin flakes dissolve when rinsed; thick ones soften and stay separate and fluffy.
 
+
 ## Storing
 
 Fridge 2 days · freezer not recommended. Sprinkle with a little water and microwave covered until hot, 1 to 2 minutes. Add the peanuts after reheating so they stay crunchy.

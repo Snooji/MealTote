@@ -36,6 +36,7 @@ From the pantry: 1 tbsp olive oil, 1 tsp Italian seasoning, red pepper flakes, s
 
 **Tip:** Don't wipe out the pan after searing. Those browned bits are the base of the sauce.
 
+
 ## Storing
 
 Fridge 3 days · freezer not recommended. Cream sauces split when frozen. Reheat gently on low with a splash of broth.

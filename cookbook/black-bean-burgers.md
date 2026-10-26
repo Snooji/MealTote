@@ -38,6 +38,7 @@ From the pantry: 2 tsp smoked paprika, 1 tsp cumin, 2 tbsp oil, ⅓ cup mayo, sa
 
 **Tip:** Patties freeze well between parchment. Cook from frozen, adding 2 minutes per side.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Freeze uncooked or cooked patties between parchment. Reheat in a skillet.

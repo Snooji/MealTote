@@ -38,6 +38,7 @@ From the pantry: 2 tbsp neutral oil, salt
 
 **Tip:** For extra char, switch to broil for the last 2 minutes and watch it closely. Honey burns fast.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Store chicken and rice in separate containers. Microwave covered, 1½ to 2 minutes, stirring halfway.

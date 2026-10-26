@@ -35,6 +35,7 @@ From the pantry: 1 tsp oil, 1 tsp dried sage, ½ tsp fennel seed, 1 tsp smoked p
 
 **Tip:** Make a double batch of the filling and freeze the folded, uncooked quesadillas between parchment. Cook from frozen over medium-low, 4 minutes per side.
 
+
 ## Storing
 
 Fridge 3 days · freezer up to 2 months. Re-crisp in a dry skillet over medium-low, 3 minutes per side, or an air fryer at 375°F for 5 minutes.

@@ -36,6 +36,7 @@ From the pantry: 1 tsp sesame oil, 1 garlic clove, chili flakes (optional)
 
 **Tip:** The sauce thickens in the fridge. Loosen leftovers with a splash of warm water.
 
+
 ## Storing
 
 Fridge 4 days · freezer not recommended. The sauce thickens cold. Loosen with warm water. Eat cold or at room temperature. No reheating needed.

@@ -38,6 +38,7 @@ From the pantry: 2 tbsp oil, 1 tsp cumin seeds, 1 tsp turmeric, 2 tsp ground cor
 
 **Tip:** Stir the yogurt in off the heat first, then return the pan to the stove. Hitting it with high heat straight away can make it curdle.
 
+
 ## Storing
 
 Fridge 4 days · freezer up to 3 months. Reheat in a skillet or microwave with a splash of water. It freezes well in flat bags.
