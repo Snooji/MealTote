@@ -2715,6 +2715,7 @@ function answerText(q,A){
 }
 
 function renderWelcome(){
+  if(cloudUser) return renderHub();
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"welcome"},
     el("div",{class:"eyebrow"},"Your weekly meal planner"),
@@ -2722,6 +2723,24 @@ function renderWelcome(){
     el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes from "+CUISINE_OPTS.length+" cuisines to choose from, and a list of exactly what to buy at the stores you shop at, from "+STORE_IDS.length+" grocery chains."),
     el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started"),
       Object.keys(PLANS).length?el("button",{class:"btn big",onclick:openPlansSheet},"My plans ("+Object.keys(PLANS).length+")"):el("span",{class:"note"},"Takes about a minute"))));
+}
+// signed in with no plan open: your home, with every plan on your account
+function renderHub(){
+  const m=$("#app"); m.innerHTML=""; window.scrollTo(0,0);
+  const u=cloudUser, first=String(u.displayName||u.email||"").split(/[ @]/)[0];
+  const list=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs);
+  m.append(el("div",{class:"welcome hub"},
+    el("div",{class:"eyebrow"},"Welcome back"+(first?", "+first:"")),
+    el("h2",{},list.length?"Pick up a plan or start a new week.":"Let's plan your first week."),
+    list.length ? el("div",{class:"plist"}, list.map(p=>el("div",{class:"pitem"},
+      el("div",{class:"pmain"}, el("b",{},p.name), el("div",{class:"note"},[planSummary(p),"updated "+new Date(p.updatedMs).toLocaleDateString("en-US",{month:"short",day:"numeric"})].filter(Boolean).join(" · "))),
+      el("div",{class:"actions"}, el("button",{class:"btn small primary",onclick:()=>openPlan(p.id)},"Open"))))) :
+      el("p",{class:"lede"},"Plans you make while signed in are saved to your account and show up here on any device."),
+    el("div",{class:"actions"},
+      el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz(!!S.profile)}, list.length?"+ New plan":"Get started"),
+      list.length?el("button",{class:"btn big",onclick:openPlansSheet},"Manage plans"):null,
+      el("button",{class:"btn big",onclick:()=>openProfile()},"Your profile")),
+    el("p",{class:"note"},"Made plans before signing in? Open MealTote in that same browser at the same address, sign in there once, and they'll be added to your account.")));
 }
 function startQuiz(edit){
   const A = edit && S.profile ? structuredClone(S.profile) : structuredClone(BLANK);
@@ -3494,7 +3513,7 @@ async function signIn(){
 }
 async function onCloudUser(u){
   cloudUser=u; cloudLoaded=false; renderAccount();
-  if(!u){ if(tab==="profile") boot(); return; }
+  if(!u){ if(tab==="profile") tab="plan"; if(!OB) boot(); return; }
   try{
     await cloud.ensureProfile();
     const d=await cloud.load();
@@ -3536,6 +3555,7 @@ async function syncPlans(){
     lsPlansSet(); if(DIRTY_PLANS.size||DELETED_PLANS.size) pushCloud();
   }catch(e){ console.error("MealTote plan sync failed", e); }
 }
+window.addEventListener("cloud-error", e=>{ const c=e.detail&&(e.detail.code||e.detail.message); if(c) toast("Sign-in didn't finish ("+c+")"); });
 function connectStore(){
   const go=()=>{ renderAccount(); if(cloudOn()) cloud.onUser(onCloudUser); };
   if(window.cloud) go(); else window.addEventListener("cloud-ready",go,{once:true});
@@ -3545,7 +3565,7 @@ async function openProfile(){
   tab="profile";
   for(const b of document.querySelectorAll("#tabs button")) b.setAttribute("aria-selected","false");
   const m=$("#app"); m.innerHTML="";
-  if(!cloudUser){ boot(); return; }
+  if(!cloudUser){ tab="plan"; boot(); return; }
   const u=cloudUser, ps=S.profile?people():[];
   const nameIn=el("input",{type:"text",id:"profName",value:u.displayName||"",maxlength:40});
   const plansBox=el("div",{class:"plist"});

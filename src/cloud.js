@@ -12,11 +12,15 @@ let api = { enabled: false, user: null };
 if (configured) {
   try {
     const { initializeApp } = await import(`${SDK}/firebase-app.js`);
-    const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
+    const { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
     const { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } = await import(`${SDK}/firebase-firestore.js`);
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app), db = getFirestore(app);
+    // stay signed in on this device until you sign out (IndexedDB, falling back to localStorage)
+    const auth = initializeAuth(app, { persistence: [indexedDBLocalPersistence, browserLocalPersistence], popupRedirectResolver: browserPopupRedirectResolver });
+    const db = getFirestore(app);
+    // finishing a redirect sign-in: surface a failure instead of silently landing signed out
+    getRedirectResult(auth).catch(e => window.dispatchEvent(new CustomEvent("cloud-error", { detail: e })));
     const userDoc = () => doc(db, "users", api.user.uid);
     const plansCol = () => collection(db, "users", api.user.uid, "plans");
 
