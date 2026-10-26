@@ -1997,9 +1997,10 @@ function versionsFor(meal, anyMeal){
 }
 function openSwap(meal, i){
   SWP = {meal, i, q:"", cuisine:"", protein:"", quick:false, sort:"best", any:false};
-  renderSwap(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
+  renderSwap(); $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
 }
-function renderSwap(){
+function renderSwap(){ keepSheetScroll(drawSwap); }
+function drawSwap(){
   const p=$("#panel"); p.innerHTML=""; const {meal,i}=SWP, key=meal[0], cur=S.plan[key][i], day=planDays()[i];
   let list=versionsFor(meal, SWP.any);
   const q=SWP.q.trim().toLowerCase();
@@ -2045,7 +2046,6 @@ function renderSwap(){
         el("div",{class:"swapgrid"}, similar.map(o=>cardOf(o.x,o.v)))) : null,
       el("h3",{class:"sub"},"All options"), el("p",{class:"note",style:"margin:-4px 0 8px"},"Green numbers mean fewer calories per serving than what's planned now, red numbers mean more."), grid)
     : el("div",{class:"empty"},"Nothing matches those filters. Clear the search or try another cuisine.")));
-  $("#sheet").scrollTop=0;
 }
 
 /* ------------------------------------------------------------------ meal prep guide */
@@ -2697,7 +2697,7 @@ function startQuiz(edit){
   OB = {i:0, A, edit:!!edit}; renderQuiz();
 }
 function renderQuiz(){
-  const A=OB.A, qs=visibleQs(A), m=$("#app"); m.innerHTML="";
+  const A=OB.A, qs=visibleQs(A), m=$("#app"), sameQ=OB.shown===OB.i, y=window.scrollY; m.innerHTML="";
   if(OB.i>=qs.length) return renderReview();
   const q=qs[OB.i];
   const body=el("div",{class:"opts"+(q.type==="single"&&q.opts.some(o=>o[2])?" tall":"")});
@@ -2728,7 +2728,7 @@ function renderQuiz(){
     el("div",{class:"qnav"},
       el("button",{class:"btn",onclick:()=>{ if(OB.i===0){ OB=null; S.profile?showApp("plan"):renderWelcome(); } else { OB.i--; renderQuiz(); } }}, OB.i===0?(S.profile?"Cancel":"Back"):"Back"),
       el("button",{class:"btn primary",id:"nextBtn",disabled:!ok,onclick:()=>{ OB.i++; renderQuiz(); }}, "Continue"))));
-  window.scrollTo({top:0});
+  window.scrollTo(0, sameQ ? y : 0); OB.shown=OB.i;
 }
 function renderReview(){
   const A=OB.A, qs=visibleQs(A), m=$("#app"); m.innerHTML="";
@@ -2783,21 +2783,21 @@ function storePicker(st, changed){
 function openStoreSheet(){
   const st={stores:S.stores.slice(), region:(S.profile&&S.profile.region)||"all", _q:""};
   const p=$("#panel");
-  const draw=()=>{ p.innerHTML="";
+  const draw=()=>keepSheetScroll(()=>{ p.innerHTML="";
     p.append(el("div",{class:"content"},
       el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{id:"dTitle"},"Where do you shop?")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
       storePicker(st, draw),
       el("div",{class:"actions",style:"position:sticky;bottom:0;background:var(--surface);padding:12px 0"},
         el("button",{class:"btn primary",disabled:!st.stores.length,onclick:()=>{ S.stores=st.stores.slice(); if(S.profile){ S.profile.stores=S.stores.slice(); S.profile.region=st.region; } S.overrides={}; save(); closeSheet(); refresh(); toast("Shopping at "+listJoin(S.stores.map(s=>STORES[s].name))); }},"Use these stores"),
-        el("button",{class:"btn",onclick:closeSheet},"Cancel")))); };
-  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
+        el("button",{class:"btn",onclick:closeSheet},"Cancel")))); });
+  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
 }
 
 /* ------------------------------------------------------------------ theme picker (mode, style, accent; see src/theme.js) */
 function openThemeSheet(){
   THEME.loadAllFonts();
   const p=$("#panel");
-  const draw=()=>{ const t=THEME.get(); p.innerHTML="";
+  const draw=()=>keepSheetScroll(()=>{ const t=THEME.get(); p.innerHTML="";
     const pick=patch=>{ THEME.set(patch); draw(); };
     p.append(el("div",{class:"content themes"},
       el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Make it yours"), el("h2",{id:"dTitle"},"Theme")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
@@ -2812,8 +2812,8 @@ function openThemeSheet(){
         el("div",{class:"aswatches"}, THEME.ACCENTS.map(([k,name,sw])=>el("button",{class:"asw"+(k==="style"?" style":""),style:sw?`--sw:${sw}`:"","aria-pressed":t.accent===k,title:name,"aria-label":name,onclick:()=>pick({accent:k})}))),
         el("p",{class:"note"}, t.accent==="style" ? "Using this style's own colours." : "Accent: "+THEME.ACCENTS.find(a=>a[0]===t.accent)[1]+". It recolours buttons, highlights and links in any style.")),
       el("p",{class:"note"}, cloudUser ? "Your theme is saved to your account, so it follows you to other devices." : "Your theme is saved on this device. Sign in to keep it on every device.")));
-  };
-  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden";
+  });
+  draw(); $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
 }
 $("#themeBtn").addEventListener("click", openThemeSheet);
 window.addEventListener("themechange", e=>{ S.theme=e.detail; save(); });
@@ -2896,18 +2896,18 @@ function swapSlot(meal,i,id){
   const key=meal[0];
   if(!id){ const alts=alternativesFor(meal,i), used=new Set(S.plan[key]); id = alts.find(x=>!used.has(x)) || alts[0]; }
   if(!id){ toast("No other "+meal+" recipes fit your answers"); return; }
-  S.plan[key][i]=id; save(); renderPlan(); toast("Swapped in "+R_BY_ID[id].title);
+  S.plan[key][i]=id; save(); keepScroll(renderPlan); toast("Swapped in "+R_BY_ID[id].title);
 }
 
 /* ------------------------------------------------------------------ app shell */
 let tab="plan";
 function showApp(t){
-  tab=t||tab;
+  const prevTab=tab, y=window.scrollY; tab=t||tab;
   $("#tabs").hidden=false; $("#editBtn").hidden=false; $("#resetBtn").hidden=false;
   const m=$("#app"); m.innerHTML="";
   for(const b of document.querySelectorAll("#tabs button")) b.setAttribute("aria-selected", b.dataset.tab===tab);
   ({plan:renderPlan, prep:renderPrep, groceries:renderGroceries, recipes:renderRecipes, pdf:renderPdfTab, profile:openProfile})[tab]();
-  renderCounts(); window.scrollTo({top:0});
+  renderCounts(); window.scrollTo(0, tab===prevTab ? y : 0);
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>showApp(b.dataset.tab)));
 $("#editBtn").addEventListener("click",()=>{ $("#tabs").hidden=true; $("#editBtn").hidden=true; $("#resetBtn").hidden=true; startQuiz(true); });
@@ -2940,6 +2940,9 @@ function closeSheet(){ $("#sheet").hidden=true; document.body.style.overflow="";
 $("#sheet").addEventListener("click",e=>{ if(e.target.id==="sheet") closeSheet(); });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !$("#sheet").hidden) closeSheet(); });
 function refresh(){ if(S.profile && !OB) showApp(tab); }
+// redraw without losing the reader's place (tapping an option shouldn't jump the page back to the top)
+function keepScroll(fn){ const y=window.scrollY; fn(); window.scrollTo(0,y); }
+function keepSheetScroll(fn){ const sh=$("#sheet"), y=sh.scrollTop; fn(); sh.scrollTop=y; }
 
 let photoTarget=null;
 function pickPhoto(id){ photoTarget=id; $("#photoInput").value=""; $("#photoInput").click(); }
@@ -2966,9 +2969,9 @@ function renderGroceries(){
     el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{},"What to buy, store by store"),
       el("p",{class:"lede"},"Everything for your "+planDays().length+"-day plan, sized for "+answerText(QUESTIONS[0],A)+". Prices are estimates; check them in-store.")),
     el("div",{class:"actions"},
-      S.stores.length>1?el("div",{class:"seg",id:"modeSeg"}, [["cheap","Lowest total"],["stops","Fewest stops"]].map(([k,l])=>el("button",{"aria-pressed":S.mode===k,onclick:()=>{ S.mode=k; S.overrides={}; save(); renderGroceries(); }},l))):null,
+      S.stores.length>1?el("div",{class:"seg",id:"modeSeg"}, [["cheap","Lowest total"],["stops","Fewest stops"]].map(([k,l])=>el("button",{"aria-pressed":S.mode===k,onclick:()=>{ S.mode=k; S.overrides={}; save(); keepScroll(renderGroceries); }},l))):null,
       el("button",{class:"btn small",id:"storesBtn",onclick:openStoreSheet},"Change stores"),
-      el("button",{class:"btn small",onclick:()=>{ S.checked={}; save(); renderGroceries(); }},"Uncheck all"))));
+      el("button",{class:"btn small",onclick:()=>{ S.checked={}; save(); keepScroll(renderGroceries); }},"Uncheck all"))));
   m.append(el("div",{class:"summary"},
     el("div",{class:"stat"},el("b",{class:"mono"},money(t.total)),el("span",{},"Est. total")),
     el("div",{class:"stat"},el("b",{class:"mono"},t.used.length),el("span",{},"Stores to visit")),
@@ -2987,7 +2990,7 @@ function renderGroceries(){
         const row=el("div",{class:"item"+(done?" done":"")},
           el("input",{type:"checkbox",id:"chk-"+i,checked:done,"aria-label":"Got "+ITEMS[i][0],onchange:e=>{ if(e.target.checked) S.checked[i]=1; else delete S.checked[i]; save(); row.classList.toggle("done",e.target.checked); }}),
           el("div",{style:"min-width:0"}, el("label",{class:"nm",for:"chk-"+i},ITEMS[i][0]), el("div",{class:"pd"},(k>1?k+" × ":"")+o[0]),
-            alts.length>1 ? el("select",{"aria-label":"Buy "+ITEMS[i][0]+" at",onchange:e=>{ S.overrides[i]=e.target.value; save(); renderGroceries(); }},
+            alts.length>1 ? el("select",{"aria-label":"Buy "+ITEMS[i][0]+" at",onchange:e=>{ S.overrides[i]=e.target.value; save(); keepScroll(renderGroceries); }},
               alts.map(x=>el("option",{value:x,selected:x===s},"Buy at "+STORES[x].name+" · "+money(storeCost(i,x,d[i]))))) : null),
           el("div",{class:"amt"}, money(k*o[1])));
         return row; })));
@@ -3005,7 +3008,7 @@ let mealFilter="All", query="", cuisineFilter="";
 function renderRecipes(){
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"toolbar"},
-    el("div",{class:"seg"}, ["All","Breakfast","Lunch","Dinner"].map(x=>el("button",{"aria-pressed":mealFilter===x,onclick:()=>{mealFilter=x;renderRecipes();}},x))),
+    el("div",{class:"seg"}, ["All","Breakfast","Lunch","Dinner"].map(x=>el("button",{"aria-pressed":mealFilter===x,onclick:()=>{mealFilter=x;keepScroll(renderRecipes);}},x))),
     el("select",{id:"cuisineSel","aria-label":"Cuisine",onchange:e=>{ cuisineFilter=e.target.value; drawGrid(); }}, el("option",{value:""},"All cuisines ("+RECIPES.length+")"), CUISINE_OPTS.map(([k,l])=>el("option",{value:k,selected:cuisineFilter===k},l+" ("+RECIPES.filter(r=>META[r.id].cuisine===k).length+")"))),
     el("input",{class:"search",id:"search",type:"search",placeholder:"Search recipes or ingredients","aria-label":"Search recipes",value:query,oninput:e=>{ query=e.target.value; drawGrid(); }})));
   const g=el("div",{class:"grid",id:"grid"}); m.append(g); drawGrid();
