@@ -4,14 +4,16 @@
     walnut_halves: ["Walnuts","Pantry","Walnut Halves & Pieces (16 oz)", 7.49, ["Kirkland Walnuts (3 lb)", 3, 14.99]],
     pomegranate_molasses: ["Pomegranate molasses","International","Pomegranate Molasses (10 oz)", 5.49, null, "aldi,costco"],
     saffron_threads: ["Saffron threads","Sauces & Spices","Saffron Threads (1 g)", 9.99, null, "aldi"],
-    dill_bunch: ["Fresh dill","Produce","Fresh Dill (bunch)", 1.99, null, "costco"]
+    dill_bunch: ["Fresh dill","Produce","Fresh Dill (bunch)", 1.99, null, "costco"],
+    molokhia_frozen: ["Frozen minced molokhia","Frozen","Frozen Minced Molokhia (14 oz)", 3.49, null, "tj,aldi,walmart,costco"]
   },
   nutr: {
     zaatar_blend: [170, 6, 25, 8, 14, 1, 1400],
     walnut_halves: [2970, 69, 62, 296, 30, 12, 10],
     pomegranate_molasses: [750, 1, 185, 0, 0, 160, 60],
     saffron_threads: [3, 0, 1, 0, 0, 0, 1],
-    dill_bunch: [25, 2, 4, 1, 1, 0, 35]
+    dill_bunch: [25, 2, 4, 1, 1, 0, 35],
+    molokhia_frozen: [136, 19, 23, 1, 8, 0, 30]
   },
   recipes: [
 

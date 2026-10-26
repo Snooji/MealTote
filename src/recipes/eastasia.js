@@ -5,7 +5,10 @@
     dried_red_chilies: ["Dried red chilies","International","Whole Dried Red Chili Peppers (3 oz bag)", 3.49, null, "costco"],
     shaoxing_wine: ["Shaoxing wine","International","Shaoxing Cooking Wine (750 ml)", 4.29, null, "tj,aldi,costco"],
     dark_soy_sauce: ["Dark soy sauce","International","Dark Soy Sauce (16 oz)", 3.79, null, "tj,aldi,costco"],
-    wonton_wrappers: ["Wonton wrappers","Produce","Wonton Wrappers (12 oz, ~48 ct)", 2.99, null, "costco"]
+    wonton_wrappers: ["Wonton wrappers","Produce","Wonton Wrappers (12 oz, ~48 ct)", 2.99, null, "costco"],
+    pork_belly: ["Pork belly","Meat & Seafood","Skinless Pork Belly (~1.5 lb)", 8.99, ["Kirkland Pork Belly (~4 lb)", 2.67, 18.99]],
+    fried_shallots: ["Fried shallots","International","Crispy Fried Shallots (8 oz jar)", 4.99, null, "tj,aldi,costco"],
+    chinese_wheat_noodles: ["Chinese wheat noodles","International","Dried Chinese Wheat Noodles (16 oz)", 3.29, null, "tj,aldi,costco"]
   },
   nutr: {
     doubanjiang: [270, 12, 30, 12, 10, 5, 13600],
@@ -13,7 +16,10 @@
     dried_red_chilies: [270, 10, 50, 5, 23, 30, 80],
     shaoxing_wine: [750, 10, 35, 0, 0, 12, 4000],
     dark_soy_sauce: [470, 20, 90, 0, 0, 70, 23000],
-    wonton_wrappers: [990, 33, 197, 5, 6, 0, 1900]
+    wonton_wrappers: [990, 33, 197, 5, 6, 0, 1900],
+    pork_belly: [3520, 63, 0, 360, 0, 0, 220],
+    fried_shallots: [1250, 8, 95, 92, 7, 15, 120],
+    chinese_wheat_noodles: [1620, 54, 330, 7, 12, 9, 1800]
   },
   recipes: [
 
