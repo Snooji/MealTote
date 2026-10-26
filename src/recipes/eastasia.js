@@ -1,1 +1,75 @@
-(window.BB_MORE=window.BB_MORE||[]).push({pack:"eastasia", items:{}, nutr:{}, recipes:[]});
+(window.BB_MORE=window.BB_MORE||[]).push({pack:"eastasia",
+  items: {
+    doubanjiang: ["Doubanjiang (chili bean paste)","International","Doubanjiang Chili Bean Paste (8 oz jar)", 3.99, null, "tj,aldi,costco"],
+    sichuan_peppercorn: ["Sichuan peppercorns","International","Whole Sichuan Peppercorns (1.5 oz)", 5.49, null, "tj,aldi,costco"],
+    dried_red_chilies: ["Dried red chilies","International","Whole Dried Red Chili Peppers (3 oz bag)", 3.49, null, "costco"],
+    shaoxing_wine: ["Shaoxing wine","International","Shaoxing Cooking Wine (750 ml)", 4.29, null, "tj,aldi,costco"],
+    dark_soy_sauce: ["Dark soy sauce","International","Dark Soy Sauce (16 oz)", 3.79, null, "tj,aldi,costco"],
+    wonton_wrappers: ["Wonton wrappers","Produce","Wonton Wrappers (12 oz, ~48 ct)", 2.99, null, "costco"]
+  },
+  nutr: {
+    doubanjiang: [270, 12, 30, 12, 10, 5, 13600],
+    sichuan_peppercorn: [130, 5, 28, 3, 11, 0, 5],
+    dried_red_chilies: [270, 10, 50, 5, 23, 30, 80],
+    shaoxing_wine: [750, 10, 35, 0, 0, 12, 4000],
+    dark_soy_sauce: [470, 20, 90, 0, 0, 70, 23000],
+    wonton_wrappers: [990, 33, 197, 5, 6, 0, 1900]
+  },
+  recipes: [
+
+{id:"jianbing-breakfast-crepes",title:"Jianbing (Chinese Egg Crepes with Crispy Wonton Crackers)",meal:"Breakfast",time:35,serves:4,m:{has:["gluten","egg","sesame","spicy"],cuisine:"chinese",protein:"egg",skill:2},
+ blurb:"Northern China's favorite street breakfast: a thin crepe cooked with an egg right on top, brushed with hoisin and chili, then folded around shattering wonton crackers and herbs. Crispy, soft, sweet and spicy in every bite.",
+ ing:[["eggs",0.33,"4 large eggs"],["wonton_wrappers",0.25,"12 wonton wrappers"],["green_onion",0.5,"4 green onions, thinly sliced"],["cilantro",0.5,"a big handful of cilantro leaves"],["hoisin",0.27,"¼ cup hoisin sauce"],["chili_crisp",0.15,"2 tbsp chili crisp or chili sauce"],["sesame",0.17,"4 tsp sesame seeds (black or white)"]],
+ pantry:"1¼ cups flour, 1½ cups water, ½ tsp salt, 3 tbsp oil",
+ steps:["Whisk the flour, salt and water into a smooth, pourable batter about as thin as heavy cream, and let it rest while you make the crackers.","Heat the oven to 400°F. Brush the wonton wrappers on both sides with 1 tbsp oil, lay them on a sheet pan and bake until golden and crisp, 5 to 7 minutes. Let them cool.","Heat a large nonstick skillet over medium and wipe it with a little oil. Pour in about ⅓ cup batter and quickly tilt and spread it into a thin 10-inch round. Cook until the edges start to lift, 1 to 2 minutes.","Crack an egg onto the crepe, break the yolk and spread it over the surface. Scatter on green onions and sesame seeds and cook until the egg is just set, about 1 minute.","Flip the crepe egg-side down. Brush the top with 1 tbsp hoisin and a little chili crisp, then lay 3 crackers across the middle, breaking them to fit, and top with cilantro.","Fold the two sides over the crackers, then fold in half and slide it onto a plate. Repeat with the rest and eat right away while the crackers are still crunchy."],
+ tip:"Street vendors use a mung bean batter; swap ⅓ of the flour for mung bean or chickpea flour for a nuttier, more authentic crepe.",
+ st:[1,0,"Best eaten fresh. Keep the batter in the fridge up to 2 days and the baked crackers in an airtight container for a week."],
+ src:["Tasting Table (Mr Bing)","https://www.tastingtable.com/686645/chinese-breakfast-crepes-jianbing-recipe-mr-bing-nyc/"]},
+
+{id:"singapore-curry-noodles",title:"Singapore Curry Rice Noodles with Shrimp & Egg",meal:"Lunch",time:30,serves:4,m:{has:["gluten","shellfish","egg"],cuisine:"chinese",protein:"shrimp",skill:2},
+ blurb:"The Hong Kong cha chaan teng classic: springy rice vermicelli stir-fried with curry powder, plump shrimp, ribbons of omelet and crisp peppers. Light, golden and done in half an hour.",
+ ing:[["vermicelli",1,"8.8 oz rice vermicelli"],["shrimp",1,"1 lb raw peeled shrimp"],["eggs",0.25,"3 eggs, beaten"],["onion",0.17,"1 onion, thinly sliced"],["bell_peppers",0.33,"1 red bell pepper, thinly sliced"],["bean_sprouts",0.5,"2 cups bean sprouts"],["green_onion",0.5,"4 green onions, in 2-inch lengths"],["garlic",0.13,"4 garlic cloves, minced"],["ginger",0.05,"1 tsp grated ginger"],["soy",0.13,"¼ cup soy sauce"],["shaoxing_wine",0.06,"3 tbsp Shaoxing wine"],["curry_powder",0.2,"5 tsp curry powder"]],
+ pantry:"1 tsp sugar, ½ tsp white pepper, 3 tbsp oil, salt",
+ steps:["Soak the vermicelli in very hot tap water until soft but still springy, 5 to 8 minutes, then drain well and snip it a few times with scissors. Stir the soy, Shaoxing wine, curry powder, sugar and white pepper together.","Heat 1 tbsp oil in a wok or large nonstick skillet over medium-high. Cook the shrimp until pink and just opaque, about 2 minutes, and move them to a plate.","Add a little oil, pour in the eggs and swirl into a thin omelet. When set, about 1 minute, roll it up, slide it out and slice it into ribbons.","Add the rest of the oil with the onion, garlic and ginger and stir-fry for 2 minutes. Add the pepper and cook 1 minute more.","Add the noodles and the sauce and toss with tongs until every strand is evenly yellow, 1 to 2 minutes. Return the shrimp and egg with the bean sprouts and green onions and toss until hot, about 1 minute more."],
+ tip:"Toss the noodles with tongs or chopsticks rather than stirring with a spatula, so they stay in long strands instead of breaking into mush. Takeout versions also add thin slices of char siu pork.",
+ st:[3,0,"Reheat in a hot skillet with a splash of water, or microwave covered."],
+ src:["RecipeTin Eats","https://www.recipetineats.com/singapore-noodles/"]},
+
+{id:"xinjiang-cumin-beef",title:"Xinjiang Cumin Beef with Dried Chilies",meal:"Dinner",time:40,serves:4,m:{has:["gluten","beef","spicy","sesame"],cuisine:"chinese",protein:"beef",skill:2},
+ blurb:"The smoky, cumin-crusted stir-fry of China's northwest, made with flank steak instead of the classic lamb. Crisp-edged beef, toasted chilies, onion and a big handful of cilantro over rice.",
+ ing:[["flank_steak",1,"1½ lb flank steak, in thin bite-size slices"],["soy",0.07,"2 tbsp soy sauce"],["shaoxing_wine",0.04,"2 tbsp Shaoxing wine"],["dried_red_chilies",0.15,"½ cup dried red chilies"],["sichuan_peppercorn",0.04,"½ tsp ground Sichuan peppercorns"],["onion",0.17,"1 onion, in 1-inch pieces"],["ginger",0.08,"1 tbsp minced ginger"],["garlic",0.17,"5 garlic cloves, sliced"],["cilantro",1,"1 bunch cilantro, chopped"],["sesame",0.07,"1 tbsp sesame seeds"],["jasmine_rice",0.33,"1½ cups jasmine rice"]],
+ pantry:"2½ tbsp ground cumin, 2 tsp red pepper flakes, ⅓ cup cornstarch, ½ tsp sugar, ½ tsp salt, 4 tbsp oil",
+ steps:["Start the rice. Toss the beef with the soy sauce, Shaoxing wine and salt and let it sit 15 minutes. Mix the cumin, pepper flakes, ground Sichuan pepper and sugar in a small bowl.","Drain off any liquid from the beef and toss it with the cornstarch until every piece is lightly coated.","Heat 3 tbsp oil in a large skillet or wok over high heat. Add half the beef in one layer and leave it alone until golden underneath, about 1 minute, then flip and cook 30 seconds more. Move to a plate and repeat with the rest.","Add the remaining oil, the dried chilies, ginger and garlic and stir for 20 seconds until fragrant. Add the onion and stir-fry until just tender at the edges, about 1 minute.","Return the beef, sprinkle the spice mix over everything and toss quickly to coat, 30 seconds. Take it off the heat, toss in the cilantro and sesame seeds and serve with rice."],
+ tip:"Have the spice mix ready before you start: once the beef goes back in, the cumin only needs seconds and scorches fast. For the traditional dish, use cubed boneless lamb leg.",
+ st:[3,2,"Reheat in a hot skillet for 2 minutes; the microwave softens the crust."],
+ src:["Omnivore's Cookbook","https://omnivorescookbook.com/cumin-lamb/"]},
+
+{id:"cantonese-soy-sauce-chicken",title:"Cantonese Soy Sauce Chicken with Ginger-Scallion Oil",meal:"Dinner",time:80,serves:6,m:{has:["gluten","sesame"],cuisine:"chinese",protein:"chicken",skill:2},
+ blurb:"See yau gai, the glossy mahogany chicken hanging in every Cantonese BBQ shop window, gently poached in a spiced soy and sugar braise. Serve it with rice, garlicky bok choy and a sizzling ginger-scallion oil.",
+ ing:[["whole_chicken",1,"1 whole chicken (4 to 4½ lb)"],["soy",0.53,"1 cup soy sauce"],["dark_soy_sauce",0.06,"2 tbsp dark soy sauce"],["shaoxing_wine",0.16,"½ cup Shaoxing wine"],["ginger",0.35,"a 2-inch piece ginger, half sliced, half finely grated"],["garlic",0.2,"6 garlic cloves, smashed"],["green_onion",1,"1 bunch green onions"],["bok_choy",1.5,"1½ lb baby bok choy, halved"],["jasmine_rice",0.44,"2 cups jasmine rice"]],
+ pantry:"⅓ cup brown sugar, 2 tbsp sesame oil, 2 star anise, 1 cinnamon stick, 2 bay leaves, 4 tbsp oil, ½ tsp salt, 4 cups water",
+ steps:["In a pot just big enough to hold the chicken, simmer the soy, dark soy, Shaoxing wine, brown sugar, sesame oil, sliced ginger, garlic, half the green onions, star anise, cinnamon, bay leaves and 4 cups water until the sugar dissolves.","Lower the chicken in breast-side up; the liquid should cover most of it. Bring back to a boil, skim off any foam, then cover and simmer gently on low for 25 minutes, turning the chicken once.","Turn off the heat and leave the chicken in the covered pot for 30 minutes, until the thickest part of the thigh reads 165°F. Meanwhile, cook the rice.","For the ginger-scallion oil, finely chop the remaining green onions and put them in a heatproof bowl with the grated ginger and salt. Heat 3 tbsp oil until shimmering and pour it over; it will sizzle.","Stir-fry the bok choy in 1 tbsp oil over high heat with a splash of the braising liquid until bright and tender, 3 to 4 minutes.","Lift out the chicken, let it rest 5 minutes, then carve into pieces. Spoon a little braising liquid over the chicken and serve with rice, bok choy and the ginger-scallion oil."],
+ tip:"Strain and freeze the braising liquid: it becomes a master stock that gets better each time you poach in it. Top it up with a little fresh soy and sugar the next time.",
+ st:[4,3,"Store chicken in some of the braising liquid. Serve cold or warm it gently in the simmering liquid for a few minutes."],
+ src:["Omnivore's Cookbook","https://omnivorescookbook.com/soy-sauce-chicken/"]},
+
+{id:"sichuan-saliva-chicken",title:"Saliva Chicken (Sichuan Chicken in Red Chili Oil)",meal:"Lunch",time:40,serves:4,m:{has:["gluten","nuts","sesame","spicy"],cuisine:"sichuan",protein:"chicken",skill:1},
+ blurb:"Kou shui ji, \"mouthwatering chicken\": silky poached chicken drenched in a numbing, garlicky chili oil sauce with tangy vinegar and crushed peanuts. Served cool over rice with crisp cucumber, it's a lunch you'll crave.",
+ ing:[["chicken_thigh",1,"1½ lb boneless chicken thighs"],["shaoxing_wine",0.04,"2 tbsp Shaoxing wine"],["ginger",0.15,"4 slices ginger plus 1 tsp grated"],["soy",0.1,"3 tbsp soy sauce"],["chili_crisp",0.3,"¼ cup chili crisp or chili oil"],["sichuan_peppercorn",0.04,"½ tsp ground Sichuan peppercorns"],["garlic",0.1,"3 garlic cloves, grated"],["green_onion",0.5,"4 green onions, sliced"],["peanut_butter",0.03,"1 tbsp creamy peanut butter"],["peanuts",0.08,"¼ cup roasted peanuts, chopped"],["cucumber",1,"1 English cucumber, smashed and cut in chunks"],["jasmine_rice",0.33,"1½ cups jasmine rice"]],
+ pantry:"1 tbsp rice vinegar, 2 tsp sugar, 1 tsp sesame oil, 1 tsp salt",
+ steps:["Start the rice. Put the chicken in a pot with the ginger slices, Shaoxing wine, salt and cold water to cover by an inch. Bring to a bare simmer over medium, then cover and cook on low until it reaches 165°F inside, 12 to 15 minutes.","Move the chicken to a bowl of ice water for 5 minutes so it stays juicy and firm, then pat dry. Save ¼ cup of the poaching liquid.","Whisk the soy, vinegar, sugar, peanut butter, sesame oil, grated garlic and ginger, Sichuan pepper, the white parts of the green onions and 3 tbsp poaching liquid until smooth.","Toss the cucumber with a pinch of salt. Slice the chicken into ½-inch strips and lay it on a platter.","Pour the sauce over the chicken, spoon the chili crisp on top and scatter with peanuts and green onion tops. Serve with the rice and cucumber."],
+ tip:"Chinkiang black vinegar gives the sauce its true malty tang. Use it in place of rice vinegar if you can find it.",
+ st:[3,0,"Store chicken and sauce separately and serve cool or at room temperature."],
+ src:["Omnivore's Cookbook","https://omnivorescookbook.com/saliva-chicken/"]},
+
+{id:"shui-zhu-yu-boiled-fish",title:"Shui Zhu Yu (Sichuan Boiled Fish in Chili Broth)",meal:"Dinner",time:45,serves:4,m:{has:["gluten","fish","egg","spicy"],cuisine:"sichuan",protein:"fish",skill:2},
+ blurb:"A Sichuan showstopper: tender slices of white fish poached in a fiery doubanjiang broth over bean sprouts and celery, then finished with a crackle of hot oil over chilies and Sichuan peppercorns. It's numbing, aromatic and surprisingly quick.",
+ ing:[["white_fish",1.5,"1½ lb cod or tilapia fillets, in ¼-inch slices"],["eggs",0.08,"1 egg white"],["shaoxing_wine",0.04,"2 tbsp Shaoxing wine, divided"],["doubanjiang",0.21,"3 tbsp doubanjiang"],["dried_red_chilies",0.15,"½ cup dried red chilies, halved"],["sichuan_peppercorn",0.25,"2 tbsp Sichuan peppercorns"],["garlic",0.13,"4 garlic cloves, smashed"],["ginger",0.08,"a 1-inch piece ginger, sliced"],["green_onion",0.5,"4 green onions, in 1-inch pieces"],["bean_sprouts",1,"12 oz bean sprouts"],["celery",0.25,"2 celery ribs, in sticks"],["chicken_broth",0.75,"3 cups chicken broth"],["soy",0.03,"1 tsp soy sauce"],["jasmine_rice",0.33,"1½ cups jasmine rice"]],
+ pantry:"⅓ cup oil, 2 tsp cornstarch, 1 tbsp sugar, ½ tsp white pepper, ½ tsp salt",
+ steps:["Start the rice. Toss the fish with the egg white, 1 tbsp Shaoxing wine, the cornstarch, salt and white pepper and let it sit 15 minutes.","In a dry pot over medium-low, toast the dried chilies and Sichuan peppercorns until fragrant and a shade darker, about 2 minutes. Tip them out, cool, and roughly chop.","Heat 2 tbsp oil in the pot, add the bean sprouts and celery and stir-fry until barely tender, 2 minutes. Spread them in a deep serving bowl.","Add 2 tbsp oil to the pot with the doubanjiang, garlic, ginger and green onions and fry over medium until the oil turns red, 1 minute. Add the broth, remaining wine, sugar and soy and bring to a boil.","Lower to a gentle simmer, slide in the fish a few slices at a time and cook without stirring until just opaque, 2 to 3 minutes. Pour the fish and broth over the vegetables.","Pile the chopped chilies and peppercorns on top. Heat the remaining oil until smoking and pour it over the spices so they sizzle. Serve right away with rice."],
+ tip:"Spoon the fish and vegetables out of the broth rather than drinking it all; the chili broth is there for flavor. Pixian doubanjiang is the traditional brand, and Lee Kum Kee chili bean sauce works in a pinch.",
+ st:[2,0,"Reheat gently in a covered pot until just steaming; the fish overcooks quickly."],
+ src:["Omnivore's Cookbook","https://omnivorescookbook.com/shui-zhu-yu-boiled-fish/"]}
+
+  ]
+});
