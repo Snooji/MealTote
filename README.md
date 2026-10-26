@@ -17,7 +17,7 @@ Answer a few questions and MealTote builds your week:
 
 Then you get:
 
-- **A week of breakfasts, lunches and dinners** from 233 recipes, with leftovers planned in if you want them.
+- **A week of breakfasts, lunches and dinners** from 466 recipes, with leftovers planned in if you want them.
 - **Easy swaps.** Every swap opens with a "Similar calories" section. Each option shows its calorie change next to its name (green for fewer, red for more) and what changes on each person's plate. Many dishes come in other proteins, and breakfast sandwiches are build-your-own (homemade turkey sausage on homemade biscuits, anyone?).
 - **Nutrition for every serving:** calories, protein, carbs, fat, fiber, sugar and sodium.
 - **A grocery list by store and aisle,** with estimated prices and a weekly total.

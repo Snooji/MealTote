@@ -1939,7 +1939,8 @@ const ITEM_KEY = {chicken_thigh:"chicken",chicken_breast:"chicken",rotisserie:"c
 const ITEM_LABEL = {chicken:"Chicken",steak:"Steak",pork:"Pork",shrimp:"Shrimp",tofu:"Tofu",beef:"Ground beef",turkey:"Ground turkey",sausage:"Italian sausage",chorizo:"Chorizo",salmon:"Salmon",cod:"Cod"};
 const qtyText = n => { const w=Math.floor(n+1e-9), f=Math.round((n-w)*4)/4; const fr={0:"",0.25:"¼",0.5:"½",0.75:"¾",1:""}[f]; return ((f===1?w+1:w)||"")+(fr||"") || "¼"; };
 function makeVariants(r){
-  if(NO_SWAP.has(r.id) || r.builder) return [];
+  // researched traditional dishes (they carry src) keep their own protein unless they opt in with swaps:true
+  if(NO_SWAP.has(r.id) || r.builder || (r.src && !r.swaps)) return [];
   const k=r.ing.findIndex(([i])=>Object.values(SWAP_GROUPS).some(g=>g.items.includes(i)));
   if(k<0) return [];
   const [baseItem, baseUse]=r.ing[k];
