@@ -139,3 +139,14 @@ Until settings are saved once in the Backend, the support page shows the default
 
 People can delete all of it from their profile.
 
+
+## Automatic deploys from GitHub
+
+`.github/workflows/deploy.yml` publishes the site to Firebase Hosting on every push to `main`. It needs a Firebase key stored as a GitHub secret, which you create once from Cloud Shell:
+
+```sh
+cd ~/mealtote && git pull
+firebase init hosting:github
+```
+
+Answers: repository `Snooji/MealTote`; build script before deploy: **No**; deploy to the live channel when a PR is merged: **Yes**, branch `main`. Ignore any workflow files it writes in Cloud Shell; the repo already has its own. The Firestore rules still deploy by hand when they change: `firebase deploy --only firestore:rules`.

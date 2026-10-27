@@ -1,6 +1,6 @@
 # Hawaiian Kalua Pork & Cabbage with Rice
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Hawaiian · 300 min · serves 6 · skill 1/3
 

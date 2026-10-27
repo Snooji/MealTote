@@ -1,6 +1,6 @@
 # Japanese Breakfast Bowl with Salmon, Rice & Miso Soup
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Japanese · 35 min · serves 4 · skill 2/3
 

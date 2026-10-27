@@ -1,6 +1,6 @@
 # Berry Banana Smoothie Bowls
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · American comfort · 10 min · serves 2 · skill 1/3
 

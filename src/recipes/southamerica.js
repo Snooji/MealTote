@@ -2,28 +2,24 @@
   items: {
     aji_amarillo_paste: ["Ají amarillo paste","International","Ají Amarillo Paste (7.5 oz jar)", 4.99, null, "aldi,costco"],
     evaporated_milk_can: ["Evaporated milk","Pantry","Evaporated Milk (12 oz can)", 1.79, ["Carnation Evaporated Milk (12 x 12 oz)", 12, 15.99]],
-    walnuts: ["Walnuts","Pantry","Walnut Halves & Pieces (8 oz)", 4.99, ["Kirkland Walnuts (3 lb)", 6, 13.99]],
     tapioca_flour: ["Tapioca flour","Pantry","Tapioca Flour / Starch (20 oz)", 4.79, null, "costco"],
     farofa_yoki: ["Toasted cassava flour (farofa)","International","Yoki Farofa Pronta (17.6 oz)", 4.99, null, "tj,aldi,costco"],
     empanada_discs: ["Empanada dough discs","Frozen","Goya Discos for Empanadas (10 ct)", 3.49, null, "tj,costco"],
     linguica_portuguese: ["Portuguese linguiça","Meat & Seafood","Portuguese Linguiça Sausage (10 oz)", 6.49, null, "tj,aldi,costco"],
-    salt_cod_bacalhau: ["Salt cod (bacalhau)","Meat & Seafood","Boneless Salt Cod (16 oz)", 11.99, null, "tj,aldi,costco"]
   },
   nutr: {
     aji_amarillo_paste: [130, 3, 22, 4, 6, 10, 1900],
     evaporated_milk_can: [510, 26, 38, 29, 0, 38, 400],
-    walnuts: [1480, 35, 31, 148, 15, 6, 5],
     tapioca_flour: [2030, 1, 500, 0, 5, 20, 6],
     farofa_yoki: [2000, 8, 400, 35, 30, 5, 3000],
     empanada_discs: [1310, 24, 180, 55, 6, 6, 1700],
     linguica_portuguese: [850, 40, 6, 74, 0, 2, 2600],
-    salt_cod_bacalhau: [1320, 285, 0, 11, 0, 0, 8000]
   },
   recipes: [
 
 {id:"aji-de-gallina",title:"Ají de Gallina (Creamy Peruvian Chili Chicken)",meal:"Dinner",time:55,serves:5,m:{has:["gluten","dairy","nuts","egg"],cuisine:"peruvian",protein:"chicken",skill:2},
  blurb:"Peru's beloved comfort stew: poached, shredded chicken folded into a silky golden sauce of ají amarillo, bread, evaporated milk, walnuts and Parmesan, spooned over rice and potatoes.",
- ing:[["chicken_breast",1,"1½ lb boneless chicken breasts"],["aji_amarillo_paste",0.45,"⅓ cup ají amarillo paste"],["onion",0.15,"1 large onion, chopped"],["garlic",0.08,"4 garlic cloves, minced"],["sandwich_bread",0.15,"4 slices bread, crusts removed"],["evaporated_milk_can",1,"1 (12 oz) can evaporated milk"],["walnuts",0.2,"⅓ cup walnuts or pecans"],["parmesan",0.3,"⅓ cup grated Parmesan"],["chicken_broth",0.5,"2 cups chicken broth"],["baby_potatoes",1,"1½ lb yellow potatoes"],["eggs",0.33,"4 eggs, hard-boiled"],["olives",0.33,"black or Kalamata olives"],["jasmine_rice",0.3,"1½ cups rice"]],
+ ing:[["chicken_breast",1,"1½ lb boneless chicken breasts"],["aji_amarillo_paste",0.45,"⅓ cup ají amarillo paste"],["onion",0.15,"1 large onion, chopped"],["garlic",0.08,"4 garlic cloves, minced"],["sandwich_bread",0.15,"4 slices bread, crusts removed"],["evaporated_milk_can",1,"1 (12 oz) can evaporated milk"],["walnut_halves",0.1,"⅓ cup walnuts or pecans"],["parmesan",0.3,"⅓ cup grated Parmesan"],["chicken_broth",0.5,"2 cups chicken broth"],["baby_potatoes",1,"1½ lb yellow potatoes"],["eggs",0.33,"4 eggs, hard-boiled"],["olives",0.33,"black or Kalamata olives"],["jasmine_rice",0.3,"1½ cups rice"]],
  pantry:"2 tbsp oil, 1 tsp ground cumin, ½ tsp ground turmeric, 1 bay leaf, salt, pepper",
  steps:["Put the chicken and bay leaf in a pot with the broth plus enough water to cover. Bring to a gentle simmer and poach until 165°F inside, 15 to 18 minutes. Lift out, shred into thin strands and keep 2 cups of the broth. Start the rice, and boil the potatoes in salted water until tender, about 15 minutes.","While the chicken poaches, tear the bread into a bowl and soak it in the evaporated milk.","Heat the oil in a large skillet over medium-low. Cook the onion with a pinch of salt until very soft but not browned, 8 to 10 minutes. Add the garlic, ají amarillo paste, cumin and turmeric and cook, stirring, for 2 minutes.","Blend the onion mixture, soaked bread with its milk, half the walnuts and 1 cup of the reserved broth until completely smooth.","Pour the sauce back into the skillet and simmer over low, stirring often, until it thickens to a creamy gravy, 5 minutes. Stir in the chicken and Parmesan, thin with more broth if needed, and season with salt and pepper.","Serve over rice with sliced potatoes, halved eggs, olives and the remaining walnuts, chopped, on top."],
  tip:"Ají amarillo paste is in the Latin aisle or online; if you can't find it, blend 1 roasted yellow bell pepper with 1 seeded habanero for the same fruity heat.",
@@ -41,7 +37,7 @@
 
 {id:"tallarines-verdes-bistec",title:"Tallarines Verdes con Bistec (Peruvian Pesto Pasta with Steak)",meal:"Dinner",time:40,serves:5,m:{has:["gluten","dairy","nuts","beef"],cuisine:"peruvian",protein:"beef",skill:2},
  blurb:"Peru's creamy take on pesto: spinach, basil, queso fresco, evaporated milk and walnuts blended into a bright green sauce for spaghetti, topped with a thin, garlicky seared steak.",
- ing:[["spaghetti",1,"1 lb spaghetti"],["spinach",1,"10 oz baby spinach"],["basil",1,"1 cup basil leaves"],["onion",0.08,"½ onion, chopped"],["garlic",0.08,"4 garlic cloves"],["evaporated_milk_can",0.5,"¾ cup evaporated milk"],["feta",0.5,"½ cup queso fresco or feta"],["walnuts",0.12,"¼ cup walnuts or pecans"],["parmesan",0.25,"⅓ cup grated Parmesan"],["green_beans",0.67,"8 oz green beans, trimmed"],["sirloin",1,"1½ lb sirloin, sliced into thin steaks"]],
+ ing:[["spaghetti",1,"1 lb spaghetti"],["spinach",1,"10 oz baby spinach"],["basil",1,"1 cup basil leaves"],["onion",0.08,"½ onion, chopped"],["garlic",0.08,"4 garlic cloves"],["evaporated_milk_can",0.5,"¾ cup evaporated milk"],["feta",0.5,"½ cup queso fresco or feta"],["walnut_halves",0.06,"¼ cup walnuts or pecans"],["parmesan",0.25,"⅓ cup grated Parmesan"],["green_beans",0.67,"8 oz green beans, trimmed"],["sirloin",1,"1½ lb sirloin, sliced into thin steaks"]],
  pantry:"¼ cup olive oil, 1 tbsp oil, 1 tbsp red wine vinegar, ½ tsp ground cumin, salt, pepper",
  steps:["Rub the steaks with 2 of the garlic cloves (minced), the vinegar, cumin, salt and pepper and set aside while you make the sauce.","Bring a big pot of salted water to a boil. Blanch the spinach and basil in it for 20 seconds, scoop out and squeeze dry. Add the green beans for 4 minutes, scoop out, then cook the spaghetti until al dente. Save 1 cup of pasta water.","Meanwhile soften the onion in 1 tbsp of the olive oil over medium heat, about 6 minutes.","Blend the greens, onion, remaining garlic, evaporated milk, queso fresco, walnuts and the rest of the olive oil until smooth and bright green. Season with salt and pepper.","Sear the steaks in the oil in a very hot skillet, 1 to 2 minutes a side for thin steaks, then rest them for 3 minutes.","Toss the drained spaghetti and green beans with the sauce over low heat, loosening with pasta water. Serve topped with Parmesan and a steak on each plate."],
  tip:"Don't boil the sauce once it hits the pasta or it loses its color; just warm it through. Peruvians often swap the steak for a breaded chicken cutlet.",
@@ -185,7 +181,7 @@
 
 {id:"bacalhau-a-bras",title:"Bacalhau à Brás (Portuguese Salt Cod with Eggs & Crispy Potatoes)",meal:"Dinner",time:50,serves:4,m:{has:["fish","egg"],cuisine:"portuguese",protein:"fish",skill:2},
  blurb:"Lisbon's favorite way with salt cod: flaked bacalhau, golden onions and shoestring potatoes bound with barely set eggs and finished with parsley and black olives.",
- ing:[["salt_cod_bacalhau",1,"1 lb boneless salt cod, soaked 24 hours"],["russet",0.3,"1½ lb potatoes"],["onion",0.2,"2 onions, thinly sliced"],["garlic",0.06,"3 garlic cloves, minced"],["eggs",0.5,"6 eggs"],["parsley",0.5,"½ bunch parsley, chopped"],["olives",0.33,"black olives"]],
+ ing:[["salt_cod",1,"1 lb boneless salt cod, soaked 24 hours"],["russet",0.3,"1½ lb potatoes"],["onion",0.2,"2 onions, thinly sliced"],["garlic",0.06,"3 garlic cloves, minced"],["eggs",0.5,"6 eggs"],["parsley",0.5,"½ bunch parsley, chopped"],["olives",0.33,"black olives"]],
  pantry:"¼ cup olive oil, ½ tsp black pepper, salt, oil for shallow-frying",
  steps:["A day ahead, soak the cod in cold water in the fridge for 24 hours, changing the water 3 or 4 times. Simmer it in fresh water for 8 to 10 minutes, drain, then flake finely, removing any skin or bones.","Peel the potatoes and cut into very thin matchsticks. Rinse, dry well and shallow-fry in batches in hot oil until light golden, 4 to 5 minutes. Drain and salt lightly.","Warm the olive oil in a large skillet over low heat and cook the onions until soft and golden, 12 to 15 minutes. Add the garlic and cod and cook, stirring, 4 to 5 minutes.","Fold in the potatoes. Beat the eggs with the pepper, pour them in and stir gently over low heat just until creamy and barely set, 1 to 2 minutes.","Stir in most of the parsley, taste for salt, and serve topped with olives and the rest of the parsley."],
  tip:"Taste a flake of cod after soaking; if it's still very salty, soak a few hours more. In a pinch, use 1¼ lb fresh cod poached in salted water, and store-bought potato sticks for the fries.",

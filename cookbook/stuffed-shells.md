@@ -1,6 +1,6 @@
 # Spinach & Three-Cheese Stuffed Shells
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Italian · 50 min · serves 6 · skill 1/3
 

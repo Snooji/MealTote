@@ -4,7 +4,6 @@
     walnut_halves: ["Walnuts","Pantry","Walnut Halves & Pieces (16 oz)", 7.49, ["Kirkland Walnuts (3 lb)", 3, 14.99]],
     pomegranate_molasses: ["Pomegranate molasses","International","Pomegranate Molasses (10 oz)", 5.49, null, "aldi,costco"],
     saffron_threads: ["Saffron threads","Sauces & Spices","Saffron Threads (1 g)", 9.99, null, "aldi"],
-    dill_bunch: ["Fresh dill","Produce","Fresh Dill (bunch)", 1.99, null, "costco"],
     molokhia_frozen: ["Frozen minced molokhia","Frozen","Frozen Minced Molokhia (14 oz)", 3.49, null, "tj,aldi,walmart,costco"]
   },
   nutr: {
@@ -12,7 +11,6 @@
     walnut_halves: [2970, 69, 62, 296, 30, 12, 10],
     pomegranate_molasses: [750, 1, 185, 0, 0, 160, 60],
     saffron_threads: [3, 0, 1, 0, 0, 0, 1],
-    dill_bunch: [25, 2, 4, 1, 1, 0, 35],
     molokhia_frozen: [136, 19, 23, 1, 8, 0, 30]
   },
   recipes: [
@@ -100,7 +98,7 @@
 
 {id:"kuku-sabzi",title:"Kuku Sabzi (Persian Herb Frittata) with Yogurt & Walnuts",meal:"Lunch",time:45,serves:4,m:{has:["egg","nuts","dairy","gluten"],cuisine:"persian",protein:"egg",skill:2},
  blurb:"More herbs than egg: piles of parsley, cilantro, dill and green onion bound with just enough egg, studded with walnuts and fried into a deep green, crisp-edged cake. Eaten warm or cold with yogurt and bread.",
- ing:[["eggs",0.58,"7 eggs"],["parsley",2,"2 bunches parsley, finely chopped"],["cilantro",2,"2 bunches cilantro, finely chopped"],["dill_bunch",1,"1 bunch dill, finely chopped"],["green_onion",1,"1 bunch green onions, finely chopped"],["walnut_halves",0.12,"½ cup walnuts, chopped"],["garlic",0.07,"2 garlic cloves, grated"],["greek_yogurt",0.25,"1 cup plain yogurt"],["cucumber",0.5,"½ cucumber, grated"],["pita",0.67,"4 pitas or flatbreads"]],
+ ing:[["eggs",0.58,"7 eggs"],["parsley",2,"2 bunches parsley, finely chopped"],["cilantro",2,"2 bunches cilantro, finely chopped"],["dill_fresh",1,"1 bunch dill, finely chopped"],["green_onion",1,"1 bunch green onions, finely chopped"],["walnut_halves",0.12,"½ cup walnuts, chopped"],["garlic",0.07,"2 garlic cloves, grated"],["greek_yogurt",0.25,"1 cup plain yogurt"],["cucumber",0.5,"½ cucumber, grated"],["pita",0.67,"4 pitas or flatbreads"]],
  pantry:"5 tbsp olive oil, 1 tsp turmeric, ½ tsp baking powder, 1 tsp dried mint, salt, pepper",
  steps:["Wash the herbs and dry them very well, then chop finely (a food processor in short pulses is fine). You want about 6 packed cups.","Warm 1 tbsp oil in a 10-inch nonstick skillet over medium heat and cook the green onions and herbs, stirring, until darker and dry, about 5 minutes. Cool 10 minutes.","Beat the eggs with the turmeric, baking powder, garlic, 1½ tsp salt and pepper. Fold in the herbs and walnuts.","Heat 3 tbsp oil in the skillet over medium heat, pour in the mixture and smooth the top. Cover and cook over medium-low until the bottom is browned and the top nearly set, 12 to 15 minutes.","Slide it onto a plate, flip it back into the pan and cook the second side uncovered 5 minutes (or finish in a 375°F oven for 10 minutes instead of flipping).","Stir the yogurt with the cucumber, mint, the last 1 tbsp oil and salt. Cut the kuku in wedges and serve with the yogurt and warm bread."],
  tip:"Dry herbs are the secret: wet herbs make a soggy kuku. A spoonful of dried barberries is the classic tart touch if you can find them at a Persian market.",
@@ -127,7 +125,7 @@
 
 {id:"sabzi-polo-mahi",title:"Sabzi Polo ba Mahi (Persian Herbed Rice with Crisp Turmeric Salmon)",meal:"Dinner",time:60,serves:4,m:{has:["fish"],cuisine:"persian",protein:"fish",skill:2},
  blurb:"The Persian New Year plate: basmati steamed with heaps of parsley, cilantro, dill, green onion and garlic until fragrant and fluffy, topped with saffron rice and served beside turmeric-crusted pan-fried fish.",
- ing:[["salmon",1,"1¼ lb salmon fillets, in 4 pieces"],["basmati",0.4,"2 cups basmati rice"],["parsley",1,"1 bunch parsley, finely chopped"],["cilantro",1,"1 bunch cilantro, finely chopped"],["dill_bunch",1,"1 bunch dill, finely chopped"],["green_onion",1,"1 bunch green onions, finely chopped"],["garlic",0.2,"6 garlic cloves, chopped"],["saffron_threads",0.15,"a big pinch of saffron"],["lemon",0.28,"2 lemons, in wedges"]],
+ ing:[["salmon",1,"1¼ lb salmon fillets, in 4 pieces"],["basmati",0.4,"2 cups basmati rice"],["parsley",1,"1 bunch parsley, finely chopped"],["cilantro",1,"1 bunch cilantro, finely chopped"],["dill_fresh",1,"1 bunch dill, finely chopped"],["green_onion",1,"1 bunch green onions, finely chopped"],["garlic",0.2,"6 garlic cloves, chopped"],["saffron_threads",0.15,"a big pinch of saffron"],["lemon",0.28,"2 lemons, in wedges"]],
  pantry:"5 tbsp oil, 1 tbsp dried fenugreek leaves, 1 tsp turmeric, 1 tsp paprika, ½ tsp garlic powder, 2 tbsp flour, salt, pepper",
  steps:["Rinse the rice several times until the water runs clear. Steep the saffron in 3 tbsp hot water. Mix the chopped herbs, fenugreek and garlic.","Boil the rice in a large pot of well-salted water until just tender outside but still firm in the center, 6 to 7 minutes, then drain.","Wipe out the pot, add 2 tbsp oil and 2 tbsp water, then layer the rice and herbs in a mound. Poke a few holes with a spoon handle, drizzle with 1 tbsp oil, wrap the lid in a towel and cover. Cook on medium 5 minutes, then very low 35 minutes, until fluffy with a golden crust at the bottom.","While the rice steams, season the salmon with the turmeric, paprika, garlic powder, salt and pepper and dust lightly with the flour. Fry in 2 tbsp oil over medium-high heat until crisp, 3 to 4 minutes a side.","Toss a cup of rice with the saffron water. Mound the herb rice on a platter, top with the saffron rice and the crust broken into pieces, and serve with the fish and lemon."],
  tip:"The traditional fish is Caspian whitefish or sea bass, and bitter orange is squeezed over it; cod or tilapia and lemon work fine. Dry the herbs well before chopping so the rice stays fluffy.",

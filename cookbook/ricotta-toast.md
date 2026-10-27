@@ -1,6 +1,6 @@
 # Honey Ricotta Toast with Berries & Pistachios
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · Italian · 10 min · serves 4 · skill 1/3
 

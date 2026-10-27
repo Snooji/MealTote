@@ -1,6 +1,6 @@
 # Creamy Lemon Orzo with Shrimp & Spinach
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Greek · 25 min · serves 4 · skill 2/3
 

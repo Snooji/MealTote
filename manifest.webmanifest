@@ -1,0 +1,15 @@
+{
+  "name": "MealTote",
+  "short_name": "MealTote",
+  "description": "Free meal plans and one grocery list across the stores you shop at.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FEFEFC",
+  "theme_color": "#134A33",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

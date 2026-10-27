@@ -17,7 +17,7 @@ Answer a few questions and MealTote builds your week:
 
 Then you get:
 
-- **A week of breakfasts, lunches and dinners** from 233 recipes, with leftovers planned in if you want them.
+- **A week of breakfasts, lunches and dinners** from 466 recipes, with leftovers planned in if you want them.
 - **Easy swaps.** Every swap opens with a "Similar calories" section. Each option shows its calorie change next to its name (green for fewer, red for more) and what changes on each person's plate. Many dishes come in other proteins, and breakfast sandwiches are build-your-own (homemade turkey sausage on homemade biscuits, anyone?).
 - **Nutrition for every serving:** calories, protein, carbs, fat, fiber, sugar and sodium.
 - **A grocery list by store and aisle,** with estimated prices and a weekly total.
@@ -38,7 +38,8 @@ Found a bug, a price that's way off, or want a recipe or store added? [Open an i
 
 - Prices are estimates of typical shelf prices. Trader Joe's, Costco, Aldi and Walmart are priced item by item. Other chains are estimated from their usual price level, so check prices in-store.
 - Nutrition is calculated from the ingredients and is approximate.
-- Recipe photos are free-licensed from Wikimedia Commons, each credited in the app and in [CREDITS.md](CREDITS.md). Dishes without a good free photo get a drawn illustration.
+- MealTote keeps anonymous daily counts (visits, plans made, which tabs get used) so I can see what helps. No names, emails, IP addresses or tracking cookies are collected.
+- Recipe photos are free-licensed from Wikimedia Commons, each credited in the app and in [CREDITS.md](CREDITS.md). Dishes without a good free photo show the MealTote logo for now.
 - Every recipe is also readable as markdown in [`cookbook/`](cookbook/INDEX.md).
 
 ## Running your own copy

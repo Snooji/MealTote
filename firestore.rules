@@ -52,6 +52,38 @@ service cloud.firestore {
         && (!('note' in request.resource.data) || shortStr(request.resource.data.note, 300));
     }
 
+    // Community photos: anyone signed in can submit a photo for a recipe; only the admin sees submissions and approves them.
+    // Approved photos (communityPhotos/{recipeId}, listed in site/communityPhotos) are public to read.
+    match /submissions/{id} {
+      allow read, delete: if isAdmin();
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['rid', 'data', 'uid', 'name', 'title', 'at', 'status'])
+        && shortStr(request.resource.data.rid, 100) && shortStr(request.resource.data.name, 80) && shortStr(request.resource.data.title, 160)
+        && request.resource.data.status == 'pending' && request.resource.data.at is number
+        && request.resource.data.data is string && request.resource.data.data.matches('data:image/jpeg;base64,.*')
+        && request.resource.data.data.size() < 900000;
+    }
+    match /communityPhotos/{rid} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /site/communityPhotos {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Site analytics: one doc of anonymous counts per UTC day, shown in the Backend. Anyone can add to today's counts
+    // (each field only goes up, by at most 50 per write); only the admin can read them.
+    function statsKeys() { return ['views', 'visitors', 'newVisitors', 'returning', 'mobile', 'desktop', 'installed', 'signins', 'signups', 'plans', 'pdf', 'supportClicks', 'recipeOpens', 'swaps', 'photoSubmits', 'tab_plan', 'tab_prep', 'tab_groceries', 'tab_pantry', 'tab_recipes', 'tab_pdf', 'tab_settings', 'tab_profile']; }
+    match /stats/{day} {
+      allow read: if isAdmin();
+      allow create: if day.matches('^20[0-9][0-9]-[01][0-9]-[0-3][0-9]$')
+        && request.resource.data.keys().hasOnly(statsKeys()) && statsCreateOk(request.resource.data);
+      allow update: if request.resource.data.keys().hasOnly(statsKeys()) && statsUpdateOk(request.resource.data, resource.data);
+    }
+    function statsCreateOk(d) { return (!('views' in d) || (d.views is int && d.views >= 0 && d.views <= 50)) && (!('visitors' in d) || (d.visitors is int && d.visitors >= 0 && d.visitors <= 50)) && (!('newVisitors' in d) || (d.newVisitors is int && d.newVisitors >= 0 && d.newVisitors <= 50)) && (!('returning' in d) || (d.returning is int && d.returning >= 0 && d.returning <= 50)) && (!('mobile' in d) || (d.mobile is int && d.mobile >= 0 && d.mobile <= 50)) && (!('desktop' in d) || (d.desktop is int && d.desktop >= 0 && d.desktop <= 50)) && (!('installed' in d) || (d.installed is int && d.installed >= 0 && d.installed <= 50)) && (!('signins' in d) || (d.signins is int && d.signins >= 0 && d.signins <= 50)) && (!('signups' in d) || (d.signups is int && d.signups >= 0 && d.signups <= 50)) && (!('plans' in d) || (d.plans is int && d.plans >= 0 && d.plans <= 50)) && (!('pdf' in d) || (d.pdf is int && d.pdf >= 0 && d.pdf <= 50)) && (!('supportClicks' in d) || (d.supportClicks is int && d.supportClicks >= 0 && d.supportClicks <= 50)) && (!('recipeOpens' in d) || (d.recipeOpens is int && d.recipeOpens >= 0 && d.recipeOpens <= 50)) && (!('swaps' in d) || (d.swaps is int && d.swaps >= 0 && d.swaps <= 50)) && (!('photoSubmits' in d) || (d.photoSubmits is int && d.photoSubmits >= 0 && d.photoSubmits <= 50)) && (!('tab_plan' in d) || (d.tab_plan is int && d.tab_plan >= 0 && d.tab_plan <= 50)) && (!('tab_prep' in d) || (d.tab_prep is int && d.tab_prep >= 0 && d.tab_prep <= 50)) && (!('tab_groceries' in d) || (d.tab_groceries is int && d.tab_groceries >= 0 && d.tab_groceries <= 50)) && (!('tab_pantry' in d) || (d.tab_pantry is int && d.tab_pantry >= 0 && d.tab_pantry <= 50)) && (!('tab_recipes' in d) || (d.tab_recipes is int && d.tab_recipes >= 0 && d.tab_recipes <= 50)) && (!('tab_pdf' in d) || (d.tab_pdf is int && d.tab_pdf >= 0 && d.tab_pdf <= 50)) && (!('tab_settings' in d) || (d.tab_settings is int && d.tab_settings >= 0 && d.tab_settings <= 50)) && (!('tab_profile' in d) || (d.tab_profile is int && d.tab_profile >= 0 && d.tab_profile <= 50)); }
+    function statsUpdateOk(d, old) { return (!('views' in d) || (d.views is int && d.views >= old.get('views', 0) && d.views <= old.get('views', 0) + 50)) && (!('visitors' in d) || (d.visitors is int && d.visitors >= old.get('visitors', 0) && d.visitors <= old.get('visitors', 0) + 50)) && (!('newVisitors' in d) || (d.newVisitors is int && d.newVisitors >= old.get('newVisitors', 0) && d.newVisitors <= old.get('newVisitors', 0) + 50)) && (!('returning' in d) || (d.returning is int && d.returning >= old.get('returning', 0) && d.returning <= old.get('returning', 0) + 50)) && (!('mobile' in d) || (d.mobile is int && d.mobile >= old.get('mobile', 0) && d.mobile <= old.get('mobile', 0) + 50)) && (!('desktop' in d) || (d.desktop is int && d.desktop >= old.get('desktop', 0) && d.desktop <= old.get('desktop', 0) + 50)) && (!('installed' in d) || (d.installed is int && d.installed >= old.get('installed', 0) && d.installed <= old.get('installed', 0) + 50)) && (!('signins' in d) || (d.signins is int && d.signins >= old.get('signins', 0) && d.signins <= old.get('signins', 0) + 50)) && (!('signups' in d) || (d.signups is int && d.signups >= old.get('signups', 0) && d.signups <= old.get('signups', 0) + 50)) && (!('plans' in d) || (d.plans is int && d.plans >= old.get('plans', 0) && d.plans <= old.get('plans', 0) + 50)) && (!('pdf' in d) || (d.pdf is int && d.pdf >= old.get('pdf', 0) && d.pdf <= old.get('pdf', 0) + 50)) && (!('supportClicks' in d) || (d.supportClicks is int && d.supportClicks >= old.get('supportClicks', 0) && d.supportClicks <= old.get('supportClicks', 0) + 50)) && (!('recipeOpens' in d) || (d.recipeOpens is int && d.recipeOpens >= old.get('recipeOpens', 0) && d.recipeOpens <= old.get('recipeOpens', 0) + 50)) && (!('swaps' in d) || (d.swaps is int && d.swaps >= old.get('swaps', 0) && d.swaps <= old.get('swaps', 0) + 50)) && (!('photoSubmits' in d) || (d.photoSubmits is int && d.photoSubmits >= old.get('photoSubmits', 0) && d.photoSubmits <= old.get('photoSubmits', 0) + 50)) && (!('tab_plan' in d) || (d.tab_plan is int && d.tab_plan >= old.get('tab_plan', 0) && d.tab_plan <= old.get('tab_plan', 0) + 50)) && (!('tab_prep' in d) || (d.tab_prep is int && d.tab_prep >= old.get('tab_prep', 0) && d.tab_prep <= old.get('tab_prep', 0) + 50)) && (!('tab_groceries' in d) || (d.tab_groceries is int && d.tab_groceries >= old.get('tab_groceries', 0) && d.tab_groceries <= old.get('tab_groceries', 0) + 50)) && (!('tab_pantry' in d) || (d.tab_pantry is int && d.tab_pantry >= old.get('tab_pantry', 0) && d.tab_pantry <= old.get('tab_pantry', 0) + 50)) && (!('tab_recipes' in d) || (d.tab_recipes is int && d.tab_recipes >= old.get('tab_recipes', 0) && d.tab_recipes <= old.get('tab_recipes', 0) + 50)) && (!('tab_pdf' in d) || (d.tab_pdf is int && d.tab_pdf >= old.get('tab_pdf', 0) && d.tab_pdf <= old.get('tab_pdf', 0) + 50)) && (!('tab_settings' in d) || (d.tab_settings is int && d.tab_settings >= old.get('tab_settings', 0) && d.tab_settings <= old.get('tab_settings', 0) + 50)) && (!('tab_profile' in d) || (d.tab_profile is int && d.tab_profile >= old.get('tab_profile', 0) && d.tab_profile <= old.get('tab_profile', 0) + 50)); }
+
     match /{document=**} { allow read, write: if false; }
   }
 }

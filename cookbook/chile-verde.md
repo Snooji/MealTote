@@ -1,6 +1,6 @@
 # Pork Chile Verde with Warm Tortillas
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Dinner** · Mexican · 150 min · serves 6 · skill 2/3
 

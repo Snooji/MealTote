@@ -13,9 +13,14 @@ if (configured) {
   try {
     const { initializeApp } = await import(`${SDK}/firebase-app.js`);
     const { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-    const { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } = await import(`${SDK}/firebase-firestore.js`);
+    const { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, increment } = await import(`${SDK}/firebase-firestore.js`);
 
-    const app = initializeApp(firebaseConfig);
+    // Sign in through this site's own domain when it's served by Firebase Hosting (mealtote.com has /__/auth/handler).
+    // Safari and home-screen apps block the hand-off when sign-in runs through a different domain (firebaseapp.com).
+    const host = location.hostname, ownDomain = host === "mealtote.com" || host.endsWith(".web.app") || host.endsWith(".firebaseapp.com");
+    const app = initializeApp(ownDomain ? { ...firebaseConfig, authDomain: host } : firebaseConfig);
+    // opened from the home screen: a popup can't hand the result back, so sign in on the page itself
+    const standalone = window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches;
     // stay signed in on this device until you sign out (IndexedDB, falling back to localStorage)
     const auth = initializeAuth(app, { persistence: [indexedDBLocalPersistence, browserLocalPersistence], popupRedirectResolver: browserPopupRedirectResolver });
     const db = getFirestore(app);
@@ -30,6 +35,7 @@ if (configured) {
       async signIn() {
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
+        if (standalone) return signInWithRedirect(auth, provider);
         try { await signInWithPopup(auth, provider); }
         catch (e) {
           if (["auth/popup-blocked", "auth/operation-not-supported-in-this-environment"].includes(e.code)) await signInWithRedirect(auth, provider);
@@ -48,8 +54,25 @@ if (configured) {
       async saveProfile(fields) { await setDoc(userDoc(), { ...fields, updatedAt: serverTimestamp() }, { merge: true }); },
       async ensureProfile() {
         const s = await getDoc(userDoc());
-        if (!s.exists() || !s.data().createdAt) await setDoc(userDoc(), { createdAt: serverTimestamp(), displayName: api.user.displayName || "" }, { merge: true });
+        if (!s.exists() || !s.data().createdAt) { await setDoc(userDoc(), { createdAt: serverTimestamp(), displayName: api.user.displayName || "" }, { merge: true }); return true; }
+        return false;
       },
+
+      // site analytics: counts only, one doc per UTC day (stats/YYYY-MM-DD); nothing about who did what
+      async track(counts) {
+        const day = new Date().toISOString().slice(0, 10), data = {};
+        for (const [k, n] of Object.entries(counts)) if (n > 0) data[k] = increment(Math.min(50, n));
+        if (Object.keys(data).length) await setDoc(doc(db, "stats", day), data, { merge: true });
+      },
+
+      // community photos: signed-in people submit a photo for a recipe; the admin approves it in the Backend,
+      // then it's the photo everyone sees (communityPhotos/{recipeId}, listed in site/communityPhotos)
+      async submitPhoto(rid, dataUrl, title) {
+        const u = api.user;
+        await addDoc(collection(db, "submissions"), { rid, data: dataUrl, uid: u.uid, name: (u.displayName || "A MealTote cook").slice(0, 80), title: String(title || rid).slice(0, 160), at: Date.now(), status: "pending" });
+      },
+      async communityIndex() { const s = await getDoc(doc(db, "site", "communityPhotos")); return s.exists() ? (s.data().ids || {}) : {}; },
+      async communityPhoto(rid) { const s = await getDoc(doc(db, "communityPhotos", rid)); return s.exists() ? s.data() : null; },
 
       // saved plans: users/{uid}/plans/{id}
       async savePlan(name, stateJson) { const r = await addDoc(plansCol(), { name, state: stateJson, createdMs: Date.now(), createdAt: serverTimestamp() }); return r.id; },

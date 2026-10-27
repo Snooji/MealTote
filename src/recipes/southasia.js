@@ -2,13 +2,11 @@
   items: {
     tamarind_paste: ["Tamarind paste","International","Tamarind Concentrate (8 oz jar)", 3.49, null, "tj,aldi,costco"],
     coconut_shredded: ["Unsweetened shredded coconut","Pantry","Unsweetened Shredded Coconut (8 oz)", 3.99, null, "costco"],
-    semolina_sooji: ["Semolina (sooji / rava)","Pantry","Bob's Red Mill Semolina Flour (24 oz)", 5.49, null, "aldi,costco"],
     chickpea_flour: ["Chickpea flour (besan)","Pantry","Bob's Red Mill Chickpea Flour (16 oz)", 4.99, null, "aldi,costco"]
   },
   nutr: {
     tamarind_paste: [550, 5, 140, 1, 12, 85, 70],
     coconut_shredded: [1500, 15, 54, 146, 37, 17, 80],
-    semolina_sooji: [2450, 86, 494, 7, 27, 0, 7],
     chickpea_flour: [1755, 102, 262, 30, 49, 49, 290]
   },
   recipes: [
@@ -167,7 +165,7 @@
 
 {id:"rava-upma",title:"Rava Upma with Vegetables & Cashews",meal:"Breakfast",time:25,serves:4,m:{has:["gluten","nuts","dairy"],cuisine:"southindian",protein:"veg",skill:1},
  blurb:"The everyday South Indian breakfast: toasted semolina cooked into a fluffy, savory porridge with mustard seeds, ginger, chilies, vegetables and golden cashews, finished with ghee and lemon.",
- ing:[["semolina_sooji",0.37,"1½ cups semolina (sooji / rava)"],["onion",0.1,"1 small onion, chopped"],["carrots",0.06,"1 carrot, finely diced"],["frozen_peas",0.25,"½ cup frozen peas"],["cashews",0.15,"⅓ cup cashews"],["jalapeno",0.33,"1 to 2 green chilies, slit"],["ginger",0.03,"1 tsp grated ginger"],["butter",0.06,"2 tbsp ghee or butter"],["lemon",0.1,"1 lemon"],["cilantro",0.15,"chopped cilantro"]],
+ ing:[["semolina_flour",0.37,"1½ cups semolina (sooji / rava)"],["onion",0.1,"1 small onion, chopped"],["carrots",0.06,"1 carrot, finely diced"],["frozen_peas",0.25,"½ cup frozen peas"],["cashews",0.15,"⅓ cup cashews"],["jalapeno",0.33,"1 to 2 green chilies, slit"],["ginger",0.03,"1 tsp grated ginger"],["butter",0.06,"2 tbsp ghee or butter"],["lemon",0.1,"1 lemon"],["cilantro",0.15,"chopped cilantro"]],
  pantry:"3 tbsp oil, 1 tsp mustard seeds, 1 tsp cumin seeds, 1 tsp salt, 1 pinch asafoetida (optional)",
  steps:["Toast the semolina in a dry skillet over medium heat, stirring often, until it smells nutty and feels sandy but hasn't browned, 5 to 6 minutes. Tip into a bowl.","Heat the oil in a wide pan over medium. Add the mustard and cumin seeds, and when they crackle, the cashews. Fry until the cashews are golden, about 1 minute, then add the asafoetida, chilies and ginger.","Add the onion and cook until translucent, 3 minutes, then the carrot and peas. Cover and cook until just tender, 3 minutes.","Pour in 4½ cups water with the salt and bring to a rolling boil. Lower the heat and pour in the semolina in a slow stream with one hand while stirring fast with the other so no lumps form.","Cover and cook on the lowest heat until the water is absorbed and the upma is fluffy, 2 to 4 minutes. Stir in the ghee, rest covered 2 minutes, then squeeze over the lemon and scatter with cilantro."],
  tip:"Upma firms up as it sits, so serve it right away. Fresh curry leaves and a teaspoon each of urad dal and chana dal in the tempering add the authentic aroma and a little crunch.",

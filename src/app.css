@@ -411,3 +411,84 @@ footer.site a{color:var(--accent)}
 .macrofit{gap:8px}
 .macrofit .mrow2{display:grid;gap:2px;padding-top:6px;border-top:1px solid var(--line)}
 .macrofit .mtips{margin:2px 0 0;display:grid;gap:4px;font-size:14px}
+
+/* ------------------------------------------------------------------ app shell: header mark, icons, phone layout */
+.brand{display:flex;align-items:center;gap:10px}
+.brand .mark{width:34px;height:34px;object-fit:contain;flex:none}
+.ti{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+nav.tabs .ti{display:none}
+nav.tabs .short,nav.tabs .mobile,nav.tabs button.mobile{display:none}
+.iconbtn{display:inline-flex;align-items:center;gap:6px}
+.iconbtn .ti{width:18px;height:18px}
+@media (max-width:720px){
+  .desk{display:none !important}
+  .top .bar{padding-block:8px}
+  .brand h1{font-size:24px}
+  .brand>span{display:none}
+  #hdrBtns{gap:8px;flex-wrap:nowrap}
+  #account .acct{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .iconbtn{padding:7px 9px}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
+    padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));gap:0;justify-content:space-around;overflow:visible}
+  nav.tabs button,nav.tabs button.mobile{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1 1 0;min-width:0;padding:6px 2px 4px;border-bottom:0;font-size:11.5px;position:relative}
+  nav.tabs .ti{display:block}
+  nav.tabs .long{display:none}
+  nav.tabs .short{display:inline}
+  nav.tabs button[aria-selected="true"]{color:var(--accent)}
+  nav.tabs .count{position:absolute;top:0;left:calc(50% + 6px);margin:0;min-width:18px;padding:0 5px;font-size:10.5px;line-height:17px;background:var(--accent);color:#fff}
+  body:has(nav.tabs:not([hidden])) main,body:has(nav.tabs:not([hidden])) footer.site{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+
+/* pantry tab */
+.pantry-list{display:grid;gap:8px}
+.prow2{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px}
+.prow2.have{opacity:.6}
+.prow2 .nm{font-weight:600}
+.prow2 .pd{font-size:13px;color:var(--muted)}
+.prow2 input[type=checkbox]{width:22px;height:22px;accent-color:var(--accent);flex:none}
+.prow2 .grow{flex:1;min-width:0}
+.prow2 .btn{flex:none}
+.padd{display:flex;gap:8px}
+.padd input{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
+
+/* settings */
+.settings{display:grid;gap:14px;max-width:720px}
+.settings .pcard{display:grid;gap:10px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink);text-decoration:none;font:inherit}
+.srow .ti{color:var(--muted)}
+.srow .grow{flex:1;min-width:0;display:grid;gap:2px}
+.srow .grow small{color:var(--muted);font-size:13px}
+.srow::after{content:"›";color:var(--muted);font-size:20px}
+@media (max-width:720px){ body:has(nav.tabs:not([hidden])) .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))} }
+.mfit{display:grid;gap:2px;font-size:12.5px;font-family:var(--f-mono)}
+.mfit span{margin-right:8px;color:var(--muted)}
+.mfit span.good{color:var(--kd-down);font-weight:600}
+.mfit span.bad{color:var(--kd-up);font-weight:600}
+
+/* keep the page still on phones: iOS zooms into any field under 16px (and the zoomed page then slides sideways),
+   so fields are 16px there, and nothing can scroll the page horizontally */
+html,body{overflow-x:clip;overscroll-behavior-x:none;max-width:100%}
+@media (max-width:720px){ input,select,textarea{font-size:16px !important} }
+
+/* pantry inventory */
+.inv{display:grid;gap:8px}
+.invadd{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.invadd input[type=text]{flex:1 1 180px;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
+.invdate{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.inv input[type=date]{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 8px;font:inherit;max-width:150px}
+.invrow{flex-wrap:wrap}
+.invrow.expired{border-color:var(--kd-up);background:color-mix(in srgb,var(--kd-up) 6%,var(--surface))}
+.expchip{display:inline-block;font-weight:600}
+.expchip.expired{color:var(--kd-up)}
+.expchip.soon{color:#B26A00}
+.expbanner{border:1.5px solid var(--kd-up);color:var(--kd-up);border-radius:10px;padding:10px 12px;background:color-mix(in srgb,var(--kd-up) 7%,transparent)}
+nav.tabs .count.alert{background:var(--kd-up);color:#fff}
+
+/* Backend pull-up */
+.fullsheet{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;animation:fsup .22s ease-out}
+.fullsheet .fsbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;border-bottom:1px solid var(--line);background:var(--surface)}
+.fullsheet .fsbar b{font-family:var(--f-display,inherit);font-size:20px}
+.fullsheet iframe{flex:1;width:100%;border:0;background:var(--bg)}
+@keyframes fsup{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+.invrow .grow{flex:1 1 100%}
+.invrow input[type=date]{flex:1 1 140px}

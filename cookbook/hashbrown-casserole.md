@@ -1,6 +1,6 @@
 # Sausage & Cheddar Hash Brown Breakfast Bake
 
-_Illustrated in the app (no free-licensed photo yet)._
+_No free-licensed photo yet; the app shows the MealTote logo._
 
 **Breakfast** · American comfort · 60 min · serves 8 · skill 1/3
 

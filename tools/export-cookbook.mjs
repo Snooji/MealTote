@@ -38,7 +38,7 @@ for (const r of RECIPES) {
   const vs = versionsOf(r).filter(v => v.id !== r.id).map(v => v.variantLabel || v.title);
   const md = [
     `# ${r.title}`, "",
-    photos[r.id] ? `![${r.title}](../${photos[r.id]})` + (credits[r.id] ? `\n\n<sub>Photo: ${credits[r.id].author} · ${credits[r.id].license} · [source](${credits[r.id].page})</sub>` : "") : "_Illustrated in the app (no free-licensed photo yet)._", "",
+    photos[r.id] ? `![${r.title}](../${photos[r.id]})` + (credits[r.id] ? `\n\n<sub>Photo: ${credits[r.id].author} · ${credits[r.id].license} · [source](${credits[r.id].page})</sub>` : "") : "_No free-licensed photo yet; the app shows the MealTote logo._", "",
     `**${r.meal}** · ${cuisine(r.id)} · ${r.time} min · serves ${r.serves} · skill ${m.skill}/3`, "",
     `> ${r.blurb}`, "",
     `| Per serving | kcal | Protein | Carbs | Fat | Fiber | Sodium | Cost |`, `| --- | --- | --- | --- | --- | --- | --- | --- |`,
@@ -58,7 +58,7 @@ for (const r of RECIPES) {
 // duplicate check: same meal, same main protein, and most of the same ingredients
 const STAPLE = new Set(["garlic", "onion", "green_onion", "cilantro", "lime", "lemon", "jasmine_rice", "basmati", "eggs", "butter", "parmesan", "soy", "olive_oil", "ginger", "honey"]);
 // pairs a person has checked and decided are different dishes
-const NOT_DUPES = new Set(["buttermilk-pancakes|french-toast", "crepes|dutch-baby"]);
+const NOT_DUPES = new Set(["buttermilk-pancakes|french-toast", "crepes|dutch-baby", "menemen|lecso-eggs", "moqueca-camarao|sri-lankan-devilled-shrimp", "malawach-zhug|khagina-paratha"]);
 const dupes = [];
 for (let i = 0; i < rows.length; i++) for (let j = i + 1; j < rows.length; j++) {
   const a = rows[i], b = rows[j]; if (NOT_DUPES.has(`${a.r.id}|${b.r.id}`) || NOT_DUPES.has(`${b.r.id}|${a.r.id}`)) continue;
