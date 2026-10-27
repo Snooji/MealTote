@@ -2205,7 +2205,7 @@ const fmtHrs = m => m>=60 ? (Math.floor(m/60)+" h"+(m%60?" "+(m%60)+" m":"")) : 
 const R_BY_ID = R_ALL;
 const ALL_DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const MEALS = [["breakfast","Breakfast"],["lunch","Lunch"],["dinner","Dinner"]];
-const DEFAULT_STATE = { profile:null, plan:null, stores:["aldi","walmart"], mode:"cheap", overrides:{}, checked:{}, photos:{}, pantry:{have:{},add:{}} };
+const DEFAULT_STATE = { profile:null, plan:null, stores:["aldi","walmart"], mode:"cheap", overrides:{}, checked:{}, photos:{}, pantry:{have:{},add:{}}, inventory:[] };
 let S = structuredClone(DEFAULT_STATE);
 let saveTimer = null;
 // plans saved under the app's old name (Bundle & Bite) carry over
@@ -2219,6 +2219,7 @@ function normalize(v){
   if(s.plan){ for(const k of ["b","l","d"]) s.plan[k]=(s.plan[k]||[]).map(fix); }
   migrateCuisines(s.profile);
   s.pantry=Object.assign({have:{},add:{}}, s.pantry||{});
+  s.inventory=Array.isArray(s.inventory)?s.inventory.filter(x=>x&&x.name):[];
   return s;
 }
 function save(){
@@ -2707,11 +2708,24 @@ function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; cle
 // attribution for the bundled photo imgFor() would show (none for people's own photos or illustrations)
 function creditFor(r){
   if(S.photos[r.id] || (r.base && S.photos[r.base])) return null;
+  const cid=COMMUNITY[r.id]?r.id:(r.base&&COMMUNITY[r.base]?r.base:null);
+  if(cid) return {page:null, author:COMMUNITY[cid].by||"a MealTote cook", license:"shared on MealTote"};
   return PHOTO_CREDITS[r.id] || (r.base && PHOTO_CREDITS[r.base]) || (r.builder && !PHOTOS[r.base] ? PHOTO_CREDITS["breakfast-sandwiches"] : null) || null;
 }
 // recipes without a photo show the MealTote logo
 const PLACEHOLDER = "photos/placeholder.jpg";
-function imgFor(r){ return S.photos[r.id] || (r.base&&S.photos[r.base]) || PHOTOS[r.id] || (r.base&&PHOTOS[r.base]) || (r.builder&&PHOTOS["breakfast-sandwiches"]) || PLACEHOLDER; }
+// approved community photos replace the bundled ones; each loads on first use and then fills every matching <img>
+let COMMUNITY = {}; const COMMUNITY_DATA = {}, COMMUNITY_LOADING = new Set();
+function communityImg(id){
+  if(!COMMUNITY[id]) return null;
+  if(COMMUNITY_DATA[id]) return COMMUNITY_DATA[id];
+  if(!COMMUNITY_LOADING.has(id) && window.cloud && cloud.enabled && cloud.communityPhoto){ COMMUNITY_LOADING.add(id);
+    cloud.communityPhoto(id).then(d=>{ if(!d||!d.data) return; COMMUNITY_DATA[id]=d.data;
+      for(const im of document.querySelectorAll('img[data-rid]')){ const r=R_BY_ID[im.dataset.rid]; if(r && (r.id===id||r.base===id) && !S.photos[r.id] && !(r.base&&S.photos[r.base])) im.src=d.data; } }).catch(()=>{}); }
+  return null;
+}
+function loadCommunity(){ if(!cloud.communityIndex) return; cloud.communityIndex().then(ids=>{ COMMUNITY=ids||{}; if(Object.keys(COMMUNITY).length && S.profile && !OB) refresh(); }).catch(()=>{}); }
+function imgFor(r){ return S.photos[r.id] || (r.base&&S.photos[r.base]) || communityImg(r.id) || (r.base&&communityImg(r.base)) || PHOTOS[r.id] || (r.base&&PHOTOS[r.base]) || (r.builder&&PHOTOS["breakfast-sandwiches"]) || PLACEHOLDER; }
 const listJoin = a => a.length<2 ? a.join("") : a.slice(0,-1).join(", ")+" and "+a[a.length-1];
 
 /* ------------------------------------------------------------------ questions */
@@ -2954,6 +2968,9 @@ function score(r, jitter){
   for(const d of A.dislikes) if(DISLIKE_TEST[d] && DISLIKE_TEST[d](r)) s-= SOFT_DISLIKES.has(d)?1.5:8;
   if(recipeCost(r).miss.length) s-=6;
   const mm=macroMiss(r); if(mm!==null) s += (0.4-mm)*16; // people who set macros care about them more than most preferences
+  // high-protein targets (lifters): favor dishes whose share of calories from protein is at or above what the targets need
+  { const ps=S.profile?people().filter(p=>p.macros):[]; if(ps.length){ const n=nutritionOf(r), have=n.protein*4/Math.max(1,n.kcal);
+    const need=Math.max(...ps.map(p=>p.macros.p*4/Math.max(1,macroKcal(p.macros)))); if(need>0.25) s -= Math.max(0,need-have)*60; } }
   return s;
 }
 function ranked(meal, seed){
@@ -3021,7 +3038,8 @@ $("#settingsBtn").addEventListener("click", openSettings);
 function renderCounts(){ if(!S.plan) return;
   $("#listCount").textContent=Object.keys(planDemand()).length+Object.keys(S.pantry.add).length;
   const need=pantryItems().filter(x=>!S.pantry.have[x.key]&&!S.pantry.add[x.key]).length, pc=$("#pantryCount");
-  if(pc){ pc.textContent=need; pc.hidden=!need; } }
+  const exp=expiredCount();
+  if(pc){ pc.textContent=exp||need; pc.hidden=!(exp||need); pc.classList.toggle("alert",!!exp); pc.title=exp?exp+" expired":need+" staples to check"; } }
 
 function planTotals(){
   const d=planDemand(), {result,missing}=assign(d); let total=0; const used=new Set();
@@ -3063,6 +3081,17 @@ $("#photoInput").addEventListener("change", async e=>{
     toast("Photo added"); openRecipe(id); refresh();
   }catch(err){ toast("That image couldn't be read. Try a JPEG or PNG."); }
 });
+// a submitted photo is re-cut to 4:3 at 800×600 like the bundled ones, so every thumbnail lines up
+function toThumb(dataUrl){ return new Promise((res,rej)=>{ const img=new Image(); img.onload=()=>{
+  const W=800,H=600,c=document.createElement("canvas"); c.width=W; c.height=H; const k=Math.max(W/img.width,H/img.height), w=img.width*k, h=img.height*k;
+  c.getContext("2d").drawImage(img,(W-w)/2,(H-h)/2,w,h); res(c.toDataURL("image/jpeg",0.8)); }; img.onerror=rej; img.src=dataUrl; }); }
+async function sharePhoto(id, slot){
+  if(!cloudUser){ toast("Sign in to share your photo with everyone."); return signIn(); }
+  const r=R_BY_ID[id], base=(r&&r.base)||id;
+  try{ toast("Sending…"); await cloud.submitPhoto(base, await toThumb(S.photos[id]), R_BY_ID[base]?R_BY_ID[base].title:r.title);
+    S.submitted=Object.assign({},S.submitted,{[id]:Date.now()}); save(); track("photoSubmits"); toast("Thanks! It shows for everyone once it's approved."); openRecipe(id,slot); }
+  catch(e){ toast("Couldn't send it ("+(e.code||e.message||"error")+")."); }
+}
 function shrinkImage(file,max){ return new Promise((res,rej)=>{ const img=new Image(); img.onload=()=>{
   const k=Math.min(1,max/Math.max(img.width,img.height)), c=document.createElement("canvas"); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
   c.getContext("2d").drawImage(img,0,0,c.width,c.height); c.toBlob(b=>b?res(b):rej(),"image/jpeg",0.8); URL.revokeObjectURL(img.src); }; img.onerror=rej; img.src=URL.createObjectURL(file); }); }
@@ -3096,12 +3125,51 @@ function pantryItems(){
       const m=map[n]||(map[n]={key:n,recipes:[]}); if(!m.recipes.includes(r.title)) m.recipes.push(r.title); } }
   return Object.values(map).sort((a,b)=>b.recipes.length-a.recipes.length||a.key.localeCompare(b.key));
 }
+/* your pantry: anything you keep at home, with an optional expiration date; it lives with your account, not with one plan */
+const dayStr = d => { const x=d||new Date(); return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0"); };
+function invStatus(it){
+  if(!it.exp) return {cls:"", txt:"No date"};
+  const days=Math.round((new Date(it.exp+"T00:00")-new Date(dayStr()+"T00:00"))/864e5);
+  if(days<0) return {cls:"expired", txt:"Expired"+(days<-1?" "+(-days)+" days ago":" yesterday")};
+  if(days===0) return {cls:"soon", txt:"Expires today"};
+  if(days<=3) return {cls:"soon", txt:"Expires in "+days+" day"+(days>1?"s":"")};
+  return {cls:"", txt:"Good until "+new Date(it.exp+"T00:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})};
+}
+const expiredCount = () => (S.inventory||[]).filter(it=>invStatus(it).cls==="expired").length;
+const inPantry = name => (S.inventory||[]).some(it=>invStatus(it).cls!=="expired" && it.name.toLowerCase()===String(name).toLowerCase());
+function inventorySection(){
+  const inv=S.inventory, sorted=inv.slice().sort((a,b)=>(a.exp||"9999")<(b.exp||"9999")?-1:(a.exp||"9999")>(b.exp||"9999")?1:a.name.localeCompare(b.name));
+  const nm=el("input",{type:"text",placeholder:"Add anything, e.g. chicken thighs",maxlength:50,"aria-label":"Item"});
+  const qty=el("input",{type:"text",placeholder:"Amount (optional)",maxlength:20,"aria-label":"Amount",style:"max-width:150px"});
+  const ex=el("input",{type:"date","aria-label":"Expires on",title:"Expires on"});
+  const add=()=>{ const n=nm.value.trim(); if(!n) return nm.focus(); inv.push({id:"i"+Date.now().toString(36)+Math.random().toString(36).slice(2,5), name:n.charAt(0).toUpperCase()+n.slice(1), qty:qty.value.trim(), exp:ex.value||"", added:Date.now()}); save(); keepScroll(renderPantry); renderCounts(); toast("Added “"+n+"” to your pantry"); };
+  nm.addEventListener("keydown",e=>{ if(e.key==="Enter") add(); });
+  const exp=expiredCount();
+  return el("section",{class:"inv"},
+    el("h3",{class:"sub"},"My pantry"),
+    el("p",{class:"note",style:"margin:0 0 8px"},"Keep track of what's in your fridge, freezer and cupboards. Add an expiration date and MealTote shows when something has gone bad."),
+    exp?el("div",{class:"expbanner"},el("b",{},exp+" item"+(exp>1?"s":"")+" expired."),' Toss '+(exp>1?"them":"it")+' or mark '+(exp>1?"them":"it")+' used up.'):null,
+    el("div",{class:"invadd"}, nm, qty, el("label",{class:"invdate"}, el("span",{},"Expires"), ex), el("button",{class:"btn primary small",onclick:add},"Add")),
+    sorted.length ? el("div",{class:"pantry-list"}, sorted.map(it=>{ const st=invStatus(it);
+      const d=el("input",{type:"date",value:it.exp||"","aria-label":"Expires on",onchange:e=>{ it.exp=e.target.value||""; save(); keepScroll(renderPantry); renderCounts(); }});
+      return el("div",{class:"prow2 invrow "+st.cls},
+        el("div",{class:"grow"}, el("div",{class:"nm"},it.name+(it.qty?" · "+it.qty:"")), el("div",{class:"pd"}, el("span",{class:"expchip "+st.cls},st.txt))),
+        d,
+        el("button",{class:"btn small",title:"Add to this plan's shopping list",onclick:()=>{ S.pantry.add[it.name]=1; save(); renderCounts(); toast("“"+it.name+"” is on your shopping list"); }},"+ List"),
+        el("button",{class:"btn small","aria-label":"Remove "+it.name,onclick:()=>{ S.inventory=inv.filter(x=>x.id!==it.id); save(); keepScroll(renderPantry); renderCounts(); }},st.cls==="expired"?"Toss":"Used up")); }))
+      : el("p",{class:"note"},"Nothing here yet."));
+}
 function renderPantry(){
-  const m=$("#app"); m.innerHTML=""; const P=S.pantry, items=pantryItems();
+  const m=$("#app"); m.innerHTML="";
+  m.append(el("div",{class:"planhead"}, el("div",{}, el("div",{class:"eyebrow"},"Pantry"), el("h2",{},"What's in your kitchen"))));
+  m.append(inventorySection());
+  if(!S.plan) return;
+  const P=S.pantry, items=pantryItems();
+  for(const x of items) if(inPantry(x.key) && !P.add[x.key]) P.have[x.key]=1;
   const haveN=items.filter(x=>P.have[x.key]).length, addN=Object.keys(P.add).length;
-  m.append(el("div",{class:"planhead"},
-    el("div",{}, el("div",{class:"eyebrow"},"Pantry"), el("h2",{},"Staples for this plan"),
-      el("p",{class:"lede"},"Oils, spices and other basics this week's recipes expect you to have. Check off what's in your kitchen. Out of something? Add it to this plan's shopping list.")),
+  m.append(el("div",{class:"planhead",style:"margin-top:22px"},
+    el("div",{}, el("h3",{class:"sub",style:"margin:0"},"Staples for this plan"),
+      el("p",{class:"note",style:"margin:4px 0 0"},"Oils, spices and other basics this week's recipes expect you to have. Check off what's in your kitchen. Out of something? Add it to this plan's shopping list.")),
     el("div",{class:"actions"},
       el("button",{class:"btn small",onclick:()=>{ for(const x of items) if(!P.add[x.key]) P.have[x.key]=1; save(); keepScroll(renderPantry); renderCounts(); }},"I have everything"),
       el("button",{class:"btn small",onclick:()=>{ S.pantry={have:{},add:{}}; save(); keepScroll(renderPantry); renderCounts(); }},"Start over"))));
@@ -3131,6 +3199,16 @@ function renderPantry(){
 /* ------------------------------------------------------------------ settings: everything that isn't a tab, in one place (the More tab on phones) */
 const APP_VERSION = "2026.10.26";
 function openSettings(){ if(S.profile && S.plan && !OB) showApp("settings"); else { OB=null; tab="settings"; $("#tabs").hidden=true; renderSettings(); window.scrollTo(0,0); } }
+// the Backend pulls up over the app (admin.html in a frame) with its own close button, so the home-screen app never gets stuck there
+function openBackend(){
+  if($("#backendSheet")) return;
+  const close=()=>{ wrap.remove(); document.body.style.overflow=""; };
+  const wrap=el("div",{class:"fullsheet",id:"backendSheet",role:"dialog","aria-label":"Backend"},
+    el("div",{class:"fsbar"}, el("b",{},"Backend"), el("button",{class:"btn small primary",onclick:close,"aria-label":"Close the Backend"},"✕ Close")),
+    el("iframe",{src:"admin.html?embed=1",title:"MealTote Backend"}));
+  document.body.append(wrap); document.body.style.overflow="hidden";
+  document.addEventListener("keydown",function esc(e){ if(e.key==="Escape"){ close(); document.removeEventListener("keydown",esc); } });
+}
 function renderSettings(){
   const m=$("#app"); m.innerHTML=""; const u=cloudUser, admin=u && u.email==="starsidecollective@gmail.com";
   const row=(icon,title,sub,on,href)=>el(href?"a":"button",{class:"srow",href:href||null,onclick:href?null:on}, icon?el("span",{html:""}):null, el("span",{class:"grow"}, el("b",{},title), sub?el("small",{},sub):null));
@@ -3145,14 +3223,15 @@ function renderSettings(){
       row(null,"My plans",Object.keys(PLANS).length+" saved · open, rename or delete",openPlansSheet),
       S.profile?row(null,"Edit my answers","People, macros, likes, stores and more",()=>{ $("#tabs").hidden=true; startQuiz(true); }):null,
       row(null,"New plan","Start a fresh week",startNewPlan),
-      S.plan?row(null,"Cookbook PDF","Print, text or email this week",()=>showApp("pdf")):null),
+      S.plan?row(null,"Cookbook PDF","Print, text or email this week",()=>showApp("pdf")):null,
+      row(null,"My pantry",(S.inventory.length?S.inventory.length+" items":"Track what you have")+(expiredCount()?" · "+expiredCount()+" expired":""),()=>{ if(S.plan&&S.profile) showApp("pantry"); else { tab="pantry"; $("#tabs").hidden=true; renderPantry(); window.scrollTo(0,0); } })),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Look"),
       row(null,"Theme","Styles, light or dark and accent colors",openThemeSheet)),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Support & help"),
       row(null,"♥ Support MealTote","Chip in to keep it free",null,"support.html"),
       row(null,"Feedback & ideas","Report a bug or ask for a recipe or store",null,"https://github.com/Snooji/mealtote/issues"),
       row(null,"Install on your phone","iPhone: Share → Add to Home Screen. Android: menu → Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
-    admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Donation methods, page text and the donation log",null,"admin.html")) : null,
+    admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Analytics, photo submissions and donations",openBackend)) : null,
     el("p",{class:"note"},"MealTote "+APP_VERSION+(u?" · signed in as "+u.email:""))));
 }
 
@@ -3266,6 +3345,8 @@ function renderPlan(){
     el("div",{class:"actions"}, el("button",{class:"btn",id:"shuffleBtn",onclick:()=>{ generatePlan(); save(); renderPlan(); renderCounts(); toast("New plan ready"); }},"Shuffle plan"),
       el("button",{class:"btn",onclick:()=>showApp("groceries")},"Grocery list"),
       el("button",{class:"btn primary",onclick:()=>showApp("pdf")},"Export PDF"))));
+  if(expiredCount()) m.append(el("div",{class:"expbanner",style:"margin:12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"},
+    el("span",{}, el("b",{},expiredCount()+" pantry item"+(expiredCount()>1?"s":"")+" expired.")), el("button",{class:"btn small",onclick:()=>showApp("pantry")},"Open pantry")));
   if(!cloudUser && cloudOn()) m.append(el("div",{class:"savebanner"},
     el("div",{}, el("b",{},"This plan is only saved on this device."), el("div",{class:"note"},"Sign in with Google to keep it and all your plans on your account, on any phone or computer.")),
     el("button",{class:"btn primary small",onclick:signIn},"Sign in to save")));
@@ -3406,7 +3487,8 @@ function openRecipe(id, slot){
       el("div",{class:"prepbadge"}, el("span",{class:"tag "+prepMode(r)},PREP_LABEL[prepMode(r)]), el("span",{class:"note"}," · on a prep week, about "+nightMinutes(r)+" min on the night")),
       el("div",{class:"actions"},
         el("button",{class:"btn",onclick:()=>pickPhoto(id)}, S.photos[id]?"Replace photo":"Use my own photo"),
-        S.photos[id]?el("button",{class:"btn",onclick:()=>{ delete S.photos[id]; save(); openRecipe(id,slot); refresh(); }},"Remove my photo"):null),
+        S.photos[id]?el("button",{class:"btn",onclick:()=>{ delete S.photos[id]; save(); openRecipe(id,slot); refresh(); }},"Remove my photo"):null,
+        S.photos[id]?el("button",{class:"btn"+(S.submitted&&S.submitted[id]?"":" primary"),disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>sharePhoto(id,slot)}, S.submitted&&S.submitted[id]?"Sent for review ✓":"Share it with everyone"):null),
       el("div",{class:"cols"},
         el("div",{style:"display:grid;gap:18px;align-content:start"},
           el("div",{}, el("h3",{class:"sub"},"Ingredients"), ingList, scaleNote, macroPanel(r,mealKey,slot), el("p",{class:"note"},"From your pantry: "+r.pantry+".")),
@@ -3756,7 +3838,7 @@ async function syncPlans(){
 }
 window.addEventListener("cloud-error", e=>{ const c=e.detail&&(e.detail.code||e.detail.message); if(c) toast("Sign-in didn't finish ("+c+")"); });
 function connectStore(){
-  const go=()=>{ renderAccount(); if(cloudOn()) cloud.onUser(onCloudUser); };
+  const go=()=>{ renderAccount(); if(cloudOn()){ cloud.onUser(onCloudUser); loadCommunity(); } };
   if(window.cloud) go(); else window.addEventListener("cloud-ready",go,{once:true});
 }
 
@@ -3786,7 +3868,7 @@ async function openProfile(){
       el("div",{class:"actions"},
         el("button",{class:"btn small",onclick:async()=>{ await cloud.signOut(); toast("Signed out. Your plan stays in this browser."); boot(); }},"Sign out"),
         el("button",{class:"btn small danger",id:"delData",onclick:delData},"Delete my account data"),
-        u.email==="starsidecollective@gmail.com" ? el("a",{class:"btn small",href:"admin.html"},"Open the Backend") : null),
+        u.email==="starsidecollective@gmail.com" ? el("button",{class:"btn small",onclick:openBackend},"Open the Backend") : null),
       el("p",{class:"note"},"Deleting removes your profile, saved plans and uploaded photos from MealTote. Your Google account isn't affected.")),
     supportCard()));
   function loadPlans(){ plansBox.innerHTML="";
@@ -3884,7 +3966,7 @@ function openPlansSheet(){
 }
 
 /* ------------------------------------------------------------------ site analytics: anonymous daily counts for the Backend (stats/YYYY-MM-DD) */
-const TRACKED = new Set(["views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
+const TRACKED = new Set(["photoSubmits","views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
   "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile"]);
 let trackQ = {}, trackT = 0;
 function track(k, n=1){ if(!TRACKED.has(k)) return; trackQ[k]=(trackQ[k]||0)+n; clearTimeout(trackT); trackT=setTimeout(flushTrack, 4000); }

@@ -65,6 +65,15 @@ if (configured) {
         if (Object.keys(data).length) await setDoc(doc(db, "stats", day), data, { merge: true });
       },
 
+      // community photos: signed-in people submit a photo for a recipe; the admin approves it in the Backend,
+      // then it's the photo everyone sees (communityPhotos/{recipeId}, listed in site/communityPhotos)
+      async submitPhoto(rid, dataUrl, title) {
+        const u = api.user;
+        await addDoc(collection(db, "submissions"), { rid, data: dataUrl, uid: u.uid, name: (u.displayName || "A MealTote cook").slice(0, 80), title: String(title || rid).slice(0, 160), at: Date.now(), status: "pending" });
+      },
+      async communityIndex() { const s = await getDoc(doc(db, "site", "communityPhotos")); return s.exists() ? (s.data().ids || {}) : {}; },
+      async communityPhoto(rid) { const s = await getDoc(doc(db, "communityPhotos", rid)); return s.exists() ? s.data() : null; },
+
       // saved plans: users/{uid}/plans/{id}
       async savePlan(name, stateJson) { const r = await addDoc(plansCol(), { name, state: stateJson, createdMs: Date.now(), createdAt: serverTimestamp() }); return r.id; },
       async listPlans() { const q = await getDocs(query(plansCol(), orderBy("createdMs", "desc"), limit(50))); return q.docs.map(d => ({ id: d.id, ...d.data() })); },

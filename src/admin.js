@@ -6,9 +6,12 @@ const ADMIN_EMAIL = "starsidecollective@gmail.com";
 const SDK = "https://www.gstatic.com/firebasejs/10.12.2";
 const { initializeApp } = await import(`${SDK}/firebase-app.js`);
 const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where } = await import(`${SDK}/firebase-firestore.js`);
+const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where, deleteField } = await import(`${SDK}/firebase-firestore.js`);
 
-const app = initializeApp(firebaseConfig);
+// opened inside the app (Settings → Open the Backend): the app draws the header and close button
+if (new URLSearchParams(location.search).has("embed")) document.documentElement.classList.add("embed");
+const host = location.hostname, ownDomain = host === "mealtote.com" || host.endsWith(".web.app") || host.endsWith(".firebaseapp.com");
+const app = initializeApp(ownDomain ? { ...firebaseConfig, authDomain: host } : firebaseConfig);
 const auth = getAuth(app), db = getFirestore(app);
 const configRef = doc(db, "site", "donations"), logCol = collection(db, "donations");
 
@@ -18,7 +21,7 @@ const money = n => "$" + (Math.round((n || 0) * 100) / 100).toLocaleString("en-U
 const toast = msg => { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2400); };
 const T = DONATE.TYPES;
 
-let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30;
+let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30, subs = [], community = {}, photoErr = "";
 
 onAuthStateChanged(auth, async u => {
   user = u; $("#who").innerHTML = "";
@@ -31,6 +34,7 @@ onAuthStateChanged(auth, async u => {
     if (!snap.exists()) dirty = true; // first visit: nothing saved yet, so the support page is using the defaults
     await loadLog();
     await loadStats();
+    await loadPhotos();
     draw();
   } catch (e) {
     gate("Couldn't load the Backend: " + esc(e.code || e.message) + ". If you just changed firestore.rules, deploy them with <code>firebase deploy --only firestore:rules</code>.", false);
@@ -83,10 +87,10 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ analytics: drawAnalytics, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, photos: drawPhotos, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
@@ -138,6 +142,45 @@ function drawAnalytics(p) {
     <p class="note">Counts only: no names, emails, IP addresses or cookies are stored, just one running total per day. Counting started when analytics was switched on, so earlier days show zero. Days are in UTC. <button class="btn small" id="statsReload">Refresh</button></p>`;
   p.querySelectorAll("[data-range]").forEach(b => b.onclick = () => { range = +b.dataset.range; draw(); });
   p.querySelector("#statsReload").onclick = async () => { await loadStats(); draw(); toast("Updated"); };
+}
+
+/* ------------------------------------------------------------------ community photos: approve or reject what people submit */
+async function loadPhotos() {
+  try {
+    const q = await getDocs(query(collection(db, "submissions"), orderBy("at", "desc"), limit(60)));
+    subs = q.docs.map(d => ({ id: d.id, ...d.data() }));
+    const idx = await getDoc(doc(db, "site", "communityPhotos")); community = idx.exists() ? (idx.data().ids || {}) : {}; photoErr = "";
+  } catch (e) { subs = []; community = {}; photoErr = e.code || e.message; }
+}
+async function approve(sub) {
+  try {
+    await setDoc(doc(db, "communityPhotos", sub.rid), { data: sub.data, by: sub.name, title: sub.title, at: Date.now(), uid: sub.uid });
+    await setDoc(doc(db, "site", "communityPhotos"), { ids: { [sub.rid]: { by: sub.name, at: Date.now() } } }, { merge: true });
+    await deleteDoc(doc(db, "submissions", sub.id));
+    toast("Approved. Everyone now sees this photo for " + sub.title + "."); await loadPhotos(); draw();
+  } catch (e) { toast("Couldn't approve: " + (e.code || e.message)); }
+}
+async function reject(sub) {
+  try { await deleteDoc(doc(db, "submissions", sub.id)); toast("Rejected"); await loadPhotos(); draw(); }
+  catch (e) { toast("Couldn't reject: " + (e.code || e.message)); }
+}
+async function unpublish(rid) {
+  try {
+    await deleteDoc(doc(db, "communityPhotos", rid));
+    await setDoc(doc(db, "site", "communityPhotos"), { ids: { [rid]: deleteField() } }, { merge: true });
+    toast("Removed. The recipe is back to its original photo."); await loadPhotos(); draw();
+  } catch (e) { toast("Couldn't remove: " + (e.code || e.message)); }
+}
+function drawPhotos(p) {
+  const live = Object.entries(community).sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
+  p.innerHTML = `${photoErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load photos (${esc(photoErr)}). The database rules for this go live with the next deploy.</p></div>` : ""}
+    <div class="card"><h3>Waiting for review (${subs.length})</h3>
+      <p class="note" style="margin:0">People can share their own photo of a recipe from the recipe page. Approve one and it becomes the photo everyone sees for that recipe.</p>
+      <div class="subgrid">${subs.map((x, i) => `<div class="sub"><img src="${x.data}" alt=""><div><b>${esc(x.title)}</b><div class="note">from ${esc(x.name)} · ${new Date(x.at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</div>${community[x.rid] ? `<div class="note">Replaces the community photo already live</div>` : ""}</div><div class="actions"><button class="btn small primary" data-ok="${i}">Approve</button><button class="btn small" data-no="${i}">Reject</button></div></div>`).join("") || `<p class="note">Nothing waiting.</p>`}</div></div>
+    <div class="card"><h3>Live community photos (${live.length})</h3>${live.length ? `<table class="log">${live.map(([rid, v]) => `<tr><td>${esc(rid)}</td><td class="note">by ${esc(v.by || "")}</td><td class="n"><button class="btn small" data-un="${esc(rid)}">Remove</button></td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">None yet.</p>`}</div>`;
+  p.querySelectorAll("[data-ok]").forEach(b => b.onclick = () => approve(subs[+b.dataset.ok]));
+  p.querySelectorAll("[data-no]").forEach(b => b.onclick = () => reject(subs[+b.dataset.no]));
+  p.querySelectorAll("[data-un]").forEach(b => b.onclick = () => unpublish(b.dataset.un));
 }
 
 function drawOverview(p, t) {

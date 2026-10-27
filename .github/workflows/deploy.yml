@@ -31,6 +31,8 @@ jobs:
       # database rules go out only when firestore.rules changed (or on a manual run)
       - name: Deploy Firestore rules
         if: env.HAS_KEY == 'true'
+        # until the deploy key has the Firebase Rules Admin role this fails; the site itself is already deployed above
+        continue-on-error: true
         env:
           SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MEALTOTE_DA8A7 }}
         run: |

@@ -469,3 +469,26 @@ nav.tabs .short,nav.tabs .mobile,nav.tabs button.mobile{display:none}
    so fields are 16px there, and nothing can scroll the page horizontally */
 html,body{overflow-x:clip;overscroll-behavior-x:none;max-width:100%}
 @media (max-width:720px){ input,select,textarea{font-size:16px !important} }
+
+/* pantry inventory */
+.inv{display:grid;gap:8px}
+.invadd{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.invadd input[type=text]{flex:1 1 180px;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
+.invdate{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.inv input[type=date]{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 8px;font:inherit;max-width:150px}
+.invrow{flex-wrap:wrap}
+.invrow.expired{border-color:var(--kd-up);background:color-mix(in srgb,var(--kd-up) 6%,var(--surface))}
+.expchip{display:inline-block;font-weight:600}
+.expchip.expired{color:var(--kd-up)}
+.expchip.soon{color:#B26A00}
+.expbanner{border:1.5px solid var(--kd-up);color:var(--kd-up);border-radius:10px;padding:10px 12px;background:color-mix(in srgb,var(--kd-up) 7%,transparent)}
+nav.tabs .count.alert{background:var(--kd-up);color:#fff}
+
+/* Backend pull-up */
+.fullsheet{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;animation:fsup .22s ease-out}
+.fullsheet .fsbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;border-bottom:1px solid var(--line);background:var(--surface)}
+.fullsheet .fsbar b{font-family:var(--f-display,inherit);font-size:20px}
+.fullsheet iframe{flex:1;width:100%;border:0;background:var(--bg)}
+@keyframes fsup{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+.invrow .grow{flex:1 1 100%}
+.invrow input[type=date]{flex:1 1 140px}
