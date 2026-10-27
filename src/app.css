@@ -464,3 +464,8 @@ nav.tabs .short,nav.tabs .mobile,nav.tabs button.mobile{display:none}
 .mfit span{margin-right:8px;color:var(--muted)}
 .mfit span.good{color:var(--kd-down);font-weight:600}
 .mfit span.bad{color:var(--kd-up);font-weight:600}
+
+/* keep the page still on phones: iOS zooms into any field under 16px (and the zoomed page then slides sideways),
+   so fields are 16px there, and nothing can scroll the page horizontally */
+html,body{overflow-x:clip;overscroll-behavior-x:none;max-width:100%}
+@media (max-width:720px){ input,select,textarea{font-size:16px !important} }
