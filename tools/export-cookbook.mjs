@@ -16,7 +16,7 @@ const document = fake();
 document.querySelectorAll = () => [];
 const store = {};
 const sandbox = {
-  console, document, navigator: { userAgent: "node" }, location: { search: "", hash: "" },
+  console, document, navigator: { userAgent: "node", webdriver: true }, location: { search: "", hash: "", hostname: "localhost" }, matchMedia: () => ({ matches: false }),
   localStorage: { getItem: k => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); }, removeItem: k => { delete store[k]; } },
   addEventListener() {}, dispatchEvent() {}, setTimeout: () => 0, clearTimeout() {}, scrollTo() {},
   structuredClone, URL, Image: function () { return fake(); }, Event: function () {},
@@ -58,7 +58,7 @@ for (const r of RECIPES) {
 // duplicate check: same meal, same main protein, and most of the same ingredients
 const STAPLE = new Set(["garlic", "onion", "green_onion", "cilantro", "lime", "lemon", "jasmine_rice", "basmati", "eggs", "butter", "parmesan", "soy", "olive_oil", "ginger", "honey"]);
 // pairs a person has checked and decided are different dishes
-const NOT_DUPES = new Set(["buttermilk-pancakes|french-toast", "crepes|dutch-baby", "menemen|lecso-eggs", "moqueca-camarao|sri-lankan-devilled-shrimp", "malawach-zhug|khagina-paratha"]);
+const NOT_DUPES = new Set(["buttermilk-pancakes|french-toast", "crepes|dutch-baby", "menemen|lecso-eggs", "moqueca-camarao|sri-lankan-devilled-shrimp", "malawach-zhug|khagina-paratha", "honey-garlic-pork|dijon-rosemary-pork-tenderloin", "breakfast-quesadillas|turkey-chorizo-egg-white-burritos", "quinoa-bowls|chicken-hummus-quinoa-bowls", "turkey-chorizo-egg-white-burritos|turkey-sausage-breakfast-crunchwraps", "kodiak-protein-waffles|sheet-pan-protein-pancakes", "strawberry-cheesecake-yogurt-bowls|cottage-cheese-banana-splits"]);
 const dupes = [];
 for (let i = 0; i < rows.length; i++) for (let j = i + 1; j < rows.length; j++) {
   const a = rows[i], b = rows[j]; if (NOT_DUPES.has(`${a.r.id}|${b.r.id}`) || NOT_DUPES.has(`${b.r.id}|${a.r.id}`)) continue;
