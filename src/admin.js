@@ -21,7 +21,7 @@ const money = n => "$" + (Math.round((n || 0) * 100) / 100).toLocaleString("en-U
 const toast = msg => { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2400); };
 const T = DONATE.TYPES;
 
-let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30, subs = [], community = {}, photoErr = "", rsubs = [], liveRecipes = [];
+let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30, subs = [], community = {}, photoErr = "", rsubs = [], liveRecipes = [], recipeList = null, pq = "", pf = "all", pshow = 60;
 
 onAuthStateChanged(auth, async u => {
   user = u; $("#who").innerHTML = "";
@@ -88,10 +88,10 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["recipes", `Recipes${rsubs.length ? ` (${rsubs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["recipes", `Recipes${rsubs.length ? ` (${rsubs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ analytics: drawAnalytics, photos: drawPhotos, recipes: drawRecipes, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
@@ -194,6 +194,100 @@ function drawRecipes(p) {
   p.querySelectorAll("[data-rno]").forEach(b => b.onclick = () => rejectRecipe(rsubs[+b.dataset.rno]));
   p.querySelectorAll("[data-run]").forEach(b => b.onclick = () => unpublishRecipe(b.dataset.run));
 }
+/* ------------------------------------------------------------------ all photos: see every recipe's photo; swap it for a better free-licensed one or the logo */
+const BUNDLED = window.BB_PHOTOS || {};
+async function loadRecipeList() { if (!recipeList) recipeList = await (await fetch("recipes/list.json", { cache: "no-cache" })).json(); }
+function photoState(id) {
+  const c = community[id];
+  if (c && c.kind === "logo") return { src: "photos/placeholder.jpg", tag: "logo", label: "Logo (set by you)" };
+  if (c && c.kind === "swap") return { src: null, tag: "swap", label: "Swapped · " + (c.by || "") };
+  if (c) return { src: null, tag: "user", label: "User photo · " + (c.by || "") };
+  if (BUNDLED[id]) return { src: BUNDLED[id], tag: "orig", label: "Original" };
+  return { src: "photos/placeholder.jpg", tag: "logo", label: "Logo (no photo)" };
+}
+async function setIndex(id, entry) { await setDoc(doc(db, "site", "communityPhotos"), { ids: { [id]: entry === null ? deleteField() : entry } }, { merge: true }); }
+async function useLogo(id) {
+  try { await setIndex(id, { kind: "logo", by: "", at: Date.now() }); toast("Set to the logo for everyone."); await loadPhotos(); draw(); }
+  catch (e) { toast("Couldn't change it: " + (e.code || e.message)); }
+}
+async function resetPhoto(id) {
+  try { await deleteDoc(doc(db, "communityPhotos", id)).catch(() => {}); await setIndex(id, null); toast("Back to the original."); await loadPhotos(); draw(); }
+  catch (e) { toast("Couldn't reset: " + (e.code || e.message)); }
+}
+// cut any image to the 800×600 JPEG every recipe photo uses
+function toThumb(blob) { return new Promise((res, rej) => { const img = new Image(); img.onload = () => {
+  const W = 800, H = 600, c = document.createElement("canvas"); c.width = W; c.height = H; const k = Math.max(W / img.width, H / img.height);
+  c.getContext("2d").drawImage(img, (W - img.width * k) / 2, (H - img.height * k) / 2, img.width * k, img.height * k); URL.revokeObjectURL(img.src); res(c.toDataURL("image/jpeg", 0.8)); };
+  img.onerror = rej; img.src = URL.createObjectURL(blob); }); }
+const LIC = r => (r.license === "cc0" ? "CC0" : r.license === "pdm" ? "Public domain" : "CC " + r.license.toUpperCase() + " " + (r.license_version || "")).trim();
+function openSwap(id, title) {
+  const q0 = title.replace(/\(.*?\)/g, "").replace(/\b(with|over|and|&)\b.*$/i, "").trim();
+  const wrap = document.createElement("div"); wrap.className = "pick";
+  wrap.innerHTML = `<div class="box" role="dialog" aria-label="Swap photo"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><b>Swap photo: ${esc(title)}</b><button class="btn small" data-x>✕ Close</button></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="text" value="${esc(q0)}" style="flex:1;min-width:180px" aria-label="Search"><button class="btn small primary" data-go>Search</button><button class="btn small" data-logo>Use the logo instead</button></div>
+    <p class="note" style="margin:0">Free-licensed photos from Openverse (Flickr, Wikimedia and more). Tap one to use it for everyone; it's credited automatically.</p>
+    <div class="pgrid" data-res><p class="note">Searching…</p></div><button class="btn small" data-more hidden>More results</button></div>`;
+  document.body.append(wrap);
+  const inp = wrap.querySelector("input"), res = wrap.querySelector("[data-res]"), more = wrap.querySelector("[data-more]"); let page = 1, results = [];
+  const close = () => wrap.remove();
+  wrap.querySelector("[data-x]").onclick = close; wrap.onclick = e => { if (e.target === wrap) close(); };
+  wrap.querySelector("[data-logo]").onclick = async () => { close(); await useLogo(id); };
+  const search = async (add) => {
+    if (!add) { page = 1; results = []; res.innerHTML = `<p class="note">Searching…</p>`; }
+    try {
+      const r = await fetch(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(inp.value)}&license=by,by-sa,cc0,pdm&page_size=20&page=${page}&mature=false`);
+      if (r.status === 429) throw new Error("Openverse is busy, try again in a minute");
+      const d = await r.json(); results = results.concat((d.results || []).filter(x => !x.width || x.width >= 600));
+      res.innerHTML = results.length ? "" : `<p class="note">Nothing found. Try a simpler search, like just the dish name.</p>`;
+      results.forEach((x, i) => { const c = document.createElement("button"); c.className = "cand"; c.type = "button";
+        c.innerHTML = `<img src="${esc(x.thumbnail || x.url)}" alt="" loading="lazy"><span>${esc(LIC(x))} · ${esc(x.creator || "Unknown")}</span>`; c.onclick = () => choose(x); res.append(c); });
+      more.hidden = !(d.page_count > page);
+    } catch (e) { res.innerHTML = `<p class="note warnline">${esc(e.message)}</p>`; }
+  };
+  more.onclick = () => { page++; search(true); };
+  wrap.querySelector("[data-go]").onclick = () => search(false); inp.onkeydown = e => { if (e.key === "Enter") search(false); };
+  const choose = async x => {
+    res.innerHTML = `<p class="note">Saving…</p>`;
+    try {
+      let blob = null;
+      for (const u of [`https://api.openverse.org/v1/images/${x.id}/thumb/?full_size=true`, x.url]) {
+        try { const r = await fetch(u); if (r.ok) { blob = await r.blob(); if (blob.size > 5000) break; } } catch (e) {}
+      }
+      if (!blob) throw new Error("couldn't download that image, pick another");
+      const data = await toThumb(blob), by = String(x.creator || "Unknown").slice(0, 80), license = LIC(x), page = x.foreign_landing_url || "";
+      await setDoc(doc(db, "communityPhotos", id), { data, by, title: x.title || "", at: Date.now(), license, page });
+      await setIndex(id, { kind: "swap", by, license, page, at: Date.now() });
+      close(); toast("Swapped. Everyone sees the new photo now."); await loadPhotos(); draw();
+    } catch (e) { res.innerHTML = `<p class="note warnline">${esc(e.message || e)}</p>`; }
+  };
+  search(false);
+}
+async function drawAllPhotos(p) {
+  p.innerHTML = `<p class="note">Loading recipes…</p>`;
+  try { await loadRecipeList(); } catch (e) { p.innerHTML = `<p class="note warnline">Couldn't load the recipe list.</p>`; return; }
+  const q = pq.trim().toLowerCase();
+  const list = recipeList.filter(([id, t]) => (!q || t.toLowerCase().includes(q) || id.includes(q)) && (pf === "all" || photoState(id).tag === pf));
+  const counts = { orig: 0, swap: 0, user: 0, logo: 0 }; for (const [id] of recipeList) counts[photoState(id).tag]++;
+  p.innerHTML = `<div class="card"><h3>Every recipe's photo</h3><p class="note" style="margin:0">Tap <b>Swap</b> to pick a better free-licensed photo, <b>Logo</b> to show the MealTote logo instead, or <b>Reset</b> to go back to the original. Changes show for everyone right away.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="search" placeholder="Search recipes" value="${esc(pq)}" data-q style="flex:1;min-width:180px">
+    <select data-f>${[["all", `All (${recipeList.length})`], ["orig", `Original (${counts.orig})`], ["swap", `Swapped (${counts.swap})`], ["user", `User photos (${counts.user})`], ["logo", `Logo (${counts.logo})`]].map(([k, l]) => `<option value="${k}"${pf === k ? " selected" : ""}>${l}</option>`).join("")}</select></div></div>
+    <div class="pgrid" data-grid></div>${list.length > pshow ? `<button class="btn" data-more style="margin-top:10px">Show more (${list.length - pshow} left)</button>` : ""}`;
+  const grid = p.querySelector("[data-grid]");
+  for (const [id, title] of list.slice(0, pshow)) {
+    const st = photoState(id), t = document.createElement("div"); t.className = "ptile";
+    t.innerHTML = `<img alt="" loading="lazy"><div class="pt"><span class="ptag ${st.tag}">${esc(st.label)}</span><b>${esc(title)}</b></div><div class="acts"><button class="btn small primary" data-swap>Swap</button><button class="btn small" data-logo>Logo</button>${community[id] ? `<button class="btn small" data-reset>Reset</button>` : ""}</div>`;
+    const img = t.querySelector("img");
+    if (st.src) img.src = st.src; else getDoc(doc(db, "communityPhotos", id)).then(s => { if (s.exists()) img.src = s.data().data; }).catch(() => {});
+    t.querySelector("[data-swap]").onclick = () => openSwap(id, title);
+    t.querySelector("[data-logo]").onclick = () => useLogo(id);
+    const rs = t.querySelector("[data-reset]"); if (rs) rs.onclick = () => resetPhoto(id);
+    grid.append(t);
+  }
+  const qi = p.querySelector("[data-q]"); qi.oninput = () => { pq = qi.value; pshow = 60; clearTimeout(drawAllPhotos.t); drawAllPhotos.t = setTimeout(() => { drawAllPhotos(p).then(() => { const f = p.querySelector("[data-q]"); f.focus(); f.setSelectionRange(f.value.length, f.value.length); }); }, 250); };
+  p.querySelector("[data-f]").onchange = e => { pf = e.target.value; pshow = 60; drawAllPhotos(p); };
+  const mb = p.querySelector("[data-more]"); if (mb) mb.onclick = () => { pshow += 60; drawAllPhotos(p); };
+}
+
 async function approve(sub) {
   try {
     await setDoc(doc(db, "communityPhotos", sub.rid), { data: sub.data, by: sub.name, title: sub.title, at: Date.now(), uid: sub.uid });

@@ -502,3 +502,4 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .sharerec textarea{min-height:110px;resize:vertical}
 .grid2s{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .shareprev{width:100%;max-width:360px;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+@media (max-width:720px){ body>nav.tabs{position:fixed;left:0;right:0;bottom:0;transform:translateZ(0)} }

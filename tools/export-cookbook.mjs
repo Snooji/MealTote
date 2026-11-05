@@ -19,7 +19,7 @@ const sandbox = {
   console, document, navigator: { userAgent: "node", webdriver: true }, location: { search: "", hash: "", hostname: "localhost" }, matchMedia: () => ({ matches: false }),
   localStorage: { getItem: k => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); }, removeItem: k => { delete store[k]; } },
   addEventListener() {}, dispatchEvent() {}, setTimeout: () => 0, clearTimeout() {}, scrollTo() {},
-  structuredClone, URL, Image: function () { return fake(); }, Event: function () {},
+  structuredClone, URL, URLSearchParams, Image: function () { return fake(); }, Event: function () {},
 };
 sandbox.window = sandbox; sandbox.self = sandbox;
 vm.createContext(sandbox);
@@ -134,6 +134,8 @@ for (const { r } of rows) (groups[cuisine(r.id)] = groups[cuisine(r.id)] || []).
 fs.writeFileSync(path.join(pages, "index.html"), head(`${rows.length} Free Recipes with Nutrition | MealTote`, `Browse ${rows.length} free recipes from ${Object.keys(groups).length} cuisines, each with calories, protein and a grocery list, plus high-protein meal prep ideas.`, `${SITE}/recipes/`, `${SITE}/icons/icon-512.png`) +
   `<h1>${rows.length} recipes</h1><p class="lede">Weeknight classics, high-protein meal prep and dishes from ${Object.keys(groups).length} cuisines, each with nutrition per serving. Open any of them in MealTote to plan your week and build one grocery list.</p>` +
   Object.keys(groups).sort().map(g => `<h2>${esc(g)}</h2><div class="grid">${groups[g].sort((a, b) => a.title.localeCompare(b.title)).map(r => `<a href="/recipes/${r.id}">${esc(r.title)}</a>`).join("")}</div>`).join("") + foot);
+// for the Backend's All photos tab
+fs.writeFileSync(path.join(pages, "list.json"), JSON.stringify(rows.map(({ r }) => [r.id, r.title, r.meal, cuisine(r.id)])));
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(path.join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 console.log(`wrote ${rows.length} recipe pages to recipes/ and ${urls.length} URLs to sitemap.xml`);
