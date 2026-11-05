@@ -16,7 +16,7 @@ const document = fake();
 document.querySelectorAll = () => [];
 const store = {};
 const sandbox = {
-  console, document, navigator: { userAgent: "node", webdriver: true }, location: { search: "", hash: "", hostname: "localhost" }, matchMedia: () => ({ matches: false }),
+  console, document, navigator: { userAgent: "node", webdriver: true }, location: { search: "", hash: "", hostname: "localhost" }, matchMedia: () => ({ matches: false, addEventListener() {} }),
   localStorage: { getItem: k => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); }, removeItem: k => { delete store[k]; } },
   addEventListener() {}, dispatchEvent() {}, setTimeout: () => 0, clearTimeout() {}, scrollTo() {},
   structuredClone, URL, URLSearchParams, Image: function () { return fake(); }, Event: function () {},
