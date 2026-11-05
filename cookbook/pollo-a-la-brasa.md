@@ -2,7 +2,7 @@
 
 ![Peruvian Roast Chicken (Pollo a la Brasa) with Green Sauce](../photos/pollo-a-la-brasa.jpg)
 
-<sub>Photo: Dtarazona · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Un_cuarto_de_Pollo_a_la_Brasa.JPG)</sub>
+<sub>Photo: goodiesfirst · CC BY 2.0 · [source](https://www.flickr.com/photos/49215102@N00/8761648762)</sub>
 
 **Dinner** · Peruvian · 90 min · serves 5 · skill 2/3
 

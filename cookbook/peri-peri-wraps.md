@@ -2,7 +2,7 @@
 
 ![Peri-Peri Chicken Wraps with Garlic Yogurt](../photos/peri-peri-wraps.jpg)
 
-<sub>Photo: Banej · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Flame-grilled_PERi-PERi_chicken.jpg)</sub>
+<sub>Photo: Andy Li · CC0 · [source](https://commons.wikimedia.org/wiki/File:Handmade_Chicken_Shawarma_Wrap_-_Lavash.jpg)</sub>
 
 **Lunch** · South African · 30 min · serves 4 · skill 1/3
 

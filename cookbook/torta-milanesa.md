@@ -2,7 +2,7 @@
 
 ![Chicken Milanesa Tortas with Chipotle Mayo](../photos/torta-milanesa.jpg)
 
-<sub>Photo: Unknown · CC BY 2.5 · [source](https://commons.wikimedia.org/wiki/File:TORTA_DE_HUEVO.jpg)</sub>
+<sub>Photo: Edsel L · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/27119975@N00/22065005599)</sub>
 
 **Lunch** · Mexican · 40 min · serves 4 · skill 2/3
 

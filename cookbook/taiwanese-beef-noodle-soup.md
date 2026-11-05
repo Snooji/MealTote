@@ -2,7 +2,7 @@
 
 ![Taiwanese Spicy Beef Noodle Soup (Niu Rou Mian)](../photos/taiwanese-beef-noodle-soup.jpg)
 
-<sub>Photo: Berthe · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Lanzhou_Ramen.JPG)</sub>
+<sub>Photo: The original uploader was 未命名 at Chinese Wikipedia. · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Beef_noodle_soup.JPG)</sub>
 
 **Dinner** · Taiwanese · 180 min · serves 6 · skill 3/3
 

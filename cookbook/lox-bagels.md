@@ -2,7 +2,7 @@
 
 ![Everything Bagels with Lox & Cream Cheese](../photos/lox-bagels.jpg)
 
-<sub>Photo: Helen Cook · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:*this*_is_a_bagel.jpg)</sub>
+<sub>Photo: Kristina D.C. Hoeppner · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Lox-and-bagel-02.jpg)</sub>
 
 **Breakfast** · American comfort · 10 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Sweet Corn Griddle Cakes with Maple Butter & Turkey Bacon
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Sweet Corn Griddle Cakes with Maple Butter & Turkey Bacon](../photos/sweet-corn-griddle-cakes.jpg)
+
+<sub>Photo: City Foodsters · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:(Pancakes)_Sweet_Corn_%26_Mt._Tam_%27Shortstack%27_-_9380267047.jpg)</sub>
 
 **Breakfast** · Southern & soul food · 35 min · serves 4 · skill 2/3
 

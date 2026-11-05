@@ -2,7 +2,7 @@
 
 ![Mushroom & Parmesan Risotto](../photos/mushroom-risotto.jpg)
 
-<sub>Photo: Luca Nebuloni from Milan, Italy · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Risotto_with_speck_and_goat_cheese_(6101067436).jpg)</sub>
+<sub>Photo: spurekar · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Mushroom_and_Leek_Risotto_(49535206656).jpg)</sub>
 
 **Dinner** · Italian · 45 min · serves 4 · skill 2/3
 

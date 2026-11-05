@@ -2,7 +2,7 @@
 
 ![West African Jollof Rice with Chicken](../photos/jollof-rice.jpg)
 
-<sub>Photo: DebbieUfedo · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Nigerian_Jollof_02.jpg)</sub>
+<sub>Photo: Skarfmacaronne · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Jollof_rice_and_Dodo.jpg)</sub>
 
 **Dinner** · Nigerian & West African · 60 min · serves 6 · skill 2/3
 

@@ -2,7 +2,7 @@
 
 ![Ground Turkey Taco Salad with Salsa Ranch](../photos/taco-salad.jpg)
 
-<sub>Photo: Jeff Kramer from Austin, Texas, United States · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Flickr_jeffk_38941161--Taco_salad.jpg)</sub>
+<sub>Photo: flippinyank · CC BY 2.0 · [source](https://www.flickr.com/photos/26326001@N08/12895756035)</sub>
 
 **Lunch** · Tex-Mex · 25 min · serves 4 · skill 1/3
 

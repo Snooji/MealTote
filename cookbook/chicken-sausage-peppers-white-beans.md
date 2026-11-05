@@ -1,6 +1,8 @@
 # Chicken Sausage & Peppers Skillet with White Beans
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Chicken Sausage & Peppers Skillet with White Beans](../photos/chicken-sausage-peppers-white-beans.jpg)
+
+<sub>Photo: bobjudge · CC BY 2.0 · [source](https://www.flickr.com/photos/8286199@N08/3974128417)</sub>
 
 **Dinner** · Italian · 35 min · serves 4 · skill 1/3
 

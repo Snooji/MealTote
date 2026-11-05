@@ -2,7 +2,7 @@
 
 ![Somali Turkey Sambusa with Green Chili Sauce](../photos/turkey-sambusa.jpg)
 
-<sub>Photo: Adrião · CC BY 3.0 · [source](https://commons.wikimedia.org/wiki/File:Chamu%C3%A7as.jpg)</sub>
+<sub>Photo: kspoddar · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Samosachutney.jpg)</sub>
 
 **Lunch** · Kenyan & East African · 60 min · serves 4 · skill 2/3
 

@@ -2,7 +2,7 @@
 
 ![Kaiserschmarrn with Warm Berry Compote](../photos/kaiserschmarrn.jpg)
 
-<sub>Photo: Takeaway · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:2015_0731_Kaiserschmarrn_Apfelso%C3%9Fe_Edelweissh%C3%BCtte_S%C3%B6lden.jpg)</sub>
+<sub>Photo: Geolina163 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Hofzuckerb%C3%A4cker_Demel_Kaiserschmarrn_4.jpg)</sub>
 
 **Breakfast** · German & Austrian · 35 min · serves 4 · skill 2/3
 

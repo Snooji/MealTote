@@ -2,7 +2,7 @@
 
 ![Thai Chicken Larb with Sticky Rice](../photos/larb-gai.jpg)
 
-<sub>Photo: Bounthy · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Lao_Sua_Gai_(Sua_Chicken).jpg)</sub>
+<sub>Photo: Alpha from Melbourne, Australia · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/w/index.php?curid=83134723)</sub>
 
 **Lunch** · Thai · 40 min · serves 4 · skill 2/3
 

@@ -2,7 +2,7 @@
 
 ![Salmon or Ahi Poke Bowls](../photos/poke-bowls.jpg)
 
-<sub>Photo: Andy Li · CC0 · [source](https://commons.wikimedia.org/wiki/File:Fried_Tofu_Poke_Bowl_(S)_with_kimchi_sauce_-_Kitokito.jpg)</sub>
+<sub>Photo: JackyDee274 · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/147206588@N07/48073831787)</sub>
 
 **Lunch** · Hawaiian · 20 min · serves 4 · skill 1/3
 

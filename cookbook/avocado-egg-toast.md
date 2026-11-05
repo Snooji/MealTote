@@ -2,7 +2,7 @@
 
 ![Jammy Egg Avocado Toast with Chili Crisp](../photos/avocado-egg-toast.jpg)
 
-<sub>Photo: Bex Walton from London, England · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Avocado_toast_at_Voyager_Espresso_(33134505776).jpg)</sub>
+<sub>Photo: Unknown · CC0 1.0 · [source](https://www.rawpixel.com/image/3283029/free-photo-image-breakfast-egg-avocado-toast-food)</sub>
 
 **Breakfast** · American comfort · 15 min · serves 2 · skill 1/3
 

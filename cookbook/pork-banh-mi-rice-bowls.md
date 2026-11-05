@@ -1,6 +1,8 @@
 # Garlic-Lime Pork Bánh Mì Rice Bowls with Quick Pickles
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Garlic-Lime Pork Bánh Mì Rice Bowls with Quick Pickles](../photos/pork-banh-mi-rice-bowls.jpg)
+
+<sub>Photo: Mark Bonica · CC BY 2.0 · [source](https://www.flickr.com/photos/23119666@N03/52649318256)</sub>
 
 **Lunch** · Vietnamese · 45 min · serves 4 · skill 2/3
 

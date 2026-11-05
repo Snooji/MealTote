@@ -1,6 +1,8 @@
 # Strawberry Cheesecake Protein Yogurt Bowls
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Strawberry Cheesecake Protein Yogurt Bowls](../photos/strawberry-cheesecake-yogurt-bowls.jpg)
+
+<sub>Photo: dailyfood · CC BY 2.0 · [source](https://www.flickr.com/photos/28970677@N04/2704159113)</sub>
 
 **Breakfast** · American comfort · 10 min · serves 4 · skill 1/3
 

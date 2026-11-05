@@ -2,7 +2,7 @@
 
 ![Musakhan (Sumac-Onion Roast Chicken on Flatbread)](../photos/musakhan.jpg)
 
-<sub>Photo: Kokaly · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Mushakhan_Dish.jpg)</sub>
+<sub>Photo: Alice Wiegand · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Mussakhan.jpg)</sub>
 
 **Dinner** · Lebanese & Levantine · 75 min · serves 4 · skill 2/3
 

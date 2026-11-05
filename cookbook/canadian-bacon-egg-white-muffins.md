@@ -1,6 +1,8 @@
 # Make-Ahead Canadian Bacon & Egg-White English Muffin Sandwiches
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Make-Ahead Canadian Bacon & Egg-White English Muffin Sandwiches](../photos/canadian-bacon-egg-white-muffins.jpg)
+
+<sub>Photo: ursonate · CC BY 2.0 · [source](https://www.flickr.com/photos/34034435@N00/5799984151)</sub>
 
 **Breakfast** · American comfort · 35 min · serves 6 · skill 1/3
 

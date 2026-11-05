@@ -492,3 +492,13 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 @keyframes fsup{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
 .invrow .grow{flex:1 1 100%}
 .invrow input[type=date]{flex:1 1 140px}
+
+/* community content */
+.usertag{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:99px;padding:3px 10px}
+.hero .credit.usertag{background:var(--accent);color:#fff;font-size:11.5px}
+.sharerec{display:grid;gap:12px}
+.sharerec .fld{display:grid;gap:4px}
+.sharerec input[type=text],.sharerec input[type=number],.sharerec select,.sharerec textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 10px;font:inherit}
+.sharerec textarea{min-height:110px;resize:vertical}
+.grid2s{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.shareprev{width:100%;max-width:360px;aspect-ratio:4/3;object-fit:cover;border-radius:10px}

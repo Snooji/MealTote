@@ -1,6 +1,8 @@
 # Turkey Chorizo & Egg-White Freezer Burritos
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Turkey Chorizo & Egg-White Freezer Burritos](../photos/turkey-chorizo-egg-white-burritos.jpg)
+
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/6155580546)</sub>
 
 **Breakfast** · Tex-Mex · 40 min · serves 6 · skill 1/3
 

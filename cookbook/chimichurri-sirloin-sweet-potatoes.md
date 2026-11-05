@@ -1,6 +1,8 @@
 # Chimichurri Sirloin with Roasted Sweet Potatoes & Asparagus
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Chimichurri Sirloin with Roasted Sweet Potatoes & Asparagus](../photos/chimichurri-sirloin-sweet-potatoes.jpg)
+
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/9680394407)</sub>
 
 **Dinner** · Argentinian · 45 min · serves 4 · skill 2/3
 

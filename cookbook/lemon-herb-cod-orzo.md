@@ -1,6 +1,8 @@
 # Lemon-Herb Baked Cod with Feta Orzo & Green Beans
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Lemon-Herb Baked Cod with Feta Orzo & Green Beans](../photos/lemon-herb-cod-orzo.jpg)
+
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/4387804393)</sub>
 
 **Dinner** · Greek · 35 min · serves 4 · skill 1/3
 

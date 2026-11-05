@@ -2,7 +2,7 @@
 
 ![Pesto Gnocchi with Sausage & Blistered Tomatoes](../photos/pesto-gnocchi.jpg)
 
-<sub>Photo: Postcrosser · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Gnocchi_al_pesto_02.jpg)</sub>
+<sub>Photo: Fuerteadventours · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Gnocchi_al_pesto_-_homemade.jpg)</sub>
 
 **Dinner** · Italian · 20 min · serves 4 · skill 1/3
 

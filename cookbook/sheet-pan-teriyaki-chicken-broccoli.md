@@ -1,6 +1,8 @@
 # Sheet-Pan Teriyaki Chicken & Broccoli with Rice
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Sheet-Pan Teriyaki Chicken & Broccoli with Rice](../photos/sheet-pan-teriyaki-chicken-broccoli.jpg)
+
+<sub>Photo: mosespreciado · CC BY 2.0 · [source](https://www.flickr.com/photos/49326400@N00/6870393191)</sub>
 
 **Dinner** · Japanese · 40 min · serves 4 · skill 1/3
 

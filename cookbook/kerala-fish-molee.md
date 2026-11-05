@@ -2,7 +2,7 @@
 
 ![Kerala Fish Molee (Coconut Milk Fish Stew)](../photos/kerala-fish-molee.jpg)
 
-<sub>Photo: Drsoumyadeepb · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Fish_Moilee_Kerala_Style_(aka_KeralaFish_Molly).JPG)</sub>
+<sub>Photo: CNEcija12345 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Fish_moilee_moily_molee.jpg)</sub>
 
 **Dinner** · South Indian & Goan · 40 min · serves 4 · skill 1/3
 

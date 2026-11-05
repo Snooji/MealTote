@@ -2,7 +2,7 @@
 
 ![Venezuelan Arepas with Perico Eggs & Cheese](../photos/arepas.jpg)
 
-<sub>Photo: Nelson Fernando Sotelo Castro · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Arepa_de_chocolo.jpg)</sub>
+<sub>Photo: avlxyz · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/10559879@N00/5040743676)</sub>
 
 **Breakfast** · Venezuelan · 40 min · serves 4 · skill 2/3
 

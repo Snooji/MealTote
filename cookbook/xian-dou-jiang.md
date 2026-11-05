@@ -2,7 +2,7 @@
 
 ![Xian Dou Jiang (Taiwanese Savory Soy Milk Soup)](../photos/xian-dou-jiang.jpg)
 
-<sub>Photo: Yun Huang Yong · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Taipei_breakfast_with_fresh_soymilk_20071023.jpg)</sub>
+<sub>Photo: KQuhen · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Xian_doujiang_Taipei.jpg)</sub>
 
 **Breakfast** · Taiwanese · 15 min · serves 4 · skill 1/3
 

@@ -21,7 +21,7 @@ const money = n => "$" + (Math.round((n || 0) * 100) / 100).toLocaleString("en-U
 const toast = msg => { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2400); };
 const T = DONATE.TYPES;
 
-let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30, subs = [], community = {}, photoErr = "";
+let user = null, cfg = null, log = [], tab = "analytics", dirty = false, stats = null, statsErr = "", range = 30, subs = [], community = {}, photoErr = "", rsubs = [], liveRecipes = [];
 
 onAuthStateChanged(auth, async u => {
   user = u; $("#who").innerHTML = "";
@@ -35,6 +35,7 @@ onAuthStateChanged(auth, async u => {
     await loadLog();
     await loadStats();
     await loadPhotos();
+    await loadRecipeSubs();
     draw();
   } catch (e) {
     gate("Couldn't load the Backend: " + esc(e.code || e.message) + ". If you just changed firestore.rules, deploy them with <code>firebase deploy --only firestore:rules</code>.", false);
@@ -87,10 +88,10 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["recipes", `Recipes${rsubs.length ? ` (${rsubs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ analytics: drawAnalytics, photos: drawPhotos, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, photos: drawPhotos, recipes: drawRecipes, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
@@ -128,6 +129,7 @@ function drawAnalytics(p) {
       ${tile("Recipes opened", sum("recipeOpens"), `${num(sum("pdf"))} PDF exports`)}
       ${tile("Home-screen app opens", sum("installed"), "")}
       ${tile("Support page clicks", sum("supportClicks"), "")}
+      ${tile("Photos submitted", sum("photoSubmits"), `${num(sum("recipeSubmits"))} recipes submitted`)}
     </div>
     <div class="card"><h3>Visitors and page views per day</h3>
       <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" role="img" aria-label="Daily visitors and page views">${bars}</svg>
@@ -152,6 +154,46 @@ async function loadPhotos() {
     const idx = await getDoc(doc(db, "site", "communityPhotos")); community = idx.exists() ? (idx.data().ids || {}) : {}; photoErr = "";
   } catch (e) { subs = []; community = {}; photoErr = e.code || e.message; }
 }
+async function loadRecipeSubs() {
+  try {
+    rsubs = (await getDocs(query(collection(db, "recipeSubs"), orderBy("at", "desc"), limit(60)))).docs.map(d => ({ id: d.id, ...d.data() }));
+    liveRecipes = (await getDocs(collection(db, "communityRecipes"))).docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) { rsubs = []; liveRecipes = []; photoErr = photoErr || e.code || e.message; }
+}
+// approve a recipe: it goes into communityRecipes (everyone reads it); a photo, if any, becomes its community photo (id u-<doc id>)
+async function approveRecipe(x) {
+  try {
+    const { photo, status, ...rec } = x; delete rec.id;
+    await setDoc(doc(db, "communityRecipes", x.id), { ...rec, approvedAt: Date.now() });
+    if (photo) {
+      await setDoc(doc(db, "communityPhotos", "u-" + x.id), { data: photo, by: x.name, title: x.title, at: Date.now(), uid: x.uid });
+      await setDoc(doc(db, "site", "communityPhotos"), { ids: { ["u-" + x.id]: { by: x.name, at: Date.now() } } }, { merge: true });
+    }
+    await deleteDoc(doc(db, "recipeSubs", x.id));
+    toast("Approved. " + x.title + " is now in everyone's recipe library."); await loadRecipeSubs(); await loadPhotos(); draw();
+  } catch (e) { toast("Couldn't approve: " + (e.code || e.message)); }
+}
+async function rejectRecipe(x) { try { await deleteDoc(doc(db, "recipeSubs", x.id)); toast("Rejected"); await loadRecipeSubs(); draw(); } catch (e) { toast("Couldn't reject: " + (e.code || e.message)); } }
+async function unpublishRecipe(id) {
+  try {
+    await deleteDoc(doc(db, "communityRecipes", id));
+    if (community["u-" + id]) await unpublish("u-" + id); else { await loadRecipeSubs(); draw(); }
+    toast("Removed from the library.");
+  } catch (e) { toast("Couldn't remove: " + (e.code || e.message)); }
+}
+function drawRecipes(p) {
+  const card = (x, i) => `<div class="sub">${x.photo ? `<img src="${x.photo}" alt="">` : ""}<div><b>${esc(x.title)}</b><div class="note">${esc(x.meal)} · ${esc(x.cuisine)} · ${esc(x.time)} min · serves ${esc(x.serves)} · from ${esc(x.name)}</div>
+      ${x.blurb ? `<p style="margin:6px 0">${esc(x.blurb)}</p>` : ""}${x.kcal ? `<div class="note">${esc(x.kcal)} kcal · ${esc(x.protein)} g protein · ${esc(x.carbs)} g carbs · ${esc(x.fat)} g fat per serving</div>` : `<div class="note">No nutrition given</div>`}
+      <details><summary>Ingredients and steps</summary><ul>${(x.ing || []).map(t => `<li>${esc(t)}</li>`).join("")}</ul><ol>${(x.steps || []).map(t => `<li>${esc(t)}</li>`).join("")}</ol></details></div>
+      <div class="actions"><button class="btn small primary" data-rok="${i}">Approve</button><button class="btn small" data-rno="${i}">Reject</button></div></div>`;
+  p.innerHTML = `<div class="card"><h3>Recipes waiting for review (${rsubs.length})</h3>
+      <p class="note" style="margin:0">People share recipes from All recipes or Settings. Approved ones show for everyone in All recipes, credited by first name. They aren't added to meal plans automatically since their ingredients aren't priced.</p>
+      <div class="subgrid">${rsubs.map(card).join("") || `<p class="note">Nothing waiting.</p>`}</div></div>
+    <div class="card"><h3>Live community recipes (${liveRecipes.length})</h3>${liveRecipes.length ? `<table class="log">${liveRecipes.map(x => `<tr><td>${esc(x.title)}</td><td class="note">by ${esc(x.name || "")}</td><td class="n"><button class="btn small" data-run="${esc(x.id)}">Remove</button></td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">None yet.</p>`}</div>`;
+  p.querySelectorAll("[data-rok]").forEach(b => b.onclick = () => approveRecipe(rsubs[+b.dataset.rok]));
+  p.querySelectorAll("[data-rno]").forEach(b => b.onclick = () => rejectRecipe(rsubs[+b.dataset.rno]));
+  p.querySelectorAll("[data-run]").forEach(b => b.onclick = () => unpublishRecipe(b.dataset.run));
+}
 async function approve(sub) {
   try {
     await setDoc(doc(db, "communityPhotos", sub.rid), { data: sub.data, by: sub.name, title: sub.title, at: Date.now(), uid: sub.uid });
@@ -175,7 +217,7 @@ function drawPhotos(p) {
   const live = Object.entries(community).sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
   p.innerHTML = `${photoErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load photos (${esc(photoErr)}). The database rules for this go live with the next deploy.</p></div>` : ""}
     <div class="card"><h3>Waiting for review (${subs.length})</h3>
-      <p class="note" style="margin:0">People can share their own photo of a recipe from the recipe page. Approve one and it becomes the photo everyone sees for that recipe.</p>
+      <p class="note" style="margin:0">People can submit their own photo of any recipe from the recipe page. Approve one and it replaces that recipe's photo (or the MealTote logo) for everyone, tagged "User photo · shared by" their first name.</p>
       <div class="subgrid">${subs.map((x, i) => `<div class="sub"><img src="${x.data}" alt=""><div><b>${esc(x.title)}</b><div class="note">from ${esc(x.name)} · ${new Date(x.at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</div>${community[x.rid] ? `<div class="note">Replaces the community photo already live</div>` : ""}</div><div class="actions"><button class="btn small primary" data-ok="${i}">Approve</button><button class="btn small" data-no="${i}">Reject</button></div></div>`).join("") || `<p class="note">Nothing waiting.</p>`}</div></div>
     <div class="card"><h3>Live community photos (${live.length})</h3>${live.length ? `<table class="log">${live.map(([rid, v]) => `<tr><td>${esc(rid)}</td><td class="note">by ${esc(v.by || "")}</td><td class="n"><button class="btn small" data-un="${esc(rid)}">Remove</button></td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">None yet.</p>`}</div>`;
   p.querySelectorAll("[data-ok]").forEach(b => b.onclick = () => approve(subs[+b.dataset.ok]));

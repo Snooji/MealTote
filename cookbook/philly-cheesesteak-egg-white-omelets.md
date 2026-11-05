@@ -1,6 +1,8 @@
 # Philly Cheesesteak Egg-White Omelets
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Philly Cheesesteak Egg-White Omelets](../photos/philly-cheesesteak-egg-white-omelets.jpg)
+
+<sub>Photo: goldentruffleblog · CC BY 2.0 · [source](https://www.flickr.com/photos/197719855@N04/52692949666)</sub>
 
 **Breakfast** · American comfort · 35 min · serves 4 · skill 2/3
 

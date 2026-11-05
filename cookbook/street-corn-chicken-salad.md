@@ -2,7 +2,7 @@
 
 ![Elote-Style Chicken & Charred Street Corn Salad](../photos/street-corn-chicken-salad.jpg)
 
-<sub>Photo: Manjeshwari poet mysore · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Roasted_Sweet_Corn_higher_resolution.jpg)</sub>
+<sub>Photo: sarahstierch · CC BY 2.0 · [source](https://www.flickr.com/photos/7633518@N08/52258856526)</sub>
 
 **Lunch** · Mexican · 30 min · serves 4 · skill 1/3
 

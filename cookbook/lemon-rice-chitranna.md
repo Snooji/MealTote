@@ -2,7 +2,7 @@
 
 ![Lemon Rice (Chitranna) with Peanuts & Cucumber Raita](../photos/lemon-rice-chitranna.jpg)
 
-<sub>Photo: Radhikapavan · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chitranna_and_Payasa.jpg)</sub>
+<sub>Photo: karmadude · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/43337914@N00/18995695545)</sub>
 
 **Lunch** · South Indian & Goan · 30 min · serves 4 · skill 1/3
 

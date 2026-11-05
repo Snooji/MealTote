@@ -2,7 +2,7 @@
 
 ![Crispy Sweet Potato & Black Bean Tacos](../photos/sweet-potato-tacos.jpg)
 
-<sub>Photo: Karen and Brad Emerson · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg)</sub>
+<sub>Photo: T.Tseng · CC BY 2.0 · [source](https://www.flickr.com/photos/68147320@N02/27872040352)</sub>
 
 **Dinner** · Mexican · 35 min · serves 4 · skill 1/3
 

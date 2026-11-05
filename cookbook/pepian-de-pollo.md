@@ -2,7 +2,7 @@
 
 ![Guatemalan Pepián de Pollo](../photos/pepian-de-pollo.jpg)
 
-<sub>Photo: erwin.flores69 · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Cocinando_El_Pepian.jpg)</sub>
+<sub>Photo: USDAgov · Public domain · [source](https://commons.wikimedia.org/wiki/File:MyPlate_gov_Cultural_Food_(20241025-USDA-FNS-UNK-0077).jpg)</sub>
 
 **Dinner** · Salvadoran & Central American · 90 min · serves 6 · skill 3/3
 

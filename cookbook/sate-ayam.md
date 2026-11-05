@@ -2,7 +2,7 @@
 
 ![Sate Ayam (Indonesian Chicken Satay) with Peanut Sauce](../photos/sate-ayam.jpg)
 
-<sub>Photo: Takeaway · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:2016_0427_Factory-made_satay_babi_Netherlands.jpg)</sub>
+<sub>Photo: Lord Mountbatten · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/w/index.php?curid=43411214)</sub>
 
 **Dinner** · Indonesian · 45 min · serves 5 · skill 2/3
 

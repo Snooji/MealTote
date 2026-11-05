@@ -1,6 +1,8 @@
 # Curry Chicken Salad Lettuce Cups with Apple & Cashews
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Curry Chicken Salad Lettuce Cups with Apple & Cashews](../photos/curry-chicken-salad-cups.jpg)
+
+<sub>Photo: TheHungryDudes · CC BY 2.0 · [source](https://www.flickr.com/photos/47854142@N04/5515746755)</sub>
 
 **Lunch** · American comfort · 30 min · serves 4 · skill 1/3
 

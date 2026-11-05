@@ -2,7 +2,7 @@
 
 ![Turkey Kefta Mkaouara (Meatball & Egg Tagine)](../photos/turkey-kefta-tagine.jpg)
 
-<sub>Photo: Everlind · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:ElectricalTajine3.jpg)</sub>
+<sub>Photo: IainCameron · CC BY 2.0 · [source](https://www.flickr.com/photos/67872859@N00/25746921194)</sub>
 
 **Dinner** · Moroccan · 55 min · serves 4 · skill 2/3
 

@@ -2,7 +2,7 @@
 
 ![Puff Pastry Chicken Pot Pie](../photos/chicken-pot-pie.jpg)
 
-<sub>Photo: MonicaVereanaWilliams · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_Pot_Pie,_cut_open.jpg)</sub>
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/5269810260)</sub>
 
 **Dinner** · American comfort · 55 min · serves 6 · skill 2/3
 

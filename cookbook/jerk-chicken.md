@@ -2,7 +2,7 @@
 
 ![Jerk Chicken with Rice & Peas](../photos/jerk-chicken.jpg)
 
-<sub>Photo: OUTography.com from Gilbert, AZ, USA · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:BBQJerk_Chicken.jpg)</sub>
+<sub>Photo: Naotake Murayama · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Jerk_Chicken_with_Jambalaya_and_Corn_Salad.jpg)</sub>
 
 **Dinner** · Jamaican · 55 min · serves 4 · skill 2/3
 

@@ -1,6 +1,8 @@
 # Ham & Swiss Cottage Cheese Egg Bites
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Ham & Swiss Cottage Cheese Egg Bites](../photos/ham-swiss-cottage-egg-bites.jpg)
+
+<sub>Photo: sousvideguy · CC BY 2.0 · [source](https://www.flickr.com/photos/140547216@N04/41579359435)</sub>
 
 **Breakfast** · American comfort · 45 min · serves 4 · skill 1/3
 

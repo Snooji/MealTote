@@ -1,6 +1,8 @@
 # Fluffy Blueberry Egg-White Protein Oatmeal
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Fluffy Blueberry Egg-White Protein Oatmeal](../photos/fluffy-egg-white-oatmeal.jpg)
+
+<sub>Photo: Andrew Pons · CC0 1.0 · [source](https://stocksnap.io/photo/oatmeal-blueberries-F7TE35CV6D)</sub>
 
 **Breakfast** · American comfort · 15 min · serves 4 · skill 1/3
 

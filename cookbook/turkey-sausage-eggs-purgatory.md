@@ -1,6 +1,8 @@
 # Eggs in Purgatory with Turkey Sausage & Egg Whites
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Eggs in Purgatory with Turkey Sausage & Egg Whites](../photos/turkey-sausage-eggs-purgatory.jpg)
+
+<sub>Photo: WordRidden · CC BY 2.0 · [source](https://www.flickr.com/photos/97844767@N00/12819260225)</sub>
 
 **Breakfast** · Italian · 40 min · serves 4 · skill 1/3
 

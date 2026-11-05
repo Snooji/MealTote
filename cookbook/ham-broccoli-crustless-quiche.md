@@ -1,6 +1,8 @@
 # Crustless Ham, Broccoli & Cheddar Egg-White Quiche
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Crustless Ham, Broccoli & Cheddar Egg-White Quiche](../photos/ham-broccoli-crustless-quiche.jpg)
+
+<sub>Photo: MicheleColetteFrazier · CC BY 2.0 · [source](https://www.flickr.com/photos/85153112@N03/10508450915)</sub>
 
 **Breakfast** · American comfort · 55 min · serves 4 · skill 1/3
 

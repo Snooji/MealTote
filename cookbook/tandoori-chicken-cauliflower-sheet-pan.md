@@ -1,6 +1,8 @@
 # Sheet-Pan Tandoori Chicken with Cauliflower & Chickpeas
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Sheet-Pan Tandoori Chicken with Cauliflower & Chickpeas](../photos/tandoori-chicken-cauliflower-sheet-pan.jpg)
+
+<sub>Photo: stu_spivack · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/35034346243@N01/14636456528)</sub>
 
 **Dinner** · North Indian · 50 min · serves 4 · skill 1/3
 

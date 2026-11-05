@@ -1,6 +1,8 @@
 # Bang Bang Shrimp Bowls with Crunchy Slaw
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Bang Bang Shrimp Bowls with Crunchy Slaw](../photos/bang-bang-shrimp-bowls.jpg)
+
+<sub>Photo: Dana Moos · CC BY 2.0 · [source](https://www.flickr.com/photos/32870650@N08/25659678186)</sub>
 
 **Lunch** · American comfort · 30 min · serves 4 · skill 1/3
 

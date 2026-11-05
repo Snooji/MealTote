@@ -2,7 +2,7 @@
 
 ![BBQ Pulled Pork Sandwiches with Tangy Slaw](../photos/pulled-pork.jpg)
 
-<sub>Photo: Thogru · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Pulled_pork_while_pulling.JPG)</sub>
+<sub>Photo: Paul Keller · CC BY 2.0 · [source](https://www.flickr.com/photos/18259771@N00/7327049962)</sub>
 
 **Dinner** · Southern & soul food · 240 min · serves 8 · skill 1/3
 

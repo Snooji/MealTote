@@ -1,6 +1,8 @@
 # Stovetop Apple Cinnamon Oatmeal with Pecans
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Stovetop Apple Cinnamon Oatmeal with Pecans](../photos/apple-cinnamon-oatmeal.jpg)
+
+<sub>Photo: Shisma · CC BY 4.0 · [source](https://commons.wikimedia.org/wiki/File:Apple_cinnamon_oatmeal_5.jpg)</sub>
 
 **Breakfast** · American comfort · 20 min · serves 4 · skill 1/3
 

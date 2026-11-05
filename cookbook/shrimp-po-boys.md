@@ -2,7 +2,7 @@
 
 ![Fried Shrimp Po' Boys with Cajun Rémoulade](../photos/shrimp-po-boys.jpg)
 
-<sub>Photo: David Reber · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/wiki/File:Shrimp_PoBoy_Middendorfs.jpg)</sub>
+<sub>Photo: The Marmot · CC BY 2.0 · [source](https://www.flickr.com/photos/38142119@N00/15424569710)</sub>
 
 **Lunch** · Cajun & Creole · 45 min · serves 4 · skill 2/3
 

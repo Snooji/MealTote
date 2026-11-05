@@ -1,6 +1,8 @@
 # Smoked Salmon & Green Onion Scramble on Sourdough Toast
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Smoked Salmon & Green Onion Scramble on Sourdough Toast](../photos/smoked-salmon-chive-scramble.jpg)
+
+<sub>Photo: LoopZilla · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/24987280@N00/4237486035)</sub>
 
 **Breakfast** · American comfort · 15 min · serves 4 · skill 1/3
 

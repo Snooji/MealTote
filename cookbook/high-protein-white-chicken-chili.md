@@ -1,6 +1,8 @@
 # White Chicken Chili with Green Chiles & Greek Yogurt
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![White Chicken Chili with Green Chiles & Greek Yogurt](../photos/high-protein-white-chicken-chili.jpg)
+
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/15290290762)</sub>
 
 **Lunch** · American comfort · 50 min · serves 6 · skill 1/3
 

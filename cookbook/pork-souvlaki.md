@@ -2,7 +2,7 @@
 
 ![Pork Souvlaki Pitas](../photos/pork-souvlaki.jpg)
 
-<sub>Photo: Breawycker · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Chicken_souvlaki_pita_with_french_fries.jpg)</sub>
+<sub>Photo: www.flickr.com/photos/avlxyz/ · CC BY-SA 2.0 · [source](https://commons.wikimedia.org/w/index.php?curid=24819081)</sub>
 
 **Dinner** · Greek · 35 min · serves 4 · skill 1/3
 

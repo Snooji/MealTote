@@ -2,7 +2,7 @@
 
 ![Shepherd's Pie with Cheddar Mashed Potato Crust](../photos/shepherds-pie.jpg)
 
-<sub>Photo: Oxfordian Kissuth · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Homerton_College_-_Shepherd%27s_pie_(cropped).jpg)</sub>
+<sub>Photo: WordRidden · CC BY 2.0 · [source](https://www.flickr.com/photos/97844767@N00/4897135759)</sub>
 
 **Dinner** · British & Irish · 75 min · serves 6 · skill 2/3
 

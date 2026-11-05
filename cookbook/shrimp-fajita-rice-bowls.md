@@ -1,6 +1,8 @@
 # Shrimp Fajita Bowls with Cilantro-Lime Rice
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Shrimp Fajita Bowls with Cilantro-Lime Rice](../photos/shrimp-fajita-rice-bowls.jpg)
+
+<sub>Photo: mild_swearwords · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/33008270@N00/30858101071)</sub>
 
 **Lunch** · Tex-Mex · 30 min · serves 4 · skill 1/3
 

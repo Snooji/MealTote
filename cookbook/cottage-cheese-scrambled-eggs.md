@@ -1,6 +1,8 @@
 # Creamy Cottage Cheese Scrambled Eggs with Canadian Bacon
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Creamy Cottage Cheese Scrambled Eggs with Canadian Bacon](../photos/cottage-cheese-scrambled-eggs.jpg)
+
+<sub>Photo: avlxyz · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/10559879@N00/2409085893)</sub>
 
 **Breakfast** · American comfort · 15 min · serves 4 · skill 1/3
 

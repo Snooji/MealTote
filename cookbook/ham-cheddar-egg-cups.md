@@ -1,6 +1,8 @@
 # Baked Ham & Cheddar Egg Cups
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Baked Ham & Cheddar Egg Cups](../photos/ham-cheddar-egg-cups.jpg)
+
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://www.flickr.com/photos/7927684@N03/6137006440)</sub>
 
 **Breakfast** · American comfort · 25 min · serves 4 · skill 1/3
 

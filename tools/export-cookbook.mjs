@@ -80,3 +80,60 @@ for (const meal of ["Breakfast", "Lunch", "Dinner"]) {
 fs.writeFileSync(path.join(out, "INDEX.md"), idx);
 console.log(`wrote ${rows.length} recipes to cookbook/`);
 if (dupes.length) { console.error("Possible duplicates:\n" + dupes.join("\n")); process.exitCode = 1; }
+
+/* ------------------------------------------------------------------ public recipe pages for search engines
+   recipes/<id>.html (served as mealtote.com/recipes/<id>), recipes/index.html, sitemap.xml.
+   Each page carries schema.org Recipe data so Google can show it as a recipe result. */
+const SITE = "https://mealtote.com";
+const esc = s => String(s ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+const pages = path.join(root, "recipes");
+fs.rmSync(pages, { recursive: true, force: true }); fs.mkdirSync(pages);
+const head = (title, desc, url, img) => `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title><meta name="description" content="${esc(desc)}"><link rel="canonical" href="${url}">
+<meta property="og:type" content="article"><meta property="og:site_name" content="MealTote"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${img}"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>body{margin:0;background:#F4F5F0;color:#1E2A22;font:16px/1.55 "Instrument Sans",system-ui,sans-serif}a{color:#2E6B4F}.w{max-width:820px;margin:0 auto;padding:0 16px}
+header{background:#fff;border-bottom:1px solid #DCE2D8}header .w{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;font:26px "Young Serif",serif}.brand b{font-weight:400;color:#2E6B4F}.brand img{width:32px;height:32px}
+.cta{background:#2E6B4F;color:#fff!important;text-decoration:none;border-radius:99px;padding:9px 16px;font-weight:600;white-space:nowrap}
+h1{font:clamp(28px,6vw,40px)/1.15 "Young Serif",serif;margin:22px 0 8px}h2{font:22px "Young Serif",serif;margin:26px 0 8px}
+.hero{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}.meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:#5B6B60;font-size:14.5px;margin:10px 0}
+.lede{font-size:18px;color:#3C4A40}ol li,ul li{margin:6px 0}.card{background:#fff;border:1px solid #DCE2D8;border-radius:14px;padding:16px 18px;margin:18px 0}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 4px;border-bottom:1px solid #E6EAE3}.note{color:#5B6B60;font-size:13.5px}
+.grid{columns:2 260px;gap:24px}.grid a{display:block;padding:3px 0}footer{margin:40px 0 30px;color:#5B6B60;font-size:14px}</style>
+</head><body><header><div class="w"><a class="brand" href="/"><img src="/icons/mark.png" alt="">Meal<b>Tote</b></a><a class="cta" href="/">Plan your week free</a></div></header><main class="w">`;
+const foot = `<footer>MealTote is a free meal planner and grocery list that splits your shopping across the stores you use. <a href="/">Plan your week</a> · <a href="/recipes/">All recipes</a> · <a href="/support">Support</a></footer></main></body></html>\n`;
+const iso = min => `PT${Math.floor(min / 60) ? Math.floor(min / 60) + "H" : ""}${min % 60 ? (min % 60) + "M" : ""}` || "PT0M";
+const urls = [`${SITE}/`, `${SITE}/recipes/`, `${SITE}/support`];
+for (const { r, n } of rows) {
+  const url = `${SITE}/recipes/${r.id}`, img = `${SITE}/${photos[r.id] || "photos/placeholder.jpg"}`, cu = cuisine(r.id);
+  const desc = `${r.blurb} ${r.time} minutes, ${Math.round(n.kcal)} calories and ${Math.round(n.protein)} g protein per serving.`.slice(0, 300);
+  const ings = r.ing.map(i => i[2]), pantry = r.pantry ? r.pantry.split(/,\s*/).map(x => x.trim()).filter(Boolean) : [];
+  const ld = { "@context": "https://schema.org", "@type": "Recipe", name: r.title, description: r.blurb, image: [img], author: { "@type": "Organization", name: "MealTote", url: SITE },
+    recipeCategory: r.meal, recipeCuisine: cu, totalTime: iso(r.time), recipeYield: `${r.serves} servings`, recipeIngredient: [...ings, ...pantry],
+    recipeInstructions: r.steps.map(s => ({ "@type": "HowToStep", text: s })), keywords: [cu, r.meal, META[r.id].protein, "meal prep"].join(", "),
+    nutrition: { "@type": "NutritionInformation", calories: `${Math.round(n.kcal)} calories`, proteinContent: `${Math.round(n.protein)} g`, carbohydrateContent: `${Math.round(n.carbs)} g`, fatContent: `${Math.round(n.fat)} g`, fiberContent: `${Math.round(n.fiber)} g`, sodiumContent: `${Math.round(n.sodium)} mg` } };
+  const cr = credits[r.id];
+  fs.writeFileSync(path.join(pages, r.id + ".html"), head(`${r.title} Recipe | MealTote`, desc, url, img) +
+    `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
+<h1>${esc(r.title)}</h1><div class="meta"><span>${esc(r.meal)}</span><span>${esc(cu)}</span><span>${r.time} min</span><span>Serves ${r.serves}</span><span>${Math.round(n.kcal)} kcal</span><span>${Math.round(n.protein)} g protein</span></div>
+<img class="hero" src="/${esc(photos[r.id] || "photos/placeholder.jpg")}" alt="${esc(r.title)}" width="800" height="600">${cr ? `<p class="note">Photo: ${esc(cr.author)} · ${esc(cr.license)}${cr.page ? ` · <a href="${esc(cr.page)}" rel="nofollow noopener">source</a>` : ""}</p>` : ""}
+<p class="lede">${esc(r.blurb)}</p>
+<div class="card"><b>Make it part of your week.</b> MealTote sizes this recipe for everyone you cook for, adds it to a weekly plan and puts the ingredients on one grocery list split across your stores. <a href="/?recipe=${encodeURIComponent(r.id)}">Open it in MealTote</a></div>
+<h2>Ingredients</h2><ul>${ings.map(t => `<li>${esc(t)}</li>`).join("")}</ul>${r.pantry ? `<p class="note">From your pantry: ${esc(r.pantry)}.</p>` : ""}
+<h2>Steps</h2><ol>${r.steps.map(t => `<li>${esc(t)}</li>`).join("")}</ol>${r.tip ? `<p><b>Tip:</b> ${esc(r.tip)}</p>` : ""}
+<h2>Nutrition per serving</h2><table><tr><th>Calories</th><td>${Math.round(n.kcal)}</td></tr><tr><th>Protein</th><td>${Math.round(n.protein)} g</td></tr><tr><th>Carbs</th><td>${Math.round(n.carbs)} g</td></tr><tr><th>Fat</th><td>${Math.round(n.fat)} g</td></tr><tr><th>Fiber</th><td>${Math.round(n.fiber)} g</td></tr><tr><th>Sodium</th><td>${Math.round(n.sodium)} mg</td></tr></table>
+${r.src ? `<p class="note">Adapted from <a href="${esc(r.src[1])}" rel="nofollow noopener">${esc(r.src[0])}</a>.</p>` : ""}` + foot);
+  urls.push(url);
+}
+// recipes index, grouped by cuisine
+const groups = {};
+for (const { r } of rows) (groups[cuisine(r.id)] = groups[cuisine(r.id)] || []).push(r);
+fs.writeFileSync(path.join(pages, "index.html"), head(`${rows.length} Free Recipes with Nutrition | MealTote`, `Browse ${rows.length} free recipes from ${Object.keys(groups).length} cuisines, each with calories, protein and a grocery list, plus high-protein meal prep ideas.`, `${SITE}/recipes/`, `${SITE}/icons/icon-512.png`) +
+  `<h1>${rows.length} recipes</h1><p class="lede">Weeknight classics, high-protein meal prep and dishes from ${Object.keys(groups).length} cuisines, each with nutrition per serving. Open any of them in MealTote to plan your week and build one grocery list.</p>` +
+  Object.keys(groups).sort().map(g => `<h2>${esc(g)}</h2><div class="grid">${groups[g].sort((a, b) => a.title.localeCompare(b.title)).map(r => `<a href="/recipes/${r.id}">${esc(r.title)}</a>`).join("")}</div>`).join("") + foot);
+const today = new Date().toISOString().slice(0, 10);
+fs.writeFileSync(path.join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+console.log(`wrote ${rows.length} recipe pages to recipes/ and ${urls.length} URLs to sitemap.xml`);

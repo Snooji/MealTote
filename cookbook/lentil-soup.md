@@ -2,7 +2,7 @@
 
 ![Lebanese Red Lentil Soup with Lemon & Crispy Pita](../photos/lentil-soup.jpg)
 
-<sub>Photo: Matt Krause from Istanbul, Turkey · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Ezogelin_soup,_bread,_and_water.jpg)</sub>
+<sub>Photo: jules · CC BY 2.0 · [source](https://commons.wikimedia.org/w/index.php?curid=137386792)</sub>
 
 **Lunch** · Lebanese & Levantine · 40 min · serves 6 · skill 1/3
 

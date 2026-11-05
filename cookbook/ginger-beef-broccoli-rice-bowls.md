@@ -1,6 +1,8 @@
 # Garlic-Ginger Ground Beef & Broccoli Rice Bowls
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Garlic-Ginger Ground Beef & Broccoli Rice Bowls](../photos/ginger-beef-broccoli-rice-bowls.jpg)
+
+<sub>Photo: tedeytan · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/22526649@N03/48588244966)</sub>
 
 **Dinner** · Chinese & Cantonese · 30 min · serves 4 · skill 1/3
 

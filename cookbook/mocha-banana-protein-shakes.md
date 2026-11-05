@@ -1,6 +1,8 @@
 # Mocha Banana Protein Breakfast Shakes
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Mocha Banana Protein Breakfast Shakes](../photos/mocha-banana-protein-shakes.jpg)
+
+<sub>Photo: Alexandra E Rust · CC BY 2.0 · [source](https://www.flickr.com/photos/69670601@N05/9771001476)</sub>
 
 **Breakfast** · American comfort · 5 min · serves 4 · skill 1/3
 

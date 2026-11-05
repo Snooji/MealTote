@@ -1,6 +1,8 @@
 # Maple-Sage Turkey Sausage Patties with Egg-White Scramble & Toast
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Maple-Sage Turkey Sausage Patties with Egg-White Scramble & Toast](../photos/maple-sage-turkey-sausage-plate.jpg)
+
+<sub>Photo: diettogo1 · CC BY-SA 2.0 · [source](https://www.flickr.com/photos/92766653@N07/8538705464)</sub>
 
 **Breakfast** · American comfort · 30 min · serves 4 · skill 1/3
 

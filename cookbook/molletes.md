@@ -2,7 +2,7 @@
 
 ![Molletes with Pico de Gallo](../photos/molletes.jpg)
 
-<sub>Photo: T.Tseng · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Molletes_(34965662722).jpg)</sub>
+<sub>Photo: Locker233 · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/wiki/File:Molletes_mexicanos.jpg)</sub>
 
 **Breakfast** · Mexican · 20 min · serves 4 · skill 1/3
 

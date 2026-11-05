@@ -2,7 +2,7 @@
 
 ![Jianbing (Chinese Egg Crepes with Crispy Wonton Crackers)](../photos/jianbing-breakfast-crepes.jpg)
 
-<sub>Photo: Ernie from beijing, china · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Jianbing_1.jpg)</sub>
+<sub>Photo: Xrdtj · CC BY-SA 4.0 · [source](https://commons.wikimedia.org/w/index.php?curid=86763901)</sub>
 
 **Breakfast** · Chinese & Cantonese · 35 min · serves 4 · skill 2/3
 

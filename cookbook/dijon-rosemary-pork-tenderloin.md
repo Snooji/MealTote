@@ -1,6 +1,8 @@
 # Dijon-Rosemary Pork Tenderloin with Mustard Yogurt Sauce
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Dijon-Rosemary Pork Tenderloin with Mustard Yogurt Sauce](../photos/dijon-rosemary-pork-tenderloin.jpg)
+
+<sub>Photo: thebittenword.com · CC BY 2.0 · [source](https://www.flickr.com/photos/22198928@N00/3295377104)</sub>
 
 **Dinner** · French · 45 min · serves 4 · skill 2/3
 

@@ -2,7 +2,7 @@
 
 ![Cold Sesame Soba Noodle Salad with Edamame](../photos/soba-salad.jpg)
 
-<sub>Photo: Jnn · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:Izumosoba33.JPG)</sub>
+<sub>Photo: joyosity · CC BY 2.0 · [source](https://www.flickr.com/photos/33993074@N00/9345210661)</sub>
 
 **Lunch** · Japanese · 25 min · serves 4 · skill 1/3
 

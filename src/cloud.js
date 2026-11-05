@@ -8,6 +8,8 @@ const SDK = "https://www.gstatic.com/firebasejs/10.12.2";
 const configured = !!(firebaseConfig && firebaseConfig.apiKey && !String(firebaseConfig.apiKey).startsWith("YOUR_"));
 
 let api = { enabled: false, user: null };
+// people are credited by first name only
+const firstName = u => (String(u.displayName || "").trim().split(/\s+/)[0] || "A MealTote cook").slice(0, 40);
 
 if (configured) {
   try {
@@ -69,8 +71,14 @@ if (configured) {
       // then it's the photo everyone sees (communityPhotos/{recipeId}, listed in site/communityPhotos)
       async submitPhoto(rid, dataUrl, title) {
         const u = api.user;
-        await addDoc(collection(db, "submissions"), { rid, data: dataUrl, uid: u.uid, name: (u.displayName || "A MealTote cook").slice(0, 80), title: String(title || rid).slice(0, 160), at: Date.now(), status: "pending" });
+        await addDoc(collection(db, "submissions"), { rid, data: dataUrl, uid: u.uid, name: firstName(u), title: String(title || rid).slice(0, 160), at: Date.now(), status: "pending" });
       },
+      // community recipes: same review flow (recipeSubs → communityRecipes, approved in the Backend)
+      async submitRecipe(rec) {
+        const u = api.user;
+        await addDoc(collection(db, "recipeSubs"), { ...rec, uid: u.uid, name: firstName(u), at: Date.now(), status: "pending" });
+      },
+      async communityRecipes() { const q = await getDocs(collection(db, "communityRecipes")); return q.docs.map(d => ({ id: d.id, ...d.data() })); },
       async communityIndex() { const s = await getDoc(doc(db, "site", "communityPhotos")); return s.exists() ? (s.data().ids || {}) : {}; },
       async communityPhoto(rid) { const s = await getDoc(doc(db, "communityPhotos", rid)); return s.exists() ? s.data() : null; },
 

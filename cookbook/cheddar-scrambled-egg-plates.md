@@ -1,6 +1,8 @@
 # Cheddar Scrambled Egg Plates with Turkey Bacon & Toast
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Cheddar Scrambled Egg Plates with Turkey Bacon & Toast](../photos/cheddar-scrambled-egg-plates.jpg)
+
+<sub>Photo: Andy Li · CC0 · [source](https://commons.wikimedia.org/wiki/File:Scrambled_eggs_on_toast_-_Joe%27s_Cafe_2024-04-14.jpg)</sub>
 
 **Breakfast** · American comfort · 20 min · serves 4 · skill 1/3
 

@@ -1,6 +1,8 @@
 # Sesame-Ginger Chicken Bowls with Edamame & Pineapple
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Sesame-Ginger Chicken Bowls with Edamame & Pineapple](../photos/sesame-ginger-chicken-edamame-bowls.jpg)
+
+<sub>Photo: UnitedSoybeanBoard · CC BY 2.0 · [source](https://www.flickr.com/photos/95352257@N06/10059733105)</sub>
 
 **Lunch** · Japanese · 35 min · serves 4 · skill 1/3
 

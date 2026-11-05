@@ -1,6 +1,8 @@
 # Creamy Pesto Chicken Pasta Salad with Cottage Cheese Dressing
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Creamy Pesto Chicken Pasta Salad with Cottage Cheese Dressing](../photos/pesto-chicken-protein-pasta-salad.jpg)
+
+<sub>Photo: whitneyinchicago · CC BY 2.0 · [source](https://www.flickr.com/photos/29298849@N05/3817399719)</sub>
 
 **Lunch** · Italian · 30 min · serves 4 · skill 1/3
 

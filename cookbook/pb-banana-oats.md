@@ -2,7 +2,7 @@
 
 ![Peanut Butter Banana Oatmeal](../photos/pb-banana-oats.jpg)
 
-<sub>Photo: Acsenray · CC0 · [source](https://commons.wikimedia.org/wiki/File:Cooked_steel-cut_oats.jpg)</sub>
+<sub>Photo: Shisma · CC BY 4.0 · [source](https://commons.wikimedia.org/wiki/File:Banana_blueberry_oatmeal.jpg)</sub>
 
 **Breakfast** · American comfort · 10 min · serves 4 · skill 1/3
 

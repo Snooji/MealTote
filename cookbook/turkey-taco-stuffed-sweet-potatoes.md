@@ -1,6 +1,8 @@
 # Turkey Taco Stuffed Sweet Potatoes
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Turkey Taco Stuffed Sweet Potatoes](../photos/turkey-taco-stuffed-sweet-potatoes.jpg)
+
+<sub>Photo: jules:stonesoup · CC BY 2.0 · [source](https://www.flickr.com/photos/58367355@N00/22100868223)</sub>
 
 **Lunch** · Tex-Mex · 55 min · serves 4 · skill 1/3
 

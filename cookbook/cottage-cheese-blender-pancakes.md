@@ -1,6 +1,8 @@
 # Blueberry Cottage Cheese Blender Pancakes
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Blueberry Cottage Cheese Blender Pancakes](../photos/cottage-cheese-blender-pancakes.jpg)
+
+<sub>Photo: kae71463 · CC BY 2.0 · [source](https://www.flickr.com/photos/75231152@N00/7109416253)</sub>
 
 **Breakfast** · American comfort · 25 min · serves 4 · skill 1/3
 

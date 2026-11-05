@@ -1,6 +1,8 @@
 # Chicken Tikka Rice Bowls with Cucumber Raita
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Chicken Tikka Rice Bowls with Cucumber Raita](../photos/chicken-tikka-rice-bowls.jpg)
+
+<sub>Photo: Gene Hunt · CC BY 2.0 · [source](https://www.flickr.com/photos/90384027@N00/5561835580)</sub>
 
 **Lunch** · North Indian · 45 min · serves 4 · skill 2/3
 

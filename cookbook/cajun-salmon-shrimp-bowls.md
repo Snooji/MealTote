@@ -1,6 +1,8 @@
 # Cajun Salmon & Shrimp Rice Bowls with Pineapple Salsa
 
-_No free-licensed photo yet; the app shows the MealTote logo._
+![Cajun Salmon & Shrimp Rice Bowls with Pineapple Salsa](../photos/cajun-salmon-shrimp-bowls.jpg)
+
+<sub>Photo: CharmaineZoe's Marvelous Melange · CC BY 2.0 · [source](https://www.flickr.com/photos/53499099@N00/40560266881)</sub>
 
 **Lunch** · Cajun & Creole · 35 min · serves 4 · skill 2/3
 

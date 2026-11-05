@@ -2,7 +2,7 @@
 
 ![Philly Cheesesteaks with Melty Provolone](../photos/philly-cheesesteak.jpg)
 
-<sub>Photo: Unknown · CC BY-SA 3.0 · [source](https://commons.wikimedia.org/wiki/File:PatsCheesesteak.jpg)</sub>
+<sub>Photo: jeffreyw · CC BY 2.0 · [source](https://commons.wikimedia.org/wiki/File:Cheesesteak_(19386149993).jpg)</sub>
 
 **Lunch** · American comfort · 25 min · serves 4 · skill 1/3
 
