@@ -503,3 +503,6 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .grid2s{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .shareprev{width:100%;max-width:360px;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
 @media (max-width:720px){ body>nav.tabs{position:fixed;left:0;right:0;bottom:0;transform:translateZ(0)} }
+.gridmore{grid-column:1/-1;height:1px}
+.updbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:10px;align-items:center;background:var(--surface);border:1.5px solid var(--accent);border-radius:12px;padding:8px 10px 8px 14px;box-shadow:0 10px 30px -12px rgb(0 0 0 / .35);max-width:calc(100% - 24px)}
+@media (max-width:720px){ .updbar{bottom:calc(84px + env(safe-area-inset-bottom,0px))} }

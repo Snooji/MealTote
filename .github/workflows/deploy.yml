@@ -20,6 +20,9 @@ jobs:
           fetch-depth: 2
       - name: Check the app script parses
         run: node --check src/app.js
+      # the app compares this with what it's running and reloads itself when a new version is live
+      - name: Stamp version
+        run: printf '{"v":"%s"}\n' "$GITHUB_SHA" > version.json
       - name: Deploy
         if: env.HAS_KEY == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0

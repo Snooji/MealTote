@@ -6,7 +6,7 @@ const ADMIN_EMAIL = "starsidecollective@gmail.com";
 const SDK = "https://www.gstatic.com/firebasejs/10.12.2";
 const { initializeApp } = await import(`${SDK}/firebase-app.js`);
 const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where, deleteField } = await import(`${SDK}/firebase-firestore.js`);
+const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where, deleteField, getCountFromServer, Timestamp } = await import(`${SDK}/firebase-firestore.js`);
 
 // opened inside the app (Settings → Open the Backend): the app draws the header and close button
 if (new URLSearchParams(location.search).has("embed")) document.documentElement.classList.add("embed");
@@ -27,6 +27,7 @@ onAuthStateChanged(auth, async u => {
   user = u; $("#who").innerHTML = "";
   if (!u) return gate("Sign in with your MealTote admin Google account.", true);
   $("#who").append(btn("Sign out", () => signOut(auth)));
+  if (u.email === ADMIN_EMAIL) { try { localStorage.setItem("mt-admin", "1"); } catch (e) {} } // leave this device out of the analytics
   if (u.email !== ADMIN_EMAIL || !u.emailVerified) return gate(`You're signed in as ${esc(u.email)}. The Backend is only for the MealTote admin.`, false);
   try {
     const snap = await getDoc(configRef);
@@ -34,6 +35,7 @@ onAuthStateChanged(auth, async u => {
     if (!snap.exists()) dirty = true; // first visit: nothing saved yet, so the support page is using the defaults
     await loadLog();
     await loadStats();
+    await loadOnline(); clearInterval(onlineT); onlineT = setInterval(loadOnline, 30000);
     await loadPhotos();
     await loadRecipeSubs();
     draw();
@@ -95,6 +97,17 @@ function draw() {
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
+// online now = apps that checked in within the last 3 minutes (they check in every 2); old check-ins are tidied away
+let online = null, onlineT = 0;
+async function loadOnline() {
+  try {
+    const since = Timestamp.fromMillis(Date.now() - 180000);
+    online = (await getCountFromServer(query(collection(db, "presence"), where("last", ">", since)))).data().count;
+    const stale = await getDocs(query(collection(db, "presence"), where("last", "<", Timestamp.fromMillis(Date.now() - 864e5)), limit(100)));
+    for (const d of stale.docs) deleteDoc(d.ref).catch(() => {});
+  } catch (e) { online = null; console.warn("online count failed", e.code || e.message); }
+  const el = document.querySelector("[data-online]"); if (el) el.textContent = online == null ? "–" : num(online);
+}
 async function loadStats() {
   try {
     const from = new Date(Date.now() - 120 * 864e5).toISOString().slice(0, 10);
@@ -121,6 +134,8 @@ function drawAnalytics(p) {
   p.innerHTML = `${statsErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load analytics (${esc(statsErr)}). The database rules that allow it go live with the next deploy.</p></div>` : ""}
     <div class="tabs2">${[7, 30, 90].map(n => `<button class="btn small${range === n ? " primary" : ""}" data-range="${n}">Last ${n} days</button>`).join("")}</div>
     <div class="tiles">
+      <div class="tile"><span>Online now</span><b data-online>${online == null ? "–" : num(online)}</b><span>updates every 30 s</span></div>
+      <div class="tile"><span>Daily active users</span><b>${num(today.visitors)}</b><span>today · ${num(Math.round(sum("visitors") / days.length))} a day on average</span></div>
       ${tile("Visitors", sum("visitors"), `${num(today.visitors)} today`)}
       ${tile("Page views", sum("views"), `${num(today.views)} today`)}
       ${tile("New visitors", sum("newVisitors"), `${num(sum("returning"))} returning`)}
@@ -141,7 +156,7 @@ function drawAnalytics(p) {
     </div>
     <details class="card"><summary><b>Day by day</b></summary><table class="log"><tr><th>Day</th><th class="n">Visitors</th><th class="n">Views</th><th class="n hide-s">Sign-ins</th><th class="n hide-s">Plans</th></tr>
       ${days.slice().reverse().map(d => `<tr><td>${d.day}</td><td class="n">${num(d.visitors)}</td><td class="n">${num(d.views)}</td><td class="n hide-s">${num(d.signins)}</td><td class="n hide-s">${num(d.plans)}</td></tr>`).join("")}</table></details>
-    <p class="note">Counts only: no names, emails, IP addresses or cookies are stored, just one running total per day. Counting started when analytics was switched on, so earlier days show zero. Days are in UTC. <button class="btn small" id="statsReload">Refresh</button></p>`;
+    <p class="note">Your own devices are left out once you've signed in as admin on them. Counts only: no names, emails, IP addresses or cookies are stored, just one running total per day. Counting started when analytics was switched on, so earlier days show zero. Days are in UTC. <button class="btn small" id="statsReload">Refresh</button></p>`;
   p.querySelectorAll("[data-range]").forEach(b => b.onclick = () => { range = +b.dataset.range; draw(); });
   p.querySelector("#statsReload").onclick = async () => { await loadStats(); draw(); toast("Updated"); };
 }

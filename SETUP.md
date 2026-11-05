@@ -150,3 +150,7 @@ firebase init hosting:github
 ```
 
 Answers: repository `Snooji/MealTote`; build script before deploy: **No**; deploy to the live channel when a PR is merged: **Yes**, branch `main`. Ignore any workflow files it writes in Cloud Shell; the repo already has its own. The Firestore rules still deploy by hand when they change: `firebase deploy --only firestore:rules`.
+
+## Photos
+
+Recipe photos live in `photos/` at 800×600. Lists use small copies in `photos/t/`: after adding or replacing photos, run `python3 tools/make-thumbs.py` (needs Pillow).

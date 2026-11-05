@@ -2079,7 +2079,7 @@ function drawSwap(){
   const pick=id=>{ swapSlot(meal,i,id); closeSheet(); };
   const cardOf=(x,rv)=>{ const r=rv||x.best, n=nutritionOf(r), isCur=x.all.some(v=>v.id===cur), d=isCur?null:kcalDelta(cur,r.id,meal);
     return el("div",{class:"swapcard"+(isCur?" current":"")},
-      el("button",{class:"swpic",onclick:()=>pick(r.id),"aria-label":"Choose "+r.title}, el("img",{src:imgFor(r),"data-rid":r.id,alt:"",loading:"lazy"}), isCur?el("span",{class:"inweek"},"Current"):null),
+      el("button",{class:"swpic",onclick:()=>pick(r.id),"aria-label":"Choose "+r.title}, el("img",{src:thumbFor(r),"data-rid":r.id,alt:"",loading:"lazy"}), isCur?el("span",{class:"inweek"},"Current"):null),
       el("div",{class:"swbody"},
         el("div",{class:"eyebrow"},CUISINE_LABEL[META[r.id].cuisine]||""),
         el("div",{class:"swtitle"}, el("button",{class:"slottitle",onclick:()=>pick(r.id)},r.title), deltaBadge(d)),
@@ -2088,7 +2088,12 @@ function drawSwap(){
         x.all.length>1 ? el("div",{class:"vchips"}, el("span",{class:"note"},"Make it with:"), x.all.map(v=>el("button",{class:"chip"+(v.id===cur?" on":""),onclick:()=>pick(v.id),title:v.id===cur?"":signed(kcalDelta(cur,v.id,meal).serving)+" kcal per serving"},proteinLabel(v), v.id===cur?null:chipK(kcalDelta(cur,v.id,meal))))) : null,
         el("button",{class:"linkbtn",onclick:()=>openRecipe(r.id,{day,i,meal,label:meal[0].toUpperCase()+meal.slice(1),id:r.id,leftover:false})},"View recipe")));
   };
-  const grid=el("div",{class:"swapgrid"}, list.map(x=>cardOf(x)));
+  // first 30 dishes now, the rest as you scroll
+  const grid=el("div",{class:"swapgrid"}, list.slice(0,30).map(x=>cardOf(x)));
+  if(list.length>30){ let shown=30; const more=el("div",{class:"gridmore"}); grid.append(more);
+    const io=new IntersectionObserver(es=>{ if(!es.some(e=>e.isIntersecting)) return; const frag=document.createDocumentFragment();
+      for(const x of list.slice(shown,shown+30)) frag.append(cardOf(x)); shown+=30; grid.insertBefore(frag,more); if(shown>=list.length){ io.disconnect(); more.remove(); } },{rootMargin:"600px"});
+    io.observe(more); }
   // dishes within about 8% of what's planned now, each in its closest-calorie version
   const near=Math.max(50,curK*0.08);
   const similar=curK ? list.filter(x=>!x.all.some(v=>v.id===cur)).map(x=>{ const v=x.all.slice().sort((a,b)=>Math.abs(nutritionOf(a).kcal-curK)-Math.abs(nutritionOf(b).kcal-curK))[0]; return {x,v,gap:Math.abs(nutritionOf(v).kcal-curK)}; })
@@ -2800,6 +2805,8 @@ function openShareRecipe(share){
     el("div",{class:"actions"}, el("button",{class:"btn primary",onclick:send},"Save recipe"), el("button",{class:"btn",onclick:closeSheet},"Cancel"))));
   $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0;
 }
+// lists and cards use the small copy of a bundled photo (photos/t/); the recipe page loads the full one
+function thumbFor(r){ const u=imgFor(r); return typeof u==="string" && u.startsWith("photos/") && u!==PLACEHOLDER ? "photos/t/"+u.slice(7) : u; }
 function imgFor(r){ return S.photos[r.id] || (r.base&&S.photos[r.base]) || communityImg(r.id) || (r.base&&communityImg(r.base)) || PHOTOS[r.id] || (r.base&&PHOTOS[r.base]) || (r.builder&&PHOTOS["breakfast-sandwiches"]) || PLACEHOLDER; }
 const listJoin = a => a.length<2 ? a.join("") : a.slice(0,-1).join(", ")+" and "+a[a.length-1];
 
@@ -3316,7 +3323,7 @@ function renderSettings(){
       row(null,"Feedback & ideas","Report a bug or ask for a recipe or store",null,"https://github.com/Snooji/mealtote/issues"),
       row(null,"Install on your phone","iPhone: Share → Add to Home Screen. Android: menu → Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
     admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Analytics, photo submissions and donations",openBackend)) : null,
-    el("p",{class:"note"},"MealTote "+APP_VERSION+(u?" · signed in as "+u.email:""))));
+    el("p",{class:"note"},"MealTote "+APP_VERSION+(RUNNING_VERSION?" ("+RUNNING_VERSION.slice(0,7)+")":"")+(u?" · signed in as "+u.email:""))));
 }
 
 function renderGroceries(){
@@ -3384,9 +3391,14 @@ function drawGrid(){
   const g=$("#grid"); g.innerHTML=""; const q=query.trim().toLowerCase(), inPlan=new Set(planRecipeIds());
   const list=RECIPES.filter(r=>(mealFilter==="All"||(mealFilter==="My book"?isFav(r.id):r.meal===mealFilter)) && (!cuisineFilter||META[r.id].cuisine===cuisineFilter) && (!q || (r.title+" "+r.blurb+" "+r.ing.map(i=>i[2]).join(" ")).toLowerCase().includes(q)));
   if(!list.length){ g.append(el("div",{class:"empty"}, mealFilter==="My book"?"Nothing here yet. Tap ♡ on any recipe to save it, or add your own with + New recipe.":"No recipes match that search.")); return; }
-  for(const r of list){ const c=recipeCost(r), fits=eligible(r);
-    g.append(el("button",{class:"card",onclick:()=>openRecipe(r.id)},
-      el("div",{class:"pic"}, el("img",{src:imgFor(r),"data-rid":r.id,alt:r.title,loading:"lazy"}), el("span",{class:"meal"},r.meal), el("span",{class:"cuisine-tag"},CUISINE_LABEL[META[r.id].cuisine]||""), inPlan.has(r.id)?el("span",{class:"inweek"},"In your plan"):(!fits?el("span",{class:"inweek off"},"Doesn't fit your answers"):null)),
+  // draw 48 cards now and the rest as you scroll, so the tab opens instantly
+  let shown=0; const more=el("div",{class:"gridmore"});
+  const batch=()=>{ const frag=document.createDocumentFragment(); for(const r of list.slice(shown,shown+48)) frag.append(card(r)); shown+=48; g.insertBefore(frag,more); if(shown>=list.length){ io.disconnect(); more.remove(); } };
+  const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)) batch(); },{rootMargin:"800px"});
+  g.append(more); batch(); if(more.isConnected) io.observe(more);
+  function card(r){ const c=recipeCost(r), fits=eligible(r);
+    return (el("button",{class:"card",onclick:()=>openRecipe(r.id)},
+      el("div",{class:"pic"}, el("img",{src:thumbFor(r),"data-rid":r.id,alt:r.title,loading:"lazy"}), el("span",{class:"meal"},r.meal), el("span",{class:"cuisine-tag"},CUISINE_LABEL[META[r.id].cuisine]||""), inPlan.has(r.id)?el("span",{class:"inweek"},"In your plan"):(!fits?el("span",{class:"inweek off"},"Doesn't fit your answers"):null)),
       el("div",{class:"body"}, el("h3",{},r.title),
         el("div",{class:"meta"}, el("span",{},r.time+" min"), el("span",{},fmtInt(r.kcal)+" kcal"), el("span",{},r.protein+" g protein"), el("span",{},"Makes "+r.serves)),
         r.builder?el("div",{class:"vline"},"Build your own: "+BSB_ALL.length+" combinations"):(versionsOf(r).length>1?el("div",{class:"vline"},"Also with: "+versionsOf(r).slice(1).map(proteinLabel).join(", ")):null),
@@ -3462,7 +3474,7 @@ function renderPlan(){
       if(!r){ cards.append(el("div",{class:"slot empty"}, el("div",{class:"eyebrow"},s.label), el("p",{class:"note"},"No "+s.meal+" recipe fits your answers. Edit your answers to widen the options."))); continue; }
       const n=nutritionOf(r);
       cards.append(el("div",{class:"slot"},
-        el("button",{class:"slotpic",onclick:()=>openRecipe(r.id,s),"aria-label":"Open "+r.title}, el("img",{src:imgFor(r),"data-rid":r.id,alt:"",loading:"lazy"}),
+        el("button",{class:"slotpic",onclick:()=>openRecipe(r.id,s),"aria-label":"Open "+r.title}, el("img",{src:thumbFor(r),"data-rid":r.id,alt:"",loading:"lazy"}),
           s.leftover?el("span",{class:"badge"},"Leftovers"):null),
         el("div",{class:"slotbody"},
           el("div",{class:"eyebrow"},s.label+" · "+(CUISINE_LABEL[META[r.id].cuisine]||"")), el("button",{class:"slottitle",onclick:()=>openRecipe(r.id,s)},r.title),
@@ -3555,7 +3567,7 @@ function openRecipe(id, slot){
     const ids=alternativesFor(slot.meal,slot.i).slice(0,4);
     if(ids.length) alts=el("div",{}, el("div",{class:"althead"}, el("h3",{class:"sub"},"Not feeling it? Swap for one of these"), el("button",{class:"btn small",onclick:()=>openSwap(slot.meal,slot.i)},"See all "+versionsFor(slot.meal,false).length+" options")),
       el("div",{class:"alts"}, ids.map(a=>{ const ar=R_BY_ID[a]; return el("button",{class:"alt",onclick:()=>{ swapSlot(slot.meal,slot.i,a); openRecipe(a,Object.assign({},slot,{id:a})); }},
-        el("img",{src:imgFor(ar),"data-rid":ar.id,alt:""}), el("span",{},ar.title), el("span",{class:"note"},fmtInt(nutritionOf(ar).kcal)+" kcal · "+ar.time+" min"), deltaBadge(kcalDelta(id,a,slot.meal))); })));
+        el("img",{src:thumbFor(ar),"data-rid":ar.id,alt:""}), el("span",{},ar.title), el("span",{class:"note"},fmtInt(nutritionOf(ar).kcal)+" kcal · "+ar.time+" min"), deltaBadge(kcalDelta(id,a,slot.meal))); })));
   }
   const cr = creditFor(r);
   const credit = cr ? (cr.page||cr.license!=="shared on MealTote" ? el("a",{class:"credit",href:cr.page,target:"_blank",rel:"noopener"},"Photo: "+cr.author+" · "+cr.license) : el("span",{class:"credit usertag"},"User photo · shared by "+cr.author)) : null;
@@ -3848,7 +3860,7 @@ function renderPdfPanel(){
       el("p",{class:"note",style:"margin:0"},"After it downloads, share it from your phone's Files app or attach it to a text or email.")),
     el("div",{}, el("div",{class:"eyebrow",style:"margin-bottom:10px"},"What's inside"),
       el("ol",{class:"inside"}, ["Cover with your week's numbers","Week at a glance: every meal with calories and protein, plus day totals","Meal prep guide: batch sessions, what to chop, cook and marinate ahead, and a night-by-night plan","Cost & nutrition: spend by store, daily averages, cook-and-store plan","A page per recipe: photo, macros, step-by-step method, fridge and freezer life","Shopping list by store and aisle, with prices and the weekly total"].map(x=>el("li",{},x))),
-      el("div",{class:"preview"}, ids.slice(0,3).map(id=>{ const r=R_BY_ID[id]; return el("div",{class:"pg"}, el("img",{src:imgFor(r),"data-rid":r.id,alt:""}), el("div",{class:"t"},r.title), el("div",{class:"l"}), el("div",{class:"l",style:"width:80%"}), el("div",{class:"l",style:"width:90%"})); })))));
+      el("div",{class:"preview"}, ids.slice(0,3).map(id=>{ const r=R_BY_ID[id]; return el("div",{class:"pg"}, el("img",{src:thumbFor(r),"data-rid":r.id,alt:""}), el("div",{class:"t"},r.title), el("div",{class:"l"}), el("div",{class:"l",style:"width:80%"}), el("div",{class:"l",style:"width:90%"})); })))));
 }
 async function makePdf(){
   const st=$("#pdfStatus"), btn=$("#makePdf");
@@ -3887,6 +3899,7 @@ async function onCloudUser(u){
   cloudUser=u; cloudLoaded=false; renderAccount();
   if(!u){ if(tab==="profile") tab="plan"; if(!OB) boot(); return; }
   try{
+    if(u.email===ADMIN_EMAIL) markAdminDevice();
     const isNew=await cloud.ensureProfile(); track("signins"); if(isNew) track("signups");
     const d=await cloud.load();
     let remote=null; try{ remote=d&&d.state?normalize(JSON.parse(d.state)):null; }catch(e){}
@@ -4061,21 +4074,33 @@ function openPlansSheet(){
 const TRACKED = new Set(["recipeSubmits","photoSubmits","views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
   "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile"]);
 let trackQ = {}, trackT = 0;
-function track(k, n=1){ if(!TRACKED.has(k)) return; trackQ[k]=(trackQ[k]||0)+n; clearTimeout(trackT); trackT=setTimeout(flushTrack, 4000); }
+// the admin's own devices don't count: once the admin signs in on a device, it's remembered and left out of every number
+const ADMIN_EMAIL = "starsidecollective@gmail.com";
+const isAdminDevice = () => { try{ return localStorage.getItem("mt-admin")==="1"; }catch(e){ return false; } };
+function markAdminDevice(){ try{ localStorage.setItem("mt-admin","1"); }catch(e){} trackQ={}; stopPresence(); }
+function track(k, n=1){ if(!TRACKED.has(k) || isAdminDevice()) return; trackQ[k]=(trackQ[k]||0)+n; clearTimeout(trackT); trackT=setTimeout(flushTrack, 4000); }
 function flushTrack(){
   if(!Object.keys(trackQ).length || !window.cloud || !cloud.enabled || !cloud.track) return;
   const q=trackQ; trackQ={}; cloud.track(q).catch(()=>{});
 }
 document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") flushTrack(); });
 document.addEventListener("click", e=>{ const a=e.target.closest&&e.target.closest('a[href^="support"]'); if(a) { track("supportClicks"); flushTrack(); } }, true);
+// online now: a heartbeat every 2 minutes while the app is on screen; gone when it's hidden or closed
+const SID = "s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+let presenceT = 0;
+function beat(){ if(isAdminDevice() || navigator.webdriver || !window.cloud || !cloud.enabled || !cloud.heartbeat) return; cloud.heartbeat(SID).catch(()=>{}); }
+function startPresence(){ clearInterval(presenceT); if(isAdminDevice()) return; beat(); presenceT=setInterval(()=>{ if(document.visibilityState==="visible") beat(); }, 120000); }
+function stopPresence(){ clearInterval(presenceT); presenceT=0; if(window.cloud && cloud.offline) cloud.offline(SID).catch(()=>{}); }
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") stopPresence(); else startPresence(); });
+window.addEventListener("pagehide", stopPresence);
 (function countVisit(){
-  if(/[?&]notrack\b/.test(location.search) || navigator.webdriver) return;
+  if(/[?&]notrack\b/.test(location.search) || navigator.webdriver || isAdminDevice()) return;
   const today=new Date().toISOString().slice(0,10); let seen=null, day=null;
   try{ seen=localStorage.getItem("mt-seen"); day=localStorage.getItem("mt-day"); localStorage.setItem("mt-seen","1"); localStorage.setItem("mt-day",today); }catch(e){}
   track("views");
   if(day!==today){ track("visitors"); track(seen?"returning":"newVisitors"); track(matchMedia("(max-width:720px)").matches?"mobile":"desktop"); }
   if(navigator.standalone===true || matchMedia("(display-mode: standalone)").matches) track("installed");
-  const go=()=>setTimeout(flushTrack,1500);
+  const go=()=>{ setTimeout(flushTrack,1500); setTimeout(startPresence,2000); };
   if(window.cloud) go(); else window.addEventListener("cloud-ready",go,{once:true});
 })();
 
@@ -4095,5 +4120,20 @@ addMyRecipes();
 if(S.plan && S.profile && !PLANS[S.planId]) storePlan();
 boot();
 connectStore();
+// home-screen apps resume instead of reloading, so check for a new version on open and every time the app comes back,
+// and reload quietly when nothing is in progress (otherwise offer a Refresh button)
+let RUNNING_VERSION=null;
+async function checkVersion(){
+  try{ const v=(await (await fetch("version.json",{cache:"no-store"})).json()).v; if(!v) return;
+    if(!RUNNING_VERSION){ RUNNING_VERSION=v; return; }
+    if(v===RUNNING_VERSION) return;
+    const busy=OB || !$("#sheet").hidden || $("#backendSheet") || document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if(!busy){ location.reload(); return; }
+    if(!$("#updbar")) document.body.append(el("div",{class:"updbar",id:"updbar"}, el("span",{},"A new version of MealTote is ready."), el("button",{class:"btn small primary",onclick:()=>location.reload()},"Refresh")));
+  }catch(e){}
+}
+checkVersion();
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") checkVersion(); });
+setInterval(()=>{ if(document.visibilityState==="visible") checkVersion(); }, 30*60000);
 // links from the public recipe pages (mealtote.com/recipes/<id>) open that recipe here
 { const rid=new URLSearchParams(location.search).get("recipe"); if(rid && R_BY_ID[rid]){ openRecipe(rid); history.replaceState(null,"",location.pathname); } }

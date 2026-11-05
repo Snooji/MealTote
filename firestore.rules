@@ -90,6 +90,13 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Online now: one doc per open app (random id), holding only the time it last checked in. Only the admin can read them.
+    match /presence/{sid} {
+      allow read: if isAdmin();
+      allow create, update: if sid.size() <= 40 && request.resource.data.keys().hasOnly(['last']) && request.resource.data.last == request.time;
+      allow delete: if true;
+    }
+
     // Site analytics: one doc of anonymous counts per UTC day, shown in the Backend. Anyone can add to today's counts
     // (each field only goes up, by at most 50 per write); only the admin can read them.
     function statsKeys() { return ['views', 'visitors', 'newVisitors', 'returning', 'mobile', 'desktop', 'installed', 'signins', 'signups', 'plans', 'pdf', 'supportClicks', 'recipeOpens', 'swaps', 'photoSubmits', 'recipeSubmits', 'tab_plan', 'tab_prep', 'tab_groceries', 'tab_pantry', 'tab_recipes', 'tab_pdf', 'tab_settings', 'tab_profile']; }

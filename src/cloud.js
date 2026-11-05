@@ -60,6 +60,9 @@ if (configured) {
         return false;
       },
 
+      // who's online: one tiny doc per open app (random id, no account info), refreshed while it's on screen
+      async heartbeat(sid) { await setDoc(doc(db, "presence", sid), { last: serverTimestamp() }); },
+      async offline(sid) { await deleteDoc(doc(db, "presence", sid)); },
       // site analytics: counts only, one doc per UTC day (stats/YYYY-MM-DD); nothing about who did what
       async track(counts) {
         const day = new Date().toISOString().slice(0, 10), data = {};
