@@ -13,9 +13,8 @@ const firstName = u => (String(u.displayName || "").trim().split(/\s+/)[0] || "A
 
 if (configured) {
   try {
-    const { initializeApp } = await import(`${SDK}/firebase-app.js`);
-    const { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-    const { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, increment } = await import(`${SDK}/firebase-firestore.js`);
+    // the three Firebase modules download in parallel
+    const [{ initializeApp }, { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged }, { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, increment }] = await Promise.all([import(`${SDK}/firebase-app.js`), import(`${SDK}/firebase-auth.js`), import(`${SDK}/firebase-firestore.js`)]);
 
     // Sign in through this site's own domain when it's served by Firebase Hosting (mealtote.com has /__/auth/handler).
     // Safari and home-screen apps block the hand-off when sign-in runs through a different domain (firebaseapp.com).

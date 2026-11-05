@@ -4,9 +4,8 @@ import { firebaseConfig } from "./firebase-config.js";
 
 const ADMIN_EMAIL = "starsidecollective@gmail.com";
 const SDK = "https://www.gstatic.com/firebasejs/10.12.2";
-const { initializeApp } = await import(`${SDK}/firebase-app.js`);
-const { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } = await import(`${SDK}/firebase-auth.js`);
-const { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where, deleteField, getCountFromServer, Timestamp } = await import(`${SDK}/firebase-firestore.js`);
+// the three Firebase modules download in parallel
+const [{ initializeApp }, { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged }, { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, limit, serverTimestamp, documentId, where, deleteField, getCountFromServer, Timestamp }] = await Promise.all([import(`${SDK}/firebase-app.js`), import(`${SDK}/firebase-auth.js`), import(`${SDK}/firebase-firestore.js`)]);
 
 // opened inside the app (Settings → Open the Backend): the app draws the header and close button
 if (new URLSearchParams(location.search).has("embed")) document.documentElement.classList.add("embed");
@@ -30,15 +29,13 @@ onAuthStateChanged(auth, async u => {
   if (u.email === ADMIN_EMAIL) { try { localStorage.setItem("mt-admin", "1"); } catch (e) {} } // leave this device out of the analytics
   if (u.email !== ADMIN_EMAIL || !u.emailVerified) return gate(`You're signed in as ${esc(u.email)}. The Backend is only for the MealTote admin.`, false);
   try {
-    const snap = await getDoc(configRef);
+    // the first screen (Analytics) needs only these, fetched together; everything else loads behind it
+    const [snap] = await Promise.all([getDoc(configRef), loadLog(), loadStats(), loadIndex()]);
     cfg = DONATE.normalize(snap.exists() ? snap.data() : DONATE.DEFAULT_DONATIONS);
     if (!snap.exists()) dirty = true; // first visit: nothing saved yet, so the support page is using the defaults
-    await loadLog();
-    await loadStats();
-    await loadOnline(); clearInterval(onlineT); onlineT = setInterval(loadOnline, 30000);
-    await loadPhotos();
-    await loadRecipeSubs();
     draw();
+    loadOnline(); clearInterval(onlineT); onlineT = setInterval(loadOnline, 30000);
+    loadCounts().then(() => { if (!["methods"].includes(tab)) draw(); });
   } catch (e) {
     gate("Couldn't load the Backend: " + esc(e.code || e.message) + ". If you just changed firestore.rules, deploy them with <code>firebase deploy --only firestore:rules</code>.", false);
   }
@@ -90,7 +87,7 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subs.length ? ` (${subs.length})` : ""}`], ["recipes", `Recipes${rsubs.length ? ` (${rsubs.length})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subsCount ? ` (${subsCount})` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
   ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
@@ -103,8 +100,7 @@ async function loadOnline() {
   try {
     const since = Timestamp.fromMillis(Date.now() - 180000);
     online = (await getCountFromServer(query(collection(db, "presence"), where("last", ">", since)))).data().count;
-    const stale = await getDocs(query(collection(db, "presence"), where("last", "<", Timestamp.fromMillis(Date.now() - 864e5)), limit(100)));
-    for (const d of stale.docs) deleteDoc(d.ref).catch(() => {});
+    if (!loadOnline.cleaned) { loadOnline.cleaned = true; getDocs(query(collection(db, "presence"), where("last", "<", Timestamp.fromMillis(Date.now() - 864e5)), limit(100))).then(st => st.docs.forEach(d => deleteDoc(d.ref).catch(() => {}))).catch(() => {}); }
   } catch (e) { online = null; console.warn("online count failed", e.code || e.message); }
   const el = document.querySelector("[data-online]"); if (el) el.textContent = online == null ? "–" : num(online);
 }
@@ -162,17 +158,28 @@ function drawAnalytics(p) {
 }
 
 /* ------------------------------------------------------------------ community photos: approve or reject what people submit */
+// pending counts for the tab labels come from cheap count queries; the submissions themselves (with photos) load when their tab opens
+let subsLoaded = false, recipesLoaded = false, subsCount = 0, rsubsCount = 0;
+async function loadCounts() {
+  try {
+    const [a, b] = await Promise.all([getCountFromServer(collection(db, "submissions")), getCountFromServer(collection(db, "recipeSubs"))]);
+    subsCount = a.data().count; rsubsCount = b.data().count;
+  } catch (e) {}
+}
+async function loadIndex() {
+  try { const idx = await getDoc(doc(db, "site", "communityPhotos")); community = idx.exists() ? (idx.data().ids || {}) : {}; }
+  catch (e) { community = {}; photoErr = e.code || e.message; }
+}
 async function loadPhotos() {
   try {
-    const q = await getDocs(query(collection(db, "submissions"), orderBy("at", "desc"), limit(60)));
-    subs = q.docs.map(d => ({ id: d.id, ...d.data() }));
-    const idx = await getDoc(doc(db, "site", "communityPhotos")); community = idx.exists() ? (idx.data().ids || {}) : {}; photoErr = "";
-  } catch (e) { subs = []; community = {}; photoErr = e.code || e.message; }
+    const [q] = await Promise.all([getDocs(query(collection(db, "submissions"), orderBy("at", "desc"), limit(60))), loadIndex()]);
+    subs = q.docs.map(d => ({ id: d.id, ...d.data() })); subsCount = subs.length; subsLoaded = true; photoErr = "";
+  } catch (e) { subs = []; photoErr = e.code || e.message; }
 }
 async function loadRecipeSubs() {
   try {
-    rsubs = (await getDocs(query(collection(db, "recipeSubs"), orderBy("at", "desc"), limit(60)))).docs.map(d => ({ id: d.id, ...d.data() }));
-    liveRecipes = (await getDocs(collection(db, "communityRecipes"))).docs.map(d => ({ id: d.id, ...d.data() }));
+    const [a, b] = await Promise.all([getDocs(query(collection(db, "recipeSubs"), orderBy("at", "desc"), limit(60))), getDocs(collection(db, "communityRecipes"))]);
+    rsubs = a.docs.map(d => ({ id: d.id, ...d.data() })); liveRecipes = b.docs.map(d => ({ id: d.id, ...d.data() })); rsubsCount = rsubs.length; recipesLoaded = true;
   } catch (e) { rsubs = []; liveRecipes = []; photoErr = photoErr || e.code || e.message; }
 }
 // approve a recipe: it goes into communityRecipes (everyone reads it); a photo, if any, becomes its community photo (id u-<doc id>)
@@ -197,6 +204,7 @@ async function unpublishRecipe(id) {
   } catch (e) { toast("Couldn't remove: " + (e.code || e.message)); }
 }
 function drawRecipes(p) {
+  if (!recipesLoaded) { p.innerHTML = `<p class="note">Loading recipes…</p>`; loadRecipeSubs().then(() => { if (tab === "recipes") draw(); }); return; }
   const card = (x, i) => `<div class="sub">${x.photo ? `<img src="${x.photo}" alt="">` : ""}<div><b>${esc(x.title)}</b><div class="note">${esc(x.meal)} · ${esc(x.cuisine)} · ${esc(x.time)} min · serves ${esc(x.serves)} · from ${esc(x.name)}</div>
       ${x.blurb ? `<p style="margin:6px 0">${esc(x.blurb)}</p>` : ""}${x.kcal ? `<div class="note">${esc(x.kcal)} kcal · ${esc(x.protein)} g protein · ${esc(x.carbs)} g carbs · ${esc(x.fat)} g fat per serving</div>` : `<div class="note">No nutrition given</div>`}
       <details><summary>Ingredients and steps</summary><ul>${(x.ing || []).map(t => `<li>${esc(t)}</li>`).join("")}</ul><ol>${(x.steps || []).map(t => `<li>${esc(t)}</li>`).join("")}</ol></details></div>
@@ -210,8 +218,13 @@ function drawRecipes(p) {
   p.querySelectorAll("[data-run]").forEach(b => b.onclick = () => unpublishRecipe(b.dataset.run));
 }
 /* ------------------------------------------------------------------ all photos: see every recipe's photo; swap it for a better free-licensed one or the logo */
-const BUNDLED = window.BB_PHOTOS || {};
-async function loadRecipeList() { if (!recipeList) recipeList = await (await fetch("recipes/list.json", { cache: "no-cache" })).json(); }
+let BUNDLED = {};
+async function loadRecipeList() {
+  if (recipeList) return;
+  if (!window.BB_PHOTOS) await new Promise((ok, bad) => { const sc = document.createElement("script"); sc.src = "src/photos.js"; sc.onload = ok; sc.onerror = bad; document.head.append(sc); });
+  BUNDLED = window.BB_PHOTOS || {};
+  recipeList = await (await fetch("recipes/list.json", { cache: "no-cache" })).json();
+}
 function photoState(id) {
   const c = community[id];
   if (c && c.kind === "logo") return { src: "photos/placeholder.jpg", tag: "logo", label: "Logo (set by you)" };
@@ -222,11 +235,11 @@ function photoState(id) {
 }
 async function setIndex(id, entry) { await setDoc(doc(db, "site", "communityPhotos"), { ids: { [id]: entry === null ? deleteField() : entry } }, { merge: true }); }
 async function useLogo(id) {
-  try { await setIndex(id, { kind: "logo", by: "", at: Date.now() }); toast("Set to the logo for everyone."); await loadPhotos(); draw(); }
+  try { await setIndex(id, { kind: "logo", by: "", at: Date.now() }); toast("Set to the logo for everyone."); await loadIndex(); draw(); }
   catch (e) { toast("Couldn't change it: " + (e.code || e.message)); }
 }
 async function resetPhoto(id) {
-  try { await deleteDoc(doc(db, "communityPhotos", id)).catch(() => {}); await setIndex(id, null); toast("Back to the original."); await loadPhotos(); draw(); }
+  try { await deleteDoc(doc(db, "communityPhotos", id)).catch(() => {}); await setIndex(id, null); toast("Back to the original."); await loadIndex(); draw(); }
   catch (e) { toast("Couldn't reset: " + (e.code || e.message)); }
 }
 // cut any image to the 800×600 JPEG every recipe photo uses
@@ -272,7 +285,7 @@ function openSwap(id, title) {
       const data = await toThumb(blob), by = String(x.creator || "Unknown").slice(0, 80), license = LIC(x), page = x.foreign_landing_url || "";
       await setDoc(doc(db, "communityPhotos", id), { data, by, title: x.title || "", at: Date.now(), license, page });
       await setIndex(id, { kind: "swap", by, license, page, at: Date.now() });
-      close(); toast("Swapped. Everyone sees the new photo now."); await loadPhotos(); draw();
+      close(); toast("Swapped. Everyone sees the new photo now."); await loadIndex(); draw();
     } catch (e) { res.innerHTML = `<p class="note warnline">${esc(e.message || e)}</p>`; }
   };
   search(false);
@@ -323,6 +336,7 @@ async function unpublish(rid) {
   } catch (e) { toast("Couldn't remove: " + (e.code || e.message)); }
 }
 function drawPhotos(p) {
+  if (!subsLoaded) { p.innerHTML = `<p class="note">Loading submissions…</p>`; loadPhotos().then(() => { if (tab === "photos") draw(); }); return; }
   const live = Object.entries(community).sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
   p.innerHTML = `${photoErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load photos (${esc(photoErr)}). The database rules for this go live with the next deploy.</p></div>` : ""}
     <div class="card"><h3>Waiting for review (${subs.length})</h3>
