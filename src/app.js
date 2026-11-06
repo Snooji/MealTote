@@ -2100,7 +2100,7 @@ function drawSwap(){
     .filter(o=>o.gap<=near).sort((a,b)=>a.gap-b.gap).slice(0,6) : [];
   const optionsTotal=list.reduce((a,x)=>a+x.all.length,0);
   p.append(el("div",{class:"content swapper"},
-    el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Swap "+day+" "+meal), el("h2",{id:"dTitle"},"Pick something else")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+    el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Swap "+day+" "+meal), el("h2",{id:"dTitle"},"Pick something else")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"Close")),
     el("p",{class:"note",style:"margin:0"},`${list.length} dishes, ${optionsTotal} ways to make them, all fitting your answers. Tap a dish or a protein to swap it in.`),
     el("div",{class:"swapctl"},
       el("input",{class:"search",id:"swq",type:"search",placeholder:"Search: curry, salmon, tacos…",value:SWP.q,oninput:e=>{ SWP.q=e.target.value; const pos=e.target.selectionStart; renderSwap(); const f=$("#swq"); f.focus(); f.setSelectionRange(pos,pos); }}),
@@ -2796,7 +2796,7 @@ function openShareRecipe(share){
       catch(err){ toast("Saved to your book, but couldn't send it for review ("+(err.code||err.message||"error")+")."); closeSheet(); openRecipeBook(); return; } }
     closeSheet(); toast(share?"Saved to your book and sent for review. Thanks!":"Saved to your recipe book."); openRecipeBook(); };
   p.append(el("div",{class:"content sharerec"},
-    el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"New recipe"), el("h2",{id:"dTitle"},"Add your own recipe")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+    el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"New recipe"), el("h2",{id:"dTitle"},"Add your own recipe")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"Close")),
     vis, visNote,
     f("Recipe name",t), el("div",{class:"grid2s"}, f("Meal",meal), f("Cuisine",cui), f("Total minutes",time), f("Servings",serves)),
     f("About it",blurb), f("Ingredients",ing), f("Steps",steps),
@@ -2989,7 +2989,7 @@ function openStoreSheet(){
   const p=$("#panel");
   const draw=()=>keepSheetScroll(()=>{ p.innerHTML="";
     p.append(el("div",{class:"content"},
-      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{id:"dTitle"},"Where do you shop?")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Grocery list"), el("h2",{id:"dTitle"},"Where do you shop?")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"Close")),
       storePicker(st, draw),
       el("div",{class:"actions",style:"position:sticky;bottom:0;background:var(--surface);padding:12px 0"},
         el("button",{class:"btn primary",disabled:!st.stores.length,onclick:()=>{ S.stores=st.stores.slice(); if(S.profile){ S.profile.stores=S.stores.slice(); S.profile.region=st.region; } S.overrides={}; save(); closeSheet(); refresh(); toast("Shopping at "+listJoin(S.stores.map(s=>STORES[s].name))); }},"Use these stores"),
@@ -3004,7 +3004,7 @@ function openThemeSheet(){
   const draw=()=>keepSheetScroll(()=>{ const t=THEME.get(); p.innerHTML="";
     const pick=patch=>{ THEME.set(patch); draw(); };
     p.append(el("div",{class:"content themes"},
-      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Make it yours"), el("h2",{id:"dTitle"},"Theme")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},"Make it yours"), el("h2",{id:"dTitle"},"Theme")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"Close")),
       el("section",{}, el("h3",{class:"sub"},"Mode"),
         el("div",{class:"seg",role:"group","aria-label":"Mode"}, [["auto","Auto"],["light","Light"],["dark","Dark"]].map(([k,l])=>el("button",{"aria-pressed":t.mode===k,onclick:()=>pick({mode:k})},l))),
         el("p",{class:"note"},"Auto follows your device's light or dark setting.")),
@@ -3278,13 +3278,13 @@ function renderPantry(){
     list.append(el("div",{class:"prow2"+(have?" have":"")},
       el("input",{type:"checkbox",checked:have,"aria-label":"Have "+x.key,onchange:e=>{ if(e.target.checked){ P.have[x.key]=1; delete P.add[x.key]; } else delete P.have[x.key]; save(); keepScroll(renderPantry); renderCounts(); }}),
       el("div",{class:"grow",title:x.recipes.join(" · ")}, el("div",{class:"nm"},x.key), el("div",{class:"pd"},x.recipes.length>1?"Used in "+x.recipes.length+" recipes":"Used in "+x.recipes[0])),
-      el("button",{class:"btn small"+(on?" primary":""),onclick:()=>{ if(on) delete P.add[x.key]; else { P.add[x.key]=1; delete P.have[x.key]; } save(); keepScroll(renderPantry); renderCounts(); }}, on?"On list ✓":"+ List")));
+      el("button",{class:"btn small"+(on?" primary":""),onclick:()=>{ if(on) delete P.add[x.key]; else { P.add[x.key]=1; delete P.have[x.key]; } save(); keepScroll(renderPantry); renderCounts(); }}, on?"On list":"Add to list")));
   }
   const custom=Object.keys(P.add).filter(k=>!items.some(x=>x.key===k));
   for(const k of custom) list.append(el("div",{class:"prow2"},
     el("span",{class:"ti",style:"width:22px"}),
     el("div",{class:"grow"}, el("div",{class:"nm"},k), el("div",{class:"pd"},"Added by you")),
-    el("button",{class:"btn small primary",onclick:()=>{ delete P.add[k]; save(); keepScroll(renderPantry); renderCounts(); }},"On list ✓")));
+    el("button",{class:"btn small primary",onclick:()=>{ delete P.add[k]; save(); keepScroll(renderPantry); renderCounts(); }},"On list")));
   m.append(items.length||custom.length ? list : el("p",{class:"note"},"No pantry staples for this plan."));
 }
 
@@ -3296,7 +3296,7 @@ function openBackend(){
   if($("#backendSheet")) return;
   const close=()=>{ wrap.remove(); document.body.style.overflow=""; };
   const wrap=el("div",{class:"fullsheet",id:"backendSheet",role:"dialog","aria-label":"Backend"},
-    el("div",{class:"fsbar"}, el("b",{},"Backend"), el("button",{class:"btn small primary",onclick:close,"aria-label":"Close the Backend"},"✕ Close")),
+    el("div",{class:"fsbar"}, el("b",{},"Backend"), el("button",{class:"btn small primary",onclick:close,"aria-label":"Close the Backend"},"Close")),
     el("iframe",{src:"admin.html?embed=1",title:"MealTote Backend"}));
   document.body.append(wrap); document.body.style.overflow="hidden";
   document.addEventListener("keydown",function esc(e){ if(e.key==="Escape"){ close(); document.removeEventListener("keydown",esc); } });
@@ -3324,9 +3324,9 @@ function renderSettings(){
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Community"),
       row(null,"Share a recipe","Send us your recipe; approved ones show for everyone with your name",()=>openShareRecipe(true))),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Support & help"),
-      row(null,"♥ Support MealTote","Chip in to keep it free",null,"support.html"),
+      row(null,"Support MealTote","Chip in to keep it free",null,"support.html"),
       row(null,"Feedback & ideas","Report a bug or ask for a recipe or store",null,"https://github.com/Snooji/mealtote/issues"),
-      row(null,"Install on your phone","iPhone: Share → Add to Home Screen. Android: menu → Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
+      row(null,"Install on your phone","iPhone: Share, then Add to Home Screen. Android: menu, then Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
     admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Analytics, photo submissions and donations",openBackend)) : null,
     el("p",{class:"note"},"MealTote "+APP_VERSION+(RUNNING_VERSION?" ("+RUNNING_VERSION.slice(0,7)+")":"")+(u?" · signed in as "+u.email:""))));
 }
@@ -3385,17 +3385,17 @@ let mealFilter="All", query="", cuisineFilter="";
 function renderRecipes(){
   const m=$("#app"); m.innerHTML="";
   m.append(el("div",{class:"toolbar"},
-    el("div",{class:"seg"}, ["All","Breakfast","Lunch","Dinner","My book"].map(x=>el("button",{"aria-pressed":mealFilter===x,onclick:()=>{mealFilter=x;keepScroll(renderRecipes);}},x==="My book"?"♥ My book":x))),
+    el("div",{class:"seg"}, ["All","Breakfast","Lunch","Dinner","My book"].map(x=>el("button",{"aria-pressed":mealFilter===x,onclick:()=>{mealFilter=x;keepScroll(renderRecipes);}},x==="My book"?"My recipe book":x))),
     el("select",{id:"cuisineSel","aria-label":"Cuisine",onchange:e=>{ cuisineFilter=e.target.value; drawGrid(); }}, el("option",{value:""},"All cuisines ("+RECIPES.length+")"), cuisineSelectOpts(cuisineFilter, k=>RECIPES.filter(r=>META[r.id].cuisine===k).length)),
     el("input",{class:"search",id:"search",type:"search",placeholder:"Search recipes or ingredients","aria-label":"Search recipes",value:query,oninput:e=>{ query=e.target.value; drawGrid(); }}),
     el("button",{class:"btn small primary",onclick:()=>openShareRecipe(false)},"+ New recipe")));
-  if(mealFilter==="My book") m.append(el("p",{class:"note"},"Your recipe book: recipes you've saved with ♡ and the ones you've added yourself."));
+  if(mealFilter==="My book") m.append(el("p",{class:"note"},"Your recipe book: recipes you've saved and the ones you've added yourself."));
   const g=el("div",{class:"grid",id:"grid"}); m.append(g); drawGrid();
 }
 function drawGrid(){
   const g=$("#grid"); g.innerHTML=""; const q=query.trim().toLowerCase(), inPlan=new Set(planRecipeIds());
   const list=RECIPES.filter(r=>(mealFilter==="All"||(mealFilter==="My book"?isFav(r.id):r.meal===mealFilter)) && (!cuisineFilter||META[r.id].cuisine===cuisineFilter) && (!q || (r.title+" "+r.blurb+" "+r.ing.map(i=>i[2]).join(" ")).toLowerCase().includes(q)));
-  if(!list.length){ g.append(el("div",{class:"empty"}, mealFilter==="My book"?"Nothing here yet. Tap ♡ on any recipe to save it, or add your own with + New recipe.":"No recipes match that search.")); return; }
+  if(!list.length){ g.append(el("div",{class:"empty"}, mealFilter==="My book"?"Nothing saved yet. Open any recipe and tap Save to my recipe book, or add your own with New recipe.":"No recipes match that search.")); return; }
   // draw 48 cards now and the rest as you scroll, so the tab opens instantly
   let shown=0; const more=el("div",{class:"gridmore"});
   const batch=()=>{ const frag=document.createDocumentFragment(); for(const r of list.slice(shown,shown+48)) frag.append(card(r)); shown+=48; g.insertBefore(frag,more); if(shown>=list.length){ io.disconnect(); more.remove(); } };
@@ -3577,7 +3577,7 @@ function openRecipe(id, slot){
   const cr = creditFor(r);
   const credit = cr ? (cr.page||cr.license!=="shared on MealTote" ? el("a",{class:"credit",href:cr.page,target:"_blank",rel:"noopener"},"Photo: "+cr.author+" · "+cr.license) : el("span",{class:"credit usertag"},"User photo · shared by "+cr.author)) : null;
   p.append(
-    el("div",{class:"hero"}, el("img",{src:imgFor(r),"data-rid":r.id,alt:r.title}), el("button",{class:"close","aria-label":"Close",onclick:closeSheet},"×"), credit),
+    el("div",{class:"hero"}, el("img",{src:imgFor(r),"data-rid":r.id,alt:r.title}), el("button",{class:"close","aria-label":"Close",onclick:closeSheet},"Close"), credit),
     el("div",{class:"content"},
       el("div",{}, el("div",{class:"eyebrow"},(slot?slot.day+" "+slot.label:r.meal)+" · "+r.time+" minutes total"), el("h2",{id:"dTitle"},r.title),
         r.community?el("span",{class:"usertag"},r.community.mine?"My recipe":"Community recipe · shared by "+r.community.by):null),
@@ -3591,12 +3591,12 @@ function openRecipe(id, slot){
       storagePanel(r), versionPanel(r,slot),
       el("div",{class:"prepbadge"}, el("span",{class:"tag "+prepMode(r)},PREP_LABEL[prepMode(r)]), el("span",{class:"note"}," · on a prep week, about "+nightMinutes(r)+" min on the night")),
       el("div",{class:"actions"},
-        el("button",{class:"btn"+(isFav(id)?" primary":""),onclick:()=>{ if(r.community&&r.community.mine) return; toggleFav(id); openRecipe(id,slot); }}, isFav(id)?"♥ In my recipe book":"♡ Save to my recipe book"),
+        el("button",{class:"btn"+(isFav(id)?" primary":""),onclick:()=>{ if(r.community&&r.community.mine) return; toggleFav(id); openRecipe(id,slot); }}, isFav(id)?"Saved to your recipe book":"Save to my recipe book"),
         r.community&&r.community.mine?el("button",{class:"btn danger",onclick:e=>{ if(e.target.dataset.armed!=="1"){ e.target.dataset.armed="1"; e.target.textContent="Tap again to delete"; return; } removeMyRecipe(id); closeSheet(); toast("Recipe deleted"); refresh(); }},"Delete my recipe"):null,
         el("button",{class:"btn",onclick:()=>pickPhoto(id)}, S.photos[id]?"Replace photo":"Use my own photo"),
         S.photos[id]?el("button",{class:"btn",onclick:()=>{ delete S.photos[id]; save(); openRecipe(id,slot); refresh(); }},"Remove my photo"):null,
-        S.photos[id]?el("button",{class:"btn"+(S.submitted&&S.submitted[id]?"":" primary"),disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>sharePhoto(id,slot)}, S.submitted&&S.submitted[id]?"Sent for review ✓":"Share it with everyone")
-          : el("button",{class:"btn",disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>{ if(!cloudUser){ toast("Sign in to submit a photo."); return signIn(); } pickPhoto(id,true); }}, S.submitted&&S.submitted[id]?"Photo sent for review ✓":"Submit a photo for everyone")),
+        S.photos[id]?el("button",{class:"btn"+(S.submitted&&S.submitted[id]?"":" primary"),disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>sharePhoto(id,slot)}, S.submitted&&S.submitted[id]?"Sent for review":"Share it with everyone")
+          : el("button",{class:"btn",disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>{ if(!cloudUser){ toast("Sign in to submit a photo."); return signIn(); } pickPhoto(id,true); }}, S.submitted&&S.submitted[id]?"Photo sent for review":"Submit a photo for everyone")),
       el("div",{class:"cols"},
         el("div",{style:"display:grid;gap:18px;align-content:start"},
           el("div",{}, el("h3",{class:"sub"},"Ingredients"), ingList, scaleNote, macroPanel(r,mealKey,slot), r.pantry?el("p",{class:"note"},"From your pantry: "+r.pantry+"."):null),
@@ -3848,7 +3848,7 @@ window.buildPdf = buildPdf;
 // MealTote is free; a gentle, dismissible-by-ignoring nudge on the pages people finish on
 function supportCard(){
   return el("div",{class:"supportcard"}, el("p",{}, el("b",{},"MealTote is free, with no ads and no paywall. "), "If it saved you time or money this week, a few dollars keeps it running."),
-    el("a",{class:"btn primary",href:"support.html"},"♥ Support MealTote"));
+    el("a",{class:"btn primary",href:"support.html"},"Support MealTote"));
 }
 function renderPdfTab(){ renderPdfPanel(); $("#app").append(supportCard()); }
 function renderPdfPanel(){
@@ -4056,9 +4056,9 @@ function openPlansSheet(){
   const draw=()=>keepSheetScroll(()=>{ p.innerHTML="";
     const list=Object.values(PLANS).sort((a,b)=>b.updatedMs-a.updatedMs);
     p.append(el("div",{class:"content plans"},
-      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},list.length+" saved"), el("h2",{id:"dTitle"},"My plans")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"×")),
+      el("div",{class:"swaphead"}, el("div",{}, el("div",{class:"eyebrow"},list.length+" saved"), el("h2",{id:"dTitle"},"My plans")), el("button",{class:"close static","aria-label":"Close",onclick:closeSheet},"Close")),
       el("p",{class:"note",style:"margin:0"},"Every plan you make is saved here with its own answers, groceries, swaps and checkmarks"+(cloudUser?", on every device you sign in to.":". Sign in to keep them on every device.")),
-      el("div",{class:"actions"}, el("button",{class:"btn primary",onclick:startNewPlan},"+ New plan"), el("button",{class:"btn",onclick:()=>{ closeSheet(); openShareRecipe(false); }},"+ New recipe"), el("button",{class:"btn",onclick:()=>{ closeSheet(); openRecipeBook(); }},"♥ My recipe book")),
+      el("div",{class:"actions"}, el("button",{class:"btn primary",onclick:startNewPlan},"+ New plan"), el("button",{class:"btn",onclick:()=>{ closeSheet(); openShareRecipe(false); }},"+ New recipe"), el("button",{class:"btn",onclick:()=>{ closeSheet(); openRecipeBook(); }},"My recipe book")),
       list.length ? el("div",{class:"plist"}, list.map(x=>{ const cur=x.id===S.planId; let armed=0;
         const nameIn=el("input",{type:"text",value:x.name,maxlength:80,"aria-label":"Plan name",class:"pname"});
         return el("div",{class:"pitem"+(cur?" current":"")},

@@ -251,7 +251,7 @@ const LIC = r => (r.license === "cc0" ? "CC0" : r.license === "pdm" ? "Public do
 function openSwap(id, title) {
   const q0 = title.replace(/\(.*?\)/g, "").replace(/\b(with|over|and|&)\b.*$/i, "").trim();
   const wrap = document.createElement("div"); wrap.className = "pick";
-  wrap.innerHTML = `<div class="box" role="dialog" aria-label="Swap photo"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><b>Swap photo: ${esc(title)}</b><button class="btn small" data-x>✕ Close</button></div>
+  wrap.innerHTML = `<div class="box" role="dialog" aria-label="Swap photo"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><b>Swap photo: ${esc(title)}</b><button class="btn small" data-x>Close</button></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="text" value="${esc(q0)}" style="flex:1;min-width:180px" aria-label="Search"><button class="btn small primary" data-go>Search</button><button class="btn small" data-logo>Use the logo instead</button></div>
     <p class="note" style="margin:0">Free-licensed photos from Openverse (Flickr, Wikimedia and more). Tap one to use it for everyone; it's credited automatically.</p>
     <div class="pgrid" data-res><p class="note">Searching…</p></div><button class="btn small" data-more hidden>More results</button></div>`;

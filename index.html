@@ -35,7 +35,7 @@
   <div class="wrap">
     <div class="bar">
       <div class="brand"><img class="mark" src="icons/mark.png" alt="" width="34" height="34"><a class="logo-word" href="/" aria-label="MealTote home">Meal<b>Tote</b></a><span>meal plans across your stores</span></div>
-      <div class="actions" id="hdrBtns"><div id="account"></div><a class="btn small support desk" href="support.html" aria-label="Support MealTote">♥ Support</a><button class="btn small desk" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small desk" id="resetBtn" hidden>My plans</button><button class="btn small desk" id="editBtn" hidden>Edit my answers</button><button class="btn small iconbtn" id="settingsBtn" aria-label="Settings"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="desk">Settings</span></button></div>
+      <div class="actions" id="hdrBtns"><div id="account"></div><a class="btn small support desk" href="support.html" aria-label="Support MealTote">Support</a><button class="btn small desk" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small desk" id="resetBtn" hidden>My plans</button><button class="btn small desk" id="editBtn" hidden>Edit my answers</button><button class="btn small iconbtn" id="settingsBtn" aria-label="Settings"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="desk">Settings</span></button></div>
     </div>
     <nav class="tabs" role="tablist" id="tabs" hidden>
       <button role="tab" data-tab="plan" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span class="tl"><span class="long">My plan</span><span class="short">Plan</span></span></button>
@@ -54,57 +54,56 @@
      (renderWelcome) and swaps in the planner once someone has a plan. Popular recipes are filled in by tools/export-cookbook.mjs. -->
 <article id="landing" class="landing">
   <section class="lhero">
-    <div class="eyebrow">Free meal planner · no ads, no paywall</div>
-    <h1>Free meal planner and grocery list for your whole week</h1>
-    <p class="lede">Answer a few questions and MealTote plans breakfast, lunch and dinner for everyone you cook for, with portions sized to each person's calories and macros. Then it writes one grocery list split across the stores you already shop at, with estimated prices.</p>
-    <div class="actions"><button class="btn primary big" id="startBtn" type="button">Plan my week free</button><a class="btn big" href="/recipes/">Browse 580+ recipes</a></div>
-    <ul class="lproof"><li><b>580+</b> recipes with nutrition</li><li><b>50</b> cuisines</li><li><b>36</b> grocery chains</li><li><b>$0</b>, free forever</li></ul>
+    <h1>A free meal planner that writes your grocery list for you</h1>
+    <p class="lede">I got tired of meal planning apps that put the useful parts behind a subscription, so I built MealTote. Tell it who you're cooking for and how you like to eat. It plans the week, sizes everyone's portions and writes one grocery list for the stores you already shop at.</p>
+    <div class="actions"><button class="btn primary big" id="startBtn" type="button">Plan my week</button><a class="textlink" href="/recipes/">or browse the recipes first</a></div>
+    <p class="note">Free, no ads, no account needed. 584 recipes from 50 cuisines, priced at 36 grocery chains.</p>
   </section>
 
   <section class="lsec" aria-labelledby="how">
-    <h2 id="how">How MealTote works</h2>
+    <h2 id="how">What happens when you start</h2>
     <ol class="lsteps">
-      <li><h3>Tell us how you eat</h3><p>Who's eating and their daily calories, optional protein, carb and fat targets, favorite foods and cuisines, allergies, diet, cooking time and budget.</p></li>
-      <li><h3>Get a week of meals</h3><p>A plan for 3, 5 or 7 days from 580+ recipes, with leftovers planned in if you like. Swap any meal in one tap and see exactly how calories and macros change.</p></li>
-      <li><h3>Shop once, across your stores</h3><p>One grocery list grouped by store and aisle, split between Walmart, Aldi, Costco, Kroger, Trader Joe's, Target, Publix, H-E-B and more, either cheapest overall or fewest stops.</p></li>
+      <li><b>You answer a few questions.</b> Who's eating and how many calories each person needs, protein and carb targets if you track them, foods you love or skip, allergies, how long you can cook and roughly what you want to spend.</li>
+      <li><b>MealTote plans 3, 5 or 7 days.</b> Breakfast, lunch and dinner from 584 recipes, with leftovers worked in if you want them. Don't like something? Swap it and see how calories and protein change before you do.</li>
+      <li><b>You shop once.</b> One list, sorted by store and aisle, split between Walmart, Aldi, Costco, Kroger, Trader Joe's, Target, Publix, H-E-B and the rest, whichever way costs less or means fewer stops.</li>
     </ol>
   </section>
 
   <section class="lsec" aria-labelledby="features">
-    <h2 id="features">Everything you need to plan meals and shop smarter</h2>
-    <div class="lfeat">
-      <div><h3>Portions sized for each person</h3><p>One recipe feeds a 1,700-calorie day and a 2,700-calorie day. Every serving size is worked out per person.</p></div>
-      <div><h3>Macros and high-protein plans</h3><p>Set protein, carb and fat targets. The planner picks dishes that fit, sizes portions to match and suggests a side or extra protein when a meal falls short.</p></div>
-      <div><h3>Grocery list with prices</h3><p>Estimated prices from 36 US grocery chains, nationwide and regional, so you know the weekly total before you shop.</p></div>
-      <div><h3>Meal prep guide</h3><p>The week's chopping, sauces, marinades and grains batched into one or two sessions, so weeknights are mostly reheating.</p></div>
-      <div><h3>Pantry with expiration dates</h3><p>Track what's in your fridge and cupboards, see what's about to expire, and add anything to your shopping list.</p></div>
-      <div><h3>Your own recipe book</h3><p>Save favorites, add your own recipes, and share them with the community if you like.</p></div>
-      <div><h3>Printable cookbook</h3><p>Turn your week into a PDF with the plan, prep guide, recipes, nutrition and shopping list to print, text or email.</p></div>
-      <div><h3>Free and private</h3><p>No ads, no premium tier. Use it without an account, or sign in with Google to keep your plans on every device.</p></div>
-    </div>
+    <h2 id="features">What's in it</h2>
+    <ul class="lfeat">
+      <li><b>Portions for each person.</b> One recipe can feed a 1,700-calorie day and a 2,700-calorie day. Everyone's serving is worked out separately.</li>
+      <li><b>Macros, if you count them.</b> Set protein, carbs and fat and the planner picks dishes that fit, then tells you what to add when a meal comes up short.</li>
+      <li><b>Prices before you shop.</b> Estimates from 36 US chains, nationwide and regional, so you know roughly what the week costs.</li>
+      <li><b>A prep plan.</b> The chopping, sauces and grains for the week grouped into one or two sessions, so weeknights are mostly reheating.</li>
+      <li><b>A pantry that remembers dates.</b> Keep track of what's in the fridge and what's about to go bad.</li>
+      <li><b>Your own recipe book.</b> Save the recipes you like and add your family's own.</li>
+      <li><b>A cookbook to print.</b> The week's plan, recipes and shopping list as a PDF to print, text or email.</li>
+      <li><b>Nothing to pay for.</b> No premium tier. Sign in with Google only if you want your plans on more than one device.</li>
+    </ul>
   </section>
 
   <section class="lsec" aria-labelledby="goals">
-    <h2 id="goals">Meal plans for every goal</h2>
-    <div class="lgoals">
-      <a href="/meal-plans/high-protein"><b>High-protein meal plans</b><span>For lifting and muscle gain: hit 150 to 200 g of protein a day with food you'll want to eat.</span></a>
-      <a href="/meal-plans/weight-loss"><b>Weight loss meal plans</b><span>Lighter, filling meals sized to a calorie target, with plenty of protein to keep you full.</span></a>
-      <a href="/meal-plans/budget"><b>Budget meal plans</b><span>Recipes around $2.50 a serving or less, priced at the stores you actually use.</span></a>
-      <a href="/meal-plans/quick"><b>Quick 30-minute meals</b><span>Weeknight dinners, lunches and breakfasts ready in half an hour or less.</span></a>
-      <a href="/meal-plans/family"><b>Family meal plans</b><span>Familiar, kid-friendly dinners with portions sized for each person at the table.</span></a>
-      <a href="/meal-plans/meal-prep"><b>Meal prep plans</b><span>Dishes that keep for days in the fridge and freeze well, made to cook once and eat all week.</span></a>
-      <a href="/meal-plans/vegetarian"><b>Vegetarian meal plans</b><span>Meatless meals with enough protein, from beans and eggs to tofu and Greek yogurt.</span></a>
-    </div>
+    <h2 id="goals">Plans for the way you eat</h2>
+    <ul class="lgoals">
+      <li><a href="/meal-plans/high-protein">High-protein meal plans</a><span>For lifting: 150 to 200 g of protein a day from food you'll actually want to eat.</span></li>
+      <li><a href="/meal-plans/weight-loss">Weight loss meal plans</a><span>Lighter, filling meals sized to a calorie target.</span></li>
+      <li><a href="/meal-plans/budget">Budget meal plans</a><span>Around $2.50 a serving or less, priced where you shop.</span></li>
+      <li><a href="/meal-plans/quick">Quick 30-minute meals</a><span>Dinners, lunches and breakfasts done in half an hour.</span></li>
+      <li><a href="/meal-plans/family">Family meal plans</a><span>Familiar dinners kids will eat, portioned for everyone at the table.</span></li>
+      <li><a href="/meal-plans/meal-prep">Meal prep plans</a><span>Food that keeps for days and freezes well.</span></li>
+      <li><a href="/meal-plans/vegetarian">Vegetarian meal plans</a><span>Meatless meals with enough protein.</span></li>
+    </ul>
   </section>
 
   <section class="lsec" aria-labelledby="popular">
-    <h2 id="popular">Popular recipes</h2>
-    <div class="lpop"><!--popular--><a href="/recipes/spaghetti-bolognese-ragu"><img src="photos/t/spaghetti-bolognese-ragu.jpg" alt="Spaghetti Bolognese with Beef &amp; Pork Ragù" loading="lazy" width="480" height="360">Spaghetti Bolognese with Beef &amp; Pork Ragù<small>70 min · 815 kcal · 41 g protein</small></a><a href="/recipes/chicken-pot-pie"><img src="photos/t/chicken-pot-pie.jpg" alt="Puff Pastry Chicken Pot Pie" loading="lazy" width="480" height="360">Puff Pastry Chicken Pot Pie<small>55 min · 530 kcal · 22 g protein</small></a><a href="/recipes/smash-burgers"><img src="photos/t/smash-burgers.jpg" alt="Double Smash Burgers" loading="lazy" width="480" height="360">Double Smash Burgers<small>20 min · 970 kcal · 47 g protein</small></a><a href="/recipes/birria-tacos"><img src="photos/t/birria-tacos.jpg" alt="Birria-Style Beef Tacos with Consommé" loading="lazy" width="480" height="360">Birria-Style Beef Tacos with Consommé<small>210 min · 885 kcal · 63 g protein</small></a><a href="/recipes/butter-chicken"><img src="photos/t/butter-chicken.jpg" alt="Butter Chicken" loading="lazy" width="480" height="360">Butter Chicken<small>45 min · 945 kcal · 51 g protein</small></a><a href="/recipes/chicken-alfredo"><img src="photos/t/chicken-alfredo.jpg" alt="Chicken &amp; Broccoli Fettuccine Alfredo" loading="lazy" width="480" height="360">Chicken &amp; Broccoli Fettuccine Alfredo<small>30 min · 1120 kcal · 54 g protein</small></a><a href="/recipes/pad-thai"><img src="photos/t/pad-thai.jpg" alt="Chicken Pad Thai" loading="lazy" width="480" height="360">Chicken Pad Thai<small>30 min · 655 kcal · 34 g protein</small></a><a href="/recipes/philly-cheesesteak"><img src="photos/t/philly-cheesesteak.jpg" alt="Philly Cheesesteaks with Melty Provolone" loading="lazy" width="480" height="360">Philly Cheesesteaks with Melty Provolone<small>25 min · 675 kcal · 40 g protein</small></a><a href="/recipes/turkey-chorizo-egg-white-burritos"><img src="photos/t/turkey-chorizo-egg-white-burritos.jpg" alt="Turkey Chorizo &amp; Egg-White Freezer Burritos" loading="lazy" width="480" height="360">Turkey Chorizo &amp; Egg-White Freezer Burritos<small>40 min · 530 kcal · 50 g protein</small></a><a href="/recipes/cottage-cheese-blender-pancakes"><img src="photos/t/cottage-cheese-blender-pancakes.jpg" alt="Blueberry Cottage Cheese Blender Pancakes" loading="lazy" width="480" height="360">Blueberry Cottage Cheese Blender Pancakes<small>25 min · 470 kcal · 46 g protein</small></a><a href="/recipes/chicken-tikka-rice-bowls"><img src="photos/t/chicken-tikka-rice-bowls.jpg" alt="Chicken Tikka Rice Bowls with Cucumber Raita" loading="lazy" width="480" height="360">Chicken Tikka Rice Bowls with Cucumber Raita<small>45 min · 545 kcal · 65 g protein</small></a><a href="/recipes/beef-broccoli"><img src="photos/t/beef-broccoli.jpg" alt="Beef &amp; Broccoli Stir-Fry" loading="lazy" width="480" height="360">Beef &amp; Broccoli Stir-Fry<small>25 min · 610 kcal · 40 g protein</small></a><!--/popular--></div>
-    <p><a href="/recipes/">See all recipes by cuisine</a></p>
+    <h2 id="popular">A few favorites</h2>
+    <div class="lpop"><!--popular--><a href="/recipes/spaghetti-bolognese-ragu"><img src="photos/t/spaghetti-bolognese-ragu.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Spaghetti Bolognese with Beef &amp; Pork Ragù</b><small>70 min · 815 kcal · 41 g protein</small></span></a><a href="/recipes/chicken-pot-pie"><img src="photos/t/chicken-pot-pie.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Puff Pastry Chicken Pot Pie</b><small>55 min · 530 kcal · 22 g protein</small></span></a><a href="/recipes/smash-burgers"><img src="photos/t/smash-burgers.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Double Smash Burgers</b><small>20 min · 970 kcal · 47 g protein</small></span></a><a href="/recipes/birria-tacos"><img src="photos/t/birria-tacos.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Birria-Style Beef Tacos with Consommé</b><small>210 min · 885 kcal · 63 g protein</small></span></a><a href="/recipes/butter-chicken"><img src="photos/t/butter-chicken.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Butter Chicken</b><small>45 min · 945 kcal · 51 g protein</small></span></a><a href="/recipes/chicken-alfredo"><img src="photos/t/chicken-alfredo.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Chicken &amp; Broccoli Fettuccine Alfredo</b><small>30 min · 1120 kcal · 54 g protein</small></span></a><a href="/recipes/pad-thai"><img src="photos/t/pad-thai.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Chicken Pad Thai</b><small>30 min · 655 kcal · 34 g protein</small></span></a><a href="/recipes/philly-cheesesteak"><img src="photos/t/philly-cheesesteak.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Philly Cheesesteaks with Melty Provolone</b><small>25 min · 675 kcal · 40 g protein</small></span></a><a href="/recipes/turkey-chorizo-egg-white-burritos"><img src="photos/t/turkey-chorizo-egg-white-burritos.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Turkey Chorizo &amp; Egg-White Freezer Burritos</b><small>40 min · 530 kcal · 50 g protein</small></span></a><a href="/recipes/cottage-cheese-blender-pancakes"><img src="photos/t/cottage-cheese-blender-pancakes.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Blueberry Cottage Cheese Blender Pancakes</b><small>25 min · 470 kcal · 46 g protein</small></span></a><a href="/recipes/chicken-tikka-rice-bowls"><img src="photos/t/chicken-tikka-rice-bowls.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Chicken Tikka Rice Bowls with Cucumber Raita</b><small>45 min · 545 kcal · 65 g protein</small></span></a><a href="/recipes/beef-broccoli"><img src="photos/t/beef-broccoli.jpg" alt="" loading="lazy" width="64" height="48"><span><b>Beef &amp; Broccoli Stir-Fry</b><small>25 min · 610 kcal · 40 g protein</small></span></a><!--/popular--></div>
+    <p><a href="/recipes/">All 584 recipes, by cuisine</a></p>
   </section>
 
   <section class="lsec" aria-labelledby="faq">
-    <h2 id="faq">Frequently asked questions</h2>
+    <h2 id="faq">Questions people ask</h2>
     <div class="lfaq">
       <details><summary>Is MealTote really free?</summary><p>Yes. Every feature is free with no ads and no premium tier. MealTote runs on small optional donations.</p></details>
       <details><summary>Do I need an account?</summary><p>No. Your plan saves in your browser. Sign in with Google only if you want your plans, pantry and recipe book on every device.</p></details>
@@ -115,10 +114,9 @@
     </div>
   </section>
 
-  <section class="lsec lcta">
-    <h2>Plan your week in about a minute</h2>
-    <p>No sign-up needed. Answer a few questions and get your meals and grocery list.</p>
-    <div class="actions"><button class="btn primary big" id="startBtn2" type="button">Plan my week free</button></div>
+  <section class="lsec lend">
+    <p>It takes about a minute, and you can change anything afterward. <button class="btn primary" id="startBtn2" type="button">Plan my week</button></p>
+    <p class="note">If MealTote saves you a trip or a takeout order, you can <a href="support.html">chip in to keep it free</a>.</p>
   </section>
 </article>
 </main>

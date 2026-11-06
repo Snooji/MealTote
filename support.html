@@ -49,7 +49,7 @@
   <div class="wrap">
     <div class="bar">
       <div class="brand"><img class="mark" src="icons/mark.png" alt="" width="34" height="34"><a class="logo-word" href="/">Meal<b>Tote</b></a><span>meal plans across your stores</span></div>
-      <div class="actions"><a class="btn small primary" href="./" aria-label="Back to MealTote">✕ Close</a></div>
+      <div class="actions"><a class="btn small primary" href="./" aria-label="Back to MealTote">Close</a></div>
     </div>
   </div>
 </header>
@@ -109,10 +109,10 @@ for (const m of on) {
   const t = DONATE.TYPES[m.type];
   h += `<div class="method"><h4>${esc(m.label)}</h4>`;
   if (t.link && t.amounts) {
-    h += `<div class="amounts">${d.amounts.map(a => `<a class="btn primary big" href="${esc(t.link(m.handle, a))}" target="_blank" rel="noopener">♥ ${money(a)}</a>`).join("")}<a class="btn big" href="${esc(t.link(m.handle))}" target="_blank" rel="noopener">Any amount</a></div>`;
+    h += `<div class="amounts">${d.amounts.map(a => `<a class="btn primary big" href="${esc(t.link(m.handle, a))}" target="_blank" rel="noopener">${money(a)}</a>`).join("")}<a class="btn big" href="${esc(t.link(m.handle))}" target="_blank" rel="noopener">Any amount</a></div>`;
   } else if (t.link) {
     const url = t.link(m.handle);
-    if (url) h += `<div class="amounts"><a class="btn primary big" href="${esc(url)}" target="_blank" rel="noopener">♥ Give with ${esc(m.label)}</a></div>`;
+    if (url) h += `<div class="amounts"><a class="btn primary big" href="${esc(url)}" target="_blank" rel="noopener">Give with ${esc(m.label)}</a></div>`;
   } else {
     h += `<div class="handle"><span>Send any amount with ${esc(m.label)} from your bank's app to</span><code>${esc(m.handle)}</code><button class="btn small" type="button" data-copy="${esc(m.handle)}">Copy</button></div>`;
   }

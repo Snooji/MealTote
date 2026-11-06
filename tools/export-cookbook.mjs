@@ -158,8 +158,8 @@ h1{font:clamp(28px,6vw,42px)/1.15 "Young Serif",serif;margin:12px 0 8px}h2{font:
 .lede{font-size:18px;color:#3C4A40;max-width:70ch}ol li,ul li{margin:6px 0}.card{background:#fff;border:1px solid #DCE2D8;border-radius:14px;padding:16px 18px;margin:18px 0}
 table{border-collapse:collapse;width:100%;max-width:520px}td,th{text-align:left;padding:6px 4px;border-bottom:1px solid #E6EAE3}.note{color:#5B6B60;font-size:13.5px}
 .cols{columns:2 260px;gap:24px}.cols a{display:block;padding:3px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.grid a{display:grid;gap:6px;text-decoration:none;color:#1E2A22;font-weight:600;font-size:14.5px;line-height:1.3}
-.grid img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#E6EAE3}.grid small{color:#5B6B60;font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 28px}.grid a{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #E6EAE3;text-decoration:none;color:#1E2A22}
+.grid img{width:64px;height:48px;object-fit:cover;border-radius:6px;background:#E6EAE3;flex:none}.grid b{display:block;font-weight:600;font-size:15px;line-height:1.3}.grid small{color:#5B6B60;font-size:13px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{border:1px solid #DCE2D8;background:#fff;border-radius:99px;padding:5px 12px;text-decoration:none;color:#1E2A22;font-size:14px}
 details{background:#fff;border:1px solid #DCE2D8;border-radius:10px;padding:10px 14px;margin:8px 0;max-width:820px}summary{font-weight:600;cursor:pointer}
 footer{margin:48px 0 30px;color:#5B6B60;font-size:14px;border-top:1px solid #DCE2D8;padding-top:18px;display:grid;gap:10px}footer .cols a{color:#5B6B60}</style>${extra}
@@ -168,7 +168,8 @@ const foot = `<footer><div><b>MealTote</b> is a free meal planner and grocery li
 <div class="cols">${GOALS.map(g => `<a href="/meal-plans/${g.slug}">${esc(g.name)}</a>`).join("")}<a href="/recipes/">All recipes</a><a href="/support">Support MealTote</a></div></footer></main></body></html>\n`;
 const crumbs = list => `<nav class="crumbs" aria-label="Breadcrumb">${list.map(([n, u], i) => i < list.length - 1 ? `<a href="${u}">${esc(n)}</a> › ` : esc(n)).join("")}</nav>` +
   jsonld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: list.map(([n, u], i) => ({ "@type": "ListItem", position: i + 1, name: n, item: SITE + u })) });
-const tile = ({ r, n }) => `<a href="/recipes/${r.id}"><img src="${thumb(r.id)}" alt="${esc(r.title)}" loading="lazy" width="480" height="360">${esc(r.title)}<small>${r.time} min · ${Math.round(n.kcal)} kcal · ${Math.round(n.protein)} g protein</small></a>`;
+// one row per recipe: a small photo beside the name and what matters about it
+const tile = ({ r, n }) => `<a href="/recipes/${r.id}"><img src="${thumb(r.id)}" alt="" loading="lazy" width="64" height="48"><span><b>${esc(r.title)}</b><small>${r.time} min · ${Math.round(n.kcal)} kcal · ${Math.round(n.protein)} g protein</small></span></a>`;
 const itemList = (name, list) => jsonld({ "@context": "https://schema.org", "@type": "ItemList", name, itemListElement: list.map(({ r }, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE}/recipes/${r.id}`, name: r.title })) });
 const iso = min => `PT${Math.floor(min / 60) ? Math.floor(min / 60) + "H" : ""}${min % 60 ? (min % 60) + "M" : ""}` || "PT0M";
 const urls = [`${SITE}/`, `${SITE}/recipes/`, `${SITE}/support`];
@@ -244,9 +245,9 @@ for (const g of GOALS) {
   fs.writeFileSync(path.join(root, "meal-plans", "index.html"), head("Free Meal Plans for Every Goal: High-Protein, Budget, Weight Loss | MealTote",
     "Free weekly meal plans for high protein, weight loss, budget, family, vegetarian, quick 30-minute meals and meal prep, each with a grocery list split across your stores.", url, `${SITE}/icons/icon-512.png`) +
     crumbs([["Home", "/"], ["Meal plans", "/meal-plans/"]]) +
-    `<h1>Free meal plans for every goal</h1><p class="lede">Pick a goal to see the recipes MealTote uses for it, then build your own week in about a minute: portions sized for everyone you cook for and one grocery list for your stores.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">` +
+    `<h1>Free meal plans for every goal</h1><p class="lede">Pick a goal to see the recipes MealTote uses for it, then build your own week in about a minute: portions sized for everyone you cook for and one grocery list for your stores.</p><div class="grid">` +
     GOALS.map(g => { const l = rows.filter(x => g.test(x.r, x.n, x.c)), x = l.find(y => photos[y.r.id]) || l[0];
-      return `<a href="/meal-plans/${g.slug}"><img src="${x ? thumb(x.r.id) : "/photos/placeholder.jpg"}" alt="" loading="lazy" width="480" height="360">${esc(g.name)}<small>${esc(g.desc)}</small></a>`; }).join("") + `</div>` + foot);
+      return `<a href="/meal-plans/${g.slug}"><img src="${x ? thumb(x.r.id) : "/photos/placeholder.jpg"}" alt="" loading="lazy" width="64" height="48"><span><b>${esc(g.name)}</b><small>${esc(g.desc)}</small></span></a>`; }).join("") + `</div>` + foot);
   urls.push(url); }
 
 // recipes index with search (?q=) and links to cuisines and goals
@@ -267,7 +268,7 @@ fs.writeFileSync(path.join(root, "recipes", "list.json"), JSON.stringify(rows.ma
 const POPULAR = ["spaghetti-bolognese-ragu", "chicken-pot-pie", "smash-burgers", "birria-tacos", "butter-chicken", "chicken-alfredo", "pad-thai", "philly-cheesesteak", "turkey-chorizo-egg-white-burritos", "cottage-cheese-blender-pancakes", "chicken-tikka-rice-bowls", "beef-broccoli"];
 const pop = POPULAR.map(id => rows.find(x => x.r.id === id)).filter(Boolean).concat(rows.filter(x => photos[x.r.id] && ["american", "italian", "texmex"].includes(CUISINE_ID(x.r.id)))).filter((x, i, a) => a.indexOf(x) === i).slice(0, 12);
 const ix = path.join(root, "index.html"); let indexHtml = fs.readFileSync(ix, "utf8");
-indexHtml = indexHtml.replace(/<!--popular-->[\s\S]*?<!--\/popular-->/, "<!--popular-->" + pop.map(({ r, n }) => `<a href="/recipes/${r.id}"><img src="${thumb(r.id).slice(1)}" alt="${esc(r.title)}" loading="lazy" width="480" height="360">${esc(r.title)}<small>${r.time} min · ${Math.round(n.kcal)} kcal · ${Math.round(n.protein)} g protein</small></a>`).join("") + "<!--/popular-->");
+indexHtml = indexHtml.replace(/<!--popular-->[\s\S]*?<!--\/popular-->/, "<!--popular-->" + pop.map(({ r, n }) => `<a href="/recipes/${r.id}"><img src="${thumb(r.id).slice(1)}" alt="" loading="lazy" width="64" height="48"><span><b>${esc(r.title)}</b><small>${r.time} min · ${Math.round(n.kcal)} kcal · ${Math.round(n.protein)} g protein</small></span></a>`).join("") + "<!--/popular-->");
 fs.writeFileSync(ix, indexHtml);
 
 fs.writeFileSync(path.join(root, "404.html"), head("Page not found | MealTote", "That page doesn't exist. Plan your week for free or browse recipes on MealTote.", `${SITE}/`, `${SITE}/icons/icon-512.png`, '<meta name="robots" content="noindex">') +
