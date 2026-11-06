@@ -171,6 +171,8 @@ const crumbs = list => `<nav class="crumbs" aria-label="Breadcrumb">${list.map((
 // one row per recipe: a small photo beside the name and what matters about it
 const tile = ({ r, n }) => `<a href="/recipes/${r.id}"><img src="${thumb(r.id)}" alt="" loading="lazy" width="64" height="48"><span><b>${esc(r.title)}</b><small>${r.time} min · ${Math.round(n.kcal)} kcal · ${Math.round(n.protein)} g protein</small></span></a>`;
 const itemList = (name, list) => jsonld({ "@context": "https://schema.org", "@type": "ItemList", name, itemListElement: list.map(({ r }, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE}/recipes/${r.id}`, name: r.title })) });
+// a step's short name for search results: its first clause, kept under ~70 characters
+const stepName = s => { const f = String(s).split(/(?<=[.;:])\s|,\s(?=then\b)/)[0].replace(/[.;:]$/, ""); return f.length <= 70 ? f : f.slice(0, 67).replace(/\s+\S*$/, "") + "…"; };
 const iso = min => `PT${Math.floor(min / 60) ? Math.floor(min / 60) + "H" : ""}${min % 60 ? (min % 60) + "M" : ""}` || "PT0M";
 const urls = [`${SITE}/`, `${SITE}/recipes/`, `${SITE}/support`];
 
@@ -186,7 +188,7 @@ for (const x of rows) {
   const ings = r.ing.map(i => i[2]), pantry = r.pantry ? r.pantry.split(/,\s*/).map(x => x.trim()).filter(Boolean) : [];
   const ld = { "@context": "https://schema.org", "@type": "Recipe", name: r.title, description: r.blurb, image: [img], author: { "@type": "Organization", name: "MealTote", url: SITE },
     recipeCategory: r.meal, recipeCuisine: cu, totalTime: iso(r.time), recipeYield: `${r.serves} servings`, recipeIngredient: [...ings, ...pantry],
-    recipeInstructions: r.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, text: s })), keywords: [cu, r.meal, META[r.id].protein, n.protein >= 35 ? "high protein" : "", r.time <= 30 ? "30 minute" : "", "meal prep"].filter(Boolean).join(", "),
+    recipeInstructions: r.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: stepName(s), text: s, url: `${url}#step-${i + 1}` })), keywords: [cu, r.meal, META[r.id].protein, n.protein >= 35 ? "high protein" : "", r.time <= 30 ? "30 minute" : "", "meal prep"].filter(Boolean).join(", "),
     nutrition: { "@type": "NutritionInformation", servingSize: "1 serving", calories: `${Math.round(n.kcal)} calories`, proteinContent: `${Math.round(n.protein)} g`, carbohydrateContent: `${Math.round(n.carbs)} g`, fatContent: `${Math.round(n.fat)} g`, fiberContent: `${Math.round(n.fiber)} g`, sugarContent: `${Math.round(n.sugar)} g`, sodiumContent: `${Math.round(n.sodium)} mg` } };
   // related: same cuisine first, then same meal and main protein
   const rel = [...(byCuisine[cid] || []).filter(y => y.r.id !== r.id), ...rows.filter(y => y.r.id !== r.id && y.r.meal === r.meal && META[y.r.id].protein === META[r.id].protein && CUISINE_ID(y.r.id) !== cid)].slice(0, 8);
@@ -199,7 +201,7 @@ for (const x of rows) {
 <p class="lede">${esc(r.blurb)}</p>
 <div class="card"><b>Make it part of your week.</b> MealTote sizes this recipe for everyone you cook for, adds it to a weekly meal plan and puts the ingredients on one grocery list split across your stores. <a href="/?recipe=${encodeURIComponent(r.id)}">Open it in MealTote</a></div>
 <h2>Ingredients</h2><ul>${ings.map(t => `<li>${esc(t)}</li>`).join("")}</ul>${r.pantry ? `<p class="note">From your pantry: ${esc(r.pantry)}.</p>` : ""}
-<h2>Instructions</h2><ol>${r.steps.map(t => `<li>${esc(t)}</li>`).join("")}</ol>${r.tip ? `<p><b>Tip:</b> ${esc(r.tip)}</p>` : ""}
+<h2>Instructions</h2><ol>${r.steps.map((t, i) => `<li id="step-${i + 1}">${esc(t)}</li>`).join("")}</ol>${r.tip ? `<p><b>Tip:</b> ${esc(r.tip)}</p>` : ""}
 <h2>Nutrition per serving</h2><table><tr><th>Calories</th><td>${Math.round(n.kcal)}</td></tr><tr><th>Protein</th><td>${Math.round(n.protein)} g</td></tr><tr><th>Carbohydrates</th><td>${Math.round(n.carbs)} g</td></tr><tr><th>Fat</th><td>${Math.round(n.fat)} g</td></tr><tr><th>Fiber</th><td>${Math.round(n.fiber)} g</td></tr><tr><th>Sugar</th><td>${Math.round(n.sugar)} g</td></tr><tr><th>Sodium</th><td>${Math.round(n.sodium)} mg</td></tr></table>
 ${goals.length ? `<h2>Good for</h2><div class="chips">${goals.map(g => `<a href="/meal-plans/${g.slug}">${esc(g.name)}</a>`).join("")}<a href="/recipes/cuisine/${cid}">More ${esc(cu)} recipes</a></div>` : ""}
 ${r.src ? `<p class="note">Adapted from <a href="${esc(r.src[1])}" rel="nofollow noopener">${esc(r.src[0])}</a>.</p>` : ""}
