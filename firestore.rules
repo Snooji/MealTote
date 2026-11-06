@@ -97,6 +97,32 @@ service cloud.firestore {
       allow delete: if true;
     }
 
+    // Recipe ratings: one vote per signed-in person (ratings/{recipe}/votes/{uid}, 1 to 5 stars) and a public total per
+    // recipe ({sum, count}). The total can only change in the same write as the vote, by exactly that vote.
+    function ratingOk(rid) {
+      let votePath = /databases/$(database)/documents/ratings/$(rid)/votes/$(request.auth.uid);
+      let before = exists(votePath) ? get(votePath).data.stars : 0;
+      let after = getAfter(votePath).data.stars;
+      let oldSum = resource == null ? 0 : resource.data.sum;
+      let oldCount = resource == null ? 0 : resource.data.count;
+      return after is int
+        && request.resource.data.count == oldCount + (before == 0 ? 1 : 0)
+        && request.resource.data.sum == oldSum - before + after;
+    }
+    match /ratings/{rid} {
+      allow read: if true;
+      allow create, update: if request.auth != null && rid.size() <= 100
+        && request.resource.data.keys().hasOnly(['sum', 'count']) && ratingOk(rid);
+      match /votes/{uid} {
+        allow read: if request.auth != null && request.auth.uid == uid;
+        allow create, update: if request.auth != null && request.auth.uid == uid
+          && request.resource.data.keys().hasOnly(['stars', 'at'])
+          && request.resource.data.stars is int && request.resource.data.stars >= 1 && request.resource.data.stars <= 5
+          && request.resource.data.at == request.time
+          && existsAfter(/databases/$(database)/documents/ratings/$(rid));
+      }
+    }
+
     // Site analytics: one doc of anonymous counts per UTC day, shown in the Backend. Anyone can add to today's counts
     // (each field only goes up, by at most 50 per write); only the admin can read them.
     function statsKeys() { return ['views', 'visitors', 'newVisitors', 'returning', 'mobile', 'desktop', 'installed', 'signins', 'signups', 'plans', 'pdf', 'supportClicks', 'recipeOpens', 'swaps', 'photoSubmits', 'recipeSubmits', 'tab_plan', 'tab_prep', 'tab_groceries', 'tab_pantry', 'tab_recipes', 'tab_pdf', 'tab_settings', 'tab_profile']; }

@@ -88,6 +88,22 @@ if (dupes.length) { console.error("Possible duplicates:\n" + dupes.join("\n")); 
    meal-plans/<goal>.html     landing pages for what people search (high-protein, budget, ...)
    recipes/list.json          for the Backend; sitemap.xml; the landing page's popular recipes (index.html) */
 const SITE = "https://mealtote.com";
+// real ratings from the app (ratings/{recipe} = {sum, count}); pages only show and mark up a rating once people have rated
+const RATINGS = {};
+try {
+  const cfg = fs.readFileSync(path.join(root, "src", "firebase-config.js"), "utf8");
+  const key = cfg.match(/apiKey:\s*"([^"]+)"/)[1], project = cfg.match(/projectId:\s*"([^"]+)"/)[1];
+  let token = "";
+  do {
+    const r = await fetch(`https://firestore.googleapis.com/v1/projects/${project}/databases/(default)/documents/ratings?pageSize=300&key=${key}${token ? "&pageToken=" + token : ""}`);
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    for (const doc of d.documents || []) { const f = doc.fields || {}, count = +(f.count?.integerValue || 0), sum = +(f.sum?.integerValue || 0); if (count > 0) RATINGS[doc.name.split("/").pop()] = { count, avg: sum / count }; }
+    token = d.nextPageToken || "";
+  } while (token);
+  console.log(`ratings: ${Object.keys(RATINGS).length} recipes rated`);
+} catch (e) { console.log("ratings: not loaded (" + e.message + ")"); }
+const starsHtml = rt => `<p class="rated" aria-label="Rated ${rt.avg.toFixed(1)} out of 5 by ${rt.count} ${rt.count > 1 ? "people" : "person"}"><span class="st">${"★".repeat(Math.round(rt.avg))}${"☆".repeat(5 - Math.round(rt.avg))}</span> <b>${rt.avg.toFixed(1)}</b> out of 5 · ${rt.count} rating${rt.count > 1 ? "s" : ""}</p>`;
 const esc = s => String(s ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 const jsonld = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`;
 const thumb = id => photos[id] ? "/" + photos[id].replace(/^photos\//, "photos/t/") : "/photos/placeholder.jpg";
@@ -162,6 +178,7 @@ table{border-collapse:collapse;width:100%;max-width:520px}td,th{text-align:left;
 .grid img{width:64px;height:48px;object-fit:cover;border-radius:6px;background:#E6EAE3;flex:none}.grid b{display:block;font-weight:600;font-size:15px;line-height:1.3}.grid small{color:#5B6B60;font-size:13px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{border:1px solid #DCE2D8;background:#fff;border-radius:99px;padding:5px 12px;text-decoration:none;color:#1E2A22;font-size:14px}
 details{background:#fff;border:1px solid #DCE2D8;border-radius:10px;padding:10px 14px;margin:8px 0;max-width:820px}summary{font-weight:600;cursor:pointer}
+.rated{margin:0;color:#5B6B60}.rated .st{color:#C98A0B;letter-spacing:1px}
 footer{margin:48px 0 30px;color:#5B6B60;font-size:14px;border-top:1px solid #DCE2D8;padding-top:18px;display:grid;gap:10px}footer .cols a{color:#5B6B60}</style>${extra}
 </head><body><header><div class="w"><a class="brand" href="/"><img src="/icons/mark.png" alt="" width="32" height="32"><span>Meal<b>Tote</b></span></a>${NAV}<a class="cta" href="/">Plan your week free</a></div></header><main class="w">`;
 const foot = `<footer><div><b>MealTote</b> is a free meal planner and grocery list: a week of meals sized for everyone you cook for, macros and high-protein options, and one shopping list split across the stores you use.</div>
@@ -189,6 +206,7 @@ for (const x of rows) {
   const ld = { "@context": "https://schema.org", "@type": "Recipe", name: r.title, description: r.blurb, image: [img], author: { "@type": "Organization", name: "MealTote", url: SITE },
     recipeCategory: r.meal, recipeCuisine: cu, totalTime: iso(r.time), recipeYield: `${r.serves} servings`, recipeIngredient: [...ings, ...pantry],
     recipeInstructions: r.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: stepName(s), text: s, url: `${url}#step-${i + 1}` })), keywords: [cu, r.meal, META[r.id].protein, n.protein >= 35 ? "high protein" : "", r.time <= 30 ? "30 minute" : "", "meal prep"].filter(Boolean).join(", "),
+    ...(RATINGS[r.id] ? { aggregateRating: { "@type": "AggregateRating", ratingValue: +RATINGS[r.id].avg.toFixed(1), ratingCount: RATINGS[r.id].count, bestRating: 5, worstRating: 1 } } : {}),
     nutrition: { "@type": "NutritionInformation", servingSize: "1 serving", calories: `${Math.round(n.kcal)} calories`, proteinContent: `${Math.round(n.protein)} g`, carbohydrateContent: `${Math.round(n.carbs)} g`, fatContent: `${Math.round(n.fat)} g`, fiberContent: `${Math.round(n.fiber)} g`, sugarContent: `${Math.round(n.sugar)} g`, sodiumContent: `${Math.round(n.sodium)} mg` } };
   // related: same cuisine first, then same meal and main protein
   const rel = [...(byCuisine[cid] || []).filter(y => y.r.id !== r.id), ...rows.filter(y => y.r.id !== r.id && y.r.meal === r.meal && META[y.r.id].protein === META[r.id].protein && CUISINE_ID(y.r.id) !== cid)].slice(0, 8);
@@ -196,7 +214,7 @@ for (const x of rows) {
   const cr = credits[r.id];
   fs.writeFileSync(path.join(root, "recipes", r.id + ".html"), head(`${r.title} Recipe (${Math.round(n.kcal)} kcal, ${Math.round(n.protein)} g protein) | MealTote`, desc, url, img) +
     crumbs([["Home", "/"], ["Recipes", "/recipes/"], [cu + " recipes", `/recipes/cuisine/${cid}`], [r.title, `/recipes/${r.id}`]]) + jsonld(ld) +
-    `<h1>${esc(r.title)}</h1><div class="meta"><span>${esc(r.meal)}</span><span>${esc(cu)}</span><span>${r.time} min</span><span>Serves ${r.serves}</span><span>${Math.round(n.kcal)} kcal</span><span>${Math.round(n.protein)} g protein</span></div>
+    `<h1>${esc(r.title)}</h1>${RATINGS[r.id] ? starsHtml(RATINGS[r.id]) : ""}<div class="meta"><span>${esc(r.meal)}</span><span>${esc(cu)}</span><span>${r.time} min</span><span>Serves ${r.serves}</span><span>${Math.round(n.kcal)} kcal</span><span>${Math.round(n.protein)} g protein</span></div>
 <img class="hero" src="/${esc(photos[r.id] || "photos/placeholder.jpg")}" alt="${esc(r.title)}" width="800" height="600">${cr ? `<p class="note">Photo: ${esc(cr.author)} · ${esc(cr.license)}${cr.page ? ` · <a href="${esc(cr.page)}" rel="nofollow noopener">source</a>` : ""}</p>` : ""}
 <p class="lede">${esc(r.blurb)}</p>
 <div class="card"><b>Make it part of your week.</b> MealTote sizes this recipe for everyone you cook for, adds it to a weekly meal plan and puts the ingredients on one grocery list split across your stores. <a href="/?recipe=${encodeURIComponent(r.id)}">Open it in MealTote</a></div>

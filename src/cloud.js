@@ -14,7 +14,7 @@ const firstName = u => (String(u.displayName || "").trim().split(/\s+/)[0] || "A
 if (configured) {
   try {
     // the three Firebase modules download in parallel
-    const [{ initializeApp }, { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged }, { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, increment }] = await Promise.all([import(`${SDK}/firebase-app.js`), import(`${SDK}/firebase-auth.js`), import(`${SDK}/firebase-firestore.js`)]);
+    const [{ initializeApp }, { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserPopupRedirectResolver, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged }, { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, increment, runTransaction }] = await Promise.all([import(`${SDK}/firebase-app.js`), import(`${SDK}/firebase-auth.js`), import(`${SDK}/firebase-firestore.js`)]);
 
     // Sign in through this site's own domain when it's served by Firebase Hosting (mealtote.com has /__/auth/handler).
     // Safari and home-screen apps block the hand-off when sign-in runs through a different domain (firebaseapp.com).
@@ -74,6 +74,18 @@ if (configured) {
       async submitPhoto(rid, dataUrl, title) {
         const u = api.user;
         await addDoc(collection(db, "submissions"), { rid, data: dataUrl, uid: u.uid, name: firstName(u), title: String(title || rid).slice(0, 160), at: Date.now(), status: "pending" });
+      },
+      // ratings: ratings/{recipe} holds {sum, count}; your own vote is ratings/{recipe}/votes/{uid}. Vote and total change together.
+      async rating(rid) { const s = await getDoc(doc(db, "ratings", rid)); return s.exists() ? s.data() : { sum: 0, count: 0 }; },
+      async myRating(rid) { if (!api.user) return 0; const s = await getDoc(doc(db, "ratings", rid, "votes", api.user.uid)); return s.exists() ? s.data().stars : 0; },
+      async rate(rid, stars) {
+        const aggRef = doc(db, "ratings", rid), voteRef = doc(db, "ratings", rid, "votes", api.user.uid);
+        return runTransaction(db, async tx => {
+          const [a, v] = [await tx.get(aggRef), await tx.get(voteRef)];
+          const before = v.exists() ? v.data().stars : 0, sum = (a.exists() ? a.data().sum : 0) - before + stars, count = (a.exists() ? a.data().count : 0) + (before ? 0 : 1);
+          tx.set(voteRef, { stars, at: serverTimestamp() }); tx.set(aggRef, { sum, count });
+          return { sum, count };
+        });
       },
       // community recipes: same review flow (recipeSubs → communityRecipes, approved in the Backend)
       async submitRecipe(rec) {

@@ -3557,6 +3557,24 @@ function macroPanel(r, meal, slot){
     el("p",{class:"note",style:"margin:0"},"Each person's portion vs their "+(meal||"meal")+" share of their daily targets (grams: this meal / target)."), rows, better);
 }
 
+/* ------------------------------------------------------------------ ratings: the average and your own 1–5 stars, on each recipe */
+const STAR = (fill) => { const ns="http://www.w3.org/2000/svg", v=document.createElementNS(ns,"svg"); v.setAttribute("viewBox","0 0 24 24"); v.setAttribute("aria-hidden","true"); v.setAttribute("class","star"+(fill>=1?" on":fill>0?" half":""));
+  const pth=document.createElementNS(ns,"path"); pth.setAttribute("d","M12 2.8l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.8 3.3 1.4-6.4-4.9-4.4 6.5-.7z"); v.append(pth); return v; };
+function ratingBlock(id){
+  const r=R_BY_ID[id], rid=(r&&r.base)||id; if(!r || r.community || !(window.cloud&&cloud.enabled&&cloud.rating)) return null;
+  const box=el("div",{class:"rating"}), avg=el("div",{class:"ravg"},el("span",{class:"note"},"Loading ratings…")), mine=el("div",{class:"rmine"});
+  const drawAvg=a=>{ avg.innerHTML=""; if(!a.count){ avg.append(el("span",{class:"note"},"No ratings yet. Be the first.")); return; }
+    const m=a.sum/a.count; avg.append(el("span",{class:"stars","aria-label":m.toFixed(1)+" out of 5"}, [1,2,3,4,5].map(i=>STAR(Math.max(0,Math.min(1,m-i+1))))), el("b",{},m.toFixed(1)), el("span",{class:"note"}," out of 5 · "+a.count+" rating"+(a.count>1?"s":""))); };
+  const drawMine=v=>{ mine.innerHTML=""; mine.append(el("span",{class:"note"},v?"Your rating:":"Rate it:"),
+    el("span",{class:"rbtns"}, [1,2,3,4,5].map(i=>el("button",{type:"button",class:"rbtn","aria-label":"Rate "+i+" star"+(i>1?"s":""),"aria-pressed":i<=v,onclick:async()=>{
+      if(!cloudUser){ toast("Sign in to rate recipes."); return signIn(); }
+      try{ const a=await cloud.rate(rid,i); drawAvg(a); drawMine(i); toast(v?"Rating updated":"Thanks for rating!"); }catch(e){ toast("Couldn't save your rating ("+(e.code||e.message||"error")+")."); } }}, STAR(i<=v?1:0))))); };
+  box.append(avg,mine); drawMine(0);
+  cloud.rating(rid).then(drawAvg).catch(()=>avg.innerHTML="");
+  if(cloudUser) cloud.myRating(rid).then(drawMine).catch(()=>{});
+  return box;
+}
+
 function openRecipe(id, slot){
   track("recipeOpens");
   const r=R_BY_ID[id], c=recipeCost(r), p=$("#panel"); p.innerHTML="";
@@ -3585,7 +3603,7 @@ function openRecipe(id, slot){
     el("div",{class:"hero"}, el("img",{src:imgFor(r),"data-rid":r.id,alt:r.title}), el("button",{class:"close","aria-label":"Close",onclick:closeSheet},"Close"), credit),
     el("div",{class:"content"},
       el("div",{}, el("div",{class:"eyebrow"},(slot?slot.day+" "+slot.label:r.meal)+" · "+r.time+" minutes total"), el("h2",{id:"dTitle"},r.title),
-        r.community?el("span",{class:"usertag"},r.community.mine?"My recipe":"Community recipe · shared by "+r.community.by):null),
+        r.community?el("span",{class:"usertag"},r.community.mine?"My recipe":"Community recipe · shared by "+r.community.by):null, ratingBlock(id)),
       el("p",{class:"lede",style:"margin:0"},r.blurb),
       el("div",{class:"statrow"},
         el("div",{class:"stat"},el("b",{},r.time+" min"),el("span",{},"Total time")),
