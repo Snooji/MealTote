@@ -541,3 +541,20 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .lfaq p{margin:8px 0 0;color:var(--muted)}
 .lcta{text-align:center;justify-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:30px 18px}
 .lcta p{margin:0;color:var(--muted)}
+
+/* landing page: everything centered */
+.landing{text-align:center}
+.lhero{margin:0 auto;justify-items:center}
+.lhero .lede{margin:0 auto}
+.landing .actions{justify-content:center}
+.lproof{justify-content:center}
+.lsec{justify-items:center}
+.lsec>*{width:100%}
+.lsteps li{justify-items:center}
+.lsteps li::before{justify-self:center}
+.lfeat>div,.lgoals a{justify-items:center;text-align:center}
+.lpop a{justify-items:center;text-align:center}
+.lfaq{margin:0 auto}
+.lfaq summary{list-style-position:inside}
+.lgoals{display:flex;flex-wrap:wrap;justify-content:center}
+.lgoals a{flex:0 1 300px}
