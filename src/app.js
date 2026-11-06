@@ -2710,7 +2710,12 @@ const $ = s => document.querySelector(s);
 const el = (tag, attrs={}, ...kids) => { const e=document.createElement(tag);
   for(const [k,v] of Object.entries(attrs)){ if(k==="class") e.className=v; else if(k==="style") e.style.cssText=v; else if(k.startsWith("on")) e.addEventListener(k.slice(2),v); else if(v!==false && v!=null) e.setAttribute(k,v); }
   for(const k of kids.flat()) if(k!=null && k!==false) e.append(k.nodeType?k:document.createTextNode(k)); return e; };
-const storeDot = s => el("span",{class:"dot",style:`--sc:var(${STORES[s].css})`,title:STORES[s].name},STORES[s].short);
+// each store's own icon (icons/stores/<id>.png, fitted inside a circle); stores without a usable icon keep their initials
+const STORE_ICONS = new Set(["aldi", "amazonfresh", "bjs", "costco", "foodcity", "foodlion", "giant", "gianteagle", "hannaford", "heb", "ingles", "kroger", "lidl", "publix", "raleys", "safeway", "sams", "shoprite", "smartfinal", "sprouts", "staterbros", "stopshop", "target", "tj", "walmart", "wegmans", "weis", "wholefoods", "winco", "winndixie"]);
+const storeBadge = (s, cls) => STORE_ICONS.has(s)
+  ? el("span",{class:cls+" logo",title:STORES[s].name}, el("img",{src:"icons/stores/"+s+".png",alt:"",loading:"lazy",width:48,height:48}))
+  : el("span",{class:cls,style:`--sc:var(${STORES[s].css})`,title:STORES[s].name},STORES[s].short);
+const storeDot = s => storeBadge(s,"dot");
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2200); }
 // attribution for the bundled photo imgFor() would show (none for people's own photos or illustrations)
 function creditFor(r){
@@ -2965,7 +2970,7 @@ function storePicker(st, changed){
   const matches = s => !q || (STORES[s].name+" "+(STORES[s].also||"")).toLowerCase().includes(q);
   const card = s => { const on=st.stores.includes(s), x=STORES[s];
     return el("button",{class:"opt store","aria-pressed":on,style:`--sc:var(${x.css})`,onclick:()=>{ st.stores=on?st.stores.filter(y=>y!==s):[...st.stores,s]; changed(); }},
-      el("span",{class:"sw"},x.short),
+      storeBadge(s,"sw"),
       el("span",{class:"stx"}, el("span",{class:"ol"},x.name), el("span",{class:"note"},(x.also?x.also:STORE_KIND[x.kind])+(x.idx?"":" · hand-priced")))); };
   const nat=STORE_IDS.filter(s=>STORES[s].regions==="all" && matches(s));
   const reg=STORE_IDS.filter(s=>STORES[s].regions!=="all" && (inRegion(s)||st.stores.includes(s)) && matches(s));
@@ -3352,7 +3357,7 @@ function renderGroceries(){
     t.missing.map(i=>el("div",{class:"item"}, el("span",{}), el("div",{}, el("div",{class:"nm"},ITEMS[i][0]), el("div",{class:"pd"},"Available at "+listJoin(storesCarrying(i).map(s=>STORES[s].name)))), el("span",{})))));
   for(const s of S.stores){ const items=byStore[s]; if(!items) continue;
     let sub=0; for(const i of items) sub+=storeCost(i,s,d[i]);
-    const box=el("div",{class:"storebox",style:`--sc:var(${STORES[s].css})`}, el("header",{}, el("h3",{},STORES[s].name), el("span",{class:"mono"},money(sub))));
+    const box=el("div",{class:"storebox",style:`--sc:var(${STORES[s].css})`}, el("header",{}, el("h3",{class:"storehead"},storeBadge(s,"dot big"),STORES[s].name), el("span",{class:"mono"},money(sub))));
     for(const a of AISLES){ const its=items.filter(i=>ITEMS[i][1]===a); if(!its.length) continue;
       box.append(el("div",{class:"aisle"}, el("div",{class:"eyebrow"},a), its.map(i=>{
         const o=offers(i)[s], k=packsFor(i,s,d[i]), done=!!S.checked[i], alts=S.stores.filter(x=>offers(i)[x]);

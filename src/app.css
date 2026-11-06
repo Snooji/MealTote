@@ -545,3 +545,11 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .lend p{margin:0}
 .lend .btn{margin-left:8px;vertical-align:middle}
 .landing a:not(.btn){color:var(--accent)}
+
+/* store badges: the store's own icon in a circle, or its initials sized to fit */
+.dot{font-size:7.5px;letter-spacing:-.02em;line-height:1;flex:none}
+.opt.store .sw{font-size:11.5px;letter-spacing:-.02em}
+.dot.logo,.sw.logo{background:none!important;border:0;padding:0;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.dot.logo img,.sw.logo img{width:100%;height:100%;display:block;border-radius:50%}
+.dot.big{width:26px;height:26px;font-size:10px}
+.storehead{display:flex;align-items:center;gap:8px}
