@@ -2847,15 +2847,20 @@ function answerText(q,A){
   const o=q.opts.find(o=>o[0]===v); return o?o[1]:"";
 }
 
+// the landing page lives in index.html (so search engines read it); new visitors see it, planners see their plan
+const LANDING = document.getElementById("landing");
+if(LANDING){ LANDING.remove();
+  for(const id of ["startBtn","startBtn2"]){ const b=LANDING.querySelector("#"+id); if(b) b.addEventListener("click",()=>startQuiz()); }
+  LANDING.addEventListener("click",e=>{ const a=e.target.closest && e.target.closest('a[href^="/recipes/"]'); const id=a && a.getAttribute("href").split("/")[2];
+    if(id && R_BY_ID[id]){ e.preventDefault(); openRecipe(id); } }); }
 function renderWelcome(){
   if(cloudUser) return renderHub();
+  document.documentElement.classList.remove("has-plan");
   const m=$("#app"); m.innerHTML="";
-  m.append(el("div",{class:"welcome"},
-    el("div",{class:"eyebrow"},"Your weekly meal planner"),
-    el("h2",{},"Tell us how you eat. We'll plan the week and write your grocery list."),
-    el("p",{class:"lede"},"Tell us who's eating and each person's daily calories, what you love and where you shop. You'll get a meal plan with portions sized for each of you, "+RECIPES.length+" recipes from "+CUISINE_OPTS.length+" cuisines to choose from, and a list of exactly what to buy at the stores you shop at, from "+STORE_IDS.length+" grocery chains."),
-    el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started"),
-      Object.keys(PLANS).length?el("button",{class:"btn big",onclick:openPlansSheet},"My plans ("+Object.keys(PLANS).length+")"):el("span",{class:"note"},"Takes about a minute"))));
+  if(!LANDING){ m.append(el("div",{class:"welcome"}, el("h2",{},"Tell us how you eat. We'll plan the week and write your grocery list."), el("div",{class:"actions"}, el("button",{class:"btn primary big",id:"startBtn",onclick:()=>startQuiz()},"Get started")))); return; }
+  const acts=LANDING.querySelector(".lhero .actions"), old=acts.querySelector(".myplans"); if(old) old.remove();
+  if(Object.keys(PLANS).length) acts.append(el("button",{class:"btn big myplans",onclick:openPlansSheet},"My plans ("+Object.keys(PLANS).length+")"));
+  m.append(LANDING);
 }
 // signed in with no plan open: your home, with every plan on your account
 function renderHub(){

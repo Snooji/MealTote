@@ -25,12 +25,16 @@
 <link rel="stylesheet" href="src/themes.css">
 <meta name="theme-color" content="#FFFFFF">
 <script src="src/theme.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "MealTote", "url": "https://mealtote.com/", "logo": "https://mealtote.com/icons/icon-512.png"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "MealTote", "url": "https://mealtote.com/", "potentialAction": {"@type": "SearchAction", "target": "https://mealtote.com/recipes/?q={search_term_string}", "query-input": "required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is MealTote really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every feature is free with no ads and no premium tier. MealTote runs on small optional donations."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your plan saves in your browser. Sign in with Google only if you want your plans, pantry and recipe book on every device."}}, {"@type": "Question", "name": "Which grocery stores does it support?", "acceptedAnswer": {"@type": "Answer", "text": "36 US chains, including Walmart, Aldi, Costco, Kroger, Target, Trader Joe's, Publix, H-E-B, Safeway, Albertsons, Whole Foods, Sam's Club, Meijer, Wegmans and regional grocers. Pick the ones near you and MealTote splits the list between them."}}, {"@type": "Question", "name": "Can it build a high-protein meal plan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Set a protein target, such as 190 g a day, and the planner favors high-protein recipes, sizes each portion to your macros, and suggests extra protein or a side when a meal comes up short."}}, {"@type": "Question", "name": "Can I plan for my whole family?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Add everyone you cook for with their own calorie target. Recipes are cooked once and portioned per person, and the grocery list buys enough for everyone."}}, {"@type": "Question", "name": "How accurate are the prices and nutrition?", "acceptedAnswer": {"@type": "Answer", "text": "Prices are estimates of typical shelf prices, and nutrition is calculated from each recipe's ingredients. Both are close enough to plan and budget with; check labels and shelf prices for exact numbers."}}]}</script>
+<script>/* returning planners skip the landing page; hide it before first paint */try{var _s=JSON.parse(localStorage.getItem("mealtote-v1")||"null");if(_s&&_s.plan&&_s.profile)document.documentElement.classList.add("has-plan");}catch(e){}</script>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <div class="bar">
-      <div class="brand"><img class="mark" src="icons/mark.png" alt="" width="34" height="34"><h1>Meal<b>Tote</b></h1><span>meal plans across your stores</span></div>
+      <div class="brand"><img class="mark" src="icons/mark.png" alt="" width="34" height="34"><a class="logo-word" href="/" aria-label="MealTote home">Meal<b>Tote</b></a><span>meal plans across your stores</span></div>
       <div class="actions" id="hdrBtns"><div id="account"></div><a class="btn small support desk" href="support.html" aria-label="Support MealTote">♥ Support</a><button class="btn small desk" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small desk" id="resetBtn" hidden>My plans</button><button class="btn small desk" id="editBtn" hidden>Edit my answers</button><button class="btn small iconbtn" id="settingsBtn" aria-label="Settings"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="desk">Settings</span></button></div>
     </div>
     <nav class="tabs" role="tablist" id="tabs" hidden>
@@ -45,7 +49,79 @@
   </div>
 </header>
 
-<main class="wrap" id="app"></main>
+<main class="wrap" id="app">
+<!-- The landing page is plain HTML so search engines read it without running the app. The app shows it to new visitors
+     (renderWelcome) and swaps in the planner once someone has a plan. Popular recipes are filled in by tools/export-cookbook.mjs. -->
+<article id="landing" class="landing">
+  <section class="lhero">
+    <div class="eyebrow">Free meal planner · no ads, no paywall</div>
+    <h1>Free meal planner and grocery list for your whole week</h1>
+    <p class="lede">Answer a few questions and MealTote plans breakfast, lunch and dinner for everyone you cook for, with portions sized to each person's calories and macros. Then it writes one grocery list split across the stores you already shop at, with estimated prices.</p>
+    <div class="actions"><button class="btn primary big" id="startBtn" type="button">Plan my week free</button><a class="btn big" href="/recipes/">Browse 580+ recipes</a></div>
+    <ul class="lproof"><li><b>580+</b> recipes with nutrition</li><li><b>50</b> cuisines</li><li><b>36</b> grocery chains</li><li><b>$0</b>, free forever</li></ul>
+  </section>
+
+  <section class="lsec" aria-labelledby="how">
+    <h2 id="how">How MealTote works</h2>
+    <ol class="lsteps">
+      <li><h3>Tell us how you eat</h3><p>Who's eating and their daily calories, optional protein, carb and fat targets, favorite foods and cuisines, allergies, diet, cooking time and budget.</p></li>
+      <li><h3>Get a week of meals</h3><p>A plan for 3, 5 or 7 days from 580+ recipes, with leftovers planned in if you like. Swap any meal in one tap and see exactly how calories and macros change.</p></li>
+      <li><h3>Shop once, across your stores</h3><p>One grocery list grouped by store and aisle, split between Walmart, Aldi, Costco, Kroger, Trader Joe's, Target, Publix, H-E-B and more, either cheapest overall or fewest stops.</p></li>
+    </ol>
+  </section>
+
+  <section class="lsec" aria-labelledby="features">
+    <h2 id="features">Everything you need to plan meals and shop smarter</h2>
+    <div class="lfeat">
+      <div><h3>Portions sized for each person</h3><p>One recipe feeds a 1,700-calorie day and a 2,700-calorie day. Every serving size is worked out per person.</p></div>
+      <div><h3>Macros and high-protein plans</h3><p>Set protein, carb and fat targets. The planner picks dishes that fit, sizes portions to match and suggests a side or extra protein when a meal falls short.</p></div>
+      <div><h3>Grocery list with prices</h3><p>Estimated prices from 36 US grocery chains, nationwide and regional, so you know the weekly total before you shop.</p></div>
+      <div><h3>Meal prep guide</h3><p>The week's chopping, sauces, marinades and grains batched into one or two sessions, so weeknights are mostly reheating.</p></div>
+      <div><h3>Pantry with expiration dates</h3><p>Track what's in your fridge and cupboards, see what's about to expire, and add anything to your shopping list.</p></div>
+      <div><h3>Your own recipe book</h3><p>Save favorites, add your own recipes, and share them with the community if you like.</p></div>
+      <div><h3>Printable cookbook</h3><p>Turn your week into a PDF with the plan, prep guide, recipes, nutrition and shopping list to print, text or email.</p></div>
+      <div><h3>Free and private</h3><p>No ads, no premium tier. Use it without an account, or sign in with Google to keep your plans on every device.</p></div>
+    </div>
+  </section>
+
+  <section class="lsec" aria-labelledby="goals">
+    <h2 id="goals">Meal plans for every goal</h2>
+    <div class="lgoals">
+      <a href="/meal-plans/high-protein"><b>High-protein meal plans</b><span>For lifting and muscle gain: hit 150 to 200 g of protein a day with food you'll want to eat.</span></a>
+      <a href="/meal-plans/weight-loss"><b>Weight loss meal plans</b><span>Lighter, filling meals sized to a calorie target, with plenty of protein to keep you full.</span></a>
+      <a href="/meal-plans/budget"><b>Budget meal plans</b><span>Recipes around $2.50 a serving or less, priced at the stores you actually use.</span></a>
+      <a href="/meal-plans/quick"><b>Quick 30-minute meals</b><span>Weeknight dinners, lunches and breakfasts ready in half an hour or less.</span></a>
+      <a href="/meal-plans/family"><b>Family meal plans</b><span>Familiar, kid-friendly dinners with portions sized for each person at the table.</span></a>
+      <a href="/meal-plans/meal-prep"><b>Meal prep plans</b><span>Dishes that keep for days in the fridge and freeze well, made to cook once and eat all week.</span></a>
+      <a href="/meal-plans/vegetarian"><b>Vegetarian meal plans</b><span>Meatless meals with enough protein, from beans and eggs to tofu and Greek yogurt.</span></a>
+    </div>
+  </section>
+
+  <section class="lsec" aria-labelledby="popular">
+    <h2 id="popular">Popular recipes</h2>
+    <div class="lpop"><!--popular--><a href="/recipes/spaghetti-bolognese-ragu"><img src="photos/t/spaghetti-bolognese-ragu.jpg" alt="Spaghetti Bolognese with Beef &amp; Pork Ragù" loading="lazy" width="480" height="360">Spaghetti Bolognese with Beef &amp; Pork Ragù<small>70 min · 815 kcal · 41 g protein</small></a><a href="/recipes/chicken-pot-pie"><img src="photos/t/chicken-pot-pie.jpg" alt="Puff Pastry Chicken Pot Pie" loading="lazy" width="480" height="360">Puff Pastry Chicken Pot Pie<small>55 min · 530 kcal · 22 g protein</small></a><a href="/recipes/smash-burgers"><img src="photos/t/smash-burgers.jpg" alt="Double Smash Burgers" loading="lazy" width="480" height="360">Double Smash Burgers<small>20 min · 970 kcal · 47 g protein</small></a><a href="/recipes/birria-tacos"><img src="photos/t/birria-tacos.jpg" alt="Birria-Style Beef Tacos with Consommé" loading="lazy" width="480" height="360">Birria-Style Beef Tacos with Consommé<small>210 min · 885 kcal · 63 g protein</small></a><a href="/recipes/butter-chicken"><img src="photos/t/butter-chicken.jpg" alt="Butter Chicken" loading="lazy" width="480" height="360">Butter Chicken<small>45 min · 945 kcal · 51 g protein</small></a><a href="/recipes/chicken-alfredo"><img src="photos/t/chicken-alfredo.jpg" alt="Chicken &amp; Broccoli Fettuccine Alfredo" loading="lazy" width="480" height="360">Chicken &amp; Broccoli Fettuccine Alfredo<small>30 min · 1120 kcal · 54 g protein</small></a><a href="/recipes/pad-thai"><img src="photos/t/pad-thai.jpg" alt="Chicken Pad Thai" loading="lazy" width="480" height="360">Chicken Pad Thai<small>30 min · 655 kcal · 34 g protein</small></a><a href="/recipes/philly-cheesesteak"><img src="photos/t/philly-cheesesteak.jpg" alt="Philly Cheesesteaks with Melty Provolone" loading="lazy" width="480" height="360">Philly Cheesesteaks with Melty Provolone<small>25 min · 675 kcal · 40 g protein</small></a><a href="/recipes/turkey-chorizo-egg-white-burritos"><img src="photos/t/turkey-chorizo-egg-white-burritos.jpg" alt="Turkey Chorizo &amp; Egg-White Freezer Burritos" loading="lazy" width="480" height="360">Turkey Chorizo &amp; Egg-White Freezer Burritos<small>40 min · 530 kcal · 50 g protein</small></a><a href="/recipes/cottage-cheese-blender-pancakes"><img src="photos/t/cottage-cheese-blender-pancakes.jpg" alt="Blueberry Cottage Cheese Blender Pancakes" loading="lazy" width="480" height="360">Blueberry Cottage Cheese Blender Pancakes<small>25 min · 470 kcal · 46 g protein</small></a><a href="/recipes/chicken-tikka-rice-bowls"><img src="photos/t/chicken-tikka-rice-bowls.jpg" alt="Chicken Tikka Rice Bowls with Cucumber Raita" loading="lazy" width="480" height="360">Chicken Tikka Rice Bowls with Cucumber Raita<small>45 min · 545 kcal · 65 g protein</small></a><a href="/recipes/beef-broccoli"><img src="photos/t/beef-broccoli.jpg" alt="Beef &amp; Broccoli Stir-Fry" loading="lazy" width="480" height="360">Beef &amp; Broccoli Stir-Fry<small>25 min · 610 kcal · 40 g protein</small></a><!--/popular--></div>
+    <p><a href="/recipes/">See all recipes by cuisine</a></p>
+  </section>
+
+  <section class="lsec" aria-labelledby="faq">
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="lfaq">
+      <details><summary>Is MealTote really free?</summary><p>Yes. Every feature is free with no ads and no premium tier. MealTote runs on small optional donations.</p></details>
+      <details><summary>Do I need an account?</summary><p>No. Your plan saves in your browser. Sign in with Google only if you want your plans, pantry and recipe book on every device.</p></details>
+      <details><summary>Which grocery stores does it support?</summary><p>36 US chains, including Walmart, Aldi, Costco, Kroger, Target, Trader Joe's, Publix, H-E-B, Safeway, Albertsons, Whole Foods, Sam's Club, Meijer, Wegmans and regional grocers. Pick the ones near you and MealTote splits the list between them.</p></details>
+      <details><summary>Can it build a high-protein meal plan?</summary><p>Yes. Set a protein target, such as 190 g a day, and the planner favors high-protein recipes, sizes each portion to your macros, and suggests extra protein or a side when a meal comes up short.</p></details>
+      <details><summary>Can I plan for my whole family?</summary><p>Yes. Add everyone you cook for with their own calorie target. Recipes are cooked once and portioned per person, and the grocery list buys enough for everyone.</p></details>
+      <details><summary>How accurate are the prices and nutrition?</summary><p>Prices are estimates of typical shelf prices, and nutrition is calculated from each recipe's ingredients. Both are close enough to plan and budget with; check labels and shelf prices for exact numbers.</p></details>
+    </div>
+  </section>
+
+  <section class="lsec lcta">
+    <h2>Plan your week in about a minute</h2>
+    <p>No sign-up needed. Answer a few questions and get your meals and grocery list.</p>
+    <div class="actions"><button class="btn primary big" id="startBtn2" type="button">Plan my week free</button></div>
+  </section>
+</article>
+</main>
 
 <footer class="site wrap">
   <p><b>MealTote is free</b>, with no ads and no paywall. If it saves you time or money, you can <a href="support.html">chip in to keep it running</a>.</p>
