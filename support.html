@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Support MealTote</title>
+<title>Donate to MealTote</title>
 <link rel="canonical" href="https://mealtote.com/support">
-<meta property="og:title" content="Support MealTote"><meta property="og:description" content="MealTote is a free meal planner and grocery list. Here's how to help keep it free."><meta property="og:image" content="https://mealtote.com/icons/icon-512.png">
+<meta property="og:title" content="Donate to MealTote"><meta property="og:description" content="MealTote is a free meal planner and grocery list. Here's how to help keep it free."><meta property="og:image" content="https://mealtote.com/icons/icon-512.png">
 <meta name="description" content="MealTote is a free meal planner and grocery list. Here's how to help keep it free.">
 <link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,6 +32,7 @@
   .way{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:16px;display:grid;gap:6px;align-content:start}
   .way h3{font-size:20px}
   .way p{margin:0;color:var(--muted)}
+  .helpbox{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--surface)}.helpbox h2{font-size:19px;margin:0 0 4px}.helpbox p{margin:0 0 8px}.helpbox .btns{display:flex;flex-wrap:wrap;gap:8px;margin:0}
   .support-page ul{margin:0;padding-left:20px;display:grid;gap:6px}
   .support-page a:not(.btn){color:var(--accent)}
   .goal{display:grid;gap:6px}
@@ -55,8 +56,13 @@
 </header>
 
 <main class="wrap support-page">
+  <section class="helpbox" aria-label="Looking for help?">
+    <h2>Looking for help with the app?</h2>
+    <p>This page is for donations. If something isn't working or you have a question, send it to me and I'll get back to you.</p>
+    <p class="btns"><a class="btn" href="/?feedback=1">Send feedback</a> <a class="btn primary" href="/?start=1">New here? Plan my week free</a></p>
+  </section>
   <section>
-    <div class="eyebrow">Support MealTote</div>
+    <div class="eyebrow">Donate to MealTote</div>
     <h1 id="sHead">Keep it free for everyone</h1>
     <p class="lede">Most apps that help you plan meals and shopping lock the useful parts behind a subscription. I wanted one that does the whole job for free, so I built MealTote: the questions, the week of meals, the grocery list split across your stores, the prep guide and the cookbook PDF, with no ads and no paywall.</p>
   </section>
@@ -70,7 +76,7 @@
     <h3 class="sub">Other ways to help</h3>
     <div class="ways">
       <div class="way"><h3>Share it</h3><p>Send MealTote to someone who's tired of planning dinner. Word of mouth is how a free app grows.</p></div>
-      <div class="way"><h3>Tell me what's missing</h3><p>A store near you, a recipe you love, something confusing? <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Leave feedback or an idea</a>.</p></div>
+      <div class="way"><h3>Tell me what's missing</h3><p>A store near you, a recipe you love, something confusing? <a href="/?feedback=1">Send feedback or an idea</a>.</p></div>
       <div class="way"><h3>Fix a price</h3><p>Store prices are estimates. If one is way off where you shop, let me know and I'll adjust it.</p></div>
     </div>
   </section>

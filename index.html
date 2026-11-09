@@ -35,7 +35,7 @@
   <div class="wrap">
     <div class="bar">
       <div class="brand"><img class="mark" src="icons/mark.png" alt="" width="34" height="34"><a class="logo-word" href="/" aria-label="MealTote home">Meal<b>Tote</b></a><span>meal plans across your stores</span></div>
-      <div class="actions" id="hdrBtns"><div id="account"></div><a class="btn small support desk" href="support.html" aria-label="Support MealTote">Support</a><button class="btn small desk" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small desk" id="resetBtn" hidden>My plans</button><button class="btn small desk" id="editBtn" hidden>Edit my answers</button><button class="btn small iconbtn" id="settingsBtn" aria-label="Settings"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="desk">Settings</span></button></div>
+      <div class="actions" id="hdrBtns"><div id="account"></div><button class="btn small desk" id="fbBtn" type="button">Feedback</button><button class="btn small desk" id="themeBtn" aria-label="Change theme">Theme</button><button class="btn small desk" id="resetBtn" hidden>My plans</button><button class="btn small desk" id="editBtn" hidden>Edit my answers</button><button class="btn small iconbtn" id="settingsBtn" aria-label="Settings"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="desk">Settings</span></button></div>
     </div>
     <nav class="tabs" role="tablist" id="tabs" hidden>
       <button role="tab" data-tab="plan" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg><span class="tl"><span class="long">My plan</span><span class="short">Plan</span></span></button>
@@ -123,7 +123,7 @@
 
 <footer class="site wrap">
   <p><b>MealTote is free</b>, with no ads and no paywall. If it saves you time or money, you can <a href="support.html">chip in to keep it running</a>.</p>
-  <p class="note"><a href="support.html">Support</a> · <a href="https://github.com/Snooji/mealtote/issues" target="_blank" rel="noopener">Feedback &amp; ideas</a> · <a href="https://github.com/Snooji/mealtote/blob/main/CREDITS.md" target="_blank" rel="noopener">Photo credits</a> · <a href="/recipes/">Browse all recipes</a></p>
+  <p class="note"><a href="/?feedback=1" id="fbLink">Send feedback</a> · <a href="support.html">Donate</a> · <a href="https://github.com/Snooji/mealtote/blob/main/CREDITS.md" target="_blank" rel="noopener">Photo credits</a> · <a href="/recipes/">Browse all recipes</a></p>
 </footer>
 
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle">
@@ -152,6 +152,7 @@
 <script src="src/recipes/us-classics.js"></script>
 <script src="src/recipes/protein-am.js"></script>
 <script src="src/recipes/protein-pm.js"></script>
+<script src="src/checkout-config.js"></script>
 <script src="src/app.js"></script>
 <script type="module" src="src/cloud.js"></script>
 </body>

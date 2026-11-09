@@ -88,6 +88,11 @@ if (configured) {
         });
       },
       // community recipes: same review flow (recipeSubs → communityRecipes, approved in the Backend)
+      async sendFeedback(f) {
+        const u = api.user;
+        await addDoc(collection(db, "feedback"), { kind: f.kind, text: String(f.text).slice(0, 2000), email: String(f.email || "").slice(0, 120), page: String(f.page || "").slice(0, 60),
+          device: String(navigator.userAgent).slice(0, 200), uid: u ? u.uid : "", name: u ? firstName(u) : "", at: serverTimestamp(), status: "new" });
+      },
       async submitRecipe(rec) {
         const u = api.user;
         await addDoc(collection(db, "recipeSubs"), { ...rec, uid: u.uid, name: firstName(u), at: Date.now(), status: "pending" });

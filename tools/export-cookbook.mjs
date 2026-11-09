@@ -156,7 +156,7 @@ const GOALS = [
     test: r => META[r.id].veg, faq: [["Can I set a vegetarian or pescatarian diet?", "Yes. Pick your diet in the questions and the planner only uses recipes that fit."]] },
 ];
 
-const NAV = `<nav class="snav"><a href="/recipes/">Recipes</a><a href="/meal-plans/">Meal plans</a><a href="/support">Support</a></nav>`;
+const NAV = `<nav class="snav"><a href="/recipes/">Recipes</a><a href="/meal-plans/">Meal plans</a><a href="/?feedback=1">Feedback</a></nav>`;
 const head = (title, desc, url, img, extra = "") => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}"><link rel="canonical" href="${url}">
@@ -182,7 +182,7 @@ details{background:#fff;border:1px solid #DCE2D8;border-radius:10px;padding:10px
 footer{margin:48px 0 30px;color:#5B6B60;font-size:14px;border-top:1px solid #DCE2D8;padding-top:18px;display:grid;gap:10px}footer .cols a{color:#5B6B60}</style>${extra}
 </head><body><header><div class="w"><a class="brand" href="/"><img src="/icons/mark.png" alt="" width="32" height="32"><span>Meal<b>Tote</b></span></a>${NAV}<a class="cta" href="/">Plan your week free</a></div></header><main class="w">`;
 const foot = `<footer><div><b>MealTote</b> is a free meal planner and grocery list: a week of meals sized for everyone you cook for, macros and high-protein options, and one shopping list split across the stores you use.</div>
-<div class="cols">${GOALS.map(g => `<a href="/meal-plans/${g.slug}">${esc(g.name)}</a>`).join("")}<a href="/recipes/">All recipes</a><a href="/support">Support MealTote</a></div></footer></main></body></html>\n`;
+<div class="cols">${GOALS.map(g => `<a href="/meal-plans/${g.slug}">${esc(g.name)}</a>`).join("")}<a href="/recipes/">All recipes</a><a href="/?feedback=1">Send feedback</a><a href="/support">Donate to MealTote</a></div></footer></main></body></html>\n`;
 const crumbs = list => `<nav class="crumbs" aria-label="Breadcrumb">${list.map(([n, u], i) => i < list.length - 1 ? `<a href="${u}">${esc(n)}</a> › ` : esc(n)).join("")}</nav>` +
   jsonld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: list.map(([n, u], i) => ({ "@type": "ListItem", position: i + 1, name: n, item: SITE + u })) });
 // one row per recipe: a small photo beside the name and what matters about it

@@ -29,6 +29,13 @@ jobs:
       # rebuild the public recipe pages with the latest ratings from the app
       - name: Refresh recipe pages
         run: node tools/export-cookbook.mjs
+      # the Instacart checkout worker's address (repo variable CHECKOUT_URL); the button stays hidden until it's set
+      - name: Checkout config
+        env:
+          CHECKOUT_URL: ${{ vars.CHECKOUT_URL }}
+        run: |
+          if [ -n "$CHECKOUT_URL" ]; then node -e 'process.stdout.write("window.MT_CHECKOUT="+JSON.stringify(process.env.CHECKOUT_URL.replace(/\/+$/,""))+";\n")' > src/checkout-config.js; fi
+          cat src/checkout-config.js
       # the app compares this with what it's running and reloads itself when a new version is live
       - name: Stamp version
         run: printf '{"v":"%s"}\n' "$GITHUB_SHA" > version.json

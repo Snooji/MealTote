@@ -3328,12 +3328,70 @@ function renderSettings(){
       row(null,"Theme","Styles, light or dark and accent colors",openThemeSheet)),
     el("section",{class:"pcard"}, el("h3",{class:"sub"},"Community"),
       row(null,"Share a recipe","Send us your recipe; approved ones show for everyone with your name",()=>openShareRecipe(true))),
-    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Support & help"),
-      row(null,"Support MealTote","Chip in to keep it free",null,"support.html"),
-      row(null,"Feedback & ideas","Report a bug or ask for a recipe or store",null,"https://github.com/Snooji/mealtote/issues"),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Help & feedback"),
+      row(null,"Send feedback","Ask a question, report a bug or ask for a recipe or store",()=>openFeedback()),
       row(null,"Install on your phone","iPhone: Share, then Add to Home Screen. Android: menu, then Install app",()=>toast("iPhone: tap Share, then Add to Home Screen. Android: tap ⋮, then Install app."))),
+    el("section",{class:"pcard"}, el("h3",{class:"sub"},"Donate"),
+      row(null,"Donate to MealTote","Optional. MealTote stays free either way",null,"support.html")),
     admin ? el("section",{class:"pcard"}, el("h3",{class:"sub"},"Admin"), row(null,"Open the Backend","Analytics, photo submissions and donations",openBackend)) : null,
     el("p",{class:"note"},"MealTote "+APP_VERSION+(RUNNING_VERSION?" ("+RUNNING_VERSION.slice(0,7)+")":"")+(u?" · signed in as "+u.email:""))));
+}
+
+/* ------------------------------------------------------------------ feedback: goes to the Backend's Feedback tab */
+function openFeedback(kind){
+  const p=$("#panel"); p.innerHTML=""; kind=kind||"question";
+  const kinds=[["question","A question"],["bug","Something's broken"],["idea","An idea"],["other","Something else"]];
+  const seg=el("div",{class:"seg fbkinds"}, kinds.map(([k,l])=>el("button",{type:"button","aria-pressed":k===kind,onclick:e=>{ kind=k; for(const x of seg.children) x.setAttribute("aria-pressed",x===e.currentTarget); }},l)));
+  const txt=el("textarea",{maxlength:2000,rows:6,placeholder:"What happened, or what would make MealTote better for you?"});
+  const mail=el("input",{type:"email",maxlength:120,autocomplete:"email",placeholder:"you@example.com",value:(cloudUser&&cloudUser.email)||""});
+  const send=async e=>{ const t=txt.value.trim(); if(t.length<3){ toast("Write a few words first."); txt.focus(); return; }
+    if(!(window.cloud&&cloud.enabled&&cloud.sendFeedback)){ toast("Couldn't reach MealTote. Try again in a moment."); return; }
+    e.currentTarget.disabled=true;
+    try{ await cloud.sendFeedback({kind,text:t,email:mail.value.trim(),page:(S.plan&&S.profile?tab:"home")+" · "+APP_VERSION}); closeSheet(); toast("Thanks! We read every message."); }
+    catch(err){ e.currentTarget.disabled=false; toast("Couldn't send it ("+(err.code||err.message||"error")+")."); } };
+  p.append(el("div",{class:"sharerec"},
+    el("h2",{},"Send feedback"),
+    el("p",{class:"note",style:"margin:0"},"Questions, bugs, missing recipes or stores: it all goes straight to the person who builds MealTote."),
+    seg,
+    el("label",{class:"fld"}, el("span",{class:"eyebrow"},"Your message"), txt),
+    el("label",{class:"fld"}, el("span",{class:"eyebrow"},"Email, if you'd like a reply (optional)"), mail),
+    el("div",{class:"actions"}, el("button",{class:"btn primary",onclick:send},"Send feedback"), el("button",{class:"btn",onclick:closeSheet},"Cancel"))));
+  $("#sheet").hidden=false; document.body.style.overflow="hidden"; $("#sheet").scrollTop=0; setTimeout(()=>txt.focus(),50);
+}
+
+/* ------------------------------------------------------------------ checkout: hand the list to Instacart (worker/checkout.js holds the key) */
+const IC_UNITS={lb:"pound",lbs:"pound",oz:"ounce","fl oz":"fl oz",gal:"gallon",qt:"quart",pt:"pint",ct:"each",count:"each",dozen:"dozen"};
+function icLine(item, store, need){
+  const offs=offers(item), s=offs[store]?store:Object.keys(offs)[0], o=offs[s], k=packsFor(item,s,need), name=ITEMS[item][0];
+  const m=/(\d+(?:\.\d+)?)\s*(fl oz|lbs?|oz|gal|qt|pt|ct|count|dozen)\b/i.exec(o[0]);
+  if(m){ const unit=IC_UNITS[m[2].toLowerCase()], qty=Math.round(+m[1]*k*100)/100; return {name, qty, unit, text:name+", "+qty+" "+m[2].toLowerCase()}; }
+  return {name, qty:k, unit:"each", text:name+(k>1?", "+k:"")};
+}
+function icPlanList(skipChecked){
+  const t=planTotals(), out=[];
+  for(const i of Object.keys(t.d)) if(!(skipChecked&&S.checked[i])) out.push(icLine(i,t.result[i],t.d[i]));
+  for(const k of Object.keys(S.pantry.add)) if(!(skipChecked&&S.checked["p:"+k])) out.push({name:k,text:k});
+  return out;
+}
+function icRecipeList(r){ const H=S.profile?household():r.serves, f=H/r.serves; return r.ing.map(([item,use])=>icLine(item,cheapestIn(item,S.stores),use*f)); }
+async function sendToInstacart(items, title, btn){
+  if(!items.length){ toast("Nothing left to buy: everything is checked off."); return; }
+  const w=window.open("","_blank");   // open the tab during the tap so pop-up blockers allow it
+  const old=btn.textContent; btn.disabled=true; btn.textContent="Opening Instacart…";
+  try{
+    const r=await fetch(window.MT_CHECKOUT+"/list",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({title,items})});
+    const j=await r.json().catch(()=>({})); if(!r.ok||!j.url) throw new Error(j.error||"Error "+r.status);
+    track("instacart"); flushTrack(); if(w) w.location.href=j.url; else location.href=j.url;
+  }catch(e){ if(w) w.close(); toast("Couldn't open Instacart. "+e.message); }
+  finally{ btn.disabled=false; btn.textContent=old; }
+}
+function orderBox(){
+  if(!window.MT_CHECKOUT) return null;
+  return el("div",{class:"orderbox"},
+    el("div",{}, el("h3",{},"Order for delivery or pickup"),
+      el("p",{class:"note"},"Your list opens on Instacart. You pick a store near you and pay there. Their prices can differ from the estimates here."),
+      el("label",{class:"oskip"}, el("input",{type:"checkbox",id:"icSkip",checked:true})," Leave out items I've checked off")),
+    el("button",{class:"btn primary",onclick:e=>sendToInstacart(icPlanList($("#icSkip").checked), planTitle(), e.currentTarget)},"Shop on Instacart"));
 }
 
 function renderGroceries(){
@@ -3351,6 +3409,7 @@ function renderGroceries(){
     el("div",{class:"stat"},el("b",{class:"mono"},t.used.length),el("span",{},"Stores to visit")),
     el("div",{class:"stat"},el("b",{class:"mono"},Object.keys(d).length),el("span",{},"Items")),
     singles.length && S.stores.length>1 ? el("div",{class:"stat"},el("b",{class:"mono"},money(singles[0].t)),el("span",{},"All at "+STORES[singles[0].s].name)) : null));
+  m.append(orderBox()||"");
   const byStore={}; for(const [i,s] of Object.entries(t.result)) (byStore[s]=byStore[s]||[]).push(i);
   const wrap=el("div",{class:"listcols"});
   if(t.missing.length) wrap.append(el("div",{class:"missingbox"}, el("h3",{},"Not sold at your stores"),
@@ -3616,6 +3675,7 @@ function openRecipe(id, slot){
       el("div",{class:"actions"},
         el("button",{class:"btn"+(isFav(id)?" primary":""),onclick:()=>{ if(r.community&&r.community.mine) return; toggleFav(id); openRecipe(id,slot); }}, isFav(id)?"Saved to your recipe book":"Save to my recipe book"),
         r.community&&r.community.mine?el("button",{class:"btn danger",onclick:e=>{ if(e.target.dataset.armed!=="1"){ e.target.dataset.armed="1"; e.target.textContent="Tap again to delete"; return; } removeMyRecipe(id); closeSheet(); toast("Recipe deleted"); refresh(); }},"Delete my recipe"):null,
+        window.MT_CHECKOUT&&!r.community?el("button",{class:"btn",onclick:e=>sendToInstacart(icRecipeList(r), r.title, e.currentTarget)},"Shop ingredients on Instacart"):null,
         el("button",{class:"btn",onclick:()=>pickPhoto(id)}, S.photos[id]?"Replace photo":"Use my own photo"),
         S.photos[id]?el("button",{class:"btn",onclick:()=>{ delete S.photos[id]; save(); openRecipe(id,slot); refresh(); }},"Remove my photo"):null,
         S.photos[id]?el("button",{class:"btn"+(S.submitted&&S.submitted[id]?"":" primary"),disabled:!!(S.submitted&&S.submitted[id]),onclick:()=>sharePhoto(id,slot)}, S.submitted&&S.submitted[id]?"Sent for review":"Share it with everyone")
@@ -3871,7 +3931,7 @@ window.buildPdf = buildPdf;
 // MealTote is free; a gentle, dismissible-by-ignoring nudge on the pages people finish on
 function supportCard(){
   return el("div",{class:"supportcard"}, el("p",{}, el("b",{},"MealTote is free, with no ads and no paywall. "), "If it saved you time or money this week, a few dollars keeps it running."),
-    el("a",{class:"btn primary",href:"support.html"},"Support MealTote"));
+    el("a",{class:"btn primary",href:"support.html"},"Donate"));
 }
 function renderPdfTab(){ renderPdfPanel(); $("#app").append(supportCard()); }
 function renderPdfPanel(){
@@ -4100,7 +4160,7 @@ function openPlansSheet(){
 
 /* ------------------------------------------------------------------ site analytics: anonymous daily counts for the Backend (stats/YYYY-MM-DD) */
 const TRACKED = new Set(["recipeSubmits","photoSubmits","views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
-  "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile"]);
+  "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile","instacart"]);
 let trackQ = {}, trackT = 0;
 // the admin's own devices don't count: once the admin signs in on a device, it's remembered and left out of every number
 const ADMIN_EMAIL = "starsidecollective@gmail.com";
@@ -4164,4 +4224,8 @@ checkVersion();
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") checkVersion(); });
 setInterval(()=>{ if(document.visibilityState==="visible") checkVersion(); }, 30*60000);
 // links from the public recipe pages (mealtote.com/recipes/<id>) open that recipe here
+{ const q=new URLSearchParams(location.search);
+  if(q.has("feedback")){ history.replaceState(null,"",location.pathname); setTimeout(()=>openFeedback(),300); }
+  else if(q.has("start")){ history.replaceState(null,"",location.pathname); if(!(S.plan&&S.profile)) setTimeout(()=>startQuiz(),300); } }
+{ const fb=$("#fbBtn"); if(fb) fb.onclick=()=>openFeedback(); const fl=$("#fbLink"); if(fl) fl.onclick=e=>{ e.preventDefault(); openFeedback(); }; }
 { const rid=new URLSearchParams(location.search).get("recipe"); if(rid && R_BY_ID[rid]){ openRecipe(rid); history.replaceState(null,"",location.pathname); } }

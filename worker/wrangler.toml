@@ -1,0 +1,9 @@
+name = "mealtote-checkout"
+main = "checkout.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+# "dev" uses Instacart's test server with a development key; switch to "prod" once Instacart approves the production key
+INSTACART_ENV = "dev"
+ALLOW_LOCALHOST = "0"

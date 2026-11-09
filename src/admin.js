@@ -87,10 +87,10 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subsCount ? ` (${subsCount})` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subsCount ? ` (${subsCount})` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["feedback", `Feedback${fbNew ? ` (${fbNew} new)` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, feedback: drawFeedback, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
@@ -140,6 +140,7 @@ function drawAnalytics(p) {
       ${tile("Recipes opened", sum("recipeOpens"), `${num(sum("pdf"))} PDF exports`)}
       ${tile("Home-screen app opens", sum("installed"), "")}
       ${tile("Support page clicks", sum("supportClicks"), "")}
+      ${tile("Sent to Instacart", sum("instacart"), "grocery lists opened there")}
       ${tile("Photos submitted", sum("photoSubmits"), `${num(sum("recipeSubmits"))} recipes submitted`)}
     </div>
     <div class="card"><h3>Visitors and page views per day</h3>
@@ -162,8 +163,8 @@ function drawAnalytics(p) {
 let subsLoaded = false, recipesLoaded = false, subsCount = 0, rsubsCount = 0;
 async function loadCounts() {
   try {
-    const [a, b] = await Promise.all([getCountFromServer(collection(db, "submissions")), getCountFromServer(collection(db, "recipeSubs"))]);
-    subsCount = a.data().count; rsubsCount = b.data().count;
+    const [a, b, c] = await Promise.all([getCountFromServer(collection(db, "submissions")), getCountFromServer(collection(db, "recipeSubs")), getCountFromServer(query(collection(db, "feedback"), where("status", "==", "new")))]);
+    subsCount = a.data().count; rsubsCount = b.data().count; fbNew = c.data().count;
   } catch (e) {}
 }
 async function loadIndex() {
@@ -216,6 +217,35 @@ function drawRecipes(p) {
   p.querySelectorAll("[data-rok]").forEach(b => b.onclick = () => approveRecipe(rsubs[+b.dataset.rok]));
   p.querySelectorAll("[data-rno]").forEach(b => b.onclick = () => rejectRecipe(rsubs[+b.dataset.rno]));
   p.querySelectorAll("[data-run]").forEach(b => b.onclick = () => unpublishRecipe(b.dataset.run));
+}
+/* ------------------------------------------------------------------ feedback: what people send from Settings → Send feedback (and the Donate page's help box) */
+let fb = null, fbNew = 0, fbErr = "", fbShowDone = false;
+const FB_KIND = { bug: "Something's broken", idea: "Idea", question: "Question", other: "Other" };
+async function loadFeedback() {
+  try { const q = await getDocs(query(collection(db, "feedback"), orderBy("at", "desc"), limit(300))); fb = q.docs.map(d => ({ id: d.id, ...d.data() })); fbNew = fb.filter(x => x.status === "new").length; fbErr = ""; }
+  catch (e) { fb = []; fbErr = e.code || e.message; }
+}
+function drawFeedback(p) {
+  if (!fb) { p.innerHTML = `<p class="note">Loading feedback…</p>`; loadFeedback().then(() => { if (tab === "feedback") draw(); }); return; }
+  const when = x => x.at && x.at.toDate ? x.at.toDate().toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
+  const list = fb.filter(x => fbShowDone || x.status === "new");
+  const row = x => `<div class="fbrow${x.status === "new" ? "" : " done"}">
+      <div class="note">${esc(FB_KIND[x.kind] || x.kind)} · ${esc(when(x))} · ${x.name ? esc(x.name) : "not signed in"}${x.page ? ` · from ${esc(x.page)}` : ""}</div>
+      <p>${esc(x.text).replace(/\n/g, "<br>")}</p>
+      <div class="actions">${x.email ? `<a class="btn small" href="mailto:${esc(x.email)}?subject=${encodeURIComponent("Your MealTote feedback")}&body=${encodeURIComponent("\n\n> " + String(x.text).slice(0, 500))}">Reply to ${esc(x.email)}</a>` : `<span class="note">No email left</span>`}
+        <button class="btn small${x.status === "new" ? " primary" : ""}" data-fbdone="${esc(x.id)}">${x.status === "new" ? "Mark done" : "Mark as new"}</button>
+        <button class="btn small" data-fbdel="${esc(x.id)}">Delete</button></div>
+      <details><summary class="note">Device</summary><p class="note">${esc(x.device)}</p></details></div>`;
+  p.innerHTML = `<div class="card"><h3>Feedback (${fbNew} new, ${fb.length} total)</h3>
+      <p class="note" style="margin:0">Sent from Settings → Send feedback, the Feedback button and the help box on the Donate page. Only you can read these.</p>
+      ${fbErr ? `<p class="note">Couldn't load feedback: ${esc(fbErr)}</p>` : ""}
+      <label class="note" style="display:flex;gap:8px;align-items:center;min-height:40px"><input type="checkbox" id="fbDone" ${fbShowDone ? "checked" : ""}> Show done</label>
+      <div class="fblist">${list.map(row).join("") || `<p class="note">${fbShowDone ? "No feedback yet." : "You're all caught up."}</p>`}</div></div>`;
+  $("#fbDone").onchange = e => { fbShowDone = e.target.checked; draw(); };
+  p.querySelectorAll("[data-fbdone]").forEach(b => b.onclick = async () => { const x = fb.find(y => y.id === b.dataset.fbdone); const st = x.status === "new" ? "done" : "new";
+    try { await setDoc(doc(db, "feedback", x.id), { status: st }, { merge: true }); x.status = st; fbNew = fb.filter(y => y.status === "new").length; draw(); } catch (e) { toast("Couldn't update it: " + (e.code || e.message)); } });
+  p.querySelectorAll("[data-fbdel]").forEach(b => b.onclick = async () => { if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Tap again to delete"; return; }
+    try { await deleteDoc(doc(db, "feedback", b.dataset.fbdel)); fb = fb.filter(y => y.id !== b.dataset.fbdel); fbNew = fb.filter(y => y.status === "new").length; draw(); } catch (e) { toast("Couldn't delete it: " + (e.code || e.message)); } });
 }
 /* ------------------------------------------------------------------ all photos: see every recipe's photo; swap it for a better free-licensed one or the logo */
 let BUNDLED = {};

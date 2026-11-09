@@ -567,3 +567,8 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .rbtn .star{width:24px;height:24px}
 @media (hover:hover){.rbtn:hover .star:not(.on){fill:#F3D27A}}
 .rbtn:focus-visible .star:not(.on){fill:#F3D27A}
+/* Instacart order box on the grocery list */
+.orderbox{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1.5px solid var(--line);border-radius:var(--r-card);padding:14px 16px;background:var(--surface);margin:0 0 16px}
+.orderbox h3{margin:0 0 4px;font-size:16px}.orderbox .note{margin:0 0 6px;max-width:56ch}
+.oskip{display:flex;gap:8px;align-items:center;font-size:14px;min-height:40px;cursor:pointer}
+.orderbox .btn.primary{min-height:44px}
