@@ -87,7 +87,7 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Photos${subsCount ? ` (${subsCount})` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["feedback", `Feedback${fbNew ? ` (${fbNew} new)` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Submitted photos${subsCount ? ` (${subsCount} new)` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["feedback", `Feedback${fbNew ? ` (${fbNew} new)` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
   ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, feedback: drawFeedback, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
@@ -163,7 +163,7 @@ function drawAnalytics(p) {
 let subsLoaded = false, recipesLoaded = false, subsCount = 0, rsubsCount = 0;
 async function loadCounts() {
   try {
-    const [a, b, c] = await Promise.all([getCountFromServer(collection(db, "submissions")), getCountFromServer(collection(db, "recipeSubs")), getCountFromServer(query(collection(db, "feedback"), where("status", "==", "new")))]);
+    const [a, b, c] = await Promise.all([getCountFromServer(query(collection(db, "submissions"), where("status", "==", "pending"))), getCountFromServer(collection(db, "recipeSubs")), getCountFromServer(query(collection(db, "feedback"), where("status", "==", "new")))]);
     subsCount = a.data().count; rsubsCount = b.data().count; fbNew = c.data().count;
   } catch (e) {}
 }
@@ -173,8 +173,8 @@ async function loadIndex() {
 }
 async function loadPhotos() {
   try {
-    const [q] = await Promise.all([getDocs(query(collection(db, "submissions"), orderBy("at", "desc"), limit(60))), loadIndex()]);
-    subs = q.docs.map(d => ({ id: d.id, ...d.data() })); subsCount = subs.length; subsLoaded = true; photoErr = "";
+    const [q] = await Promise.all([getDocs(query(collection(db, "submissions"), orderBy("at", "desc"), limit(300))), loadIndex(), loadRecipeList().catch(() => {})]);
+    subs = q.docs.map(d => ({ id: d.id, ...d.data() })); subsCount = subs.filter(x => x.status === "pending").length; subsLoaded = true; photoErr = "";
   } catch (e) { subs = []; photoErr = e.code || e.message; }
 }
 async function loadRecipeSubs() {
@@ -346,36 +346,56 @@ async function drawAllPhotos(p) {
   const mb = p.querySelector("[data-more]"); if (mb) mb.onclick = () => { pshow += 60; drawAllPhotos(p); };
 }
 
-async function approve(sub) {
+// "Make main photo": the submitted photo becomes the recipe's photo for everyone. Submissions are kept (status "used"),
+// so you can switch back to any of them later; the one that's live is whichever matches site/communityPhotos.
+const liveSub = rid => { const c = community[rid]; return c && !c.kind ? c.sub || null : null; };
+async function makeMain(sub) {
   try {
     await setDoc(doc(db, "communityPhotos", sub.rid), { data: sub.data, by: sub.name, title: sub.title, at: Date.now(), uid: sub.uid });
-    await setDoc(doc(db, "site", "communityPhotos"), { ids: { [sub.rid]: { by: sub.name, at: Date.now() } } }, { merge: true });
-    await deleteDoc(doc(db, "submissions", sub.id));
-    toast("Approved. Everyone now sees this photo for " + sub.title + "."); await loadPhotos(); draw();
-  } catch (e) { toast("Couldn't approve: " + (e.code || e.message)); }
+    await setIndex(sub.rid, { by: sub.name, at: Date.now(), sub: sub.id });
+    if (sub.status !== "used") await setDoc(doc(db, "submissions", sub.id), { status: "used" }, { merge: true });
+    toast("Done. Everyone now sees this photo for " + sub.title + "."); await loadPhotos(); draw();
+  } catch (e) { toast("Couldn't change it: " + (e.code || e.message)); }
 }
 async function reject(sub) {
-  try { await deleteDoc(doc(db, "submissions", sub.id)); toast("Rejected"); await loadPhotos(); draw(); }
-  catch (e) { toast("Couldn't reject: " + (e.code || e.message)); }
+  try { await deleteDoc(doc(db, "submissions", sub.id)); toast("Deleted"); await loadPhotos(); draw(); }
+  catch (e) { toast("Couldn't delete it: " + (e.code || e.message)); }
 }
 async function unpublish(rid) {
   try {
     await deleteDoc(doc(db, "communityPhotos", rid));
-    await setDoc(doc(db, "site", "communityPhotos"), { ids: { [rid]: deleteField() } }, { merge: true });
-    toast("Removed. The recipe is back to its original photo."); await loadPhotos(); draw();
-  } catch (e) { toast("Couldn't remove: " + (e.code || e.message)); }
+    await setIndex(rid, null);
+    toast("Back to the original photo."); await loadPhotos(); draw();
+  } catch (e) { toast("Couldn't change it: " + (e.code || e.message)); }
 }
+let subsShowUsed = true;
 function drawPhotos(p) {
-  if (!subsLoaded) { p.innerHTML = `<p class="note">Loading submissions…</p>`; loadPhotos().then(() => { if (tab === "photos") draw(); }); return; }
-  const live = Object.entries(community).sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
-  p.innerHTML = `${photoErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load photos (${esc(photoErr)}). The database rules for this go live with the next deploy.</p></div>` : ""}
-    <div class="card"><h3>Waiting for review (${subs.length})</h3>
-      <p class="note" style="margin:0">People can submit their own photo of any recipe from the recipe page. Approve one and it replaces that recipe's photo (or the MealTote logo) for everyone, tagged "User photo · shared by" their first name.</p>
-      <div class="subgrid">${subs.map((x, i) => `<div class="sub"><img src="${x.data}" alt=""><div><b>${esc(x.title)}</b><div class="note">from ${esc(x.name)} · ${new Date(x.at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</div>${community[x.rid] ? `<div class="note">Replaces the community photo already live</div>` : ""}</div><div class="actions"><button class="btn small primary" data-ok="${i}">Approve</button><button class="btn small" data-no="${i}">Reject</button></div></div>`).join("") || `<p class="note">Nothing waiting.</p>`}</div></div>
-    <div class="card"><h3>Live community photos (${live.length})</h3>${live.length ? `<table class="log">${live.map(([rid, v]) => `<tr><td>${esc(rid)}</td><td class="note">by ${esc(v.by || "")}</td><td class="n"><button class="btn small" data-un="${esc(rid)}">Remove</button></td></tr>`).join("")}</table>` : `<p class="note" style="margin:0">None yet.</p>`}</div>`;
-  p.querySelectorAll("[data-ok]").forEach(b => b.onclick = () => approve(subs[+b.dataset.ok]));
-  p.querySelectorAll("[data-no]").forEach(b => b.onclick = () => reject(subs[+b.dataset.no]));
+  if (!subsLoaded) { p.innerHTML = `<p class="note">Loading submitted photos…</p>`; loadPhotos().then(() => { if (tab === "photos") draw(); }); return; }
+  const titleOf = rid => { const r = recipeList && recipeList.find(x => x[0] === rid); return r ? r[1] : rid; };
+  const day = t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  const pending = subs.filter(x => x.status === "pending"), used = subs.filter(x => x.status !== "pending");
+  const card = x => {
+    const st = photoState(x.rid), isLive = liveSub(x.rid) === x.id;
+    return `<div class="psub${isLive ? " live" : ""}" data-sid="${esc(x.id)}">
+      <div class="pcmp"><figure><img src="${x.data}" alt="Submitted photo of ${esc(x.title)}"><figcaption>Submitted by ${esc(x.name)} · ${day(x.at)}</figcaption></figure>
+        <figure class="now"><img data-now="${esc(x.rid)}" alt=""><figcaption>${isLive ? "This is the main photo now" : "Main photo now: " + esc(st.label)}</figcaption></figure></div>
+      <b>${esc(titleOf(x.rid))}</b>
+      <div class="actions">${isLive ? `<span class="ptag user">Main photo</span><button class="btn small" data-un="${esc(x.rid)}">Put back the original</button>`
+        : `<button class="btn small primary" data-main="${esc(x.id)}">Make main photo</button>`}
+        <button class="btn small" data-del="${esc(x.id)}">${x.status === "pending" ? "Reject" : "Delete"}</button></div></div>`; };
+  p.innerHTML = `${photoErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load photos (${esc(photoErr)}).</p></div>` : ""}
+    <div class="card"><h3>New photos to review (${pending.length})</h3>
+      <p class="note" style="margin:0">People send these from a recipe's page ("Share it with everyone" or "Submit a photo for everyone"). <b>Make main photo</b> shows it on that recipe for everyone, credited "User photo · shared by" their first name. Photos people add only for themselves stay private and don't come here.</p>
+      <div class="psubs">${pending.map(card).join("") || `<p class="note">Nothing new right now.</p>`}</div></div>
+    <div class="card"><h3>Photos you've already reviewed (${used.length})</h3>
+      <p class="note" style="margin:0">Every photo you've made main stays here, so you can switch a recipe back to it, or put back the original.</p>
+      <div class="psubs">${used.map(card).join("") || `<p class="note">None yet.</p>`}</div></div>`;
+  p.querySelectorAll("img[data-now]").forEach(img => { const rid = img.dataset.now, st = photoState(rid);
+    if (st.src) img.src = st.src; else getDoc(doc(db, "communityPhotos", rid)).then(sn => { if (sn.exists()) img.src = sn.data().data || sn.data().url || ""; }).catch(() => {}); });
+  const byId = id => subs.find(x => x.id === id);
+  p.querySelectorAll("[data-main]").forEach(b => b.onclick = () => { b.disabled = true; makeMain(byId(b.dataset.main)); });
   p.querySelectorAll("[data-un]").forEach(b => b.onclick = () => unpublish(b.dataset.un));
+  p.querySelectorAll("[data-del]").forEach(b => b.onclick = () => { if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Tap again to delete"; return; } reject(byId(b.dataset.del)); });
 }
 
 function drawOverview(p, t) {

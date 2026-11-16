@@ -68,6 +68,8 @@ service cloud.firestore {
 
     match /submissions/{id} {
       allow read, delete: if isAdmin();
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['pending', 'used'];
       allow create: if request.auth != null && request.resource.data.uid == request.auth.uid
         && request.resource.data.keys().hasOnly(['rid', 'data', 'uid', 'name', 'title', 'at', 'status'])
         && shortStr(request.resource.data.rid, 100) && shortStr(request.resource.data.name, 80) && shortStr(request.resource.data.title, 160)
