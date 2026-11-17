@@ -572,3 +572,8 @@ nav.tabs .count.alert{background:var(--kd-up);color:#fff}
 .orderbox h3{margin:0 0 4px;font-size:16px}.orderbox .note{margin:0 0 6px;max-width:56ch}
 .oskip{display:flex;gap:8px;align-items:center;font-size:14px;min-height:40px;cursor:pointer}
 .orderbox .btn.primary{min-height:44px}
+.shopbody{display:grid;gap:8px;flex:1 1 260px}.shopbtns{display:flex;flex-wrap:wrap;gap:8px}.shopbtns .btn{min-height:44px}
+.shopmiss summary{cursor:pointer;font-weight:600;font-size:14px;min-height:40px;display:flex;align-items:center}
+.shopmiss ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}.shopmiss li{display:flex;gap:12px;align-items:center;font-size:14px;min-height:40px;border-bottom:1px solid var(--line)}
+.shopmiss li span{flex:1}.shopmiss li a{color:var(--accent);font-weight:600}
+.disclose{font-size:12px}

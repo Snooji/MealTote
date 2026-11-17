@@ -2742,6 +2742,7 @@ function communityImg(id){
 }
 function loadCommunity(){
   if(!cloud.communityIndex) return;
+  if(cloud.storeProducts) cloud.storeProducts().then(d=>{ if(!d) return; STORE_PRODUCTS=d; if(tab==="groceries" && S.profile && !OB && $(".planhead")) keepScroll(renderGroceries); }).catch(()=>{});
   Promise.all([cloud.communityIndex().catch(()=>({})), cloud.communityRecipes?cloud.communityRecipes().catch(()=>[]):[]]).then(([ids,recs])=>{
     COMMUNITY=ids||{}; const added=addCommunityRecipes(recs||[]);
     if((Object.keys(COMMUNITY).length||added) && S.profile && !OB) refresh(); });
@@ -3385,8 +3386,52 @@ async function sendToInstacart(items, title, btn){
   }catch(e){ if(w) w.close(); toast("Couldn't open Instacart. "+e.message); }
   finally{ btn.disabled=false; btn.textContent=old; }
 }
+/* Walmart and Amazon: the list goes into the shopper's own cart through each store's add-to-cart link.
+   Ingredients are matched to products in the Backend (Store products); anything not matched yet becomes a search link. */
+let STORE_PRODUCTS=null;
+function shopLines(skipChecked){
+  const t=planTotals(), out=[];
+  for(const i of Object.keys(t.d)) if(!(skipChecked&&S.checked[i])) out.push({item:i, name:ITEMS[i][0], qty:offers(i).walmart?packsFor(i,"walmart",t.d[i]):1});
+  return out;
+}
+function walmartCartUrl(lines){
+  const sp=STORE_PRODUCTS, got=lines.filter(l=>sp.walmart&&sp.walmart[l.item]);
+  if(!got.length) return null;
+  const u="https://affil.walmart.com/cart/addToCart?items="+got.map(l=>sp.walmart[l.item]+"|"+Math.min(l.qty,12)).join(",");
+  return {url: sp.walmartLink ? sp.walmartLink+"?u="+encodeURIComponent(u) : u, n:got.length};
+}
+function amazonCartUrl(lines){
+  const sp=STORE_PRODUCTS, got=lines.filter(l=>sp.amazon&&sp.amazon[l.item]);
+  if(!got.length) return null;
+  const q=got.map((l,k)=>"ASIN."+(k+1)+"="+sp.amazon[l.item]+"&Quantity."+(k+1)+"="+Math.min(l.qty,12)).join("&");
+  return {url:"https://www.amazon.com/gp/aws/cart/add.html?"+q+(sp.amazonTag?"&AssociateTag="+encodeURIComponent(sp.amazonTag):""), n:got.length};
+}
+function shopBox(){
+  const sp=STORE_PRODUCTS; if(!sp || !(Object.keys(sp.walmart||{}).length || Object.keys(sp.amazon||{}).length)) return null;
+  const box=el("div",{class:"orderbox shopbox"}), body=el("div",{class:"shopbody"}), skipBox=el("input",{type:"checkbox",checked:true,onchange:()=>draw()});
+  const draw=()=>{ body.innerHTML=""; const lines=shopLines(skipBox.checked);
+    if(!lines.length){ body.append(el("p",{class:"note"},"Everything is checked off, so there's nothing left to order.")); return; }
+    const w=walmartCartUrl(lines), a=amazonCartUrl(lines);
+    const go=(store,x)=>()=>{ track("shop_"+store); flushTrack(); window.open(x.url,"_blank","noopener"); };
+    body.append(el("div",{class:"shopbtns"},
+      w?el("button",{class:"btn primary",onclick:go("walmart",w)},"Add to Walmart cart"):null,
+      a?el("button",{class:"btn primary",onclick:go("amazon",a)},"Add to Amazon cart"):null),
+      el("p",{class:"note"}, [w?"Walmart: "+w.n+" of "+lines.length+" items":null, a?"Amazon: "+a.n+" of "+lines.length+" items":null].filter(Boolean).join(" · ")+". You review the cart and pay on the store's site."));
+    const missing=lines.filter(l=>!(sp.walmart&&sp.walmart[l.item]) || !(sp.amazon&&sp.amazon[l.item]));
+    if(missing.length) body.append(el("details",{class:"shopmiss"}, el("summary",{},missing.length+" item"+(missing.length>1?"s":"")+" to find yourself"),
+      el("ul",{}, missing.map(l=>el("li",{}, el("span",{},l.name+(l.qty>1?" × "+l.qty:"")),
+        !(sp.walmart&&sp.walmart[l.item])?el("a",{href:"https://www.walmart.com/search?q="+encodeURIComponent(l.name),target:"_blank",rel:"noopener"},"Walmart"):null,
+        !(sp.amazon&&sp.amazon[l.item])?el("a",{href:"https://www.amazon.com/s?k="+encodeURIComponent(l.name)+"&i=amazonfresh"+(sp.amazonTag?"&tag="+encodeURIComponent(sp.amazonTag):""),target:"_blank",rel:"noopener"},"Amazon"):null)))));
+    if(sp.amazonTag||sp.walmartLink) body.append(el("p",{class:"note disclose"},"MealTote may earn a small commission from these stores at no cost to you."+(sp.amazonTag?" As an Amazon Associate, MealTote earns from qualifying purchases.":"")));
+  };
+  box.append(el("div",{},
+    el("h3",{},"Order online"),
+    el("p",{class:"note"},"Send this list to your Walmart or Amazon cart for delivery or pickup. Store prices can differ from the estimates here."),
+    el("label",{class:"oskip"}, skipBox," Leave out items I've checked off")), body);
+  draw(); return box;
+}
 function orderBox(){
-  if(!window.MT_CHECKOUT) return null;
+  if(!window.MT_CHECKOUT) return shopBox();
   return el("div",{class:"orderbox"},
     el("div",{}, el("h3",{},"Order for delivery or pickup"),
       el("p",{class:"note"},"Your list opens on Instacart. You pick a store near you and pay there. Their prices can differ from the estimates here."),
@@ -4160,7 +4205,7 @@ function openPlansSheet(){
 
 /* ------------------------------------------------------------------ site analytics: anonymous daily counts for the Backend (stats/YYYY-MM-DD) */
 const TRACKED = new Set(["recipeSubmits","photoSubmits","views","visitors","newVisitors","returning","mobile","desktop","installed","signins","signups","plans","pdf","supportClicks","recipeOpens","swaps",
-  "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile","instacart"]);
+  "tab_plan","tab_prep","tab_groceries","tab_pantry","tab_recipes","tab_pdf","tab_settings","tab_profile","instacart","shop_walmart","shop_amazon"]);
 let trackQ = {}, trackT = 0;
 // the admin's own devices don't count: once the admin signs in on a device, it's remembered and left out of every number
 const ADMIN_EMAIL = "starsidecollective@gmail.com";

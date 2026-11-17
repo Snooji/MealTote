@@ -282,6 +282,14 @@ fs.writeFileSync(path.join(root, "recipes", "index.html"), head(`${rows.length} 
   `<script>(function(){var i=document.getElementById("q"),q=new URLSearchParams(location.search).get("q")||"";i.value=q;function f(){var v=i.value.trim().toLowerCase();document.querySelectorAll("[data-c]").forEach(function(s){var n=0;s.querySelectorAll(".cols a").forEach(function(a){var m=!v||a.textContent.toLowerCase().indexOf(v)>=0;a.style.display=m?"":"none";if(m)n++;});s.style.display=n?"":"none";});}i.addEventListener("input",f);f();})();</script>` + foot);
 
 // for the Backend's All photos tab
+// every ingredient MealTote buys, most-used first: the Backend's Store products tab links each one to a Walmart and Amazon product
+{
+  const { ITEMS } = sandbox.__R, uses = {};
+  for (const r of RECIPES) for (const [it] of r.ing || []) uses[it] = (uses[it] || 0) + 1;
+  const list = Object.entries(ITEMS).map(([id, [name, aisle, offers]]) => ({ id, name, aisle, walmart: offers.walmart ? offers.walmart[0] : "", uses: uses[id] || 0 }))
+    .sort((a, b) => b.uses - a.uses || a.name.localeCompare(b.name));
+  fs.writeFileSync(path.join(root, "recipes", "items.json"), JSON.stringify(list));
+}
 fs.writeFileSync(path.join(root, "recipes", "list.json"), JSON.stringify(rows.map(({ r }) => [r.id, r.title, r.meal, cuisine(r.id)])));
 
 // the landing page's popular recipes: familiar dishes with photos

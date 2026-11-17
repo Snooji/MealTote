@@ -87,10 +87,10 @@ function draw() {
   const m = $("#app"), t = totals();
   m.innerHTML = `<div class="admin">
     <div><div class="eyebrow">MealTote Backend</div><h2>Backend</h2></div>
-    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Submitted photos${subsCount ? ` (${subsCount} new)` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["feedback", `Feedback${fbNew ? ` (${fbNew} new)` : ""}`], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
+    <div class="tabs2" role="tablist">${[["analytics", "Analytics"], ["allphotos", "All photos"], ["photos", `Submitted photos${subsCount ? ` (${subsCount} new)` : ""}`], ["recipes", `Recipes${rsubsCount ? ` (${rsubsCount})` : ""}`], ["feedback", `Feedback${fbNew ? ` (${fbNew} new)` : ""}`], ["stores", "Store products"], ["overview", "Donations"], ["methods", "Where donations go"], ["log", `Donation log (${log.length})`]].map(([k, l]) => `<button class="btn small${tab === k ? " primary" : ""}" data-tab="${k}" role="tab" aria-selected="${tab === k}">${l}</button>`).join("")}</div>
     <div id="pane"></div></div>`;
   m.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; draw(); });
-  ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, feedback: drawFeedback, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
+  ({ analytics: drawAnalytics, allphotos: drawAllPhotos, photos: drawPhotos, recipes: drawRecipes, feedback: drawFeedback, stores: drawStores, overview: drawOverview, methods: drawMethods, log: drawLog })[tab]($("#pane"), t);
 }
 
 /* ------------------------------------------------------------------ analytics: daily anonymous counts in stats/YYYY-MM-DD (see track() in app.js) */
@@ -140,7 +140,7 @@ function drawAnalytics(p) {
       ${tile("Recipes opened", sum("recipeOpens"), `${num(sum("pdf"))} PDF exports`)}
       ${tile("Home-screen app opens", sum("installed"), "")}
       ${tile("Support page clicks", sum("supportClicks"), "")}
-      ${tile("Sent to Instacart", sum("instacart"), "grocery lists opened there")}
+      ${tile("Sent to store carts", sum("shop_walmart") + sum("shop_amazon"), `${num(sum("shop_walmart"))} Walmart · ${num(sum("shop_amazon"))} Amazon`)}
       ${tile("Photos submitted", sum("photoSubmits"), `${num(sum("recipeSubmits"))} recipes submitted`)}
     </div>
     <div class="card"><h3>Visitors and page views per day</h3>
@@ -246,6 +246,60 @@ function drawFeedback(p) {
     try { await setDoc(doc(db, "feedback", x.id), { status: st }, { merge: true }); x.status = st; fbNew = fb.filter(y => y.status === "new").length; draw(); } catch (e) { toast("Couldn't update it: " + (e.code || e.message)); } });
   p.querySelectorAll("[data-fbdel]").forEach(b => b.onclick = async () => { if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Tap again to delete"; return; }
     try { await deleteDoc(doc(db, "feedback", b.dataset.fbdel)); fb = fb.filter(y => y.id !== b.dataset.fbdel); fbNew = fb.filter(y => y.status === "new").length; draw(); } catch (e) { toast("Couldn't delete it: " + (e.code || e.message)); } });
+}
+/* ------------------------------------------------------------------ store products: link each ingredient to a Walmart item and an Amazon product */
+// The grocery list's "Add to Walmart cart" / "Add to Amazon cart" buttons use these IDs. Unlinked items fall back to search links.
+let sp = null, spItems = null, spErr = "", spq = "", spf = "all", spShow = 40;
+const SP_REF = () => doc(db, "site", "storeProducts");
+async function loadStores() {
+  try {
+    const [snap, items] = await Promise.all([getDoc(SP_REF()), fetch("recipes/items.json", { cache: "no-cache" }).then(r => r.json())]);
+    sp = Object.assign({ walmart: {}, amazon: {}, amazonTag: "", walmartLink: "" }, snap.exists() ? snap.data() : {}); spItems = items; spErr = "";
+  } catch (e) { sp = { walmart: {}, amazon: {}, amazonTag: "", walmartLink: "" }; spItems = spItems || []; spErr = e.code || e.message; }
+}
+// pull the product ID out of whatever link gets pasted (or accept a bare ID)
+function walmartId(v) { v = String(v).trim(); const m = v.match(/walmart\.com\/ip\/(?:[^/?#]+\/)?(\d{5,})/i) || v.match(/^(\d{5,})$/); return m ? m[1] : ""; }
+function amazonAsin(v) { v = String(v).trim(); const m = v.match(/\/(?:dp|gp\/product|gp\/aw\/d|exec\/obidos\/ASIN)\/([A-Z0-9]{10})/i) || v.match(/^([A-Z0-9]{10})$/i); return m ? m[1].toUpperCase() : ""; }
+const wSearch = x => "https://www.walmart.com/search?q=" + encodeURIComponent((x.walmart || x.name).replace(/\s*\([^)]*\)\s*$/, ""));
+const aSearch = x => "https://www.amazon.com/s?k=" + encodeURIComponent(x.name) + "&i=amazonfresh";
+async function spSave(patch, msg) {
+  try { await setDoc(SP_REF(), { ...patch, updatedAt: serverTimestamp() }, { merge: true }); await loadStores(); toast(msg); draw(); }
+  catch (e) { toast("Couldn't save: " + (e.code || e.message)); }
+}
+async function drawStores(p) {
+  if (!sp) { p.innerHTML = `<p class="note">Loading ingredients…</p>`; await loadStores(); if (tab === "stores") draw(); return; }
+  const nW = Object.keys(sp.walmart).length, nA = Object.keys(sp.amazon).length, q = spq.trim().toLowerCase();
+  const list = spItems.filter(x => (!q || x.name.toLowerCase().includes(q) || x.id.includes(q))
+    && (spf === "all" || (spf === "needw" && !sp.walmart[x.id]) || (spf === "needa" && !sp.amazon[x.id]) || (spf === "done" && sp.walmart[x.id] && sp.amazon[x.id])));
+  const cell = (x, store) => { const id = store === "w" ? sp.walmart[x.id] : sp.amazon[x.id], label = store === "w" ? "Walmart" : "Amazon";
+    return id ? `<div class="spcell on"><span class="note">${label}:</span> <a href="${store === "w" ? "https://www.walmart.com/ip/" + esc(id) : "https://www.amazon.com/dp/" + esc(id)}" target="_blank" rel="noopener">${esc(id)}</a> <button class="btn small" data-sprm="${store}:${esc(x.id)}">Unlink</button></div>`
+      : `<div class="spcell"><a class="btn small" href="${esc(store === "w" ? wSearch(x) : aSearch(x))}" target="_blank" rel="noopener">Find on ${label}</a><input type="text" placeholder="Paste the ${label} product link" data-spin="${store}:${esc(x.id)}" aria-label="${label} product link for ${esc(x.name)}"><button class="btn small primary" data-spsave="${store}:${esc(x.id)}">Save</button></div>`; };
+  p.innerHTML = `${spErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load (${esc(spErr)}).</p></div>` : ""}
+    <div class="card"><h3>Order online: Walmart and Amazon</h3>
+      <p class="note" style="margin:0">On the grocery list, people can send their whole list to a Walmart or Amazon cart. That only works for ingredients linked to a product here. Tap <b>Find</b>, open the product you'd buy, copy its link from the address bar and paste it in. Most-used ingredients are at the top, so the first 40 or so cover most plans. Unlinked items still show as search links.</p>
+      <div class="tiles"><div class="tile"><span>Linked to Walmart</span><b>${nW} of ${spItems.length}</b></div><div class="tile"><span>Linked to Amazon</span><b>${nA} of ${spItems.length}</b></div></div></div>
+    <div class="card"><h3>Your affiliate IDs (optional)</h3>
+      <p class="note" style="margin:0">So purchases earn you a commission. Leave blank to send people to the stores without one. When either is set, the grocery list shows the required disclosure.</p>
+      <label class="fld"><span class="eyebrow">Amazon Associates tag</span><input type="text" id="spTag" maxlength="40" placeholder="yourtag-20" value="${esc(sp.amazonTag || "")}"></label>
+      <label class="fld"><span class="eyebrow">Walmart affiliate tracking link (from Impact)</span><input type="url" id="spWl" maxlength="200" placeholder="https://goto.walmart.com/c/1234567/565706/9383" value="${esc(sp.walmartLink || "")}"></label>
+      <div><button class="btn primary" id="spIds">Save affiliate IDs</button></div></div>
+    <div class="card"><h3>Ingredients (${list.length})</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="search" placeholder="Search ingredients" value="${esc(spq)}" data-spq style="flex:1;min-width:180px">
+      <select data-spf>${[["all", "All"], ["needw", "Not on Walmart yet"], ["needa", "Not on Amazon yet"], ["done", "Linked to both"]].map(([k, l]) => `<option value="${k}"${spf === k ? " selected" : ""}>${l}</option>`).join("")}</select></div>
+      <div class="splist">${list.slice(0, spShow).map(x => `<div class="sprow"><div><b>${esc(x.name)}</b><div class="note">${esc(x.aisle)} · in ${x.uses} recipe${x.uses === 1 ? "" : "s"}${x.walmart ? ` · we price it as "${esc(x.walmart)}"` : ""}</div></div>${cell(x, "w")}${cell(x, "a")}</div>`).join("") || `<p class="note">Nothing matches.</p>`}</div>
+      ${list.length > spShow ? `<button class="btn" data-spmore>Show more (${list.length - spShow} left)</button>` : ""}</div>`;
+  $("#spIds").onclick = () => { const tag = $("#spTag").value.trim(), wl = $("#spWl").value.trim();
+    if (tag && !/^[a-z0-9][a-z0-9-]{1,38}$/i.test(tag)) return toast("That Amazon tag doesn't look right (like yourtag-20).");
+    if (wl && !/^https:\/\/goto\.walmart\.com\/c\/[\d/]+$/.test(wl.replace(/\/$/, ""))) return toast("Paste the tracking link that starts with https://goto.walmart.com/c/");
+    spSave({ amazonTag: tag, walmartLink: wl.replace(/\/$/, "") }, "Affiliate IDs saved."); };
+  const qi = p.querySelector("[data-spq]"); qi.oninput = () => { spq = qi.value; spShow = 40; clearTimeout(drawStores.t); drawStores.t = setTimeout(() => { draw(); const f = $("[data-spq]"); f.focus(); f.setSelectionRange(f.value.length, f.value.length); }, 250); };
+  p.querySelector("[data-spf]").onchange = e => { spf = e.target.value; spShow = 40; draw(); };
+  const mb = p.querySelector("[data-spmore]"); if (mb) mb.onclick = () => { spShow += 40; draw(); };
+  p.querySelectorAll("[data-spsave]").forEach(b => b.onclick = () => { const [st, it] = b.dataset.spsave.split(":"), v = p.querySelector(`[data-spin="${st}:${it}"]`).value;
+    const id = st === "w" ? walmartId(v) : amazonAsin(v);
+    if (!id) return toast(st === "w" ? "Couldn't find a Walmart item number in that link. Use the full walmart.com/ip/… link." : "Couldn't find a product ID in that link. Use the full amazon.com/…/dp/… link, not a short a.co link.");
+    spSave({ [st === "w" ? "walmart" : "amazon"]: { [it]: id } }, "Linked."); });
+  p.querySelectorAll("[data-sprm]").forEach(b => b.onclick = () => { const [st, it] = b.dataset.sprm.split(":"); spSave({ [st === "w" ? "walmart" : "amazon"]: { [it]: deleteField() } }, "Unlinked."); });
 }
 /* ------------------------------------------------------------------ all photos: see every recipe's photo; swap it for a better free-licensed one or the logo */
 let BUNDLED = {};

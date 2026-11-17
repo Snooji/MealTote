@@ -98,6 +98,7 @@ if (configured) {
         await addDoc(collection(db, "recipeSubs"), { ...rec, uid: u.uid, name: firstName(u), at: Date.now(), status: "pending" });
       },
       async communityRecipes() { const q = await getDocs(collection(db, "communityRecipes")); return q.docs.map(d => ({ id: d.id, ...d.data() })); },
+      async storeProducts() { const s = await getDoc(doc(db, "site", "storeProducts")); return s.exists() ? s.data() : null; },
       async communityIndex() { const s = await getDoc(doc(db, "site", "communityPhotos")); return s.exists() ? (s.data().ids || {}) : {}; },
       async communityPhoto(rid) { const s = await getDoc(doc(db, "communityPhotos", rid)); return s.exists() ? s.data() : null; },
 
