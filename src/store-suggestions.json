@@ -1,0 +1,977 @@
+{
+"walmart": {
+"eggs": {
+"id": "145051970",
+"title": "Great Value Large White Eggs, 12 Count",
+"status": "ok"
+},
+"onion": {
+"id": "10447842",
+"title": "Fresh Yellow Onions, 3 lb Bag",
+"status": "ok"
+},
+"garlic": {
+"id": "10320876",
+"title": "Organic Garlic Whole Fresh, 3 Count",
+"status": "close"
+},
+"green_onion": {
+"id": "51259361",
+"title": "Fresh Whole Green Onion 1 Bunch",
+"status": "ok"
+},
+"jasmine_rice": {
+"id": "36874820",
+"title": "Great Value Jasmine Rice, 2 lb",
+"status": "ok"
+},
+"cilantro": {
+"id": "160597260",
+"title": "Fresh Whole Green Cilantro Bunch",
+"status": "ok"
+},
+"butter": {
+"id": "26954458",
+"title": "Great Value Sweet Cream Salted Butter, 16 oz, 4 Sticks",
+"status": "ok"
+},
+"lemon": {
+"id": "51259193",
+"title": "Marketside Fresh Organic Lemons, 2 lb bag",
+"status": "close"
+},
+"bell_peppers": {
+"id": "47770124",
+"title": "Fresh Bell Peppers, 3 Count",
+"status": "ok"
+},
+"ginger": {
+"id": "468313248",
+"title": "Organic Fresh Ginger Root, 8 oz Bag",
+"status": "close"
+},
+"parsley": {
+"id": "44391168",
+"title": "Fresh Italian Parsley Bunch, Each",
+"status": "ok"
+},
+"soy": {
+"id": "10315653",
+"title": "Great Value Naturally Brewed Soy Sauce, 15 fl oz",
+"status": "ok"
+},
+"jalapeno": {
+"id": "44391018",
+"title": "Fresh Jalapenos, Each",
+"status": "ok"
+},
+"chicken_broth": {
+"id": "44391066",
+"title": "Great Value Reduced Sodium Chicken Broth, 32 oz Carton",
+"status": "close"
+},
+"lime": {
+"id": "5148256463",
+"title": "Fresh Limes, 2 lb Bag",
+"status": "ok"
+},
+"cucumber": {
+"id": "44390996",
+"title": "Fresh Long English Cucumber, Each",
+"status": "ok"
+},
+"greek_yogurt": {
+"id": "26559565",
+"title": "Great Value Greek Plain Nonfat Yogurt, 32 oz Tub",
+"status": "ok"
+},
+"chicken_thigh": {
+"id": "124782654",
+"title": "Freshness Guaranteed Boneless Skinless Chicken Thighs Family Pack (4.7-6 lb)",
+"status": "close"
+},
+"milk": {
+"id": "10450119",
+"title": "Great Value 2% Reduced Fat Milk, Half Gallon",
+"status": "ok"
+},
+"carrots": {
+"id": "10535757",
+"title": "Fresh Whole Carrots, 2 lb Bag",
+"status": "ok"
+},
+"chicken_breast": {
+"id": "27935840",
+"title": "Freshness Guaranteed Boneless Skinless Chicken Breasts family pack (2.75-7 lb)",
+"status": "close"
+},
+"parmesan": {
+"id": "10315402",
+"title": "Great Value Grated Parmesan Cheese, 8 oz Shaker",
+"status": "ok"
+},
+"honey": {
+"id": "20647992",
+"title": "Great Value Clover Honey, 12 oz bear",
+"status": "ok"
+},
+"ground_turkey": {
+"id": "167794433",
+"title": "JENNIE-O Lean Ground Turkey 93/7, 1 lb Tray",
+"status": "ok"
+},
+"avocado": {
+"id": "844665579",
+"title": "Fresh Large Hass Avocado Bag, 3-4 Count",
+"status": "ok"
+},
+"russet": {
+"id": "10447837",
+"title": "Fresh Whole Russet Potatoes, 5 lb Bag",
+"status": "ok"
+},
+"celery": {
+"id": "51259411",
+"title": "Fresh Celery Stalk, Each",
+"status": "ok"
+},
+"crushed_tomatoes": {
+"id": "10415230",
+"title": "Great Value Crushed Tomatoes with Tomato Puree, 28 oz",
+"status": "ok"
+},
+"spinach": {
+"id": "13893738",
+"title": "Marketside Fresh Spinach, 10 oz Bag",
+"status": "ok"
+},
+"basmati": {
+"id": "36874823",
+"title": "Great Value Basmati Rice, 2 lb",
+"status": "ok"
+},
+"romaine": {
+"id": "189196217",
+"title": "Marketside Organic Fresh Romaine Lettuce Hearts, 3 Pack",
+"status": "close"
+},
+"sesame": {
+"id": "614782809",
+"title": "Great Value Sesame Seeds, 2.2 oz",
+"status": "ok"
+},
+"cheddar": {
+"id": "10452431",
+"title": "Great Value Finely Shredded Sharp Cheddar, 8 oz",
+"status": "ok"
+},
+"sour_cream": {
+"id": "12335111",
+"title": "Great Value Original Sour Cream, 16 oz Tub",
+"status": "ok"
+},
+"shrimp": {
+"id": "564272494",
+"title": "Great Value Raw Jumbo Tail-off Shrimp, 16 oz, 21-30 ct, frozen",
+"status": "ok"
+},
+"sourdough": {
+"id": "16047909218",
+"title": "Marketside Large Sliced Sourdough Boule, 24 oz",
+"status": "close"
+},
+"panko": {
+"id": "21656980",
+"title": "Great Value Plain Panko Bread Crumbs, 8 oz",
+"status": "ok"
+},
+"feta": {
+"id": "46400590",
+"title": "Athenos Traditional Crumbled Feta, 6 oz",
+"status": "ok"
+},
+"cherry_tomatoes": {
+"id": "10451313",
+"title": "Fresh Grape Tomatoes, 10 oz package",
+"status": "ok"
+},
+"coconut_milk": {
+"id": "1522874513",
+"title": "Great Value Coconut Milk, 13.5 fl oz Can",
+"status": "ok"
+},
+"basil": {
+"id": "51259220",
+"title": "Fresh Basil, 0.5 oz Clamshell",
+"status": "ok"
+},
+"black_beans": {
+"id": "39778876",
+"title": "Great Value No Salt Added Black Beans, 15 oz Can",
+"status": "close"
+},
+"olives": {
+"id": "871158621",
+"title": "Great Value Pitted Kalamata Greek Olives, 6.35 oz Jar",
+"status": "ok"
+},
+"ground_beef": {
+"id": "479601462",
+"title": "All Natural 80/20 Ground Beef Chuck, 1 lb Tray",
+"status": "ok"
+},
+"beef_broth": {
+"id": "10899014",
+"title": "Great Value Beef Broth, 32 oz Carton",
+"status": "ok"
+},
+"white_fish": {
+"id": "129433826",
+"title": "Great Value Wild Caught Skinless Cod Fillets, 1 lb Bag (Frozen)",
+"status": "ok"
+},
+"fish_sauce": {
+"id": "31002177",
+"title": "Red Boat Fish Sauce, 8.45 fl oz",
+"status": "ok"
+},
+"mozzarella": {
+"id": "10452371",
+"title": "Great Value Finely Shredded Mozzarella, 8 oz",
+"status": "ok"
+},
+"diced_tomatoes": {
+"id": "10416105",
+"title": "Great Value Petite Diced Tomatoes in Tomato Juice, 14.5 oz",
+"status": "ok"
+},
+"egg_whites_carton": {
+"id": "13925176",
+"title": "Great Value 100% Liquid Egg Whites, 32 oz",
+"status": "ok"
+},
+"pita": {
+"id": "21805024",
+"title": "Toufayan Classic White Pita Bread, 6 Loaves",
+"status": "ok"
+},
+"baguette": {
+"id": "52196662",
+"title": "Marketside French Baguette, Bake at Home, 10 oz",
+"status": "ok"
+},
+"salsa": {
+"id": "3562572626",
+"title": "Great Value Thick and Chunky Salsa Medium, 16 oz",
+"status": "ok"
+},
+"green_beans": {
+"id": "14053328",
+"title": "Marketside Fresh Green Beans, 12 oz",
+"status": "ok"
+},
+"bacon": {
+"id": "44391087",
+"title": "Great Value Thick Sliced Hickory Smoked Bacon, 16 oz",
+"status": "ok"
+},
+"pickles": {
+"id": "717006626",
+"title": "Great Value Kosher Sliced Dill Pickles, 24 fl oz",
+"status": "ok"
+},
+"frozen_corn": {
+"id": "659879040",
+"title": "Great Value Whole Kernel Corn, 12 oz Steamable Bag (Frozen)",
+"status": "ok"
+},
+"cheese_mex": {
+"id": "47088918",
+"title": "Kraft Mexican Style Four Cheese Blend, 8 oz Bag",
+"status": "ok"
+},
+"coleslaw": {
+"id": "16785076",
+"title": "Marketside Tri-Color Cole Slaw, 16 oz Bag",
+"status": "close"
+},
+"flour_tortillas": {
+"id": "953466267",
+"title": "Great Value Medium Soft Taco Flour Tortillas, 17.5 oz, 10 Count",
+"status": "ok"
+},
+"heavy_cream": {
+"id": "10450339",
+"title": "Great Value Heavy Whipping Cream, 16 fl oz",
+"status": "ok"
+},
+"chuck_roast": {
+"id": "39944474",
+"title": "Chuck Roast, Choice Angus Beef, Tray, 2.25-3.38 lb",
+"status": "ok"
+},
+"pork_shoulder": {
+"id": "50637814",
+"title": "Smithfield Boneless Pork Shoulder Butt Roast, 2.4-6 lb",
+"status": "ok"
+},
+"broccoli": {
+"id": "51259378",
+"title": "Fresh Whole Green Broccoli Crowns, 1 Each",
+"status": "ok"
+},
+"mint": {
+"id": "46491767",
+"title": "Fresh Mint, 0.5 oz Clamshell",
+"status": "ok"
+},
+"green_cabbage": {
+"id": "44391042",
+"title": "Fresh Green Cabbage, Each",
+"status": "ok"
+},
+"corn_tortillas": {
+"id": "965312672",
+"title": "Mission 25 Calorie Yellow Corn Tortillas, 30 Count",
+"status": "close"
+},
+"peanuts": {
+"id": "10448531",
+"title": "Great Value Dry Roasted Peanuts, 16 oz",
+"status": "ok"
+},
+"sirloin": {
+"id": "55446520",
+"title": "Top Sirloin Beef Steak, Family Pack, 1.15-2.43 lb",
+"status": "ok"
+},
+"plantains": {
+"id": "34143814",
+"title": "Fresh Plantain, Each",
+"status": "ok"
+},
+"mixed_greens": {
+"id": "254834665",
+"title": "Marketside Spring Mix Salad Blend, 11 oz",
+"status": "ok"
+},
+"hoagie_rolls": {
+"id": "44391091",
+"title": "Freshness Guaranteed White Sub Rolls, 16 oz, 6 Count",
+"status": "ok"
+},
+"spaghetti": {
+"id": "10534115",
+"title": "Great Value Spaghetti, 16 oz",
+"status": "ok"
+},
+"dill_fresh": {
+"id": "2623469649",
+"title": "Fresh Dill, 0.5 oz Clamshell",
+"status": "ok"
+},
+"frozen_peas": {
+"id": "443429457",
+"title": "Great Value Sweet Peas, 12 oz Steamable Bag (Frozen)",
+"status": "ok"
+},
+"kidney_beans": {
+"id": "10534045",
+"title": "Great Value Dark Red Kidney Beans, 15.5 oz",
+"status": "ok"
+},
+"oranges": {
+"id": "5256904046",
+"title": "Fresh Organic Oranges (navel), 3 lb Bag",
+"status": "close"
+},
+"peanut_butter": {
+"id": "3716446909",
+"title": "Great Value Creamy Peanut Butter, 16 oz",
+"status": "ok"
+},
+"pork_tenderloin": {
+"id": "895966481",
+"title": "Smithfield Fresh Pork Tenderloin, 2 Count, 1.4-3.4 lb",
+"status": "close"
+},
+"mushrooms": {
+"id": "21909783",
+"title": "Fresh Sliced Baby Bella Mushrooms, 8 oz",
+"status": "ok"
+},
+"oyster_sauce": {
+"id": "30894576",
+"title": "Lee Kum Kee Panda Brand Oyster Sauce, 9 oz",
+"status": "ok"
+},
+"deli_ham": {
+"id": "36461928",
+"title": "Great Value Thin Sliced Smoked Ham Lunchmeat, 9 oz Tub",
+"status": "ok"
+},
+"sandwich_bread": {
+"id": "10804551",
+"title": "Great Value 100% Whole Wheat Round Top Bread, 20 oz",
+"status": "ok"
+},
+"flour": {
+"id": "10403017",
+"title": "Great Value All-Purpose Enriched Bleached Flour, 5 lb",
+"status": "ok"
+},
+"banana": {
+"id": "51259338",
+"title": "Marketside Organic Bananas, Bunch",
+"status": "close"
+},
+"cajun": {
+"id": "31000887",
+"title": "Tony Chachere's Creole Seasoning, 8 oz",
+"status": "ok"
+},
+"marinara": {
+"id": "52796305",
+"title": "Great Value Organic Marinara Pasta Sauce, 24 oz",
+"status": "close"
+},
+"chickpeas": {
+"id": "10534041",
+"title": "Great Value Garbanzos Chick Peas, 15.5 oz",
+"status": "ok"
+},
+"frozen_berries": {
+"id": "10543668",
+"title": "Great Value Frozen Whole Berry Medley, 16 oz",
+"status": "ok"
+},
+"garam_masala": {
+"id": "709651942",
+"title": "Spice Islands Garam Masala, 3 oz Jar",
+"status": "ok"
+},
+"oats": {
+"id": "10314925",
+"title": "Great Value 100% Whole Grain Old Fashioned Oats, 42 oz",
+"status": "ok"
+},
+"shaoxing_wine": {
+"id": "161873843",
+"title": "ShaoXing Rice Cooking Wine, 750 mL",
+"status": "ok"
+},
+"sweet_potato": {
+"id": "132720824",
+"title": "Sweet Potatoes Whole Fresh, 3 lb Bag",
+"status": "ok"
+},
+"taco_seasoning": {
+"id": "707655866",
+"title": "Great Value Mild Taco Seasoning Mix, 1 oz",
+"status": "ok"
+},
+"bok_choy": {
+"id": "356250509",
+"title": "Fresh Whole Baby Bok Choy Shanghai Bundle",
+"status": "ok"
+},
+"chipotle": {
+"id": "13424766",
+"title": "La Costena Chipotle Peppers in Adobo Sauce, 7 oz",
+"status": "ok"
+},
+"gochujang": {
+"id": "145688868",
+"title": "HanAsia Korean Gochujang Hot Pepper Paste, 17.6 oz",
+"status": "ok"
+}
+},
+"amazon": {
+"eggs": {
+"id": "B07GBM7TZJ",
+"title": "Amazon Grocery, Cage-Free Large White Eggs, Grade A, 1 Dozen",
+"status": "ok"
+},
+"onion": {
+"id": "B08TP8PQTB",
+"title": "Amazon Grocery, Yellow Onions, 3 Lb",
+"status": "ok"
+},
+"garlic": {
+"id": "B07NR3LF35",
+"title": "365 by Whole Foods Market Organic Garlic, 3 CT",
+"status": "close"
+},
+"green_onion": {
+"id": "B002B9280S",
+"title": "Green Onions (Scallions), One Bunch",
+"status": "ok"
+},
+"jasmine_rice": {
+"id": "B08B217JP5",
+"title": "Amazon Grocery, Jasmine Long Grain Rice, 2 Lb",
+"status": "ok"
+},
+"cilantro": {
+"id": "B003IMCNH0",
+"title": "Cilantro, 1 Bunch (listed as currently unavailable)",
+"status": "unavail"
+},
+"butter": {
+"id": "B07VF6RXNL",
+"title": "Amazon Grocery, Salted Butter Sticks, 16 Oz",
+"status": "ok"
+},
+"lemon": {
+"id": "B0792P6WBP",
+"title": "Organic Lemons, 2 Lb Bag",
+"status": "close"
+},
+"bell_peppers": {
+"id": "B086WXFWP4",
+"title": "Amazon Grocery, Stoplight Bell Peppers, 3 Ct",
+"status": "ok"
+},
+"roma_tomatoes": {
+"id": "B07FZFXQQS",
+"title": "Organic Roma Tomato (each)",
+"status": "close"
+},
+"parsley": {
+"id": "B000P6H2BY",
+"title": "Italian Parsley (Flat Leaf), One Bunch (listed as unavailable)",
+"status": "unavail"
+},
+"soy": {
+"id": "B0051ONTXU",
+"title": "Kikkoman Naturally Brewed Soy Sauce, 15 oz (listed as unavailable)",
+"status": "unavail"
+},
+"jalapeno": {
+"id": "B0D9MWWBH8",
+"title": "Fresh Organic Jalapeno Peppers by RawJoy Farms, 1 lb",
+"status": "close"
+},
+"chicken_broth": {
+"id": "B0BZQW6D8S",
+"title": "Amazon Grocery, Chicken Broth, 32 Oz",
+"status": "ok"
+},
+"lime": {
+"id": "B00B4K3PFC",
+"title": "Limes, 2 Lb Bag",
+"status": "ok"
+},
+"cucumber": {
+"id": "B0040QYLW8",
+"title": "Organic English Cucumber",
+"status": "close"
+},
+"greek_yogurt": {
+"id": "B07W5TD361",
+"title": "Amazon Grocery, Greek Nonfat Plain Yogurt, 32 Oz",
+"status": "ok"
+},
+"chicken_thigh": {
+"id": "B0CVZS2SD8",
+"title": "Amazon Grocery, Chicken Thighs Value Pack (listed as unavailable)",
+"status": "unavail"
+},
+"milk": {
+"id": "B07YQGS36S",
+"title": "Amazon Grocery, 2% Reduced Fat Milk, Half Gallon",
+"status": "ok"
+},
+"carrots": {
+"id": "B07XW1H4V8",
+"title": "Amazon Grocery, Whole Carrots, 2 Lb",
+"status": "ok"
+},
+"chicken_breast": {
+"id": "B0CW15PL71",
+"title": "Amazon Grocery, Chicken Breast Fillets, Boneless Skinless (1.6-2.7 lb)",
+"status": "ok"
+},
+"parmesan": {
+"id": "B09X173H5W",
+"title": "Amazon Grocery, Grated Parmesan Cheese, 5 Oz",
+"status": "ok"
+},
+"honey": {
+"id": "B07QS75JWW",
+"title": "Amazon Grocery, Golden Pure Honey, 12 Oz",
+"status": "ok"
+},
+"ground_turkey": {
+"id": "B074D1WN9F",
+"title": "Butterball Fresh 93/7 Lean Ground Turkey, 1 lb",
+"status": "ok"
+},
+"avocado": {
+"id": "B07Y45NJCW",
+"title": "365 by Whole Foods Market Hass Avocados, 4 Count",
+"status": "ok"
+},
+"russet": {
+"id": "B07XW1TNXZ",
+"title": "Amazon Grocery, Russet Potatoes, 5 Lb",
+"status": "ok"
+},
+"celery": {
+"id": "B00E3J92PS",
+"title": "Organic Celery Hearts, 16 Ounce",
+"status": "close"
+},
+"crushed_tomatoes": {
+"id": "B07TWLQFZT",
+"title": "Amazon Grocery, Crushed Tomatoes in Puree, 28 Oz",
+"status": "ok"
+},
+"spinach": {
+"id": "B074H4WRNG",
+"title": "365 by Whole Foods Market Organic Baby Spinach, 5 oz",
+"status": "close"
+},
+"basmati": {
+"id": "B08B22KJ87",
+"title": "Amazon Grocery, Basmati Long Grain Rice, 2 Lb (listed as unavailable)",
+"status": "unavail"
+},
+"romaine": {
+"id": "B085Z7TM5G",
+"title": "Andy Boy Salad Bag Romaine Hearts, 3 Count",
+"status": "ok"
+},
+"sesame": {
+"id": "B00I9VBGZ0",
+"title": "McCormick Sesame Seeds, 1 oz",
+"status": "close"
+},
+"cheddar": {
+"id": "B075Y87YJV",
+"title": "Amazon Grocery, Sharp Cheddar Cheese, Shredded, 8 Oz",
+"status": "ok"
+},
+"sour_cream": {
+"id": "B0BV3XNV8B",
+"title": "Amazon Grocery, Original Sour Cream, 16 Oz",
+"status": "ok"
+},
+"shrimp": {
+"id": "B07ZS3QJ32",
+"title": "Amazon Grocery, Medium Raw Shrimp, peeled & deveined, 16 Oz",
+"status": "ok"
+},
+"sourdough": {
+"id": "B0DPXKXV31",
+"title": "365 by Whole Foods Market, Organic Sourdough Bread, 24 OZ",
+"status": "close"
+},
+"panko": {
+"id": "B08NWHHRSK",
+"title": "Kikkoman Panko Bread Crumbs, 8 Oz, Pack of 2",
+"status": "close"
+},
+"feta": {
+"id": "B00FWUPCI8",
+"title": "President All Natural Crumbled Feta, 6 oz",
+"status": "ok"
+},
+"cherry_tomatoes": {
+"id": "B07XW19QBX",
+"title": "Amazon Grocery, Grape Tomatoes, 10 Oz",
+"status": "ok"
+},
+"coconut_milk": {
+"id": "B0D1LDP6WH",
+"title": "Amazon Grocery, Coconut Milk, 13.5 Fl Oz",
+"status": "ok"
+},
+"basil": {
+"id": "B07GXSRD22",
+"title": "PRODUCE Organic Basil, 0.75 OZ",
+"status": "close"
+},
+"black_beans": {
+"id": "B0F15B62QW",
+"title": "Amazon Grocery, Black Beans, No Salt Added, 15.25 Oz",
+"status": "close"
+},
+"olives": {
+"id": "B07WX2LZH7",
+"title": "Amazon Grocery, Pitted Kalamata Olives, 9.5 Oz",
+"status": "ok"
+},
+"ground_beef": {
+"id": "B08LJVQSL2",
+"title": "Amazon Grocery, Ground Beef, 80/20, 1 lb",
+"status": "ok"
+},
+"beef_broth": {
+"id": "B0BZQTJJNH",
+"title": "Amazon Grocery, Beef Broth, 32 Oz",
+"status": "ok"
+},
+"white_fish": {
+"id": "B07ZS35KP9",
+"title": "Amazon Grocery, Wild Caught Pacific Cod Fillets, 16 oz",
+"status": "ok"
+},
+"fish_sauce": {
+"id": "B001HTMYR0",
+"title": "Thai Kitchen Fish Sauce, 6.76 fl oz (listed as unavailable)",
+"status": "unavail"
+},
+"mozzarella": {
+"id": "B075Y87ZGM",
+"title": "Amazon Grocery, Mozzarella Cheese, Shredded, 8 Oz",
+"status": "ok"
+},
+"diced_tomatoes": {
+"id": "B07TTH9FWG",
+"title": "Amazon Grocery, Petite Diced Tomatoes, 14.5 Oz",
+"status": "ok"
+},
+"egg_whites_carton": {
+"id": "B08BKXR17P",
+"title": "Amazon Grocery, Cage Free Liquid Egg Whites, 32 Fl Oz",
+"status": "ok"
+},
+"pita": {
+"id": "B0CLHGMNP1",
+"title": "Toufayan Bakeries Pita Bread (Multigrain), 6 pieces",
+"status": "close"
+},
+"baguette": {
+"id": "B0CDWXV37L",
+"title": "Whole Foods Market French Baguette (listed as unavailable)",
+"status": "unavail"
+},
+"salsa": {
+"id": "B083SX68Z5",
+"title": "Amazon Kitchen, Chunky Salsa, Medium, 16 oz",
+"status": "ok"
+},
+"green_beans": {
+"id": "B00JQV85D8",
+"title": "365 by Whole Foods Market, Organic Trimmed Green Beans, 12 oz",
+"status": "close"
+},
+"bacon": {
+"id": "B07YVNB3FP",
+"title": "Amazon Grocery, Thick Cut Hickory Smoked Bacon, 40 Oz",
+"status": "close"
+},
+"pickles": {
+"id": "B07WYYCF58",
+"title": "Amazon Saver, Kosher Dill Pickle Spears, 24 Fl Oz",
+"status": "close"
+},
+"frozen_corn": {
+"id": "B07WSBWHMS",
+"title": "Amazon Grocery, Sweet Yellow Corn, 12 Oz, Frozen",
+"status": "ok"
+},
+"cheese_mex": {
+"id": "B075Y8ZV89",
+"title": "Amazon Grocery, Mexican-Style Four Cheese Blend, 8 Oz",
+"status": "ok"
+},
+"coleslaw": {
+"id": "B00KMM8KI0",
+"title": "Taylor Farms Coleslaw Kit 14oz",
+"status": "close"
+},
+"flour_tortillas": {
+"id": "B004XJLYRM",
+"title": "Mission Soft Taco Flour Tortillas, Medium, 10 Count",
+"status": "ok"
+},
+"heavy_cream": {
+"id": "B07DGSZNS7",
+"title": "Amazon Grocery, Heavy Whipping Cream, 16 Fl Oz",
+"status": "ok"
+},
+"chuck_roast": {
+"id": "B0D8P79Z9Q",
+"title": "Amazon Grocery, Beef Chuck Center Roast, Boneless, USDA Choice",
+"status": "ok"
+},
+"pork_shoulder": {
+"id": "B01N4X07HW",
+"title": "Pork Shoulder Butt Roast Boneless, 2 lb",
+"status": "close"
+},
+"broccoli": {
+"id": "B079D5RY71",
+"title": "Broccoli Crowns, 16 oz",
+"status": "ok"
+},
+"mint": {
+"id": "B081N7JWK5",
+"title": "MEYER FARMS Organic Mint, 0.75 OZ (listed as unavailable)",
+"status": "unavail"
+},
+"green_cabbage": {
+"id": "B00AU1MFEI",
+"title": "Fresh Green Cabbage, Each Head",
+"status": "ok"
+},
+"corn_tortillas": {
+"id": "B01GDYL7QC",
+"title": "Mission Yellow Corn Tortillas, 30 Count",
+"status": "ok"
+},
+"peanuts": {
+"id": "B0CYDKJDVD",
+"title": "Amazon Grocery, Roasted Peanuts, Roasted & Salted, 16 Oz",
+"status": "close"
+},
+"sirloin": {
+"id": "B0D4GM8TJR",
+"title": "Amazon Grocery, Beef Top Sirloin Steak, Boneless, USDA Choice",
+"status": "ok"
+},
+"plantains": {
+"id": "B000SE7Y7U",
+"title": "Plantain, 1 Each",
+"status": "ok"
+},
+"mixed_greens": {
+"id": "B00K0EEIO0",
+"title": "Organicgirl Baby Spring Greens Mix, 10 Oz",
+"status": "ok"
+},
+"hoagie_rolls": {
+"id": "B086TNGNFR",
+"title": "Calise Bakery Sub Rolls, 6 Count, 18 oz",
+"status": "close"
+},
+"spaghetti": {
+"id": "B09TSGDMY5",
+"title": "Amazon Grocery, Spaghetti, 16 Oz",
+"status": "ok"
+},
+"dill_fresh": {
+"id": "B07N1JPL4L",
+"title": "Herb Dill, 0.75 Ounce",
+"status": "ok"
+},
+"kidney_beans": {
+"id": "B0BZB4FL11",
+"title": "Amazon Grocery, Canned Dark Red Kidney Beans, 15.5 Oz",
+"status": "ok"
+},
+"oranges": {
+"id": "B084VSSHS6",
+"title": "Navel Oranges Bag, 3 Pound",
+"status": "ok"
+},
+"peanut_butter": {
+"id": "B07KWH27FN",
+"title": "Amazon Grocery, Creamy Peanut Butter, No Stir, 16 Oz",
+"status": "ok"
+},
+"pork_tenderloin": {
+"id": "B0D8PBBXXS",
+"title": "Amazon Grocery, Pork Tenderloin, Boneless (listed as unavailable)",
+"status": "unavail"
+},
+"rotisserie": {
+"id": "B07HKLNBYY",
+"title": "Whole Foods Market Classic Rotisserie Chicken (listed as unavailable)",
+"status": "unavail"
+},
+"mushrooms": {
+"id": "B07XVZLV79",
+"title": "Amazon Grocery, Sliced Baby Bella Mushrooms, 8 Oz",
+"status": "ok"
+},
+"oyster_sauce": {
+"id": "B001FB6B88",
+"title": "Lee Kum Kee Oyster Sauce, 9 oz, pack of 4",
+"status": "close"
+},
+"deli_ham": {
+"id": "B000Q5ZMD4",
+"title": "Hillshire Farm Ultra Thin Sliced Honey Ham, 9 oz",
+"status": "ok"
+},
+"sandwich_bread": {
+"id": "B003VDFEVI",
+"title": "Nature's Own 100% Whole Grain Sandwich Bread, 20 oz",
+"status": "ok"
+},
+"flour": {
+"id": "B07Z7DY1N8",
+"title": "Amazon Grocery, All Purpose Flour, 5 Lb",
+"status": "ok"
+},
+"banana": {
+"id": "B07ZLFPXHC",
+"title": "Banana Bunch (4-5 Count)",
+"status": "ok"
+},
+"cajun": {
+"id": "B0HM8273SK",
+"title": "Tony Chachere's Original Creole Seasoning",
+"status": "close"
+},
+"marinara": {
+"id": "B008RRQDCW",
+"title": "Barilla Marinara Pasta Sauce, 24 oz",
+"status": "ok"
+},
+"chickpeas": {
+"id": "B0D7P461PN",
+"title": "Goya Low Sodium Chickpeas, 15.5 oz, 2-Pack",
+"status": "close"
+},
+"garam_masala": {
+"id": "B0011311TO",
+"title": "McCormick Gourmet Garam Masala Blend, 1.7 Oz",
+"status": "ok"
+},
+"ground_pork": {
+"id": "B074Z5JWD2",
+"title": "Niman Ranch All Natural Ground Pork, 1 lb",
+"status": "ok"
+},
+"oats": {
+"id": "B08FNGHYL3",
+"title": "Amazon Saver, Old Fashioned Oats, 42 oz (2.6 lb)",
+"status": "ok"
+},
+"shaoxing_wine": {
+"id": "B0D9BXSHLJ",
+"title": "Qian Hu Shaoxing Wine, 750 mL",
+"status": "ok"
+},
+"sweet_potato": {
+"id": "B07FYRRXSY",
+"title": "Organic Sweet Potatoes (Orange Flesh), 3 lb",
+"status": "close"
+},
+"taco_seasoning": {
+"id": "B07YZX6CYP",
+"title": "Amazon Grocery, Taco Seasoning Mix, Mild, 1 Oz",
+"status": "ok"
+},
+"bok_choy": {
+"id": "B0147RTFMA",
+"title": "Bristol Farms Organic Baby Bok Choy, 1 Count",
+"status": "close"
+},
+"chipotle": {
+"id": "B00ACUPQ16",
+"title": "La Costena Chipotle Peppers in Adobo, 7 oz, 4 Pack",
+"status": "close"
+},
+"curry_powder": {
+"id": "B0029K2YZS",
+"title": "McCormick Gourmet Organic Curry Powder, 1.75 oz",
+"status": "ok"
+}
+},
+"note": "Found by web search on 2026-11-17. ok = same product and size; close = similar product, different size or variant; unavail = the store listed it as unavailable."
+}

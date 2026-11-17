@@ -249,11 +249,13 @@ function drawFeedback(p) {
 }
 /* ------------------------------------------------------------------ store products: link each ingredient to a Walmart item and an Amazon product */
 // The grocery list's "Add to Walmart cart" / "Add to Amazon cart" buttons use these IDs. Unlinked items fall back to search links.
-let sp = null, spItems = null, spErr = "", spq = "", spf = "all", spShow = 40;
+let sp = null, spItems = null, spSug = { walmart: {}, amazon: {} }, spErr = "", spq = "", spf = "all", spShow = 40;
 const SP_REF = () => doc(db, "site", "storeProducts");
 async function loadStores() {
   try {
-    const [snap, items] = await Promise.all([getDoc(SP_REF()), fetch("recipes/items.json", { cache: "no-cache" }).then(r => r.json())]);
+    const [snap, items, sug] = await Promise.all([getDoc(SP_REF()), fetch("recipes/items.json", { cache: "no-cache" }).then(r => r.json()),
+      fetch("src/store-suggestions.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null)]);
+    if (sug) spSug = sug;
     sp = Object.assign({ walmart: {}, amazon: {}, amazonTag: "", walmartLink: "" }, snap.exists() ? snap.data() : {}); spItems = items; spErr = "";
   } catch (e) { sp = { walmart: {}, amazon: {}, amazonTag: "", walmartLink: "" }; spItems = spItems || []; spErr = e.code || e.message; }
 }
@@ -273,8 +275,15 @@ async function drawStores(p) {
     && (spf === "all" || (spf === "needw" && !sp.walmart[x.id]) || (spf === "needa" && !sp.amazon[x.id]) || (spf === "done" && sp.walmart[x.id] && sp.amazon[x.id])));
   const cell = (x, store) => { const id = store === "w" ? sp.walmart[x.id] : sp.amazon[x.id], label = store === "w" ? "Walmart" : "Amazon";
     return id ? `<div class="spcell on"><span class="note">${label}:</span> <a href="${store === "w" ? "https://www.walmart.com/ip/" + esc(id) : "https://www.amazon.com/dp/" + esc(id)}" target="_blank" rel="noopener">${esc(id)}</a> <button class="btn small" data-sprm="${store}:${esc(x.id)}">Unlink</button></div>`
-      : `<div class="spcell"><a class="btn small" href="${esc(store === "w" ? wSearch(x) : aSearch(x))}" target="_blank" rel="noopener">Find on ${label}</a><input type="text" placeholder="Paste the ${label} product link" data-spin="${store}:${esc(x.id)}" aria-label="${label} product link for ${esc(x.name)}"><button class="btn small primary" data-spsave="${store}:${esc(x.id)}">Save</button></div>`; };
+      : `${sugRow(x, store)}<div class="spcell"><a class="btn small" href="${esc(store === "w" ? wSearch(x) : aSearch(x))}" target="_blank" rel="noopener">Find on ${label}</a><input type="text" placeholder="Paste the ${label} product link" data-spin="${store}:${esc(x.id)}" aria-label="${label} product link for ${esc(x.name)}"><button class="btn small primary" data-spsave="${store}:${esc(x.id)}">Save</button></div>`; };
+  const SUG_LABEL = { ok: "Same product and size", close: "Similar: check the size", unavail: "Store listed it as unavailable" };
+  function sugRow(x, store) { const g = (store === "w" ? spSug.walmart : spSug.amazon)[x.id]; if (!g) return "";
+    const href = store === "w" ? "https://www.walmart.com/ip/" + g.id : "https://www.amazon.com/dp/" + g.id;
+    return `<div class="spsug ${esc(g.status)}"><span class="note">Suggested:</span> <a href="${esc(href)}" target="_blank" rel="noopener">${esc(g.title)}</a> <span class="ptag">${esc(SUG_LABEL[g.status] || g.status)}</span> <button class="btn small${g.status === "ok" ? " primary" : ""}" data-spuse="${store}:${esc(x.id)}">Use this</button></div>`; }
+  const pendW = Object.entries(spSug.walmart || {}).filter(([k, v]) => v.status === "ok" && !sp.walmart[k]), pendA = Object.entries(spSug.amazon || {}).filter(([k, v]) => v.status === "ok" && !sp.amazon[k]);
   p.innerHTML = `${spErr ? `<div class="card"><p class="note warnline" style="margin:0">Couldn't load (${esc(spErr)}).</p></div>` : ""}
+    ${pendW.length || pendA.length ? `<div class="card"><h3>Suggested products</h3><p class="note" style="margin:0">I found these by web search. ${pendW.length} Walmart and ${pendA.length} Amazon suggestions are the same product and size we price. You can take them all at once, then spot-check a few with the product links below. "Similar" suggestions are a different size or variant, so check those one by one.</p>
+      <div><button class="btn primary" id="spAll">Use all ${pendW.length + pendA.length} exact matches</button></div></div>` : ""}
     <div class="card"><h3>Order online: Walmart and Amazon</h3>
       <p class="note" style="margin:0">On the grocery list, people can send their whole list to a Walmart or Amazon cart. That only works for ingredients linked to a product here. Tap <b>Find</b>, open the product you'd buy, copy its link from the address bar and paste it in. Most-used ingredients are at the top, so the first 40 or so cover most plans. Unlinked items still show as search links.</p>
       <div class="tiles"><div class="tile"><span>Linked to Walmart</span><b>${nW} of ${spItems.length}</b></div><div class="tile"><span>Linked to Amazon</span><b>${nA} of ${spItems.length}</b></div></div></div>
@@ -299,6 +308,10 @@ async function drawStores(p) {
     const id = st === "w" ? walmartId(v) : amazonAsin(v);
     if (!id) return toast(st === "w" ? "Couldn't find a Walmart item number in that link. Use the full walmart.com/ip/… link." : "Couldn't find a product ID in that link. Use the full amazon.com/…/dp/… link, not a short a.co link.");
     spSave({ [st === "w" ? "walmart" : "amazon"]: { [it]: id } }, "Linked."); });
+  p.querySelectorAll("[data-spuse]").forEach(b => b.onclick = () => { const [st, it] = b.dataset.spuse.split(":"), g = (st === "w" ? spSug.walmart : spSug.amazon)[it];
+    spSave({ [st === "w" ? "walmart" : "amazon"]: { [it]: g.id } }, "Linked."); });
+  const all = $("#spAll"); if (all) all.onclick = () => { all.disabled = true;
+    spSave({ walmart: Object.fromEntries(pendW.map(([k, v]) => [k, v.id])), amazon: Object.fromEntries(pendA.map(([k, v]) => [k, v.id])) }, `Linked ${pendW.length + pendA.length} products.`); };
   p.querySelectorAll("[data-sprm]").forEach(b => b.onclick = () => { const [st, it] = b.dataset.sprm.split(":"); spSave({ [st === "w" ? "walmart" : "amazon"]: { [it]: deleteField() } }, "Unlinked."); });
 }
 /* ------------------------------------------------------------------ all photos: see every recipe's photo; swap it for a better free-licensed one or the logo */
